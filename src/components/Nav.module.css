@@ -1,0 +1,128 @@
+.nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  padding: 0 var(--content-pad);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 74px;
+  background: rgba(17,16,16,0.55);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.35s ease;
+}
+.scrolled {
+  background: rgba(17,16,16,0.97);
+  border-bottom-color: rgba(196,151,63,0.1);
+}
+
+/* ── LOGO ──
+   mix-blend-mode:screen: black pixels become transparent,
+   white logo text stays crisp on any background.
+*/
+.logoWrap { cursor: pointer; display: flex; align-items: center; }
+.logoImg  {
+  height: 38px;
+  object-fit: contain;
+  mix-blend-mode: screen;   /* ← KEY: kills black bg */
+  filter: brightness(1.1);
+}
+
+/* DESKTOP LINKS */
+.desktopLinks {
+  display: flex; gap: 2.2rem; list-style: none; align-items: center;
+}
+.desktopLinks a {
+  font-size: 0.71rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  text-decoration: none; transition: color 0.3s;
+}
+.desktopLinks a:hover, .desktopLinks .active { color: var(--gold); }
+.cta {
+  padding: 0.5rem 1.4rem !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  border-radius: 1px; transition: all 0.3s !important;
+}
+.cta:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
+
+/* BURGER */
+.burger {
+  display: none; flex-direction: column; justify-content: center;
+  align-items: center; gap: 5px;
+  width: 40px; height: 40px; background: transparent;
+  border: none; cursor: pointer; padding: 6px; z-index: 1100;
+}
+.bl {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255,255,255,0.8); border-radius: 2px;
+  transition: all 0.3s ease; transform-origin: center;
+}
+.burgerOpen .bl:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burgerOpen .bl:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burgerOpen .bl:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* OVERLAY */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 998;
+  opacity: 0; transition: opacity 0.3s;
+}
+.overlayOpen { opacity: 1; }
+
+/* MOBILE MENU */
+.mobileMenu {
+  display: none; position: fixed; top: 0; right: 0;
+  width: min(320px, 85vw); height: 100vh;
+  background: var(--charcoal-2);
+  border-left: 1px solid rgba(196,151,63,0.12);
+  z-index: 999; padding: 1.5rem 2rem 3rem;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+}
+.mobileMenuOpen { transform: translateX(0); }
+.mobileLogoWrap { padding-bottom: 2.5rem; border-bottom: 1px solid rgba(196,151,63,0.1); }
+.mobileLogoImg  {
+  height: 34px; object-fit: contain;
+  mix-blend-mode: screen; filter: brightness(1.1);
+}
+.mobileLinks { list-style: none; display: flex; flex-direction: column; flex: 1; margin-top: 1rem; }
+.ml, .mlActive {
+  display: block; padding: 1rem 0;
+  font-size: 1.1rem; font-weight: 300; letter-spacing: 0.05em;
+  text-decoration: none; transition: color 0.25s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.55);
+}
+.ml:hover, .mlActive { color: var(--gold); }
+.mlCta {
+  display: block; margin-top: 2rem; padding: 0.9rem 1.5rem;
+  background: var(--gold); color: var(--charcoal);
+  font-family: 'Jost', sans-serif; font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  text-align: center; text-decoration: none; border-radius: 1px;
+  transition: background 0.3s;
+}
+.mlCta:hover { background: var(--gold-light); }
+.mobileHandle {
+  margin-top: auto; padding-top: 2rem;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.85rem; color: rgba(255,255,255,0.2); letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .desktopLinks { display: none; }
+  .burger       { display: flex; }
+  .overlay, .mobileMenu { display: flex; }
+}
+
+/* ── MOBILE: ensure nav always has strong dark bg for logo legibility ── */
+@media (max-width: 768px) {
+  .nav {
+    background: rgba(17,16,16,0.92) !important;
+    backdrop-filter: blur(16px);
+  }
+  /* Burger lines slightly brighter on mobile */
+  .bl {
+    background: rgba(255,255,255,0.9);
+  }
+}

@@ -1,0 +1,179 @@
+/* ================================================================
+   HERO BANNER — walking corridor photo
+   ================================================================ */
+.heroBanner {
+  width: 100%;
+  min-height: 75vh;
+  background-size: cover;
+  background-position: center 25%; /* FIXED: keeps person visible on desktop */
+  background-attachment: fixed;
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.heroBannerOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17,16,16,0.20)  0%,
+    rgba(17,16,16,0.55)  40%,
+    rgba(17,16,16,0.85)  68%,
+    rgb(253,250,244)    100%
+  );
+}
+.heroBannerContent {
+  position: relative; z-index: 1;
+  width: 100%; max-width: var(--content-max); margin: 0 auto;
+  padding: 0 var(--content-pad) 6rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: end;
+}
+.heroTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 300;
+  color: #fff; line-height: 1.0;
+}
+.heroTitle em { font-style: italic; color: var(--gold-light); }
+.heroBio { font-size: 1.05rem; line-height: 2; color: rgba(255,255,255,0.5); font-weight: 300; }
+.heroWatermark {
+  position: absolute; right: 3%; bottom: -2.5rem;
+  font-family: 'Cormorant SC', serif; font-size: 13rem; font-weight: 300;
+  color: rgba(196,151,63,0.05); line-height: 1; letter-spacing: 0.05em;
+  pointer-events: none; z-index: 0;
+}
+
+/* ================================================================
+   BODY
+   ================================================================ */
+.body { width: 100%; background: var(--ivory); padding: 5rem 0 6rem; }
+.bodyInner {
+  max-width: var(--content-max); margin: 0 auto;
+  padding: 0 var(--content-pad);
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem;
+}
+
+/* PHOTO STACK */
+.photoStack { position: relative; padding-bottom: 3rem; }
+.photoMain {
+  width: 100%; aspect-ratio: 4/5;
+  object-fit: cover; object-position: top center;
+  display: block; border: 1px solid rgba(0,0,0,0.05);
+}
+.photoSecondary {
+  width: 55%; aspect-ratio: 4/5;
+  object-fit: cover; object-position: top center;
+  display: block; position: absolute; bottom: 0; right: -12%;
+  border: 3px solid var(--ivory);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+
+/* CERTS */
+.certs { margin-top: 1.5rem; }
+.cert { padding: 0.85rem 1rem; background: var(--cream); border-left: 3px solid var(--gold); margin-bottom: 0.6rem; }
+.cert strong { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.12rem; }
+.cert span   { font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.5; display: block; }
+
+/* CONTENT */
+.section { margin-bottom: 4rem; }
+.sectionTitle {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 500;
+  color: var(--charcoal); margin-bottom: 1.3rem; padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--cream-dk);
+}
+.text { font-size: 0.92rem; line-height: 2; color: var(--muted); font-weight: 300; margin-bottom: 1rem; }
+
+.expGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.8rem; }
+.expItem { padding: 1.1rem 1.4rem; background: var(--cream); border-top: 2px solid transparent; transition: border-color 0.3s; }
+.expItem:hover { border-top-color: var(--gold); }
+.expTitle { font-size: 0.8rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.25rem; }
+.expDesc  { font-size: 0.73rem; color: var(--muted); font-weight: 300; }
+
+.midPortrait { margin: 0 0 3.5rem; position: relative; overflow: hidden; }
+.midPortraitImg {
+  width: 100%; max-height: 440px;
+  object-fit: cover; object-position: top center; display: block; filter: grayscale(10%);
+}
+.midPortraitCaption {
+  position: absolute; bottom: 1rem; right: 1.5rem;
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); background: rgba(17,16,16,0.6); padding: 0.3rem 0.8rem;
+}
+
+.timeline { position: relative; padding-left: 1.8rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--cream-dk); }
+.titem { position: relative; padding-bottom: 2.5rem; }
+.titem::before {
+  content: ''; position: absolute; left: -1.8rem; top: 0.24rem;
+  width: 8px; height: 8px; background: var(--gold); border-radius: 50%; transform: translateX(-3.5px);
+}
+.tYear { font-size: 0.64rem; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.22rem; }
+.tRole { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; color: var(--charcoal); }
+.tOrg  { font-size: 0.76rem; color: var(--muted); font-weight: 300; margin: 0.13rem 0 0.5rem; }
+.tDesc { font-size: 0.82rem; line-height: 1.85; color: var(--muted); font-weight: 300; }
+
+.memberships { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+.mtag { padding: 0.38rem 0.95rem; border: 1px solid var(--cream-dk); font-size: 0.68rem; color: var(--ink); border-radius: 1px; }
+
+/* ================================================================
+   PROFESSIONAL MOMENTS STRIP
+   ================================================================ */
+.moments { width: 100%; background: var(--charcoal-2); padding: 6rem 0; }
+.momentsInner { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--content-pad); }
+.momentsHeader { margin-bottom: 3.5rem; }
+.momentsGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
+.momentCard { position: relative; overflow: hidden; }
+.momentImg {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: top center; display: block;
+  filter: grayscale(20%); transition: all 0.5s ease;
+}
+.momentCard:hover .momentImg { filter: grayscale(0%); transform: scale(1.04); }
+.momentCap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 1.2rem 1rem;
+  background: linear-gradient(transparent, rgba(17,16,16,0.82));
+  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); font-weight: 300;
+  opacity: 0; transition: opacity 0.35s;
+}
+.momentCard:hover .momentCap { opacity: 1; }
+
+/* ================================================================
+   TABLET (≤ 1024px)
+   ================================================================ */
+@media (max-width: 1024px) {
+  .heroBannerContent { gap: 3rem; padding-bottom: 5rem; }
+  .bodyInner { gap: 3.5rem; }
+  .photoSecondary { right: -6%; width: 52%; }
+  .momentsGrid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ================================================================
+   MOBILE (≤ 768px)
+   ================================================================ */
+@media (max-width: 768px) {
+  .heroBanner { min-height: 88vh; background-attachment: scroll; background-position: center 15%; }
+  .heroBannerContent { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 5rem; }
+  .heroTitle { font-size: clamp(2rem, 7vw, 3rem); }
+  .heroBio   { font-size: 0.9rem; }
+  .heroWatermark { display: none; }
+
+  .bodyInner { grid-template-columns: 1fr; }
+  .photoStack { padding-bottom: 4rem; }
+  .photoMain  { aspect-ratio: 3/4; }
+  .photoSecondary { right: 0; width: 45%; }
+  .midPortraitImg { max-height: 300px; }
+  .expGrid { grid-template-columns: 1fr; }
+
+  .momentsGrid { grid-template-columns: 1fr 1fr; }
+  .momentCap { opacity: 1; }
+}
+
+/* ================================================================
+   SMALL MOBILE (≤ 480px)
+   ================================================================ */
+@media (max-width: 480px) {
+  .heroBanner { min-height: 78vh; }
+  .photoSecondary { display: none; }
+  .momentsGrid { grid-template-columns: 1fr; }
+  .momentImg { aspect-ratio: 4/3; }
+}

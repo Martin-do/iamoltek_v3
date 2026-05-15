@@ -1,0 +1,148 @@
+/* ============================================================
+   IAMOLTEK — Global Styles v4
+   Full-bleed sections, content centred via padding
+   ============================================================ */
+:root {
+  --charcoal:   #111010;
+  --charcoal-2: #1E1A18;
+  --charcoal-3: #2D2622;
+  --gold:       #C4973F;
+  --gold-light: #D9B06A;
+  --gold-pale:  #EED99A;
+  --cream:      #F7F2E8;
+  --cream-dk:   #EDE5D5;
+  --ivory:      #FDFAF4;
+  --burg:       #7A1F1F;
+  --burg-light: #A33030;
+  --burg-pale:  #F5EAEA;
+  --amber:      #8B4513;       /* Atobase royal amber */
+  --amber-light:#A0522D;
+  --ink:        #161410;
+  --ink-light:  #3A3530;
+  --muted:      #7A6F60;
+  --sand:       #C8B89A;
+
+  /* Content max-width — applied via padding, not root cap */
+  --content-max: 1440px;
+  --content-pad: 8%;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--charcoal);  /* dark base so no white edges */
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+
+/* ---- FULL-BLEED WRAPPER ----
+   #root stretches to 100vw. Sections use 100% width.
+   Content stays centred via padding.
+*/
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---- SHARED SECTION PADDING ---- */
+.section-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-left: var(--content-pad);
+  padding-right: var(--content-pad);
+}
+
+/* ---- TYPOGRAPHY HELPERS ---- */
+.section-label {
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--charcoal);
+}
+.section-title em  { font-style: italic; color: var(--gold); }
+.section-title.on-dark { color: #fff; }
+
+.gold-rule {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 1.3rem 0;
+}
+.gold-rule.center {
+  margin: 1.3rem auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  width: 110px;
+}
+
+/* ---- BUTTONS ---- */
+.btn-gold {
+  padding: 0.82rem 2.1rem;
+  background: var(--gold); color: var(--charcoal);
+  font-family: 'Jost', sans-serif; font-size: 0.72rem;
+  font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 1px;
+  transition: all 0.3s; text-decoration: none; display: inline-block;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.btn-ghost {
+  padding: 0.82rem 2.1rem;
+  background: transparent; color: rgba(255,255,255,0.75);
+  font-family: 'Jost', sans-serif; font-size: 0.72rem;
+  font-weight: 400; letter-spacing: 0.17em; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.22); cursor: pointer;
+  border-radius: 1px; transition: all 0.3s;
+  text-decoration: none; display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-burg {
+  padding: 0.82rem 2.1rem;
+  background: var(--burg); color: #fff;
+  font-family: 'Jost', sans-serif; font-size: 0.72rem;
+  font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 1px;
+  transition: all 0.3s; text-decoration: none; display: inline-block;
+}
+.btn-burg:hover { background: var(--burg-light); transform: translateY(-2px); }
+
+/* ---- SCROLL REVEAL ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-up    { animation: fadeUp 0.75s ease both; }
+.fade-up-d1 { animation: fadeUp 0.75s 0.12s ease both; }
+.fade-up-d2 { animation: fadeUp 0.75s 0.24s ease both; }
+.fade-up-d3 { animation: fadeUp 0.75s 0.36s ease both; }
+
+/* reveal class toggled by IntersectionObserver */
+.reveal        { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1     { transition-delay: 0.1s !important; }
+.reveal-d2     { transition-delay: 0.2s !important; }
+.reveal-d3     { transition-delay: 0.3s !important; }
+.reveal-d4     { transition-delay: 0.4s !important; }
+
+/* ---- MOBILE ---- */
+@media (max-width: 600px) {
+  :root { --content-pad: 5%; }
+  .btn-gold, .btn-ghost, .btn-burg {
+    width: 100%; text-align: center; padding: 0.9rem 1rem;
+  }
+}
