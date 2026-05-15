@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
 import GalleryCarousel from '../components/GalleryCarousel'
@@ -61,38 +61,13 @@ const ceremonyPhotos = [
   { img: c6, cap: 'Royal Gathering · Atobase Investiture 2024',          pos: 'center top' },
 ]
 
-const REEL_URL = 'https://www.instagram.com/reel/DO_19YViJGm/'
-const INSTAGRAM_SCRIPT_SRC = 'https://www.instagram.com/embed.js'
+const REEL_ID = 'DO_19YViJGm'
+const REEL_URL = `https://www.instagram.com/reel/${REEL_ID}/`
+const REEL_EMBED_URL = `https://www.instagram.com/reel/${REEL_ID}/embed/captioned/`
 
 export default function Atobase() {
   const [activeTab, setActiveTab] = useState('portraits')
   useScrollReveal()
-
-  const openInstagramPost = (event) => {
-    event.preventDefault()
-    const popup = window.open(REEL_URL, '_blank', 'noopener,noreferrer')
-    if (!popup) {
-      window.location.href = REEL_URL
-    }
-  }
-
-  useEffect(() => {
-    const processInstagramEmbed = () => {
-      window.instgrm?.Embeds?.process()
-    }
-
-    const existingScript = document.querySelector(`script[src="${INSTAGRAM_SCRIPT_SRC}"]`)
-    if (existingScript) {
-      processInstagramEmbed()
-      return
-    }
-
-    const script = document.createElement('script')
-    script.src = INSTAGRAM_SCRIPT_SRC
-    script.async = true
-    script.onload = processInstagramEmbed
-    document.body.appendChild(script)
-  }, [])
 
   return (
     <main className={styles.main}>
@@ -244,7 +219,6 @@ export default function Atobase() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.reelLink}
-              onClick={openInstagramPost}
             >
               Open full post on Instagram →
             </a>
@@ -253,37 +227,33 @@ export default function Atobase() {
           {/* RIGHT: embed */}
           <div className={`${styles.reelRight} reveal reveal-d1`}>
             <div className={styles.reelFrame}>
-              <blockquote
-                className={`instagram-media ${styles.instagramEmbed}`}
-                data-instgrm-permalink={REEL_URL}
-                data-instgrm-version="14"
-                data-instgrm-captioned=""
-              >
-                <a href={REEL_URL} target="_blank" rel="noopener noreferrer" onClick={openInstagramPost}>
-                  Watch the Atobase investiture reel on Instagram
-                </a>
-              </blockquote>
-              <a
-                href={REEL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.mobileReelLink}
-                onClick={openInstagramPost}
-                aria-label="Watch the Atobase investiture reel on Instagram"
-              >
-                Watch reel on Instagram
-              </a>
+              <iframe
+                src={REEL_EMBED_URL}
+                className={styles.reelIframe}
+                title="Atobase of Okeluse Kingdom — Official Instagram Reel"
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
             </div>
+            <a
+              href={REEL_URL}
+              className={styles.mobileReelFallback}
+            >
+              <img src={c1} alt="Atobase investiture ceremony" className={styles.mobileReelFallbackImg} />
+              <span>Open reel on Instagram</span>
+            </a>
             <a
               href={REEL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.mobileReelCard}
-              onClick={openInstagramPost}
-              aria-label="Open the Atobase investiture reel on Instagram"
+              className={styles.reelMobileButton}
             >
-              <img src={c1} alt="Atobase investiture ceremony" className={styles.mobileReelImg} />
-              <span className={styles.mobileReelCardLabel}>Watch reel on Instagram</span>
+              Watch on Instagram
             </a>
             <p className={styles.reelNote}>
               Can't see the embed? &nbsp;
@@ -292,7 +262,6 @@ export default function Atobase() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.reelNoteLink}
-                onClick={openInstagramPost}
               >
                 View on Instagram →
               </a>

@@ -10,11 +10,15 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  max-width: var(--content-max);
+  margin: 0 auto;
   /* Two equal-ish columns — text left, portrait right */
   display: grid;
   grid-template-columns: 52% 48%;
   grid-template-rows: 1fr;
   background: var(--charcoal);
+  padding: 0 var(--content-pad);
+  column-gap: 4rem;
 }
 
 /* ── LEFT: text content ── */
@@ -32,7 +36,9 @@
 .heroLeftInner {
   width: 100%;
   max-width: 580px;
-  padding: 0 6% 0 8%;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0;
 }
 
 .eyebrow {
@@ -71,6 +77,9 @@
   /* Sits in column 2, row 1 — naturally */
   position: relative;
   overflow: hidden;
+  width: 100%;
+  align-self: center;
+  height: min(78vh, 760px);
 }
 .portraitWrap {
   width: 100%; height: 100%;
@@ -244,7 +253,7 @@
    ================================================================ */
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 50% 50%; }
-  .heroLeftInner { padding: 0 5% 0 6%; }
+  .heroLeftInner { margin-right: 0; }
   .statsInner { grid-template-columns: repeat(2,1fr); padding: 2rem var(--content-pad); }
   .stat { padding: 1.2rem 1rem; border-right: none; border-bottom: 1px solid rgba(196,151,63,0.07); }
   .stat:nth-child(odd)  { border-right: 1px solid rgba(196,151,63,0.07); }
@@ -264,6 +273,9 @@
     grid-template-rows: auto;
     min-height: 100svh;
     position: relative;
+    max-width: none;
+    margin: 0;
+    padding: 0;
   }
 
   /* Portrait: absolute background behind text */
@@ -271,6 +283,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
+    height: auto;
   }
   .portraitWrap {
     padding-top: 74px;
@@ -278,7 +291,8 @@
   }
   .portrait {
     height: calc(100% - 74px);
-    object-position: center 10%;
+    object-position: center top;
+    transform: scale(1.08) translateY(-3%);
   }
   /* Mobile gradient: strong fade to bottom for text legibility */
   .portraitOverlay {
@@ -302,7 +316,8 @@
   }
   .heroLeftInner {
     max-width: 100%;
-    padding: 0 6% 3.5rem;
+    margin: 0;
+    padding: 0 6% 2rem;
     width: 100%;
   }
 

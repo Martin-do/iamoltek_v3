@@ -7,6 +7,10 @@
   width: 100%; min-height: 100vh;
   display: grid; grid-template-columns: 52% 48%;
   position: relative; overflow: hidden;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+  column-gap: 4rem;
 }
 
 /* Left: full-bleed dark bg, content centred inside */
@@ -21,7 +25,9 @@
 .heroLeftInner {
   width: 100%;
   max-width: 560px;
-  padding: 0 6% 0 8%;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0;
 }
 
 .eyebrow {
@@ -65,7 +71,13 @@
 .date::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; display: block; }
 
 /* Right: portrait */
-.heroRight { position: relative; overflow: hidden; }
+.heroRight {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  align-self: center;
+  height: min(78vh, 760px);
+}
 .heroImg {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center; display: block;
@@ -160,25 +172,29 @@
 
 .reelFrame {
   width: 100%;
-  max-width: 400px;
-  min-width: min(100%, 326px);
-  min-height: 620px;
-  overflow: visible;
-  background: transparent;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(196,151,63,0.12);
+  border-radius: 4px;
   position: relative;
 }
 
-.instagramEmbed {
-  width: 100% !important;
-  min-width: min(100%, 326px) !important;
-  margin: 0 !important;
+.reelIframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
-.mobileReelLink {
+.mobileReelOverlay {
   display: none;
 }
 
-.mobileReelCard {
+.mobileReelFallback {
   display: none;
 }
 .reelNote {
@@ -232,7 +248,7 @@
    ================================================================ */
 @media (max-width: 1024px) {
   .heroLeft  { padding: 110px 0 80px; }
-  .heroLeftInner { padding: 0 5% 0 6%; }
+  .heroLeftInner { margin-right: 0; }
   .meaningInner  { gap: 3.5rem; }
   .kingdomGrid   { grid-template-columns: 1fr 1fr; }
   .reelInner     { gap: 4rem; }
@@ -244,16 +260,32 @@
    ================================================================ */
 @media (max-width: 768px) {
   /* Hero stacks: portrait on top, text below */
-  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 100svh;
+    padding: 0;
+    max-width: none;
+    margin: 0;
+  }
   .heroRight {
-    order: -1;   /* portrait first */
-    height: 72vw; min-height: 260px;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: auto;
+    min-height: 0;
   }
   .heroRightOverlay {
-    background: linear-gradient(180deg, rgba(17,16,16,0.1) 0%, rgba(17,16,16,0.6) 100%);
+    background: linear-gradient(180deg, rgba(17,16,16,0.1) 0%, rgba(17,16,16,0.3) 35%, rgba(17,16,16,0.88) 70%, rgba(17,16,16,0.98) 100%);
   }
-  .heroLeft  { padding: 2.5rem 0 3rem; }
-  .heroLeftInner { padding: 0 5%; max-width: 100%; }
+  .heroLeft  {
+    min-height: 100svh;
+    align-items: flex-end;
+    padding: 0 0 2rem;
+    background: none;
+    z-index: 2;
+  }
+  .heroLeftInner { padding: 0 5%; max-width: 100%; margin: 0; }
+  .heroImg { transform: scale(1.08) translateY(-3%); }
 
   /* Meaning */
   .meaningSection { padding: 5rem 0; }
@@ -271,11 +303,10 @@
     display: none;
   }
 
-  .mobileReelCard {
-    width: 100%;
-    max-width: 540px;
-    min-height: 420px;
+  .mobileReelFallback {
+    width: min(100%, 360px);
     margin: 0 auto;
+    aspect-ratio: 9 / 16;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -285,32 +316,32 @@
     text-decoration: none;
   }
 
-  .mobileReelImg {
+  .mobileReelFallbackImg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.68;
+    opacity: 0.72;
   }
 
-  .mobileReelCard::after {
+  .mobileReelFallback::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.78));
+    background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.82));
   }
 
-  .mobileReelCardLabel {
+  .mobileReelFallback span {
     position: relative;
     z-index: 1;
-    margin: 0 1rem 1.2rem;
-    padding: 0.9rem 1rem;
     width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+    padding: 0.85rem 1rem;
     background: var(--gold);
     color: var(--charcoal);
     text-align: center;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -322,16 +353,16 @@
   .tabs   { width: 100%; }
   .tab    { flex: 1; text-align: center; padding: 0.75rem 0.5rem; font-size: 0.62rem; }
 
-  .carouselWrap { display: none; }
-  .mobileGrid   { display: block; }
+  .carouselWrap { display: block; }
+  .mobileGrid   { display: none; }
 }
 
 /* ================================================================
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroRight  { height: 85vw; }
-  .heroLeftInner { padding: 0 5%; }
+  .heroRight  { height: auto; }
+  .heroLeftInner { padding: 0 5%; margin: 0; }
   .title      { font-size: clamp(2rem, 7vw, 2.8rem); }
   .meaningSection { padding: 4rem 0; }
   .kingdomSection { padding: 4rem 0; }
