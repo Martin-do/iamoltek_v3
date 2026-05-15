@@ -158,25 +158,28 @@
 
 .reelRight { display: flex; flex-direction: column; gap: 0.75rem; }
 
-/*
-  The iframe wrapper — 9:16 aspect ratio for Reels.
-  max-width 400px keeps it from going full column width.
-  The Instagram /embed/ URL renders likes, comments, share button natively.
-*/
 .reelFrame {
   width: 100%;
   max-width: 400px;
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  background: #000;
-  border: 1px solid rgba(196,151,63,0.12);
-  border-radius: 4px;
+  min-width: min(100%, 326px);
+  min-height: 620px;
+  overflow: visible;
+  background: transparent;
+  position: relative;
 }
-.reelIframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+
+.instagramEmbed {
+  width: 100% !important;
+  min-width: min(100%, 326px) !important;
+  margin: 0 !important;
+}
+
+.mobileReelLink {
+  display: none;
+}
+
+.mobileReelCard {
+  display: none;
 }
 .reelNote {
   font-size: 0.68rem; color: rgba(255,255,255,0.22); font-weight: 300;
@@ -264,7 +267,54 @@
   /* Instagram — stack, full width */
   .reelSection { padding: 5rem 0; }
   .reelInner   { grid-template-columns: 1fr; gap: 3rem; }
-  .reelFrame   { max-width: 100%; aspect-ratio: 9/16; }
+  .reelFrame   {
+    display: none;
+  }
+
+  .mobileReelCard {
+    width: 100%;
+    max-width: 540px;
+    min-height: 420px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+    text-decoration: none;
+  }
+
+  .mobileReelImg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.68;
+  }
+
+  .mobileReelCard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.78));
+  }
+
+  .mobileReelCardLabel {
+    position: relative;
+    z-index: 1;
+    margin: 0 1rem 1.2rem;
+    padding: 0.9rem 1rem;
+    width: calc(100% - 2rem);
+    background: var(--gold);
+    color: var(--charcoal);
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
 
   /* Gallery — carousel off, grid on */
   .gallerySection { padding: 5rem 0; }
