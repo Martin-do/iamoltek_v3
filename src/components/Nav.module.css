@@ -64,8 +64,12 @@
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,0.5); z-index: 998;
   opacity: 0; transition: opacity 0.3s;
+  pointer-events: none;
 }
-.overlayOpen { opacity: 1; }
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* MOBILE MENU */
 .mobileMenu {

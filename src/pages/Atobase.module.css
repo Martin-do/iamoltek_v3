@@ -172,22 +172,17 @@
 
 .reelFrame {
   width: 100%;
-  max-width: 360px;
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
+  max-width: 380px;
+  min-height: 480px;
+  overflow: visible;
   background: #000;
   border: 1px solid rgba(196,151,63,0.12);
   border-radius: 4px;
   position: relative;
 }
 
-.reelIframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+.reelMobileButton {
+  display: none;
 }
 
 .mobileReelOverlay {
@@ -279,13 +274,17 @@
   }
   .heroLeft  {
     min-height: 100svh;
-    align-items: flex-end;
-    padding: 0 0 2rem;
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 5.25rem 0 1.5rem;
     background: none;
     z-index: 2;
   }
-  .heroLeftInner { padding: 0 5%; max-width: 100%; margin: 0; }
-  .heroImg { transform: scale(1.08) translateY(-3%); }
+  .heroLeftInner { padding: 0 5% 0; max-width: 100%; margin: 0; }
+  .heroImg {
+    object-position: center 12%;
+    transform: scale(1.12) translateY(-6%);
+  }
 
   /* Meaning */
   .meaningSection { padding: 5rem 0; }
@@ -296,15 +295,33 @@
   .kingdomSection { padding: 5rem 0; }
   .kingdomGrid    { grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-  /* Instagram — stack, full width */
+  /*
+    Instagram iframes rarely play inline on iOS/Android WebKit; a broken embed
+    also steals taps from nearby links. Use poster + open-in-app buttons only.
+  */
   .reelSection { padding: 5rem 0; }
   .reelInner   { grid-template-columns: 1fr; gap: 3rem; }
-  .reelFrame   {
-    display: none;
+  .reelRight   { width: 100%; align-items: center; max-width: 400px; margin-inline: auto; }
+  .reelFrame {
+    display: block;
+    max-width: min(380px, 100%);
+    width: 100%;
+    margin-inline: auto;
+    min-height: 520px;
+    overflow: visible;
   }
 
+  .mobileReelFallback,
+  .reelMobileButton {
+    display: none !important;
+  }
+
+  /*
+    Fallback poster + caption (WebKit often blocks reel embed taps; ::after gradient
+    must not swallow clicks intended for the link).
+  */
   .mobileReelFallback {
-    width: min(100%, 360px);
+    width: min(100%, 380px);
     margin: 0 auto;
     aspect-ratio: 9 / 16;
     position: relative;
@@ -314,6 +331,9 @@
     overflow: hidden;
     background: #000;
     text-decoration: none;
+    margin-top: 0;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobileReelFallbackImg {
@@ -323,6 +343,7 @@
     height: 100%;
     object-fit: cover;
     opacity: 0.72;
+    pointer-events: none;
   }
 
   .mobileReelFallback::after {
@@ -330,6 +351,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.82));
+    pointer-events: none;
   }
 
   .mobileReelFallback span {
@@ -345,6 +367,39 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .reelMobileButton {
+    display: block;
+    margin-top: 0.85rem;
+    width: min(380px, 100%);
+    margin-inline: auto;
+    padding: 0.9rem 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid rgba(196,151,63,0.45);
+    color: rgba(255,255,255,0.88);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: border-color 0.25s, color 0.25s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .reelLink,
+  .reelNoteLink {
+    touch-action: manipulation;
+  }
+  .reelMobileButton:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .reelNote {
+    text-align: center;
+    margin-top: 0.85rem;
   }
 
   /* Gallery — carousel off, grid on */

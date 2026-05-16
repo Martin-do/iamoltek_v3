@@ -3,11 +3,16 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import styles from './Contact.module.css'
 
 const contactItems = [
-  { icon: '📍', label: 'Location',                    value: 'Lagos, Nigeria' },
-  { icon: '✉',  label: 'Email',                       value: 'areoyeoyewale@outlook.com' },
-  { icon: '📞', label: 'Phone',                       value: '+234 818 293 7320' },
-  { icon: '🌐', label: 'Website',                     value: 'iamoltek.com' },
-  { icon: '📸', label: 'Instagram — The Initiative',  value: '@theyewaleinitiative' },
+  { icon: '📍', label: 'Location', value: 'Lagos, Nigeria' },
+  { icon: '✉', label: 'Email', value: 'areoyeoyewale@outlook.com', href: 'mailto:areoyeoyewale@outlook.com' },
+  { icon: '📞', label: 'Phone', value: '+234 818 293 7320', href: 'tel:+2348182937320' },
+  { icon: '🌐', label: 'Website', value: 'iamoltek.com', href: 'https://iamoltek.com' },
+  {
+    icon: '📸',
+    label: 'Instagram — The Initiative',
+    value: '@theyewaleinitiative',
+    href: 'https://instagram.com/theyewaleinitiative',
+  },
 ]
 
 const enquiryTypes = [
@@ -46,15 +51,28 @@ export default function Contact() {
               <div className={styles.ciIcon}>{c.icon}</div>
               <div>
                 <div className={styles.ciLabel}>{c.label}</div>
-                <div className={styles.ciValue}>{c.value}</div>
+                {c.href ? (
+                  <a
+                    href={c.href}
+                    className={styles.ciLink}
+                    target={c.href.startsWith('http') ? '_blank' : undefined}
+                    rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {c.value}
+                  </a>
+                ) : (
+                  <div className={styles.ciValue}>{c.value}</div>
+                )}
               </div>
             </div>
           ))}
           <div className={styles.socials}>
             <div className={styles.socTitle}>Follow on Social Media</div>
             <div className={styles.socRow}>
-              {['📸','💼','𝕏','𝐟'].map((icon, i) => (
-                <a key={i} className={styles.socLink} href="#" aria-label={`Social ${i}`}>{icon}</a>
+              {['📸', '💼', '𝕏', '𝐟'].map((icon, i) => (
+                <a key={i} className={styles.socLink} href="#" aria-label={`Social ${i}`}>
+                  {icon}
+                </a>
               ))}
             </div>
           </div>
@@ -80,7 +98,9 @@ export default function Contact() {
           <div className={styles.fg}>
             <label className={styles.flbl}>Enquiry Type</label>
             <select className={styles.fselect}>
-              {enquiryTypes.map(t => <option key={t}>{t}</option>)}
+              {enquiryTypes.map(t => (
+                <option key={t}>{t}</option>
+              ))}
             </select>
           </div>
           <div className={styles.fg}>

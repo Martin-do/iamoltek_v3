@@ -25,6 +25,7 @@
   /* Content max-width — applied via padding, not root cap */
   --content-max: 1440px;
   --content-pad: 8%;
+  --nav-height: 74px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,6 +38,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { display: block; max-width: 100%; }
+
+a, button, .btn-burg, .btn-ghost, .btn-gold {
+  touch-action: manipulation;
+}
 
 /* ---- FULL-BLEED WRAPPER ----
    #root stretches to 100vw. Sections use 100% width.

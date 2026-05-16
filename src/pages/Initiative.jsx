@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
 import initiativeLogo   from '../assets/initiative-logo.jpg'
@@ -20,7 +20,6 @@ const programmes = [
 ]
 
 export default function Initiative() {
-  const navigate = useNavigate()
   useScrollReveal()
 
   return (
@@ -32,6 +31,10 @@ export default function Initiative() {
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroInner}>
+          <div className={`${styles.heroRight} fade-up-d2`} aria-hidden="true">
+            <img src={initiativeLogo} alt="" className={styles.heroLogo} />
+          </div>
+
           <div className={`${styles.heroLeft} fade-up`}>
             <div className={styles.eyebrow}>A Call to Service</div>
             <h1 className={styles.title}>
@@ -45,8 +48,8 @@ export default function Initiative() {
               underserved communities.
             </p>
             <div className={styles.ctas}>
-              <button className="btn-burg">Donate Now</button>
-              <button className="btn-ghost">Become a Partner</button>
+              <a href="#donate" className="btn-burg">Donate Now</a>
+              <Link to="/contact" className="btn-ghost">Become a Partner</Link>
             </div>
           </div>
 
@@ -63,7 +66,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           MISSION
       ══════════════════════════════════════ */}
-      <section className={styles.mission}>
+      <section id="mission" className={`${styles.mission} ${styles.anchorOffset}`}>
         <div className={styles.missionInner}>
           <div className="reveal">
             <div className="section-label">Our Mission</div>
@@ -89,7 +92,7 @@ export default function Initiative() {
               one individual at a time.
             </p>
             <div style={{ marginTop: '1.8rem' }}>
-              <button className="btn-burg">Learn More About Us</button>
+              <Link to="/about" className="btn-burg">Learn More About Us</Link>
             </div>
           </div>
         </div>
@@ -98,7 +101,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           PILLARS
       ══════════════════════════════════════ */}
-      <section className={styles.pillarsSection}>
+      <section id="pillars" className={`${styles.pillarsSection} ${styles.anchorOffset}`}>
         <div className={styles.pillarsInner}>
           <div className="reveal" style={{ textAlign: 'center' }}>
             <div className="section-label">Our Focus Areas</div>
@@ -139,7 +142,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           IMPACT SECTION
       ══════════════════════════════════════ */}
-      <section className={styles.impactSection}>
+      <section id="impact" className={`${styles.impactSection} ${styles.anchorOffset}`}>
         <div className={styles.impactInner}>
           <img
             src={initiativeImpact}
@@ -157,7 +160,7 @@ export default function Initiative() {
               opportunities to build a better future and transform communities across Nigeria.
             </p>
             <div className={styles.donateInline}>
-              <button className="btn-burg">Donate Now — Acc: 6550000619</button>
+              <a href="#donate" className="btn-burg">Donate Now — Acc: 6550000619</a>
               <p className={styles.donateSmall}>
                 Bank: Opay · Acc Name: THE OYEWALE AREOYE INITIATIVE
               </p>
@@ -169,7 +172,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           PROGRAMMES
       ══════════════════════════════════════ */}
-      <section className={styles.programsSection}>
+      <section id="programmes" className={`${styles.programsSection} ${styles.anchorOffset}`}>
         <div className={styles.programsInner}>
           <div className="reveal">
             <div className="section-label">What We Do</div>
@@ -191,7 +194,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           DONATE BAND
       ══════════════════════════════════════ */}
-      <div className={styles.donateBand}>
+      <div id="donate" className={`${styles.donateBand} ${styles.anchorOffset}`}>
         <div className={styles.donateBandInner}>
           <div className="reveal">
             <h2 className={styles.donateBandTitle}>
@@ -209,8 +212,27 @@ export default function Initiative() {
               <span className={styles.bankLabel}>Account Number</span>
               <strong className={styles.bankNum}>6550000619</strong>
             </div>
-            <p className={styles.bankContact}>📧 areoyeoyewale@outlook.com</p>
-            <p className={styles.bankContact}>📞 +234 818 293 7320 · Instagram: @theyewaleinitiative</p>
+            <p className={styles.bankContact}>
+              📧{' '}
+              <a href="mailto:areoyeoyewale@outlook.com" className={styles.bankLink}>
+                areoyeoyewale@outlook.com
+              </a>
+            </p>
+            <p className={styles.bankContact}>
+              📞{' '}
+              <a href="tel:+2348182937320" className={styles.bankLink}>
+                +234 818 293 7320
+              </a>
+              {' · '}
+              <a
+                href="https://instagram.com/theyewaleinitiative"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.bankLink}
+              >
+                Instagram · @theyewaleinitiative
+              </a>
+            </p>
           </div>
         </div>
       </div>

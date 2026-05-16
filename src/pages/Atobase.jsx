@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
+import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import GalleryCarousel from '../components/GalleryCarousel'
 
 import heroImg         from '../assets/portrait-golden-throne.jpg'
@@ -63,8 +64,6 @@ const ceremonyPhotos = [
 
 const REEL_ID = 'DO_19YViJGm'
 const REEL_URL = `https://www.instagram.com/reel/${REEL_ID}/`
-const REEL_EMBED_URL = `https://www.instagram.com/reel/${REEL_ID}/embed/captioned/`
-
 export default function Atobase() {
   const [activeTab, setActiveTab] = useState('portraits')
   useScrollReveal()
@@ -184,10 +183,8 @@ export default function Atobase() {
 
       {/* ══════════════════════════════════════════════
           INSTAGRAM REEL
-          Uses a simple iframe embed with sandbox attrs
-          Works on both desktop AND mobile.
-          Shows engagement bar (likes/comments/shares)
-          via Instagram's own embed UI.
+          Desktop + mobile iframe; iOS/Android often defer playback to Instagram's
+          embed UI — the poster link + buttons below preserve a reliable fallback.
       ══════════════════════════════════════════════ */}
       <section className={styles.reelSection}>
         <div className={styles.reelInner}>
@@ -227,43 +224,20 @@ export default function Atobase() {
           {/* RIGHT: embed */}
           <div className={`${styles.reelRight} reveal reveal-d1`}>
             <div className={styles.reelFrame}>
-              <iframe
-                src={REEL_EMBED_URL}
-                className={styles.reelIframe}
+              <InstagramReelEmbed
+                permalink={REEL_URL}
                 title="Atobase of Okeluse Kingdom — Official Instagram Reel"
-                frameBorder="0"
-                scrolling="no"
-                allowTransparency="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
-            <a
-              href={REEL_URL}
-              className={styles.mobileReelFallback}
-            >
-              <img src={c1} alt="Atobase investiture ceremony" className={styles.mobileReelFallbackImg} />
-              <span>Open reel on Instagram</span>
-            </a>
-            <a
-              href={REEL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.reelMobileButton}
-            >
-              Watch on Instagram
-            </a>
             <p className={styles.reelNote}>
-              Can't see the embed? &nbsp;
+              Tap the video to play. &nbsp;
               <a
                 href={REEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.reelNoteLink}
               >
-                View on Instagram →
+                Open on Instagram →
               </a>
             </p>
           </div>

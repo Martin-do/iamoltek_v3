@@ -92,6 +92,14 @@
 .bankLabel { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
 .bankNum   { font-size: 1.6rem !important; letter-spacing: 0.06em; }
 .bankContact { font-size: 0.72rem; color: rgba(255,255,255,0.28); font-weight: 300; }
+.bankLink {
+  color: rgba(255,255,255,0.52);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.25s;
+}
+.bankLink:hover { color: var(--gold); }
+.bankLink { touch-action: manipulation; }
 
 /* ================================================================
    TABLET (≤ 1024px)
@@ -108,36 +116,73 @@
    MOBILE (≤ 768px) — stacked, logo centred on top
    ================================================================ */
 @media (max-width: 768px) {
-  /* Cover-style hero, matching Home/Atobase */
-  .hero { min-height: 100svh; }
-  .heroBg { background: linear-gradient(180deg, rgba(17,16,16,0.04), rgba(17,16,16,0.9) 65%, rgba(17,16,16,0.98)); z-index: 1; }
+  /* Cover-style hero — logo watermark behind text (Home / Atobase pattern) */
+  .hero { min-height: 100svh; position: relative; }
+  .heroBg {
+    background: linear-gradient(
+      180deg,
+      rgba(17,16,16,0.15) 0%,
+      rgba(17,16,16,0.55) 45%,
+      rgba(17,16,16,0.92) 72%,
+      rgba(17,16,16,0.98) 100%
+    );
+    z-index: 1;
+  }
   .heroInner {
     grid-template-columns: 1fr;
-    padding: 0 var(--content-pad) 2rem;
+    padding: 5.25rem var(--content-pad) 1.5rem;
     min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    align-content: end;
+    align-items: end;
+    width: 100%;
+    position: relative;
   }
   .heroRight {
     position: absolute;
-    inset: 74px 0 0;
+    inset: 0;
     z-index: 0;
-    opacity: 0.55;
+    opacity: 1;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4.5rem 8% 28%;
   }
-  .heroLogo  {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.2);
+  .heroLogo {
+    width: auto;
+    max-width: min(300px, 88vw);
+    height: auto;
+    max-height: min(340px, 48svh);
+    object-fit: contain;
+    mix-blend-mode: screen;
+    opacity: 0.38;
+    filter: contrast(1.05);
   }
 
-  .heroLeft  { position: relative; z-index: 2; text-align: left; }
+  .heroLeft {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+    grid-row: 1;
+  }
   .eyebrow   { justify-content: flex-start; }
   .title     { font-size: clamp(2rem, 8vw, 2.8rem); }
   .tagline   { font-size: 0.95rem; }
   .cac       { font-size: 0.58rem; text-align: left; }
   .desc      { max-width: 100%; font-size: 0.85rem; }
-  .ctas      { flex-direction: column; align-items: stretch; }
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    z-index: 3;
+  }
+  .ctas a {
+    position: relative;
+    z-index: 1;
+    touch-action: manipulation;
+  }
 
   .mission { padding: 5rem 0; }
   .missionInner { grid-template-columns: 1fr; }
@@ -166,5 +211,13 @@
   .title { font-size: clamp(1.9rem, 7vw, 2.5rem); }
   .pillarsGrid { grid-template-columns: 1fr; }
   .impactBandInner { grid-template-columns: 1fr 1fr; }
-  .heroLogo { width: min(180px, 60vw); }
+  .heroLogo {
+    max-width: min(260px, 82vw);
+    max-height: min(300px, 42svh);
+  }
+}
+
+/* In-page anchor targets sit under the fixed 74px nav */
+.anchorOffset {
+  scroll-margin-top: 88px;
 }

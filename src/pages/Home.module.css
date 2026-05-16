@@ -286,13 +286,13 @@
     height: auto;
   }
   .portraitWrap {
-    padding-top: 74px;
+    padding-top: 0;
     height: 100%;
   }
   .portrait {
-    height: calc(100% - 74px);
-    object-position: center top;
-    transform: scale(1.08) translateY(-3%);
+    height: 100%;
+    object-position: center 12%;
+    transform: scale(1.12) translateY(-6%);
   }
   /* Mobile gradient: strong fade to bottom for text legibility */
   .portraitOverlay {
@@ -310,14 +310,15 @@
     position: relative;
     z-index: 2;
     min-height: 100svh;
-    align-items: flex-end;
-    padding: 0;
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 5.25rem 0 1.5rem;
     background: none;
   }
   .heroLeftInner {
     max-width: 100%;
     margin: 0;
-    padding: 0 6% 2rem;
+    padding: 0 6% 0;
     width: 100%;
   }
 

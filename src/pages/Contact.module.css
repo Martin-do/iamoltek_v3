@@ -37,6 +37,15 @@
 }
 .ciLabel { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
 .ciValue { font-size: 0.88rem; color: var(--ink); font-weight: 300; }
+.ciLink {
+  font-size: 0.88rem;
+  color: var(--ink);
+  font-weight: 300;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  touch-action: manipulation;
+}
+.ciLink:hover { color: var(--burg); }
 
 .socials   { margin-top: 3rem; }
 .socTitle  { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }

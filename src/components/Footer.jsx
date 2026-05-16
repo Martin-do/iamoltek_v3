@@ -36,11 +36,11 @@ export default function Footer({ variant = 'main' }) {
           <div>
             <div className={styles.colTitle}>The Initiative</div>
             <ul className={styles.links}>
-              <li><a href="#">Mission & Vision</a></li>
-              <li><a href="#">Programmes</a></li>
-              <li><a href="#">Impact</a></li>
-              <li><a href="#">Donate</a></li>
-              <li><a href="#">Partner With Us</a></li>
+              <li><Link to="/initiative#mission">Mission & Vision</Link></li>
+              <li><Link to="/initiative#programmes">Programmes</Link></li>
+              <li><Link to="/initiative#impact">Impact</Link></li>
+              <li><Link to="/initiative#donate">Donate</Link></li>
+              <li><Link to="/contact">Partner With Us</Link></li>
             </ul>
           </div>
 
