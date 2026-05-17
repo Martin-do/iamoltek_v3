@@ -606,7 +606,7 @@
   }
 
   .heroRightOverlay {
-    background: linear-gradient(180deg, rgba(17, 16, 16, 0.1) 0%, rgba(17, 16, 16, 0.3) 35%, rgba(17, 16, 16, 0.88) 70%, rgba(17, 16, 16, 0.98) 100%);
+    background: linear-gradient(180deg, rgba(17, 16, 16, 0.15) 0%, rgba(17, 16, 16, 0.6) 28%, rgba(17, 16, 16, 0.92) 60%, rgba(17, 16, 16, 0.98) 100%);
   }
 
   .heroLeft {
@@ -623,6 +623,22 @@
     padding: 0 5% 0;
     max-width: 100%;
     margin: 0;
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .conferred {
+    background: rgba(17, 16, 16, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-color: rgba(196, 151, 63, 0.25);
+  }
+
+  .conferredText {
+    color: rgba(255, 255, 255, 0.75);
   }
 
   .heroImg {
