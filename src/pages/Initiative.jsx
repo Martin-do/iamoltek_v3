@@ -31,9 +31,6 @@ export default function Initiative() {
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroInner}>
-          <div className={`${styles.heroRight} fade-up-d2`} aria-hidden="true">
-            <img src={initiativeLogo} alt="" className={styles.heroLogo} />
-          </div>
 
           <div className={`${styles.heroLeft} fade-up`}>
             <div className={styles.eyebrow}>A Call to Service</div>

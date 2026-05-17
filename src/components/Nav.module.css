@@ -119,12 +119,8 @@
   .overlay, .mobileMenu { display: flex; }
 }
 
-/* ── MOBILE: ensure nav always has strong dark bg for logo legibility ── */
+/* ── MOBILE: allow hero image to bleed through nav at top (like desktop) ── */
 @media (max-width: 768px) {
-  .nav {
-    background: rgba(17,16,16,0.92) !important;
-    backdrop-filter: blur(16px);
-  }
   /* Burger lines slightly brighter on mobile */
   .bl {
     background: rgba(255,255,255,0.9);
