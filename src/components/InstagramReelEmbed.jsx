@@ -51,7 +51,6 @@ export default function InstagramReelEmbed({ permalink, title }) {
     <div ref={wrapRef} className={styles.wrap}>
       <blockquote
         className="instagram-media"
-        data-instgrm-captioned
         data-instgrm-permalink={embedUrl}
         data-instgrm-version="14"
         title={title}

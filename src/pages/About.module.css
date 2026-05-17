@@ -154,7 +154,17 @@
   .heroBanner { min-height: 100svh; background-attachment: scroll; background-position: center 15%; }
   .heroBannerContent { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 5rem; }
   .heroTitle { font-size: clamp(2rem, 7vw, 3rem); }
-  .heroBio   { font-size: 0.9rem; }
+  .heroBio {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(17, 16, 16, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+  }
   .heroWatermark { display: none; }
 
   .bodyInner { grid-template-columns: 1fr; }

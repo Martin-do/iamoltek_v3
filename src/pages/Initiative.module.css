@@ -497,13 +497,13 @@
 
   .heroInner {
     grid-template-columns: 1fr;
-    padding: 0 var(--content-pad) 2.5rem;
-    min-height: calc(100svh - var(--nav-height));
-    margin-top: var(--nav-height);
+    padding: calc(var(--nav-height) + 1.5rem) var(--content-pad) 2.5rem;
+    min-height: 100svh;
+    margin-top: 0;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     gap: 1.2rem;
     width: 100%;
     position: relative;
