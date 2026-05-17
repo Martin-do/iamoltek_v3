@@ -151,7 +151,7 @@
    MOBILE (≤ 768px)
    ================================================================ */
 @media (max-width: 768px) {
-  .heroBanner { min-height: 88vh; background-attachment: scroll; background-position: center 15%; }
+  .heroBanner { min-height: 100svh; background-attachment: scroll; background-position: center 15%; }
   .heroBannerContent { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 5rem; }
   .heroTitle { font-size: clamp(2rem, 7vw, 3rem); }
   .heroBio   { font-size: 0.9rem; }
@@ -172,7 +172,7 @@
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroBanner { min-height: 78vh; }
+  .heroBanner { min-height: 90svh; }
   .photoSecondary { display: none; }
   .momentsGrid { grid-template-columns: 1fr; }
   .momentImg { aspect-ratio: 4/3; }
