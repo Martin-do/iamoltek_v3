@@ -89,7 +89,7 @@ export default function Home() {
             </p>
             <div className={`${styles.heroBadges} fade-up-d2`}>
               {[
-                'Executive Director, Strategy & Growth — CirclePoint Nigeria',
+                'Executive Director, Strategy & Growth — Circle Point',
                 'Founder, The Oyewale Areoye Initiative',
                 'Atobase of Okeluse Kingdom, Ondo State',
                 'Honorary Doctoral Fellow — ILMMD UK',

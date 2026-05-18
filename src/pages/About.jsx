@@ -20,7 +20,7 @@ const expertise = [
 ]
 
 const timeline = [
-  { year: '2024 – Present', role: 'Executive Director, Strategy & Growth',  org: 'Circle Point Nigeria Limited · Lagos',       desc: 'Leading property development strategy, investment growth, and high-value facility solutions across Nigeria.' },
+  { year: '2024 – Present', role: 'Executive Director, Strategy & Growth',  org: 'Circle Point · Lagos',       desc: 'Leading property development strategy, investment growth, and high-value facility solutions across Nigeria.' },
   { year: '2020 – 2024',   role: 'Managing Director & Head of Facilities',  org: 'Banksome Global Facility Management · Lagos', desc: 'Exceptional leadership in asset optimization, contract negotiation, and compliance across multiple high-value portfolios.' },
   { year: '2013 – 2020',   role: 'Senior Facility & Real Estate Manager',   org: 'Multiple Institutions · Nigeria',            desc: 'Built deep expertise across large-scale commercial and residential developments throughout Nigeria.' },
 ]
@@ -37,7 +37,7 @@ const memberships = ['IFMA', 'IWFM', 'IIBA', 'IOPM', 'ILMMD UK']
 const moments = [
   { img: arrival,    cap: 'In the Field · Professional Circuit' },
   { img: networking, cap: 'Networking & Leadership Engagement' },
-  { img: cpEvent1,   cap: 'CirclePoint Nigeria · Property Sector' },
+  { img: cpEvent1,   cap: 'Circle Point · Property Sector' },
   { img: cpEvent2,   cap: 'Industry Connections · Lagos' },
 ]
 
@@ -104,8 +104,8 @@ export default function About() {
                 in Nigeria's property sector.
               </p>
               <p className={styles.text}>
-                Currently serving as Executive Director of Strategy &amp; Growth at Circle Point
-                Nigeria Limited, Oyewale leads property development strategy and investment growth,
+                Currently serving as Executive Director of Strategy &amp; Growth at Circle Point,
+                Oyewale leads property development strategy and investment growth,
                 ensuring high-value real estate solutions across Nigeria's competitive market.
               </p>
               <div className={styles.expGrid}>
