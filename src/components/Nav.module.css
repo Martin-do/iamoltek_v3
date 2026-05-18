@@ -14,14 +14,13 @@
 }
 
 /* ── LOGO ──
-   mix-blend-mode:screen: black pixels become transparent,
-   white logo text stays crisp on any background.
+   Natively transparent PNG allows the backdrop-blur and
+   semi-transparent nav background to bleed through perfectly.
 */
 .logoWrap { cursor: pointer; display: flex; align-items: center; }
 .logoImg  {
   height: 38px;
   object-fit: contain;
-  mix-blend-mode: screen;   /* ← KEY: kills black bg */
   filter: brightness(1.1);
 }
 
@@ -87,7 +86,7 @@
 .mobileLogoWrap { padding-bottom: 2.5rem; border-bottom: 1px solid rgba(196,151,63,0.1); }
 .mobileLogoImg  {
   height: 34px; object-fit: contain;
-  mix-blend-mode: screen; filter: brightness(1.1);
+  filter: brightness(1.1);
 }
 .mobileLinks { list-style: none; display: flex; flex-direction: column; flex: 1; margin-top: 1rem; }
 .ml, .mlActive {
