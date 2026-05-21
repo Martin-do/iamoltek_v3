@@ -606,7 +606,7 @@
   }
 
   .heroRightOverlay {
-    background: linear-gradient(180deg, rgba(17, 16, 16, 0.15) 0%, rgba(17, 16, 16, 0.6) 28%, rgba(17, 16, 16, 0.92) 60%, rgba(17, 16, 16, 0.98) 100%);
+    background: linear-gradient(180deg, rgba(17, 16, 16, 0.72) 0%, rgba(17, 16, 16, 0.85) 30%, rgba(17, 16, 16, 0.94) 65%, rgba(17, 16, 16, 0.98) 100%);
   }
 
   .heroLeft {
@@ -623,6 +623,17 @@
     padding: 0 5% 0;
     max-width: 100%;
     margin: 0;
+  }
+
+  .eyebrow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  }
+
+  .kingdomTag {
+    background: rgba(17, 16, 16, 0.7);
+    border-color: rgba(196, 151, 63, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .subtitle {

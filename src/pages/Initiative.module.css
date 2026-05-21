@@ -456,6 +456,57 @@
   touch-action: manipulation;
 }
 
+/* Styled contact details */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contactIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(196, 151, 63, 0.08);
+  border: 1px solid rgba(196, 151, 63, 0.15);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.instagramIcon {
+  color: var(--gold);
+  stroke: var(--gold);
+}
+
+.contactLink {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid transparent;
+  touch-action: manipulation;
+}
+
+.contactLink:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+
 /* ================================================================
    TABLET (≤ 1024px)
    ================================================================ */

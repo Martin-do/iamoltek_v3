@@ -209,27 +209,37 @@ export default function Initiative() {
               <span className={styles.bankLabel}>Account Number</span>
               <strong className={styles.bankNum}>6550000619</strong>
             </div>
-            <p className={styles.bankContact}>
-              📧{' '}
-              <a href="mailto:areoyeoyewale@outlook.com" className={styles.bankLink}>
-                areoyeoyewale@outlook.com
-              </a>
-            </p>
-            <p className={styles.bankContact}>
-              📞{' '}
-              <a href="tel:+2348182937320" className={styles.bankLink}>
-                +234 818 293 7320
-              </a>
-              {' · '}
-              <a
-                href="https://instagram.com/theyewaleinitiative"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.bankLink}
-              >
-                Instagram · @theyewaleinitiative
-              </a>
-            </p>
+            <div className={styles.contactList}>
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon}>📧</span>
+                <a href="mailto:areoyeoyewale@outlook.com" className={styles.contactLink}>
+                  areoyeoyewale@outlook.com
+                </a>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon}>📞</span>
+                <a href="tel:+2348182937320" className={styles.contactLink}>
+                  +234 818 293 7320
+                </a>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon}>
+                  <svg className={styles.instagramIcon} viewBox="0 0 24 24" width="13" height="13">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                </span>
+                <a
+                  href="https://instagram.com/theoyewaleinitiative"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactLink}
+                >
+                  Instagram · @theoyewaleinitiative
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
