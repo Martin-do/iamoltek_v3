@@ -58,7 +58,14 @@ const certifications = [
   { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development — UK' },
 ]
 
-const memberships = ['IFMA', 'IWFM', 'IIBA', 'IOPM', 'ILMMD UK']
+const memberships = [
+  { code: 'IFMA',     name: 'International Facility Management Association' },
+  { code: 'IWFM',     name: 'Institute of Workplace and Facilities Management' },
+  { code: 'GBCN',     name: 'Green Building Council Nigeria' },
+  { code: 'IIBA',     name: 'International Institute of Business Analysis' },
+  { code: 'IOPM',     name: 'Institute of Operations Management' },
+  { code: 'ILMMD UK', name: 'Institute of Leadership, Management & Manpower Development' },
+]
 
 const moments = [
   { img: arrival,    cap: 'In the Field · Professional Circuit' },
@@ -190,7 +197,12 @@ export default function About() {
             <div className={`${styles.section} reveal`}>
               <h2 className={styles.sectionTitle}>Professional Memberships</h2>
               <div className={styles.memberships}>
-                {memberships.map(m => <div key={m} className={styles.mtag}>{m}</div>)}
+                {memberships.map(m => (
+                  <div key={m.code} className={styles.mtag}>
+                    <strong className={styles.mCode}>{m.code}</strong>
+                    <span className={styles.mName}>{m.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

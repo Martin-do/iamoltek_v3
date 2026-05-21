@@ -158,8 +158,10 @@
   transition: transform 0.2s ease;
 }
 
-.memberships { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
-.mtag { padding: 0.38rem 0.95rem; border: 1px solid var(--cream-dk); font-size: 0.68rem; color: var(--ink); border-radius: 1px; }
+.memberships { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; }
+.mtag { padding: 1rem 1.2rem; background: var(--cream); border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 0.15rem; }
+.mCode { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: var(--charcoal); text-transform: uppercase; }
+.mName { font-size: 0.76rem; font-weight: 300; color: var(--muted); line-height: 1.4; }
 
 /* ================================================================
    PROFESSIONAL MOMENTS STRIP
@@ -221,6 +223,7 @@
   .photoSecondary { right: 0; width: 45%; }
   .midPortraitImg { max-height: 300px; }
   .expGrid { grid-template-columns: 1fr; }
+  .memberships { grid-template-columns: 1fr; }
 
   .momentsGrid { grid-template-columns: 1fr 1fr; }
   .momentCap { opacity: 1; }
