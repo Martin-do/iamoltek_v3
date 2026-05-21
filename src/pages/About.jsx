@@ -23,18 +23,18 @@ const timeline = [
   {
     year: '2024 – Present',
     role: 'Executive Director, Strategy & Growth',
-    org: 'Circle Point · Lagos',
+    org: 'Circle Point Group · Lagos',
     orgLink: 'https://circlepoint.com.ng/',
     cofounder: true,
     desc: 'Co-founding and leading strategy, investment growth, and high-value property development and facility solutions across Nigeria.',
   },
   {
     year: '2024 – Present',
-    role: 'Executive Strategist & Co-Founder',
+    role: 'Executive Director',
     org: 'Petik Limited · Lagos',
-    orgLink: 'https://petiklimited.com/',
-    cofounder: true,
-    desc: 'Co-founding and driving strategic direction across real estate, construction, project management, renewable energy, and oil & gas services.',
+    orgLink: 'https://petiklimited.com/oyewale-areoye/',
+    cofounder: false,
+    desc: 'Directing operations, growth strategy, and high-value project execution across property development, construction, energy, and multi-sector services.',
   },
   {
     year: '2020 – 2024',
@@ -54,6 +54,7 @@ const certifications = [
   { code: 'CICPFM',                    name: 'Certified Facility Management Professional' },
   { code: 'CBAP',                      name: 'Certified Business Analyst Professional' },
   { code: 'IOPM',                      name: 'Accredited Project Manager' },
+  { code: 'GBCN',                      name: 'Member, Green Building Council Nigeria' },
   { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development — UK' },
 ]
 
@@ -129,16 +130,18 @@ export default function About() {
                 in Nigeria's property sector.
               </p>
               <p className={styles.text}>
-                Currently serving as Co-Founder and Executive Director of Strategy &amp; Growth at{' '}
+                Currently serving as Executive Director of Strategy &amp; Growth at{' '}
                 <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
                   Circle Point<span className={styles.tLinkArrow}>↗</span>
-                </a>,
-                and Co-Founder of{' '}
-                <a href="https://petiklimited.com/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+                </a>
+                , Oyewale leads property development strategy and investment growth, ensuring high-value real estate solutions across Nigeria's competitive market.
+              </p>
+              <p className={styles.text}>
+                In addition to his role at Circle Point Group, he serves as Executive Director at{' '}
+                <a href="https://petiklimited.com/oyewale-areoye/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
                   Petik Limited<span className={styles.tLinkArrow}>↗</span>
-                </a>,
-                Oyewale leads property development strategy, investment growth, and multi-sector ventures spanning real estate,
-                construction, renewable energy, and oil &amp; gas across Nigeria.
+                </a>
+                , directing operations, strategy, and business growth across property development, construction, and key multi-sector services.
               </p>
               <div className={styles.expGrid}>
                 {expertise.map((e, i) => (

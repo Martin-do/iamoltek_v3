@@ -48,7 +48,7 @@ function StatItem({ num, label }) {
 
 const statsData = [
   { num: '11+', label: 'Years Industry Leadership' },
-  { num: '3',   label: 'Professional Certifications' },
+  { num: '4',   label: 'Professional Certifications' },
   { num: '1',   label: 'Royal Title Bestowed' },
   { num: '∞',   label: 'Communities Impacted' },
 ]
@@ -89,7 +89,8 @@ export default function Home() {
             </p>
             <div className={`${styles.heroBadges} fade-up-d2`}>
               {[
-                'Executive Director, Strategy & Growth — Circle Point',
+                'Co-Founder & Executive Director — Circle Point Group',
+                'Executive Director — Petik Limited',
                 'Founder, The Oyewale Areoye Initiative',
                 'Atobase of Okeluse Kingdom, Ondo State',
                 'Honorary Doctoral Fellow — ILMMD UK',
