@@ -47,7 +47,7 @@ export default function Footer({ variant = 'main' }) {
           <div>
             <div className={styles.colTitle}>Professional</div>
             <ul className={styles.links}>
-              <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/in/oyewale-areoye-69419053/" target="_blank" rel="noreferrer">LinkedIn</a></li>
               <li><a href="https://instagram.com/iamoltek" target="_blank" rel="noreferrer">Personal Instagram</a></li>
               <li><a href="https://instagram.com/theyewaleinitiative" target="_blank" rel="noreferrer">The Initiative</a></li>
             </ul>
