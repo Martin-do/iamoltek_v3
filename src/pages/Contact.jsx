@@ -9,9 +9,15 @@ const contactItems = [
   { icon: '🌐', label: 'Website', value: 'iamoltek.com', href: 'https://iamoltek.com' },
   {
     icon: '📸',
+    label: 'Instagram — Personal',
+    value: '@iamoltek',
+    href: 'https://instagram.com/iamoltek',
+  },
+  {
+    icon: '📸',
     label: 'Instagram — The Initiative',
     value: '@theyewaleinitiative',
-    href: 'https://instagram.com/theoyewaleinitiative',
+    href: 'https://instagram.com/theyewaleinitiative',
   },
 ]
 
@@ -26,6 +32,26 @@ const enquiryTypes = [
 
 export default function Contact() {
   useScrollReveal()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    const firstName = fd.get('firstName')
+    const lastName = fd.get('lastName')
+    const email = fd.get('email')
+    const enquiryType = fd.get('enquiryType')
+    const message = fd.get('message')
+
+    const subject = encodeURIComponent(`[Website Enquiry] - ${enquiryType}`)
+    const body = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n` +
+      `Enquiry Type: ${enquiryType}\n\n` +
+      `Message:\n${message}`
+    )
+    
+    window.location.href = `mailto:areoyeoyewale@outlook.com?subject=${subject}&body=${body}`
+  }
 
   return (
     <main>
@@ -69,35 +95,42 @@ export default function Contact() {
           <div className={styles.socials}>
             <div className={styles.socTitle}>Follow on Social Media</div>
             <div className={styles.socRow}>
-              {['📸', '💼', '𝕏', '𝐟'].map((icon, i) => (
-                <a key={i} className={styles.socLink} href="#" aria-label={`Social ${i}`}>
-                  {icon}
-                </a>
-              ))}
+              <a className={styles.socLink} href="https://instagram.com/iamoltek" target="_blank" rel="noopener noreferrer" aria-label="Personal Instagram">
+                📸
+              </a>
+              <a className={styles.socLink} href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                💼
+              </a>
+              <a className={styles.socLink} href="https://instagram.com/theyewaleinitiative" target="_blank" rel="noopener noreferrer" aria-label="Initiative Instagram">
+                🎗️
+              </a>
+              <a className={styles.socLink} href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                𝐟
+              </a>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.formArea} reveal reveal-d1`}>
+        <form onSubmit={handleSubmit} className={`${styles.formArea} reveal reveal-d1`}>
           <div className="section-label">Send a Message</div>
           <h3 className={styles.formTitle}>We'd love to hear from you</h3>
           <div className={styles.formRow}>
             <div className={styles.fg}>
               <label className={styles.flbl}>First Name</label>
-              <input className={styles.finput} type="text" placeholder="First name" />
+              <input className={styles.finput} name="firstName" type="text" placeholder="First name" required />
             </div>
             <div className={styles.fg}>
               <label className={styles.flbl}>Last Name</label>
-              <input className={styles.finput} type="text" placeholder="Last name" />
+              <input className={styles.finput} name="lastName" type="text" placeholder="Last name" required />
             </div>
           </div>
           <div className={styles.fg}>
             <label className={styles.flbl}>Email Address</label>
-            <input className={styles.finput} type="email" placeholder="your@email.com" />
+            <input className={styles.finput} name="email" type="email" placeholder="your@email.com" required />
           </div>
           <div className={styles.fg}>
             <label className={styles.flbl}>Enquiry Type</label>
-            <select className={styles.fselect}>
+            <select className={styles.fselect} name="enquiryType">
               {enquiryTypes.map(t => (
                 <option key={t}>{t}</option>
               ))}
@@ -105,12 +138,12 @@ export default function Contact() {
           </div>
           <div className={styles.fg}>
             <label className={styles.flbl}>Your Message</label>
-            <textarea className={styles.ftextarea} placeholder="Tell us how we can work together..." />
+            <textarea className={styles.ftextarea} name="message" placeholder="Tell us how we can work together..." required />
           </div>
-          <button className="btn-gold" style={{ width: '100%', textAlign: 'center' }}>
+          <button type="submit" className="btn-gold" style={{ width: '100%', textAlign: 'center' }}>
             Send Message
           </button>
-        </div>
+        </form>
       </div>
 
       <Footer />

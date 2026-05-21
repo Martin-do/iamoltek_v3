@@ -118,20 +118,45 @@
 }
 .tOrg  { font-size: 0.76rem; color: var(--muted); font-weight: 300; margin: 0.13rem 0 0.5rem; }
 .tOrgLink {
-  color: var(--muted); text-decoration: none;
-  border-bottom: 1px dashed rgba(100,100,100,0.3);
-  transition: color 0.2s, border-color 0.2s;
+  color: var(--gold); text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(196,151,63,0.3);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
-.tOrgLink:hover { color: var(--gold); border-color: var(--gold); }
+.tOrgLink:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+.tOrgLink:hover .tLinkArrow {
+  transform: translate(2px, -2px);
+}
 .tDesc { font-size: 0.82rem; line-height: 1.85; color: var(--muted); font-weight: 300; }
 
 /* Inline body links (e.g. Professional Overview paragraph) */
 .inlineLink {
   color: var(--gold); text-decoration: none;
+  font-weight: 500;
   border-bottom: 1px solid rgba(196,151,63,0.4);
-  transition: border-color 0.2s;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
-.inlineLink:hover { border-color: var(--gold); }
+.inlineLink:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+.inlineLink:hover .tLinkArrow {
+  transform: translate(2px, -2px);
+}
+
+.tLinkArrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-left: 0.15rem;
+  transition: transform 0.2s ease;
+}
 
 .memberships { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
 .mtag { padding: 0.38rem 0.95rem; border: 1px solid var(--cream-dk); font-size: 0.68rem; color: var(--ink); border-radius: 1px; }

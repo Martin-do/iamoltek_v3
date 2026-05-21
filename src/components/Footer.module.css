@@ -50,6 +50,14 @@
   font-size: 1rem;             /* bigger */
   color: var(--gold); letter-spacing: 0.06em; font-style: italic;
 }
+.handleLink {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.handleLink:hover {
+  opacity: 0.8;
+}
+
 
 /* TABLET */
 @media (max-width: 1024px) {

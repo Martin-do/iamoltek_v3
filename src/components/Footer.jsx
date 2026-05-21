@@ -47,19 +47,21 @@ export default function Footer({ variant = 'main' }) {
           <div>
             <div className={styles.colTitle}>Professional</div>
             <ul className={styles.links}>
-              <li><a href="#" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="#">Speaking</a></li>
-              <li><a href="#">Press</a></li>
-              <li><a href="#">Media Kit</a></li>
+              <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://instagram.com/iamoltek" target="_blank" rel="noreferrer">Personal Instagram</a></li>
+              <li><a href="https://instagram.com/theyewaleinitiative" target="_blank" rel="noreferrer">The Initiative</a></li>
             </ul>
           </div>
         </div>
 
         <div className={styles.bottom}>
           <p className={styles.copy}>© {new Date().getFullYear()} Oyewale Areoye. All rights reserved.</p>
-          <div className={styles.handle}>@iamoltek</div>
+          <a href="https://instagram.com/iamoltek" target="_blank" rel="noopener noreferrer" className={styles.handleLink}>
+            <div className={styles.handle}>@iamoltek</div>
+          </a>
         </div>
       </div>
     </footer>
   )
 }
+

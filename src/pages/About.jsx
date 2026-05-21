@@ -130,9 +130,13 @@ export default function About() {
               </p>
               <p className={styles.text}>
                 Currently serving as Co-Founder and Executive Director of Strategy &amp; Growth at{' '}
-                <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Circle Point</a>,
+                <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+                  Circle Point<span className={styles.tLinkArrow}>↗</span>
+                </a>,
                 and Co-Founder of{' '}
-                <a href="https://petiklimited.com/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Petik Limited</a>,
+                <a href="https://petiklimited.com/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+                  Petik Limited<span className={styles.tLinkArrow}>↗</span>
+                </a>,
                 Oyewale leads property development strategy, investment growth, and multi-sector ventures spanning real estate,
                 construction, renewable energy, and oil &amp; gas across Nigeria.
               </p>
@@ -168,7 +172,9 @@ export default function About() {
                     </div>
                     <div className={styles.tOrg}>
                       {t.orgLink
-                        ? <a href={t.orgLink} target="_blank" rel="noopener noreferrer" className={styles.tOrgLink}>{t.org}</a>
+                        ? <a href={t.orgLink} target="_blank" rel="noopener noreferrer" className={styles.tOrgLink}>
+                            {t.org}<span className={styles.tLinkArrow}>↗</span>
+                          </a>
                         : t.org
                       }
                     </div>
