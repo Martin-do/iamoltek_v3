@@ -20,9 +20,34 @@ const expertise = [
 ]
 
 const timeline = [
-  { year: '2024 – Present', role: 'Executive Director, Strategy & Growth',  org: 'Circle Point · Lagos',       desc: 'Leading property development strategy, investment growth, and high-value facility solutions across Nigeria.' },
-  { year: '2020 – 2024',   role: 'Managing Director & Head of Facilities',  org: 'Banksome Global Facility Management · Lagos', desc: 'Exceptional leadership in asset optimization, contract negotiation, and compliance across multiple high-value portfolios.' },
-  { year: '2013 – 2020',   role: 'Senior Facility & Real Estate Manager',   org: 'Multiple Institutions · Nigeria',            desc: 'Built deep expertise across large-scale commercial and residential developments throughout Nigeria.' },
+  {
+    year: '2024 – Present',
+    role: 'Executive Director, Strategy & Growth',
+    org: 'Circle Point · Lagos',
+    orgLink: 'https://circlepoint.com.ng/',
+    cofounder: true,
+    desc: 'Co-founding and leading strategy, investment growth, and high-value property development and facility solutions across Nigeria.',
+  },
+  {
+    year: '2024 – Present',
+    role: 'Executive Strategist & Co-Founder',
+    org: 'Petik Limited · Lagos',
+    orgLink: 'https://petiklimited.com/',
+    cofounder: true,
+    desc: 'Co-founding and driving strategic direction across real estate, construction, project management, renewable energy, and oil & gas services.',
+  },
+  {
+    year: '2020 – 2024',
+    role: 'Managing Director & Head of Facilities',
+    org: 'Banksome Global Facility Management · Lagos',
+    desc: 'Exceptional leadership in asset optimization, contract negotiation, and compliance across multiple high-value portfolios.',
+  },
+  {
+    year: '2013 – 2020',
+    role: 'Senior Facility & Real Estate Manager',
+    org: 'Multiple Institutions · Nigeria',
+    desc: 'Built deep expertise across large-scale commercial and residential developments throughout Nigeria.',
+  },
 ]
 
 const certifications = [
@@ -104,9 +129,12 @@ export default function About() {
                 in Nigeria's property sector.
               </p>
               <p className={styles.text}>
-                Currently serving as Executive Director of Strategy &amp; Growth at Circle Point,
-                Oyewale leads property development strategy and investment growth,
-                ensuring high-value real estate solutions across Nigeria's competitive market.
+                Currently serving as Co-Founder and Executive Director of Strategy &amp; Growth at{' '}
+                <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Circle Point</a>,
+                and Co-Founder of{' '}
+                <a href="https://petiklimited.com/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Petik Limited</a>,
+                Oyewale leads property development strategy, investment growth, and multi-sector ventures spanning real estate,
+                construction, renewable energy, and oil &amp; gas across Nigeria.
               </p>
               <div className={styles.expGrid}>
                 {expertise.map((e, i) => (
@@ -132,10 +160,18 @@ export default function About() {
               <h2 className={styles.sectionTitle}>Career Timeline</h2>
               <div className={styles.timeline}>
                 {timeline.map((t, i) => (
-                  <div key={t.year} className={`${styles.titem} reveal reveal-d${i + 1}`}>
+                  <div key={`${t.year}-${t.org}`} className={`${styles.titem} reveal reveal-d${(i % 3) + 1}`}>
                     <div className={styles.tYear}>{t.year}</div>
-                    <div className={styles.tRole}>{t.role}</div>
-                    <div className={styles.tOrg}>{t.org}</div>
+                    <div className={styles.tRoleRow}>
+                      <div className={styles.tRole}>{t.role}</div>
+                      {t.cofounder && <span className={styles.tCofounderTag}>Co-Founder</span>}
+                    </div>
+                    <div className={styles.tOrg}>
+                      {t.orgLink
+                        ? <a href={t.orgLink} target="_blank" rel="noopener noreferrer" className={styles.tOrgLink}>{t.org}</a>
+                        : t.org
+                      }
+                    </div>
                     <div className={styles.tDesc}>{t.desc}</div>
                   </div>
                 ))}

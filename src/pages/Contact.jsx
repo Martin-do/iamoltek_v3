@@ -11,7 +11,7 @@ const contactItems = [
     icon: '📸',
     label: 'Instagram — The Initiative',
     value: '@theyewaleinitiative',
-    href: 'https://instagram.com/theyewaleinitiative',
+    href: 'https://instagram.com/theoyewaleinitiative',
   },
 ]
 

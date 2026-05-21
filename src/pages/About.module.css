@@ -106,9 +106,32 @@
   width: 8px; height: 8px; background: var(--gold); border-radius: 50%; transform: translateX(-3.5px);
 }
 .tYear { font-size: 0.64rem; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.22rem; }
+.tRoleRow { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
 .tRole { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; color: var(--charcoal); }
+.tCofounderTag {
+  display: inline-flex; align-items: center;
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); background: rgba(196,151,63,0.1);
+  border: 1px solid rgba(196,151,63,0.35);
+  padding: 0.16rem 0.55rem; border-radius: 2px;
+  line-height: 1.4; white-space: nowrap;
+}
 .tOrg  { font-size: 0.76rem; color: var(--muted); font-weight: 300; margin: 0.13rem 0 0.5rem; }
+.tOrgLink {
+  color: var(--muted); text-decoration: none;
+  border-bottom: 1px dashed rgba(100,100,100,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.tOrgLink:hover { color: var(--gold); border-color: var(--gold); }
 .tDesc { font-size: 0.82rem; line-height: 1.85; color: var(--muted); font-weight: 300; }
+
+/* Inline body links (e.g. Professional Overview paragraph) */
+.inlineLink {
+  color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid rgba(196,151,63,0.4);
+  transition: border-color 0.2s;
+}
+.inlineLink:hover { border-color: var(--gold); }
 
 .memberships { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
 .mtag { padding: 0.38rem 0.95rem; border: 1px solid var(--cream-dk); font-size: 0.68rem; color: var(--ink); border-radius: 1px; }
