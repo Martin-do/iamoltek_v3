@@ -38,3 +38,5 @@ jobs:
           remote-port: 22
           local-path: "./dist"
           remote-path: "public_html"
+          sync: "full"
+          debug: true
