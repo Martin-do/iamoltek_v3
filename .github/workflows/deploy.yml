@@ -28,6 +28,10 @@ jobs:
       - name: 🔨 Build project
         run: npm run build
 
+      - name: 🔍 Debug SFTP Directory
+        run: |
+          lftp -c "set sftp:auto-confirm true; open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }}:22; pwd; ls; cd public_html && pwd && ls || echo 'no public_html'"
+
       - name: 🚀 Sync files via SFTP
         uses: milanmk/actions-file-deployer@master
         with:
@@ -37,6 +41,6 @@ jobs:
           remote-password: ${{ secrets.FTP_PASSWORD }}
           remote-port: 22
           local-path: "./dist"
-          remote-path: "public_html"
+          remote-path: "/public_html"
           sync: "full"
           debug: true
