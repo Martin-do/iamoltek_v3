@@ -55,6 +55,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .eyebrow::before {
@@ -72,6 +73,7 @@
   line-height: 0.9;
   color: #fff;
   margin-bottom: 1.7rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .heroName strong {
@@ -90,6 +92,7 @@
   line-height: 2;
   color: rgba(255, 255, 255, 0.45);
   margin-bottom: 2.2rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
 }
 
 .heroBadges {
@@ -107,6 +110,7 @@
   font-weight: 300;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .badge::before {
@@ -356,7 +360,7 @@
 .quoteOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(17, 16, 16, 0.9) 0%, rgba(17, 16, 16, 0.8) 50%, rgba(17, 16, 16, 0.92) 100%);
+  background: linear-gradient(135deg, rgba(17, 16, 16, 0.93) 0%, rgba(17, 16, 16, 0.88) 50%, rgba(17, 16, 16, 0.95) 100%);
 }
 
 .quoteInner {
@@ -378,6 +382,7 @@
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.4;
   margin-top: 0.5rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 .quoteText {
@@ -389,6 +394,7 @@
   line-height: 1.65;
   border-left: 3px solid var(--gold);
   padding-left: 2.5rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
 .quoteAttr {
@@ -613,10 +619,11 @@
   /* Mobile gradient: strong fade to bottom for text legibility */
   .portraitOverlay {
     background: linear-gradient(180deg,
-        rgba(12, 10, 9, 0.12) 0%,
-        rgba(12, 10, 9, 0.22) 35%,
-        rgba(12, 10, 9, 0.80) 65%,
-        rgba(12, 10, 9, 0.97) 100%);
+        rgba(12, 10, 9, 0.25) 0%,
+        rgba(12, 10, 9, 0.45) 30%,
+        rgba(12, 10, 9, 0.78) 55%,
+        rgba(12, 10, 9, 0.92) 70%,
+        rgba(12, 10, 9, 0.98) 100%);
   }
 
   /* Text: sits at the bottom over the portrait */
@@ -644,12 +651,12 @@
 
   .heroDesc {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .badge {
     font-size: 0.68rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .heroBadges {
