@@ -30,6 +30,7 @@ jobs:
 
       - name: 🔍 Debug SFTP Directory
         run: |
+          sudo apt-get update && sudo apt-get install -y lftp
           lftp -c "set sftp:auto-confirm true; open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }}:22; pwd; ls; cd public_html && pwd && ls || echo 'no public_html'"
 
       - name: 🚀 Sync files via SFTP
