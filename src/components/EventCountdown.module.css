@@ -88,7 +88,7 @@
 }
 
 .details {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.65);
   margin-bottom: 1.8rem;
   display: flex;
@@ -117,7 +117,7 @@
 }
 
 .description {
-  font-size: 0.88rem;
+  font-size: 1rem;
   line-height: 2;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 2rem;
@@ -200,8 +200,8 @@
 
 .eventNote {
   margin-top: 2rem;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
   font-weight: 300;
   font-style: italic;
 }

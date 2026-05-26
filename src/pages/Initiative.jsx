@@ -26,7 +26,7 @@ export default function Initiative() {
   useScrollReveal()
 
   return (
-    <main>
+    <main style={{ paddingTop: 'var(--nav-height)' }}>
       <AnnouncementStrip 
         tag="Upcoming Activity" 
         text="The Initiative is organising a Community Outreach — food & essentials for families in need. Coming soon!" 
