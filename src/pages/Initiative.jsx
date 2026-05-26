@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
-import AnnouncementStrip from '../components/AnnouncementStrip'
-import EventCountdown from '../components/EventCountdown'
-import InstagramFeed from '../components/InstagramFeed'
 import initiativeLogo   from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import styles from './Initiative.module.css'
@@ -27,12 +24,6 @@ export default function Initiative() {
 
   return (
     <main>
-      <AnnouncementStrip 
-        tag="Upcoming Event" 
-        text="Join us for the next major Initiative event — details below!" 
-        linkText="Learn More" 
-        linkHref="#event" 
-      />
 
       {/* ══════════════════════════════════════
           HERO — heroInner centres content
@@ -127,17 +118,6 @@ export default function Initiative() {
       </section>
 
       {/* ══════════════════════════════════════
-          EVENT COUNTDOWN
-      ══════════════════════════════════════ */}
-      <EventCountdown 
-        eventName="Upcoming Initiative Event"
-        eventDateStr="2026-08-15T10:00:00"
-        location="Lagos, Nigeria"
-        description="Join us as we gather to discuss, plan, and execute the next phase of our community development and youth empowerment programmes."
-        registrationLink="#donate"
-      />
-
-      {/* ══════════════════════════════════════
           IMPACT NUMBERS
       ══════════════════════════════════════ */}
       <div className={styles.impactBand}>
@@ -207,11 +187,6 @@ export default function Initiative() {
           </div>
         </div>
       </section>
-
-      {/* ══════════════════════════════════════
-          INSTAGRAM FEED
-      ══════════════════════════════════════ */}
-      <InstagramFeed handle="@theoyewaleinitiative" />
 
       {/* ══════════════════════════════════════
           DONATE BAND
