@@ -28,9 +28,9 @@ export default function Initiative() {
   return (
     <main>
       <AnnouncementStrip 
-        tag="Upcoming Event" 
-        text="Join us for the next major Initiative event — details below!" 
-        linkText="Learn More" 
+        tag="Upcoming Activity" 
+        text="The Initiative is organising a Community Outreach — food & essentials for families in need. Coming soon!" 
+        linkText="See Details" 
         linkHref="#event" 
       />
 
@@ -130,11 +130,12 @@ export default function Initiative() {
           EVENT COUNTDOWN
       ══════════════════════════════════════ */}
       <EventCountdown 
-        eventName="Upcoming Initiative Event"
+        eventName="Community Outreach Drive"
         eventDateStr="2026-08-15T10:00:00"
-        location="Lagos, Nigeria"
-        description="Join us as we gather to discuss, plan, and execute the next phase of our community development and youth empowerment programmes."
-        registrationLink="#donate"
+        location="Okeluse Kingdom, Ondo State (Venue TBD)"
+        description="The Oyewale Areoye Initiative is organising a community outreach — sharing food and essential supplies with families in need. No tickets. No registration. Just a moment of giving and community."
+        contactLink="/initiative#donate"
+        contactText="Support the Outreach"
       />
 
       {/* ══════════════════════════════════════

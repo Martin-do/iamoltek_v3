@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
@@ -122,6 +122,25 @@ export default function Home() {
       <div className={styles.statsBar}>
         <div className={styles.statsInner}>
           {statsData.map(s => <StatItem key={s.label} {...s} />)}
+        </div>
+      </div>
+
+      {/* ══════════ OUTREACH TEASER ══════════ */}
+      <div className={styles.outreachTeaser}>
+        <div className={styles.outreachTeaserInner}>
+          <div className={styles.outreachTeaserLeft}>
+            <div className={styles.outreachTeaserDot}>Upcoming Initiative Activity</div>
+            <h2 className={styles.outreachTeaserTitle}>
+              Community Outreach Drive — <em>Food &amp; Essentials</em>
+            </h2>
+            <p className={styles.outreachTeaserSub}>
+              The Oyewale Areoye Initiative is giving back — sharing food and essential
+              supplies with families in need across our communities. No tickets. Just love.
+            </p>
+          </div>
+          <Link to="/initiative#event" className={styles.outreachTeaserCta}>
+            See Details →
+          </Link>
         </div>
       </div>
 
