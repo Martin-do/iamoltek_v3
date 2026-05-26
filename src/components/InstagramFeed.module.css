@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  background: var(--cream);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+}
+
+.header {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+}
+
+/* 
+  If you drop in an EmbedSocial or Behold snippet, 
+  it will replace the .placeholderGrid below.
+*/
+
+.placeholderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.post {
+  aspect-ratio: 1 / 1;
+  background: #e2dfd8;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-4px);
+}
+
+.postImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.postOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #fff;
+}
+
+.post:hover .postOverlay {
+  opacity: 1;
+}
+
+.instagramIcon {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .placeholderGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
