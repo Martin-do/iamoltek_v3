@@ -91,8 +91,8 @@ const contactItems = [
   {
     icon: <CustomInitiativeInstagramIcon />,
     label: 'Instagram — The Initiative',
-    value: '@theoyewaleinitiative',
-    href: 'https://instagram.com/theoyewaleinitiative',
+    value: '@theoyewaleareoyeinitiative',
+    href: 'https://instagram.com/theoyewaleareoyeinitiative',
   },
 ]
 
@@ -176,7 +176,7 @@ export default function Contact() {
               <a className={styles.socLink} href="https://www.linkedin.com/in/oyewale-areoye-69419053/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <LinkedInIcon color="currentColor" />
               </a>
-              <a className={styles.socLink} href="https://instagram.com/theoyewaleinitiative" target="_blank" rel="noopener noreferrer" aria-label="Initiative Instagram" style={{ padding: 0 }}>
+              <a className={styles.socLink} href="https://instagram.com/theoyewaleareoyeinitiative" target="_blank" rel="noopener noreferrer" aria-label="Initiative Instagram" style={{ padding: 0 }}>
                 <CustomInitiativeInstagramIcon />
               </a>
             </div>

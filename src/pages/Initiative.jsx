@@ -1,9 +1,24 @@
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
+import AnnouncementStrip from '../components/AnnouncementStrip'
+import EventCountdown from '../components/EventCountdown'
+import InstagramFeed from '../components/InstagramFeed'
+import FeaturedPost from '../components/FeaturedPost'
 import initiativeLogo   from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
+import featuredPostImg  from '../assets/featured-post-01.jpeg'
 import styles from './Initiative.module.css'
+
+const featuredPostText = [
+  "EMPOWERING PEOPLE. TRANSFORMING COMMUNITIES.",
+  "Meaningful change begins when people are equipped with the knowledge, opportunities, and support they need to thrive.",
+  "At The Oyewale Areoye Initiative, we are committed to fostering leadership, promoting education, encouraging service, and creating opportunities that inspire individuals to reach their full potential and contribute positively to society.",
+  "Through ideas, advocacy, community engagement, and impactful initiatives, we seek to build stronger individuals and more resilient communities.",
+  "Together, we can create lasting change.",
+  "Ideas. Leadership. Service. Impact.",
+  "#TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Leadership #Education #CommunityDevelopment #SocialImpact #YouthEmpowerment #PositiveChange #BuildingTheFuture #ImpactDriven #TogetherWeCan #InspiringLeadership #CreatingImpact"
+]
 
 const pillars = [
   { icon: '📚', title: 'Education & Scholarships', desc: 'Funding access to quality education for bright but financially constrained young Nigerians — from primary school to university scholarships.' },
@@ -23,7 +38,19 @@ export default function Initiative() {
   useScrollReveal()
 
   return (
-    <main>
+    <main style={{ paddingTop: 'var(--nav-height)' }}>
+      <FeaturedPost 
+        postId="initiative_post_01" 
+        imageSrc={featuredPostImg} 
+        textContent={featuredPostText} 
+      />
+
+      <AnnouncementStrip 
+        tag="Upcoming Activity" 
+        text="The Initiative is organising a Community Outreach — food & essentials for families in need. Coming soon!" 
+        linkText="See Details" 
+        linkHref="#event" 
+      />
 
       {/* ══════════════════════════════════════
           HERO — heroInner centres content
@@ -118,6 +145,18 @@ export default function Initiative() {
       </section>
 
       {/* ══════════════════════════════════════
+          EVENT COUNTDOWN
+      ══════════════════════════════════════ */}
+      <EventCountdown 
+        eventName="Community Outreach Drive"
+        eventDateStr="2026-08-15T10:00:00"
+        location="Okeluse Kingdom, Ondo State (Venue TBD)"
+        description="The Oyewale Areoye Initiative is organising a community outreach — sharing food and essential supplies with families in need. No tickets. No registration. Just a moment of giving and community."
+        contactLink="/initiative#donate"
+        contactText="Support the Outreach"
+      />
+
+      {/* ══════════════════════════════════════
           IMPACT NUMBERS
       ══════════════════════════════════════ */}
       <div className={styles.impactBand}>
@@ -189,6 +228,11 @@ export default function Initiative() {
       </section>
 
       {/* ══════════════════════════════════════
+          INSTAGRAM FEED
+      ══════════════════════════════════════ */}
+      <InstagramFeed handle="@theoyewaleareoyeinitiative" />
+
+      {/* ══════════════════════════════════════
           DONATE BAND
       ══════════════════════════════════════ */}
       <div id="donate" className={`${styles.donateBand} ${styles.anchorOffset}`}>
@@ -231,12 +275,12 @@ export default function Initiative() {
                   </svg>
                 </span>
                 <a
-                  href="https://instagram.com/theoyewaleinitiative"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="https://instagram.com/theoyewaleareoyeinitiative"
+                  target="_blank" 
+                  rel="noreferrer"
                   className={styles.contactLink}
                 >
-                  Instagram · @theoyewaleinitiative
+                  @theoyewaleareoyeinitiative
                 </a>
               </div>
             </div>

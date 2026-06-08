@@ -49,7 +49,7 @@ export default function Footer({ variant = 'main' }) {
             <ul className={styles.links}>
               <li><a href="https://www.linkedin.com/in/oyewale-areoye-69419053/" target="_blank" rel="noreferrer">LinkedIn</a></li>
               <li><a href="https://instagram.com/iamoltek" target="_blank" rel="noreferrer">Personal Instagram</a></li>
-              <li><a href="https://instagram.com/theoyewaleinitiative" target="_blank" rel="noreferrer">The Initiative</a></li>
+              <li><a href="https://instagram.com/theoyewaleareoyeinitiative" target="_blank" rel="noreferrer">The Initiative</a></li>
             </ul>
           </div>
         </div>

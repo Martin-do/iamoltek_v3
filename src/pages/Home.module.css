@@ -215,6 +215,134 @@
 }
 
 /* ================================================================
+   OUTREACH TEASER BANNER (Homepage)
+   ================================================================ */
+.outreachTeaser {
+  width: 100%;
+  background: linear-gradient(100deg, #1a0505 0%, #2a0808 60%, #1a0505 100%);
+  border-top: 1px solid rgba(196, 151, 63, 0.12);
+  border-bottom: 1px solid rgba(196, 151, 63, 0.12);
+  padding: 3.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.outreachTeaser::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(ellipse 80% 80% at 100% 50%, rgba(196, 151, 63, 0.06), transparent);
+  pointer-events: none;
+}
+
+.outreachTeaserInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.outreachTeaserLeft {
+  flex: 1;
+  min-width: 260px;
+}
+
+.outreachTeaserDot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+
+.outreachTeaserDot::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(196, 151, 63, 0.6);
+  animation: pulseDot 2s ease-out infinite;
+}
+
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0 rgba(196, 151, 63, 0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(196, 151, 63, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(196, 151, 63, 0); }
+}
+
+.outreachTeaserTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.outreachTeaserTitle em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.outreachTeaserSub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.outreachTeaserCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: 1px solid rgba(196, 151, 63, 0.35);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.outreachTeaserCta:hover {
+  background: rgba(196, 151, 63, 0.1);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .outreachTeaser {
+    padding: 2.5rem 0;
+  }
+
+  .outreachTeaserInner {
+    gap: 1.5rem;
+  }
+
+  .outreachTeaserCta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================================================================
    PILLARS
    ================================================================ */
 .pillars {
