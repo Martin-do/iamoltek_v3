@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './InstagramFeed.module.css'
 import { Link } from 'react-router-dom'
 
-export default function InstagramFeed({ handle = "@theoyewaleinitiative" }) {
+export default function InstagramFeed({ handle = "@theoyewaleareoyeinitiative" }) {
   // Placeholder images for the mockup
   const placeholders = [
     "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
