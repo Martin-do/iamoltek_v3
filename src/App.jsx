@@ -6,10 +6,19 @@ import About from './pages/About'
 import Initiative from './pages/Initiative'
 import Atobase from './pages/Atobase'
 import Contact from './pages/Contact'
+import { initGA, logPageView } from './analytics'
 
-function ScrollToTop() {
+// Initialize Google Analytics (only active if VITE_GA_MEASUREMENT_ID is provided)
+initGA();
+
+function RouteObserver() {
   const { pathname, hash } = useLocation()
+  
   useEffect(() => {
+    // 1. Log page view on route change
+    logPageView();
+
+    // 2. Handle scroll to top or hash
     if (!hash) {
       window.scrollTo(0, 0)
       return
@@ -20,13 +29,14 @@ function ScrollToTop() {
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     })
   }, [pathname, hash])
+  
   return null
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <RouteObserver />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
