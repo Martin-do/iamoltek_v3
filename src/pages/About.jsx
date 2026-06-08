@@ -22,10 +22,10 @@ const expertise = [
 const timeline = [
   {
     year: '2024 – Present',
-    role: 'Executive Director, Strategy & Growth',
+    role: 'Co-founder',
     org: 'Circle Point Group · Lagos',
     orgLink: 'https://circlepoint.com.ng/',
-    cofounder: true,
+    cofounder: false,
     desc: 'Co-founding and leading strategy, investment growth, and high-value property development and facility solutions across Nigeria.',
   },
   {
