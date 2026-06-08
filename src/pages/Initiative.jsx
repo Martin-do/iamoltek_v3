@@ -46,8 +46,8 @@ export default function Initiative() {
       />
 
       <AnnouncementStrip 
-        tag="Upcoming Activity" 
-        text="The Initiative is organising a Community Outreach — food & essentials for families in need. Coming soon!" 
+        tag="Upcoming Project" 
+        text="The Oyewale Areoye Initiative is launching the Back to School Project — equipping students with essential materials." 
         linkText="See Details" 
         linkHref="#event" 
       />
