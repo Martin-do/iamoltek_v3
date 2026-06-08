@@ -47,7 +47,7 @@ export default function Initiative() {
 
       <AnnouncementStrip 
         tag="Upcoming Project" 
-        text="The Oyewale Areoye Initiative is launching the Back to School Project — equipping students with essential materials." 
+        text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials." 
         linkText="See Details" 
         linkHref="#event" 
       />
