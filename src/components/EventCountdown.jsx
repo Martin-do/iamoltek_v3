@@ -4,7 +4,7 @@ import styles from './EventCountdown.module.css'
 
 export default function EventCountdown({
   eventName = "Back to School Project",
-  description = "Education is the foundation of every thriving community. For our upcoming project, The Oyewale Areoye Initiative is producing and distributing customized notebooks and essential stationery to students across local communities. Join us in equipping the next generation with the tools they need to write their own bright futures.",
+  description = "Education is the foundation of every thriving community. For our upcoming project, The Oyewale Areoye Initiative will be producing and distributing customized notebooks and essential stationery to students across local communities. Join us in equipping the next generation with the tools they need to write their own bright futures.",
   contactLink = "/initiative#donate",
   contactText = "Support the Project"
 }) {
