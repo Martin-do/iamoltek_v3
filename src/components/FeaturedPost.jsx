@@ -130,7 +130,12 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <img src={imageSrc} alt="Featured Initiative Post" className={styles.postImage} />
+            <img 
+              src={imageSrc} 
+              alt="Featured Initiative Post" 
+              className={styles.postImage} 
+              fetchpriority="high"
+            />
             {/* Scroll Prompt visible on mobile */}
             <div className={styles.scrollPrompt}>
               Swipe Up to Read More ↑
