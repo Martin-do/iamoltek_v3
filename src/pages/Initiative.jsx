@@ -147,14 +147,7 @@ export default function Initiative() {
       {/* ══════════════════════════════════════
           EVENT COUNTDOWN
       ══════════════════════════════════════ */}
-      <EventCountdown 
-        eventName="Community Outreach Drive"
-        eventDateStr="2026-08-15T10:00:00"
-        location="Okeluse Kingdom, Ondo State (Venue TBD)"
-        description="The Oyewale Areoye Initiative is organising a community outreach — sharing food and essential supplies with families in need. No tickets. No registration. Just a moment of giving and community."
-        contactLink="/initiative#donate"
-        contactText="Support the Outreach"
-      />
+      <EventCountdown />
 
       {/* ══════════════════════════════════════
           IMPACT NUMBERS
