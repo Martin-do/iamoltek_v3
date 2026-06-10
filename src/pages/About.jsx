@@ -51,6 +51,7 @@ const timeline = [
 ]
 
 const certifications = [
+  { code: 'CIWFM',                     name: 'Certified, Institute of Workplace and Facilities Management' },
   { code: 'CICPFM',                    name: 'Certified Facility Management Professional' },
   { code: 'CBAP',                      name: 'Certified Business Analyst Professional' },
   { code: 'IOPM',                      name: 'Accredited Project Manager' },
