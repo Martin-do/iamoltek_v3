@@ -58,6 +58,13 @@ const portraitPhotos = [
   { img: pAgbada,       cap: 'In White Agbada · Traditional Attire',         pos: 'center top' },
   { img: pSmiling,      cap: 'A Moment of Joy · Atobase Carpet',             pos: 'center top' },
   { img: pBowing,       cap: 'In Reverence · The Ceremony',                  pos: 'center top' },
+  { img: c7,  cap: 'Royal Ceremony · Atobase Investiture 2024',           pos: 'center top' },
+  { img: c8,  cap: 'The Investiture Procession · Okeluse Kingdom',        pos: 'center top' },
+  { img: c9,  cap: 'Celebrating the New Title · Okeluse Kingdom',         pos: 'center top' },
+  { img: c10, cap: 'A Historic Occasion · Atobase of Okeluse',            pos: 'center top' },
+  { img: c11, cap: 'Moments of the Investiture · 2024',                   pos: 'center top' },
+  { img: c12, cap: 'Community Celebration · Okeluse Kingdom',             pos: 'center top' },
+  { img: c13, cap: 'The Atobase Receives His Title · 2024',               pos: 'center top' },
 ]
 
 const ceremonyPhotos = [
@@ -67,13 +74,6 @@ const ceremonyPhotos = [
   { img: c4,  cap: 'Alongside HRM Oba Oloyede Adeyeoba · Okeluse Kingdom',pos: 'center top' },
   { img: c5,  cap: 'Standing with the Monarch · Ceremony Proceedings',    pos: 'center top' },
   { img: c6,  cap: 'Royal Gathering · Atobase Investiture 2024',          pos: 'center top' },
-  { img: c7,  cap: 'Royal Ceremony · Atobase Investiture 2024',           pos: 'center top' },
-  { img: c8,  cap: 'The Investiture Procession · Okeluse Kingdom',        pos: 'center top' },
-  { img: c9,  cap: 'Celebrating the New Title · Okeluse Kingdom',         pos: 'center top' },
-  { img: c10, cap: 'A Historic Occasion · Atobase of Okeluse',            pos: 'center top' },
-  { img: c11, cap: 'Moments of the Investiture · 2024',                   pos: 'center top' },
-  { img: c12, cap: 'Community Celebration · Okeluse Kingdom',             pos: 'center top' },
-  { img: c13, cap: 'The Atobase Receives His Title · 2024',               pos: 'center top' },
 ]
 
 const REEL_ID = 'DO_19YViJGm'
