@@ -20,6 +20,13 @@ import c3 from '../assets/ceremony-3.jpg'
 import c4 from '../assets/ceremony-4.jpg'
 import c5 from '../assets/ceremony-5.jpg'
 import c6 from '../assets/ceremony-6.jpg'
+import c7  from '../assets/atobase4.jpg'
+import c8  from '../assets/atobase5.jpg'
+import c9  from '../assets/atobase6.jpg'
+import c10 from '../assets/atobase7.jpg'
+import c11 from '../assets/atobase8.jpg'
+import c12 from '../assets/atobase10.jpg'
+import c13 from '../assets/atobase11.jpg'
 
 import styles from './Atobase.module.css'
 
@@ -54,12 +61,19 @@ const portraitPhotos = [
 ]
 
 const ceremonyPhotos = [
-  { img: c1, cap: 'Receiving the Royal Instruments · The Investiture',   pos: 'center 40%' },
-  { img: c2, cap: 'With Okeluse Kingdom Royalty · Ceremony Day',         pos: 'center top' },
-  { img: c3, cap: 'A Royal Exchange · The Investiture Ceremony',         pos: 'center top' },
-  { img: c4, cap: 'Alongside HRM Oba Oloyede Adeyeoba · Okeluse Kingdom',pos: 'center top' },
-  { img: c5, cap: 'Standing with the Monarch · Ceremony Proceedings',    pos: 'center top' },
-  { img: c6, cap: 'Royal Gathering · Atobase Investiture 2024',          pos: 'center top' },
+  { img: c1,  cap: 'Receiving the Royal Instruments · The Investiture',   pos: 'center 40%' },
+  { img: c2,  cap: 'With Okeluse Kingdom Royalty · Ceremony Day',         pos: 'center top' },
+  { img: c3,  cap: 'A Royal Exchange · The Investiture Ceremony',         pos: 'center top' },
+  { img: c4,  cap: 'Alongside HRM Oba Oloyede Adeyeoba · Okeluse Kingdom',pos: 'center top' },
+  { img: c5,  cap: 'Standing with the Monarch · Ceremony Proceedings',    pos: 'center top' },
+  { img: c6,  cap: 'Royal Gathering · Atobase Investiture 2024',          pos: 'center top' },
+  { img: c7,  cap: 'Royal Ceremony · Atobase Investiture 2024',           pos: 'center top' },
+  { img: c8,  cap: 'The Investiture Procession · Okeluse Kingdom',        pos: 'center top' },
+  { img: c9,  cap: 'Celebrating the New Title · Okeluse Kingdom',         pos: 'center top' },
+  { img: c10, cap: 'A Historic Occasion · Atobase of Okeluse',            pos: 'center top' },
+  { img: c11, cap: 'Moments of the Investiture · 2024',                   pos: 'center top' },
+  { img: c12, cap: 'Community Celebration · Okeluse Kingdom',             pos: 'center top' },
+  { img: c13, cap: 'The Atobase Receives His Title · 2024',               pos: 'center top' },
 ]
 
 const REEL_ID = 'DO_19YViJGm'
