@@ -171,8 +171,12 @@ export default function FeaturedPost({ posts }) {
             {/* Tap Zones for Navigation */}
             {posts.length > 1 && (
               <div className={styles.tapZones}>
-                <div className={styles.tapLeft} onClick={handleTapLeft} />
-                <div className={styles.tapRight} onClick={handleTapRight} />
+                <div className={styles.tapLeft} onClick={handleTapLeft}>
+                  {currentPostIndex > 0 && <div className={styles.navArrow}>‹</div>}
+                </div>
+                <div className={styles.tapRight} onClick={handleTapRight}>
+                  {currentPostIndex < posts.length - 1 && <div className={styles.navArrow}>›</div>}
+                </div>
               </div>
             )}
 
