@@ -125,17 +125,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══════════ OUTREACH TEASER ══════════ */}
+      {/* ══════════ PROJECT TEASER ══════════ */}
       <div className={styles.outreachTeaser}>
         <div className={styles.outreachTeaserInner}>
           <div className={styles.outreachTeaserLeft}>
-            <div className={styles.outreachTeaserDot}>Upcoming Initiative Activity</div>
+            <div className={styles.outreachTeaserDot}>Upcoming Initiative Project</div>
             <h2 className={styles.outreachTeaserTitle}>
-              Community Outreach Drive — <em>Food &amp; Essentials</em>
+              Back to School Project — <em>Equipping the Next Generation</em>
             </h2>
             <p className={styles.outreachTeaserSub}>
-              The Oyewale Areoye Initiative is giving back — sharing food and essential
-              supplies with families in need across our communities. No tickets. Just love.
+              The Oyewale Areoye Initiative will be producing and distributing customized notebooks and essential stationery to students across local communities.
             </p>
           </div>
           <Link to="/initiative#event" className={styles.outreachTeaserCta}>

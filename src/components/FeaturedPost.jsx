@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './FeaturedPost.module.css';
 
-export default function FeaturedPost({ postId, imageSrc, textContent }) {
+export default function FeaturedPost({ posts }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [sheetHeight, setSheetHeight] = useState(55); // vh
   const [isDragging, setIsDragging] = useState(false);
+  const [currentPostIndex, setCurrentPostIndex] = useState(0);
   
   const startY = useRef(0);
   const startHeight = useRef(55);
@@ -13,10 +14,13 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
   const sheetRef = useRef(null);
   const winHeight = useRef(1000);
 
+  // Use the ID of the first post for the "has seen" check
+  const primaryPostId = posts && posts.length > 0 ? posts[0].id : 'default';
+
   useEffect(() => {
     // Only run on client after mount
     setHasMounted(true);
-    const hasSeenPost = localStorage.getItem(`seen_post_${postId}`);
+    const hasSeenPost = localStorage.getItem(`seen_post_${primaryPostId}`);
     if (!hasSeenPost) {
       // Auto-open on first visit for this post, slight delay for effect
       const timer = setTimeout(() => {
@@ -24,14 +28,16 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
       }, 800);
       return () => clearTimeout(timer);
     }
-  }, [postId]);
+  }, [primaryPostId]);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem(`seen_post_${postId}`, 'true');
+    localStorage.setItem(`seen_post_${primaryPostId}`, 'true');
     setTimeout(() => {
       setSheetHeight(55);
       currentHeight.current = 55;
+      // Reset back to newest post when closed
+      setCurrentPostIndex(0);
     }, 400); // reset height after animation
   };
 
@@ -91,7 +97,23 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
     }
   };
 
-  if (!hasMounted) return null;
+  const handleTapLeft = (e) => {
+    e.stopPropagation();
+    if (currentPostIndex > 0) {
+      setCurrentPostIndex(prev => prev - 1);
+    }
+  };
+
+  const handleTapRight = (e) => {
+    e.stopPropagation();
+    if (currentPostIndex < posts.length - 1) {
+      setCurrentPostIndex(prev => prev + 1);
+    }
+  };
+
+  if (!hasMounted || !posts || posts.length === 0) return null;
+
+  const activePost = posts[currentPostIndex];
 
   return (
     <>
@@ -130,8 +152,32 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
+            {/* Segmented Progress Bar */}
+            {posts.length > 1 && (
+              <div className={styles.progressBar}>
+                {posts.map((_, idx) => (
+                  <div key={idx} className={styles.progressSegment}>
+                    <div 
+                      className={styles.progressFill} 
+                      style={{ 
+                        width: idx <= currentPostIndex ? '100%' : '0%' 
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {/* Tap Zones for Navigation */}
+            {posts.length > 1 && (
+              <div className={styles.tapZones}>
+                <div className={styles.tapLeft} onClick={handleTapLeft} />
+                <div className={styles.tapRight} onClick={handleTapRight} />
+              </div>
+            )}
+
             <img 
-              src={imageSrc} 
+              src={activePost.image} 
               alt="Featured Initiative Post" 
               className={styles.postImage} 
               fetchpriority="high"
@@ -142,7 +188,7 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
             </div>
           </div>
           <div className={styles.textContainer}>
-            {textContent.map((paragraph, idx) => (
+            {activePost.text.map((paragraph, idx) => (
               <p key={idx} className={styles.postText}>{paragraph}</p>
             ))}
           </div>
@@ -155,7 +201,7 @@ export default function FeaturedPost({ postId, imageSrc, textContent }) {
         onClick={handleOpen}
       >
         <div className={styles.bubbleImageWrapper}>
-          <img src={imageSrc} alt="Open Featured Post" />
+          <img src={posts[0].image} alt="Open Featured Post" />
         </div>
       </div>
     </>

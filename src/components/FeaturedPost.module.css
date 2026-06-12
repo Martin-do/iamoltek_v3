@@ -261,3 +261,48 @@
     height: 80px;
   }
 }
+
+/* Stories Format UI */
+.progressBar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.progressSegment {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #fff;
+  transition: width 0.2s ease;
+}
+
+.tapZones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 5;
+}
+
+.tapLeft {
+  flex: 1;
+  cursor: w-resize;
+}
+
+.tapRight {
+  flex: 1;
+  cursor: e-resize;
+}

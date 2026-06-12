@@ -8,16 +8,36 @@ import FeaturedPost from '../components/FeaturedPost'
 import initiativeLogo   from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg  from '../assets/featured-post-01.jpeg'
+import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import styles from './Initiative.module.css'
 
-const featuredPostText = [
-  "EMPOWERING PEOPLE. TRANSFORMING COMMUNITIES.",
-  "Meaningful change begins when people are equipped with the knowledge, opportunities, and support they need to thrive.",
-  "At The Oyewale Areoye Initiative, we are committed to fostering leadership, promoting education, encouraging service, and creating opportunities that inspire individuals to reach their full potential and contribute positively to society.",
-  "Through ideas, advocacy, community engagement, and impactful initiatives, we seek to build stronger individuals and more resilient communities.",
-  "Together, we can create lasting change.",
-  "Ideas. Leadership. Service. Impact.",
-  "#TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Leadership #Education #CommunityDevelopment #SocialImpact #YouthEmpowerment #PositiveChange #BuildingTheFuture #ImpactDriven #TogetherWeCan #InspiringLeadership #CreatingImpact"
+const featuredPostsData = [
+  {
+    id: 'initiative_post_02',
+    image: newPostImg,
+    text: [
+      "RISE & BELIEVE",
+      "You are capable of far more than your current circumstances may suggest.",
+      "Every great achievement begins with the decision to believe that growth is possible. The journey to becoming your best self starts when you refuse to be defined by fear, doubt, setbacks, or limitations.",
+      "Do not shrink your dreams to fit your present reality. Expand your mindset to match your potential.",
+      "Today, choose growth.\nChoose courage.\nChoose to rise.",
+      "“You were not built to stay small. Rise into every version of yourself the world has been waiting for.”",
+      "#RiseAndBelieve #EmpowermentForAll #TheOyewaleAreoyeInitiative #PersonalGrowth #LeadershipDevelopment #BelieveInYourself #PurposeDriven #CommunityImpact #InspirationDaily #TransformingCommunities"
+    ]
+  },
+  {
+    id: 'initiative_post_01',
+    image: featuredPostImg,
+    text: [
+      "EMPOWERING PEOPLE. TRANSFORMING COMMUNITIES.",
+      "Meaningful change begins when people are equipped with the knowledge, opportunities, and support they need to thrive.",
+      "At The Oyewale Areoye Initiative, we are committed to fostering leadership, promoting education, encouraging service, and creating opportunities that inspire individuals to reach their full potential and contribute positively to society.",
+      "Through ideas, advocacy, community engagement, and impactful initiatives, we seek to build stronger individuals and more resilient communities.",
+      "Together, we can create lasting change.",
+      "Ideas. Leadership. Service. Impact.",
+      "#TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Leadership #Education #CommunityDevelopment #SocialImpact #YouthEmpowerment #PositiveChange #BuildingTheFuture #ImpactDriven #TogetherWeCan #InspiringLeadership #CreatingImpact"
+    ]
+  }
 ]
 
 const pillars = [
@@ -39,11 +59,7 @@ export default function Initiative() {
 
   return (
     <main style={{ paddingTop: 'var(--nav-height)' }}>
-      <FeaturedPost 
-        postId="initiative_post_01" 
-        imageSrc={featuredPostImg} 
-        textContent={featuredPostText} 
-      />
+      <FeaturedPost posts={featuredPostsData} />
 
       <AnnouncementStrip 
         tag="Upcoming Project" 
