@@ -9,9 +9,24 @@ import initiativeLogo   from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg  from '../assets/featured-post-01.jpeg'
 import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
+import post03Img        from '../assets/theoyewaleareoyeinitiative_02.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_03',
+    image: post03Img,
+    text: [
+      "RISE & BELIEVE",
+      "True empowerment does not begin when someone recognizes your worth. It begins when you recognize it yourself.",
+      "The greatest transformations occur when individuals discover the courage, confidence, and determination already within them. No circumstance, setback, or limitation can extinguish the fire of a person who believes in their potential.",
+      "Do not wait for permission to grow.",
+      "Do not wait for others to validate your dreams.",
+      "The power to rise has always been within you.",
+      "“Empowerment is not a gift someone hands you. It is a fire you discover within yourself.”",
+      "#RiseAndBelieve #EmpowermentForAll #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #PersonalGrowth #LeadershipDevelopment #SelfBelief #InspirationDaily #PurposeDrivenLife"
+    ]
+  },
   {
     id: 'initiative_post_02',
     image: newPostImg,
