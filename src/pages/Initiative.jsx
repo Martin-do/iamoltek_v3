@@ -10,9 +10,25 @@ import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg  from '../assets/featured-post-01.jpeg'
 import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import post03Img        from '../assets/theoyewaleareoyeinitiative_02.jpeg'
+import post04Img        from '../assets/theoyewaleareoyeinitiative_03.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_04',
+    image: post04Img,
+    text: [
+      "RISE & BELIEVE",
+      "Your story is not defined by where you started. It is shaped by the decisions you make, the resilience you build, and the vision you pursue.",
+      "Many people allow their circumstances to become excuses. Others use those same circumstances as motivation to rise higher. The difference is not in their background, but in their mindset.",
+      "Your past may explain your journey, but it does not determine your destination.",
+      "Keep learning.",
+      "Keep growing.",
+      "Keep moving forward.",
+      "“Your background is not your ceiling. It is the foundation from which you launch.”",
+      "#RiseAndBelieve #NoLimits #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #SelfBelief #InspirationDaily #PurposeDriven #TransformingCommunities #FutureFocused"
+    ]
+  },
   {
     id: 'initiative_post_03',
     image: post03Img,
