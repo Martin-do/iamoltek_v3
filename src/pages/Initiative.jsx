@@ -11,9 +11,29 @@ import featuredPostImg  from '../assets/featured-post-01.jpeg'
 import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import post03Img        from '../assets/theoyewaleareoyeinitiative_02.jpeg'
 import post04Img        from '../assets/theoyewaleareoyeinitiative_03.jpeg'
+import post05Img        from '../assets/theoyewaleareoyeinitiative_04.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_05',
+    image: post05Img,
+    text: [
+      "RISE & BELIEVE",
+      "Too many dreams remain unrealized, not because people lack talent, but because they are waiting for the perfect moment, perfect conditions, or perfect confidence.",
+      "Growth does not come from perfection.",
+      "It comes from participation.",
+      "Every expert was once a beginner.",
+      "Every leader was once learning.",
+      "Every success story started with someone willing to show up despite uncertainty.",
+      "Do not let the pursuit of perfection keep you from making progress.",
+      "Start where you are.",
+      "Use what you have.",
+      "Become who you are meant to be.",
+      "“The world does not need a perfect you. It needs a present you, showing up, ready to grow.”",
+      "#RiseAndBelieve #ShowUp #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #SelfBelief #ProgressOverPerfection #GrowthMindset #TransformingCommunities #InspirationDaily"
+    ]
+  },
   {
     id: 'initiative_post_04',
     image: post04Img,
