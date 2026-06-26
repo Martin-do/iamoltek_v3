@@ -12,9 +12,28 @@ import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import post03Img        from '../assets/theoyewaleareoyeinitiative_02.jpeg'
 import post04Img        from '../assets/theoyewaleareoyeinitiative_03.jpeg'
 import post05Img        from '../assets/theoyewaleareoyeinitiative_04.jpeg'
+import post06Img        from '../assets/theoyewaleareoyeinitiative_05.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_06',
+    image: post06Img,
+    text: [
+      "RISE & BELIEVE",
+      "Every breakthrough begins long before the results appear.",
+      "Before the achievement, there is belief.",
+      "Before the success, there is vision.",
+      "Before the victory, there is a decision to trust that what seems impossible today can become reality tomorrow.",
+      "The future belongs to those who dare to believe beyond their current circumstances and act with confidence toward their goals.",
+      "Do not allow doubt to silence your dreams.",
+      "Believe first.",
+      "Work consistently.",
+      "Watch possibilities become achievements.",
+      "“Every great thing that will happen in your life begins with a decision to believe it is possible.”",
+      "#RiseAndBelieve #BelieveFirst #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #FaithInYourPotential #GrowthMindset #DreamBig #PurposeDriven #TransformingCommunities #InspirationDaily"
+    ]
+  },
   {
     id: 'initiative_post_05',
     image: post05Img,
