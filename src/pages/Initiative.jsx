@@ -5,17 +5,35 @@ import AnnouncementStrip from '../components/AnnouncementStrip'
 import EventCountdown from '../components/EventCountdown'
 import InstagramFeed from '../components/InstagramFeed'
 import FeaturedPost from '../components/FeaturedPost'
-import initiativeLogo   from '../assets/initiative-logo.jpg'
+import initiativeLogo from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
-import featuredPostImg  from '../assets/featured-post-01.jpeg'
-import newPostImg       from '../assets/theoyewaleareoyeinitiative_01.jpg'
-import post03Img        from '../assets/theoyewaleareoyeinitiative_02.jpeg'
-import post04Img        from '../assets/theoyewaleareoyeinitiative_03.jpeg'
-import post05Img        from '../assets/theoyewaleareoyeinitiative_04.jpeg'
-import post06Img        from '../assets/theoyewaleareoyeinitiative_05.jpeg'
+import featuredPostImg from '../assets/featured-post-01.jpeg'
+import newPostImg from '../assets/theoyewaleareoyeinitiative_01.jpg'
+import post03Img from '../assets/theoyewaleareoyeinitiative_02.jpeg'
+import post04Img from '../assets/theoyewaleareoyeinitiative_03.jpeg'
+import post05Img from '../assets/theoyewaleareoyeinitiative_04.jpeg'
+import post06Img from '../assets/theoyewaleareoyeinitiative_05.jpeg'
+import post07Img from '../assets/theoyewaleareoyeinitiative_06.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_07',
+    image: post07Img,
+    text: [
+      "RISE & BELIEVE",
+      "Potential is one of the most powerful resources in the world, yet it remains invisible until it is developed.",
+      "Your dreams, talents, and abilities are not determined by your background, status, or circumstances. They are shaped by your willingness to learn, grow, and persevere.",
+      "Greatness is not the privilege of a select few. It is the reward of those who consistently invest in becoming better than they were yesterday.",
+      "Do not underestimate what is possible when determination meets opportunity.",
+      "Unlock your potential.",
+      "Embrace your growth.",
+      "Pursue your purpose.",
+      "Potential is not reserved for the privileged. It lives in every person willing to pursue it.",
+      "#RiseAndBelieve #PotentialUnlocked #TheOyewaleAreoyeInitiative #EmpowermentForAll #UnlockYourPotential #LeadershipDevelopment #PersonalGrowth #PurposeDriven #InspirationDaily #TransformingCommunities #BelieveInYourself #FutureLeaders"
+
+    ]
+  },
   {
     id: 'initiative_post_06',
     image: post06Img,
@@ -112,16 +130,16 @@ const featuredPostsData = [
 
 const pillars = [
   { icon: '📚', title: 'Education & Scholarships', desc: 'Funding access to quality education for bright but financially constrained young Nigerians — from primary school to university scholarships.' },
-  { icon: '🌾', title: 'Community Development',    desc: 'Infrastructure, sanitation, and local economic development projects that uplift communities and restore dignity to everyday life.' },
-  { icon: '🤝', title: 'Youth Empowerment',         desc: 'Skills acquisition, entrepreneurship training, and mentorship programmes designed to prepare young Nigerians to lead and thrive.' },
-  { icon: '🏠', title: 'Housing & Welfare',          desc: 'Advocating for affordable, safe housing and social welfare support for the most vulnerable in our communities.' },
+  { icon: '🌾', title: 'Community Development', desc: 'Infrastructure, sanitation, and local economic development projects that uplift communities and restore dignity to everyday life.' },
+  { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills acquisition, entrepreneurship training, and mentorship programmes designed to prepare young Nigerians to lead and thrive.' },
+  { icon: '🏠', title: 'Housing & Welfare', desc: 'Advocating for affordable, safe housing and social welfare support for the most vulnerable in our communities.' },
 ]
 
 const programmes = [
   { tag: 'Education', title: 'The Oltek Scholarship Fund', desc: 'Annual scholarship awarding educational grants to exceptional young students from low-income backgrounds. Applications open each January.' },
-  { tag: 'Youth',     title: 'Skill Up Nigeria',           desc: 'Vocational and digital skills training for unemployed youth aged 18–30. Courses in real estate, construction, digital marketing, and coding.' },
-  { tag: 'Community', title: 'Restore Okeluse Project',    desc: 'A special development initiative in Okeluse Kingdom supporting infrastructure, clean water, and community health outreach.' },
-  { tag: 'Welfare',   title: 'Care Basket Outreach',       desc: 'Quarterly welfare drives providing food, essentials, and support to elderly and vulnerable individuals across target communities.' },
+  { tag: 'Youth', title: 'Skill Up Nigeria', desc: 'Vocational and digital skills training for unemployed youth aged 18–30. Courses in real estate, construction, digital marketing, and coding.' },
+  { tag: 'Community', title: 'Restore Okeluse Project', desc: 'A special development initiative in Okeluse Kingdom supporting infrastructure, clean water, and community health outreach.' },
+  { tag: 'Welfare', title: 'Care Basket Outreach', desc: 'Quarterly welfare drives providing food, essentials, and support to elderly and vulnerable individuals across target communities.' },
 ]
 
 export default function Initiative() {
@@ -131,11 +149,11 @@ export default function Initiative() {
     <main style={{ paddingTop: 'var(--nav-height)' }}>
       <FeaturedPost posts={featuredPostsData} />
 
-      <AnnouncementStrip 
-        tag="Upcoming Project" 
-        text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials." 
-        linkText="See Details" 
-        linkHref="#event" 
+      <AnnouncementStrip
+        tag="Upcoming Project"
+        text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials."
+        linkText="See Details"
+        linkHref="#event"
       />
 
       {/* ══════════════════════════════════════
@@ -242,9 +260,9 @@ export default function Initiative() {
         <div className={styles.impactBandInner}>
           {[
             ['500+', 'Lives Directly Impacted'],
-            ['12',   'Scholarships Awarded'],
-            ['5',    'Community Projects'],
-            ['3',    'Partner Organisations'],
+            ['12', 'Scholarships Awarded'],
+            ['5', 'Community Projects'],
+            ['3', 'Partner Organisations'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
               <div className={styles.istatNum}>{n}</div>
@@ -348,14 +366,14 @@ export default function Initiative() {
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>
                   <svg className={styles.instagramIcon} viewBox="0 0 24 24" width="13" height="13">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" strokeWidth="2"/>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" fill="currentColor" stroke="currentColor" strokeWidth="2" />
                   </svg>
                 </span>
                 <a
                   href="https://instagram.com/theoyewaleareoyeinitiative"
-                  target="_blank" 
+                  target="_blank"
                   rel="noreferrer"
                   className={styles.contactLink}
                 >
