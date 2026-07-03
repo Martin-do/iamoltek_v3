@@ -14,9 +14,28 @@ import post04Img from '../assets/theoyewaleareoyeinitiative_03.jpeg'
 import post05Img from '../assets/theoyewaleareoyeinitiative_04.jpeg'
 import post06Img from '../assets/theoyewaleareoyeinitiative_05.jpeg'
 import post07Img from '../assets/theoyewaleareoyeinitiative_06.jpeg'
+import post08Img from '../assets/theoyewaleareoyeinitiative_07.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_08',
+    image: post08Img,
+    text: [
+      "RISE & BELIEVE",
+      "Many people spend their lives waiting for approval, validation, or permission before pursuing their dreams.",
+      "But growth begins the moment you stop waiting and start believing in your own worth.",
+      "Choose yourself by investing in your development.",
+      "Choose yourself by pursuing your goals.",
+      "Choose yourself by refusing to settle for less than your potential.",
+      "The opportunities you seek often begin when you decide that you are worthy of them.",
+      "Stand confidently in who you are becoming.",
+      "Own your journey.",
+      "Embrace your purpose.",
+      "Do not wait to be chosen. Choose yourself, loudly, boldly, and without apology.",
+      "#RiseAndBelieve #ChooseYourself #TheOyewaleAreoyeInitiative #EmpowermentForAll #SelfBelief #LeadershipDevelopment #PersonalGrowth #PurposeDriven #Confidence #FutureLeaders #TransformingCommunities #InspirationDaily"
+    ]
+  },
   {
     id: 'initiative_post_07',
     image: post07Img,
