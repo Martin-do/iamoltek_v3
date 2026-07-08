@@ -709,3 +709,27 @@
 .anchorOffset {
   scroll-margin-top: 88px;
 }
+
+/* BIRTHDAY POST SECTION */
+.birthdayPostSection {
+  background-color: var(--ivory);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(196, 151, 63, 0.12);
+}
+
+.birthdayPostWrap {
+  max-width: 400px;
+  width: 90%;
+  margin: 1.2rem auto 0 auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(196, 151, 63, 0.25);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .birthdayPostSection {
+    padding: 1.5rem 0;
+  }
+}

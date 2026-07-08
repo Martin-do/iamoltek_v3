@@ -5,6 +5,9 @@ import AnnouncementStrip from '../components/AnnouncementStrip'
 import EventCountdown from '../components/EventCountdown'
 import InstagramFeed from '../components/InstagramFeed'
 import FeaturedPost from '../components/FeaturedPost'
+import BirthdayBanner from '../components/BirthdayBanner'
+import InstagramReelEmbed from '../components/InstagramReelEmbed'
+import { isBirthdayPeriod } from '../utils/birthdayUtils'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg from '../assets/featured-post-01.jpeg'
@@ -182,6 +185,7 @@ export default function Initiative() {
 
   return (
     <main style={{ paddingTop: 'var(--nav-height)' }}>
+      <BirthdayBanner variant="initiative" />
       <FeaturedPost posts={featuredPostsData} />
 
       <AnnouncementStrip
@@ -358,6 +362,23 @@ export default function Initiative() {
           </div>
         </div>
       </section>
+
+      {/* 🎂 BIRTHDAY — single post embed above the feed */}
+      {isBirthdayPeriod() && (
+        <section className={styles.birthdayPostSection}>
+          <div className="section-inner">
+            <div className="section-label">🎂 Birthday Edition</div>
+            <h2 className="section-title">In Honour of His <em>Birthday</em></h2>
+            <div className="gold-rule" />
+            <div className={styles.birthdayPostWrap}>
+              <InstagramReelEmbed
+                permalink="https://www.instagram.com/p/DahNoyfCKnr/"
+                title="Birthday post — The Oyewale Areoye Initiative"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ══════════════════════════════════════
           INSTAGRAM FEED

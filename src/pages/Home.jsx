@@ -2,6 +2,9 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
+import BirthdayBanner from '../components/BirthdayBanner'
+import BirthdaySpotlight from '../components/BirthdaySpotlight'
+import { isBirthdayPeriod } from '../utils/birthdayUtils'
 import heroPortrait   from '../assets/hero-portrait.png'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import atobaseHero    from '../assets/portrait-golden-throne.jpg'
@@ -63,8 +66,11 @@ export default function Home() {
   const navigate = useNavigate()
   useScrollReveal()
 
+  const isBirthday = isBirthdayPeriod()
+
   return (
-    <main className={styles.main}>
+    <main className={styles.main} style={isBirthday ? { paddingTop: '74px' } : {}}>
+      <BirthdayBanner />
 
       {/* ══════════════════════════════════════════════════════
           HERO
@@ -142,6 +148,8 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      <BirthdaySpotlight />
 
       {/* ══════════ PILLARS ══════════ */}
       <section className={styles.pillars}>

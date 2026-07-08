@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav from './components/Nav'
+import BirthdaySplash from './components/BirthdaySplash'
 import Home from './pages/Home'
 import About from './pages/About'
 import Initiative from './pages/Initiative'
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <RouteObserver />
+      <BirthdaySplash />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
