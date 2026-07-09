@@ -80,6 +80,10 @@
   border-bottom: 1px solid var(--cream-dk);
 }
 .text { font-size: 0.92rem; line-height: 2; color: var(--muted); font-weight: 300; margin-bottom: 1rem; }
+.tagline {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem; line-height: 1.5;
+}
 
 .expGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.8rem; }
 .expItem { padding: 1.1rem 1.4rem; background: var(--cream); border-top: 2px solid transparent; transition: border-color 0.3s; }

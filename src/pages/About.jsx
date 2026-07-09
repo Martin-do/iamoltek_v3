@@ -130,26 +130,31 @@ export default function About() {
           <div>
             <div className={`${styles.section} reveal`}>
               <h2 className={styles.sectionTitle}>Professional Overview</h2>
+              <div className={styles.tagline}>
+                Facility Management &amp; Real Estate Executive &bull; Strategic Leadership &bull; Investment Growth
+              </div>
               <p className={styles.text}>
-                Oyewale Areoye is a distinguished Facility Management and Real Estate professional
-                with over 11 years of expertise in strategic leadership, operations, and financial
-                management. His experience spans asset optimization, cost control, contract
-                negotiation, and regulatory compliance — positioning him as a recognised leader
-                in Nigeria's property sector.
+                Oyewale Areoye is a distinguished Facility Management and Real Estate professional with over 11 years of expertise spanning strategic leadership, operations, and financial management. His career reflects a rare combination of operational discipline and growth-oriented vision expertise that has positioned him as a recognized leader within Nigeria's property sector.
               </p>
               <p className={styles.text}>
-                Currently serving as Executive Director of Strategy &amp; Growth at{' '}
+                Across his career, Oyewale has built deep competencies in asset optimization, cost control, contract negotiation, and regulatory compliance. He approaches each engagement with a dual lens: protecting and enhancing the value of physical assets while identifying opportunities to drive commercial growth. This blend of financial rigor and strategic foresight has made him a trusted voice in structuring high-value real estate solutions that perform in a competitive and often complex market.
+              </p>
+              <p className={styles.text}>
+                As Co-founder of{' '}
                 <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
-                  Circle Point<span className={styles.tLinkArrow}>↗</span>
+                  Circle Point Group<span className={styles.tLinkArrow}>↗</span>
                 </a>
-                , Oyewale leads property development strategy and investment growth, ensuring high-value real estate solutions across Nigeria's competitive market.
+                , Oyewale leads property development strategy and investment growth, shaping the organization from the ground up and steering its direction across Nigeria's competitive property landscape. His founding role gives him a distinct vantage point combining entrepreneurial ownership with hands-on strategic execution to deliver high-value real estate solutions.
               </p>
               <p className={styles.text}>
-                In addition to his role at Circle Point Group, he serves as Executive Director at{' '}
+                In parallel, Oyewale serves as Executive Director at{' '}
                 <a href="https://petiklimited.com/oyewale-areoye/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
                   Petik Limited<span className={styles.tLinkArrow}>↗</span>
                 </a>
-                , directing operations, strategy, and business growth across property development, construction, and key multi-sector services.
+                , where he directs operations, strategy, and business growth across property development, construction, and a diverse portfolio of multi-sector services. In this role, he oversees the full lifecycle of projects from strategic planning and contract structuring through to delivery ensuring operational efficiency, regulatory alignment, and long-term value creation.
+              </p>
+              <p className={styles.text}>
+                Together, these dual leadership roles reflect Oyewale's broader philosophy: that sustainable growth in real estate and facility management comes from marrying disciplined financial stewardship with bold, forward-looking strategy.
               </p>
               <div className={styles.expGrid}>
                 {expertise.map((e, i) => (
