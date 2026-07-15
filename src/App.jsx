@@ -1,10 +1,12 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Navigate, Routes, Route, useLocation, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav from './components/Nav'
 import BirthdaySplash from './components/BirthdaySplash'
 import Home from './pages/Home'
 import About from './pages/About'
 import Initiative from './pages/Initiative'
+import Reports from './pages/Reports'
+import ReportDetail from './pages/ReportDetail'
 import Atobase from './pages/Atobase'
 import Contact from './pages/Contact'
 import { initGA, logPageView } from './analytics'
@@ -34,6 +36,11 @@ function RouteObserver() {
   return null
 }
 
+function LegacyReportRedirect() {
+  const { slug } = useParams()
+  return <Navigate to={`/initiative/impact/${slug}`} replace />
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -44,6 +51,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/initiative" element={<Initiative />} />
+        <Route path="/initiative/impact" element={<Reports />} />
+        <Route path="/initiative/impact/:slug" element={<ReportDetail />} />
+        <Route path="/initiative/reports" element={<Navigate to="/initiative/impact" replace />} />
+        <Route path="/initiative/reports/:slug" element={<LegacyReportRedirect />} />
         <Route path="/atobase" element={<Atobase />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

@@ -2,7 +2,7 @@
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
   padding: 0 var(--content-pad);
   display: flex; align-items: center; justify-content: space-between;
-  height: 74px;
+  height: var(--nav-height);
   background: rgba(17,16,16,0.55);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid transparent;

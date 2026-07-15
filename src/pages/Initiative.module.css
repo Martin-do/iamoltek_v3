@@ -728,8 +728,13 @@
   padding: 10px;
 }
 
+.reportsIntro { max-width: 620px; margin: -0.3rem 0 2rem; color: var(--muted); line-height: 1.7; }
+.reportLink { display: inline-block; margin-top: .35rem; color: var(--burg); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+.reportLink:hover { color: var(--burg-light); }
+.reportsCta { margin-top: 2.4rem; }
+
 @media (max-width: 768px) {
   .birthdayPostSection {
     padding: 1.5rem 0;
   }
-}
+}

@@ -145,6 +145,12 @@ a, button, .btn-burg, .btn-ghost, .btn-gold {
 .reveal-d4     { transition-delay: 0.4s !important; }
 
 /* ---- MOBILE ---- */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+  }
+}
+
 @media (max-width: 600px) {
   :root { --content-pad: 5%; }
   .btn-gold, .btn-ghost, .btn-burg {

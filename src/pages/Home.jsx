@@ -51,7 +51,7 @@ function StatItem({ num, label }) {
 
 const statsData = [
   { num: '11+', label: 'Years Industry Leadership' },
-  { num: '4',   label: 'Professional Certifications' },
+  { num: '6',   label: 'Professional Certifications' },
   { num: '1',   label: 'Royal Title Bestowed' },
   { num: '∞',   label: 'Communities Impacted' },
 ]
@@ -69,7 +69,7 @@ export default function Home() {
   const isBirthday = isBirthdayPeriod()
 
   return (
-    <main className={styles.main} style={isBirthday ? { paddingTop: '74px' } : {}}>
+    <main className={styles.main} style={isBirthday ? { paddingTop: 'var(--nav-height)' } : {}}>
       <BirthdayBanner />
 
       {/* ══════════════════════════════════════════════════════
@@ -95,7 +95,7 @@ export default function Home() {
             </p>
             <div className={`${styles.heroBadges} fade-up-d2`}>
               {[
-                'Co-Founder & Executive Director — Circle Point Group',
+                'Co-Founder — Circle Point Group',
                 'Executive Director — Petik Limited',
                 'Founder, The Oyewale Areoye Initiative',
                 'Atobase of Okeluse Kingdom, Ondo State',

@@ -146,12 +146,12 @@
   overflow: hidden;
   background: #0c0a09;
   /* Shift image down so head clears nav */
-  padding-top: 74px;
+  padding-top: var(--nav-height);
 }
 
 .portrait {
   width: 100%;
-  height: calc(100% - 74px);
+  height: calc(100% - var(--nav-height));
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -740,7 +740,8 @@
 
   .portrait {
     height: 100%;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center var(--nav-height);
     transform: none;
   }
 
@@ -762,7 +763,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: stretch;
-    padding: 90px 0 2.5rem;
+    padding: 90px 0 8rem;
     background: none;
   }
 
@@ -771,6 +772,11 @@
     margin: 0;
     padding: 0 6% 0;
     width: 100%;
+  }
+
+  .eyebrow {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
   }
 
   .heroName {

@@ -8,6 +8,7 @@ import FeaturedPost from '../components/FeaturedPost'
 import BirthdayBanner from '../components/BirthdayBanner'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import { isBirthdayPeriod } from '../utils/birthdayUtils'
+import { reports } from '../data/reportsData'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg from '../assets/featured-post-01.jpeg'
@@ -20,9 +21,27 @@ import post07Img from '../assets/theoyewaleareoyeinitiative_06.jpeg'
 import post08Img from '../assets/theoyewaleareoyeinitiative_07.jpeg'
 import post09Img from '../assets/theoyewaleareoyeinitiative_08.jpeg'
 import post10Img from '../assets/theoyewaleareoyeinitiative_09.jpeg'
+import post11Img from '../assets/theoyewaleareoyeinitiative_11.jpeg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_11',
+    image: post11Img,
+    text: [
+      "COMMUNITY & IMPACT",
+      "Every great transformation begins with an opportunity.",
+      "When people are given the right tools, equipped with knowledge, encouraged to believe in themselves, and provided a chance to succeed, remarkable things happen. Potential becomes purpose. Dreams become reality. Communities become stronger.",
+      "True empowerment is not about doing everything for people. It is about creating the conditions that allow them to discover their strengths, develop their talents, and build a better future for themselves and others.",
+      "The impact of one empowered individual can extend far beyond a single life, influencing families, communities, and generations to come.",
+      "Invest in people.",
+      "Create opportunities.",
+      "Build lasting impact.",
+      "Give someone the tools, the belief, and the chance, and watch what they build with it.",
+      "#CommunityAndImpact #BuildTogether #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #OpportunityForAll #CommunityDevelopment #LeadershipDevelopment #YouthEmpowerment #CreatingImpact #PositiveChange #BuildingTheFuture #SocialImpact #TogetherWeGrow"
+
+    ]
+  },
   {
     id: 'initiative_post_10',
     image: post10Img,
@@ -357,24 +376,27 @@ export default function Initiative() {
       </section>
 
       {/* ══════════════════════════════════════
-          PROGRAMMES
+          FIELD REPORTS
       ══════════════════════════════════════ */}
       <section id="programmes" className={`${styles.programsSection} ${styles.anchorOffset}`}>
         <div className={styles.programsInner}>
           <div className="reveal">
-            <div className="section-label">What We Do</div>
-            <h2 className="section-title">Active <em>Programmes</em></h2>
+            <div className="section-label">Community Work</div>
+            <h2 className="section-title">Impact in <em>Action</em></h2>
             <div className="gold-rule" />
           </div>
+          <p className={styles.reportsIntro}>Read the stories behind our completed interventions and follow the projects now being prepared for our communities.</p>
           <div className={styles.programsGrid}>
-            {programmes.map((p, i) => (
+            {reports.slice(0, 3).map((p, i) => (
               <div key={p.title} className={`${styles.prog} reveal reveal-d${(i % 2) + 1}`}>
                 <div className={styles.progTag}>{p.tag}</div>
                 <h3 className={styles.progTitle}>{p.title}</h3>
-                <p className={styles.progDesc}>{p.desc}</p>
+                <p className={styles.progDesc}>{p.summary}</p>
+                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status === 'upcoming' ? 'Project' : 'Impact Story'} →</Link>
               </div>
             ))}
           </div>
+          <div className={styles.reportsCta}><Link to="/initiative/impact" className="btn-burg">Explore Our Impact</Link></div>
         </div>
       </section>
 
