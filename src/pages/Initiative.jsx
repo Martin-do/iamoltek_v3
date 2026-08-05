@@ -22,9 +22,75 @@ import post08Img from '../assets/theoyewaleareoyeinitiative_07.jpeg'
 import post09Img from '../assets/theoyewaleareoyeinitiative_08.jpeg'
 import post10Img from '../assets/theoyewaleareoyeinitiative_09.jpeg'
 import post11Img from '../assets/theoyewaleareoyeinitiative_11.jpeg'
+import post12Img from '../assets/theoyewaleareoyeinitiative_12.jpeg'
+import post13Img from '../assets/theoyewaleareoyeinitiative_13.jpeg'
+import post14Img from '../assets/theoyewaleareoyeinitiative_14.jpeg'
+import post15Img from '../assets/theoyewaleareoyeinitiative_15.jpg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_15',
+    image: post15Img,
+    text: [
+      "FORWARD & UNSTOPPABLE",
+      "Setbacks can be disappointing, especially when they interrupt plans we have carefully made. However, an unexpected turn does not mean the journey is over.",
+      "Sometimes, the path we intended to follow is not the path that will take us where we truly need to be. A delay may teach patience. A disappointment may reveal a better opportunity. A closed door may redirect us towards a more meaningful destination.",
+      "Do not allow one difficult moment to convince you to abandon your vision. Learn from the experience, adjust your direction, and keep moving forward.",
+      "Pause if necessary.",
+      "Rethink the route.",
+      "But never stop believing in what lies ahead.",
+      "“Setbacks are not stop signs. They are detours that often lead to better destinations.”",
+      "#ForwardAndUnstoppable #RiseAboveSetbacks #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Resilience #KeepMovingForward #GrowthMindset #PurposeDriven #PersonalDevelopment #PositiveChange"
+    ]
+  },
+  {
+    id: 'initiative_post_14',
+    image: post14Img,
+    text: [
+      "COMMUNITY & IMPACT",
+      "Every great movement begins with a single step. Every transformed community begins with a single empowered individual.",
+      "When we invest in one person’s education, leadership, confidence, or opportunity, we are doing more than changing one life. We are creating a chain reaction that can influence families, inspire communities, and shape future generations.",
+      "The most enduring impact is not always seen immediately. Like a seed planted in fertile soil, it grows quietly before it flourishes visibly. What starts with one person can eventually become a force that touches countless lives.",
+      "Never underestimate the value of empowering even one individual. The future of a community may depend on it.",
+      "Plant hope.",
+      "Nurture potential.",
+      "Watch transformation grow.",
+      "“Empowering one person is not a small thing. It is a seed that grows into a forest.”",
+      "#CommunityAndImpact #PlantSeeds #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #SocialImpact #CommunityDevelopment #LeadershipDevelopment #YouthEmpowerment #CreatingOpportunities #PositiveChange #SustainableImpact #BuildingTheFuture #TogetherWeGrow #LegacyOfImpact"
+    ]
+  },
+  {
+    id: 'initiative_post_13',
+    image: post13Img,
+    text: [
+      "COMMUNITY & IMPACT",
+      "No meaningful change is ever achieved alone.",
+      "Behind every thriving community, successful movement, and lasting impact is a group of people united by a shared vision and a common purpose. When individuals come together around values that matter, their collective strength becomes greater than the sum of their individual efforts.",
+      "Purpose grows when it is shared. Ideas become action. Dreams become initiatives. Individuals become a force for transformation.",
+      "Surround yourself with people who challenge you to grow, inspire you to serve, and encourage you to make a difference. Together, we can build stronger communities and create a legacy that outlives us.",
+      "Find your people.",
+      "Share your purpose.",
+      "Build something that matters.",
+      "“Purpose is most powerful when it is shared. Find your tribe. Build something greater together.”",
+      "#CommunityAndImpact #FindYourTribe #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #CommunityDevelopment #LeadershipInAction #SocialImpact #PurposeDriven #StrongerTogether #BuildingTheFuture #CollectiveImpact #PositiveChange #CommunityFirst #TogetherWeBuild"
+    ]
+  },
+  {
+    id: 'initiative_post_12',
+    image: post12Img,
+    text: [
+      "COMMUNITY & IMPACT",
+      "The strongest communities are not built on competition alone. They are built on collaboration, shared purpose, and a commitment to helping one another succeed.",
+      "Each person brings unique strengths, experiences, and perspectives. When we choose cooperation over rivalry, we create opportunities that no individual could achieve alone. Progress becomes faster, impact becomes greater, and success becomes more meaningful.",
+      "A thriving community is one where people support, encourage, and elevate one another. Because when one person rises, the entire community benefits.",
+      "Let us build bridges, not barriers.",
+      "Let us create opportunities, not obstacles.",
+      "Let us grow together.",
+      "“We do not rise by competing with each other. We rise by completing each other.”",
+      "#CommunityAndImpact #TogetherWeRise #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #CommunityDevelopment #Collaboration #Leadership #SocialImpact #StrongerTogether #BuildingBridges #PositiveChange #CollectiveGrowth #CreatingImpact #CommunityFirst"
+    ]
+  },
   {
     id: 'initiative_post_11',
     image: post11Img,

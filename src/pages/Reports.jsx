@@ -1,80 +1,63 @@
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
-import { reports } from '../data/reportsData'
+import { campaigns, getLocationGroups } from '../data/reportsData'
 import styles from './Reports.module.css'
 
-function ImpactCard({ report }) {
-  const primaryMetric = report.metrics?.[0]
-
-  return (
-    <article className={styles.card}>
-      <div className={styles.cardImageWrap}>
-        <img src={report.cover} alt="" loading="lazy" className={styles.cardImage} style={{ objectPosition: report.coverPosition }} />
-        <span className={styles.cardTag}>{report.programme || report.tag}</span>
-      </div>
-      <div className={styles.cardBody}>
-        <p className={styles.cardMeta}>{report.locationShort || report.location} · {report.date}</p>
-        <h3>{report.headline || report.title}</h3>
-        <p>{report.summary}</p>
-        <div className={styles.cardFooter}>
-          {primaryMetric && <span><strong>{primaryMetric[0]}</strong> {primaryMetric[1]}</span>}
-          <Link to={`/initiative/impact/${report.slug}`}>Read impact story →</Link>
-        </div>
-      </div>
-    </article>
-  )
-}
-
 export default function Reports() {
-  const completed = reports
-    .filter(report => report.status === 'completed')
-    .sort((a, b) => new Date(b.dateISO) - new Date(a.dateISO))
-  const upcoming = reports.filter(report => report.status === 'upcoming')
-  const [featured, ...older] = completed
+  const completed = campaigns.filter(campaign => campaign.status === 'completed')
+  const upcoming = campaigns.filter(campaign => campaign.status === 'upcoming')
 
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.inner}>
+        <div className={styles.heroInner}>
           <div className={styles.eyebrow}>Our work in the field</div>
           <h1>Impact in <em>Action.</em></h1>
-          <p>Stories of compassion translated into measurable action—across communities, families and lives.</p>
+          <p>Explore coordinated programmes and the individual communities reached through each intervention.</p>
         </div>
       </section>
 
       <section className={styles.archive}>
         <div className={styles.inner}>
           <header className={styles.sectionHeader}>
-            <div><div className={styles.eyebrow}>Latest intervention</div><h2>From the <em>field</em></h2></div>
+            <div><div className={styles.eyebrow}>Impact campaigns</div><h2>Stories of <em>service</em></h2></div>
             <span>2026 Impact Journal</span>
           </header>
 
-          {featured && (
-            <article className={styles.featured}>
-              <div className={styles.featureImageWrap}>
-                <img src={featured.cover} alt="" fetchPriority="high" className={styles.featureImage} style={{ objectPosition: featured.coverPosition }} />
-              </div>
-              <div className={styles.featureCopy}>
-                <span className={styles.tag}>{featured.programme || featured.tag}</span>
-                <h2>{featured.headline || featured.title}</h2>
-                <p className={styles.meta}>{featured.locationShort || featured.location} · {featured.date}</p>
-                <p className={styles.summary}>{featured.summary}</p>
-                <div className={styles.impactLine}>
-                  {featured.metrics?.[0] && <span><strong>{featured.metrics[0][0]}</strong>{featured.metrics[0][1]}</span>}
-                  <Link to={`/initiative/impact/${featured.slug}`}>Read impact story →</Link>
-                </div>
-              </div>
-            </article>
-          )}
+          <div className={styles.campaignGrid}>
+            {completed.map(campaign => {
+              const locationGroups = getLocationGroups(campaign)
 
-          {older.length > 0 && <div className={styles.grid}>{older.map(report => <ImpactCard key={report.slug} report={report} />)}</div>}
+              return (
+                <article className={styles.campaignCard} key={campaign.slug}>
+                  <div className={styles.imageWrap}>
+                    <img src={campaign.cover} alt="" style={{ objectPosition: campaign.coverPosition }} />
+                    <span className={styles.tag}>{campaign.programme}</span>
+                  </div>
+                  <div className={styles.cardBody}>
+                    <p className={styles.meta}>{campaign.location} · {campaign.date}</p>
+                    <h2>{campaign.headline}</h2>
+                    <p>{campaign.summary}</p>
+                    <div className={styles.metrics}>{campaign.metrics.map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
+                    <div className={styles.reportAccess}>
+                      <span>Open a full state report</span>
+                      <div>
+                        {locationGroups.map(group => (
+                          <div className={styles.reportGroup} key={group.state}>
+                            <small>{group.state}</small>
+                            {group.locations.map(location => <Link key={location.slug} to={`/initiative/impact/${campaign.slug}/${location.slug}`}>{location.title}<b>→</b></Link>)}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <Link to={`/initiative/impact/${campaign.slug}`} className={styles.storyLink}>View Campaign Overview</Link>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
 
-          {upcoming.length > 0 && (
-            <section className={styles.upcoming}>
-              <div><div className={styles.eyebrow}>What comes next</div><h2>Upcoming <em>work</em></h2></div>
-              {upcoming.map(report => <Link key={report.slug} to={`/initiative/impact/${report.slug}`} className={styles.upcomingLink}><span>{report.title}</span><span>{report.locationShort || report.location} →</span></Link>)}
-            </section>
-          )}
+          {upcoming.length > 0 && <section className={styles.upcoming}><div><div className={styles.eyebrow}>What comes next</div><h2>Upcoming <em>work</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
         </div>
       </section>
       <Footer variant="initiative" />
