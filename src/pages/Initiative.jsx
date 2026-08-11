@@ -26,9 +26,38 @@ import post12Img from '../assets/theoyewaleareoyeinitiative_12.jpeg'
 import post13Img from '../assets/theoyewaleareoyeinitiative_13.jpeg'
 import post14Img from '../assets/theoyewaleareoyeinitiative_14.jpeg'
 import post15Img from '../assets/theoyewaleareoyeinitiative_15.jpg'
+import post16Img from '../assets/theoyewaleareoyeinitiative_16.jpg'
+import post17Img from '../assets/theoyewaleareoyeinitiative_17.jpg'
 import styles from './Initiative.module.css'
 
 const featuredPostsData = [
+  {
+    id: 'initiative_post_17',
+    image: post17Img,
+    text: [
+      "FORWARD & UNSTOPPABLE",
+      "Success is rarely achieved in one giant leap. More often, it is found by those who refuse to stop when the journey becomes difficult.",
+      "The moment you feel like giving up could be the very moment you are closest to your breakthrough. Every extra effort, every additional attempt, and every lesson learned from failure brings you closer to your goal.",
+      "Don't quit because it's hard. Keep going because your purpose is worth it.",
+      "“Keep going. The breakthrough you are looking for is often one more step beyond where you almost quit.”",
+      "Who needs this reminder today? Tag someone and encourage them to keep moving.",
+      "#OneMoreStep #ForwardAndUnstoppable #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #KeepMoving #Resilience #NeverGiveUp #PurposeDriven #GrowthMindset"
+    ]
+  },
+  {
+    id: 'initiative_post_16',
+    image: post16Img,
+    text: [
+      "FORWARD & UNSTOPPABLE",
+      "The future is not determined by where you started or by the obstacles you face today. It is shaped by the decisions you make, the courage you demonstrate, and the hope you refuse to surrender.",
+      "Never allow your present circumstances to become the measure of your potential. Every challenge is temporary, but the impact of persistence can last a lifetime.",
+      "Keep learning. Keep growing. Keep believing. Your story is still unfolding, and your greatest chapters may still be ahead of you.",
+      "Today, choose progress over fear and possibility over limitation.",
+      "“The future belongs to those who refused to let the present define their limits.”",
+      "What step are you taking today toward the future you envision? Share it in the comments and inspire someone else to keep moving forward.",
+      "#FutureForward #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #KeepMoving #Resilience #GrowthMindset #PurposeDriven #BelieveInYourFuture #PositiveImpact #CommunityDevelopment"
+    ]
+  },
   {
     id: 'initiative_post_15',
     image: post15Img,
