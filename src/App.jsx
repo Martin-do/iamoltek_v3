@@ -11,6 +11,7 @@ import ReportDetail from './pages/ReportDetail'
 import Atobase from './pages/Atobase'
 import Contact from './pages/Contact'
 import { initGA, logPageView } from './analytics'
+import './mobile-redesign.css'
 
 // Initialize Google Analytics (only active if VITE_GA_MEASUREMENT_ID is provided)
 initGA();
