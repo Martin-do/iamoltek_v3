@@ -1,0 +1,473 @@
+/* ================================================================
+   IAMOLTEK — Mobile Redesign v1
+   Mobile-only composition overrides. Desktop remains unchanged.
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* ---------- Shared mobile rhythm ---------- */
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  .section-title {
+    line-height: 1.08;
+  }
+
+  /* ==============================================================
+     HOME — portrait-led hero, less copy, swipeable content bands
+     ============================================================== */
+  .mobile-home-hero {
+    min-height: 100svh !important;
+    padding: 0 !important;
+    background: #0c0a09 !important;
+    isolation: isolate;
+  }
+
+  .mobile-home-portrait-column {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0 !important;
+  }
+
+  .mobile-home-portrait-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    padding-top: 0 !important;
+    background: #0c0a09 !important;
+  }
+
+  .mobile-home-portrait {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    opacity: 1 !important;
+  }
+
+  .mobile-home-portrait-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(12, 10, 9, 0.04) 0%,
+      rgba(12, 10, 9, 0.08) 34%,
+      rgba(12, 10, 9, 0.34) 54%,
+      rgba(12, 10, 9, 0.76) 72%,
+      rgba(12, 10, 9, 0.97) 92%,
+      #0c0a09 100%
+    ) !important;
+  }
+
+  .mobile-home-copy {
+    min-height: 100svh !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+    padding: calc(var(--nav-height) + 2rem) 0 2.7rem !important;
+    background: none !important;
+    z-index: 2 !important;
+  }
+
+  .mobile-home-copy-inner {
+    max-width: 34rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 6% !important;
+  }
+
+  .mobile-home-eyebrow {
+    margin: 0 0 0.85rem !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.24em !important;
+    color: var(--gold-light) !important;
+  }
+
+  .mobile-home-eyebrow::before {
+    width: 24px !important;
+  }
+
+  .mobile-home-name {
+    margin-bottom: 0.9rem !important;
+    font-size: clamp(3rem, 14vw, 4.45rem) !important;
+    line-height: 0.82 !important;
+    text-shadow: 0 4px 22px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  .mobile-home-intro {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-width: 29rem;
+    margin-bottom: 1.15rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.62 !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+  }
+
+  .mobile-home-badges {
+    display: none !important;
+  }
+
+  .mobile-home-ctas {
+    display: block !important;
+    margin-top: 0.4rem;
+  }
+
+  .mobile-home-ctas > button:first-child {
+    width: auto !important;
+    padding: 0.58rem 0 !important;
+    background: transparent !important;
+    color: var(--gold-light) !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(217, 176, 106, 0.45) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.17em !important;
+  }
+
+  .mobile-home-ctas > button:first-child:hover {
+    transform: none !important;
+    color: #fff !important;
+  }
+
+  .mobile-home-ctas > button:nth-child(2) {
+    display: none !important;
+  }
+
+  .mobile-home-stats {
+    background: #171514 !important;
+    border-top-color: rgba(196, 151, 63, 0.12) !important;
+  }
+
+  .mobile-home-stats-inner {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.7rem !important;
+    overflow-x: auto;
+    padding: 1.2rem 5% 1.35rem !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+
+  .mobile-home-stats-inner::-webkit-scrollbar,
+  .mobile-home-pillars-grid::-webkit-scrollbar,
+  .mobile-home-featured-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-home-stat {
+    flex: 0 0 42vw;
+    min-width: 145px;
+    padding: 1.15rem 1rem !important;
+    border: 1px solid rgba(196, 151, 63, 0.11) !important;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.018);
+    scroll-snap-align: start;
+  }
+
+  .mobile-home-stat > div:first-child {
+    font-size: 2.55rem !important;
+  }
+
+  .mobile-home-stat > div:last-child {
+    font-size: 0.57rem !important;
+    line-height: 1.45;
+  }
+
+  .mobile-home-outreach {
+    padding: 2.25rem 0 !important;
+  }
+
+  .mobile-home-outreach h2 {
+    font-size: clamp(1.45rem, 7vw, 1.9rem) !important;
+  }
+
+  .mobile-home-outreach p {
+    font-size: 0.82rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .mobile-home-pillars,
+  .mobile-home-featured {
+    padding: 4.25rem 0 !important;
+  }
+
+  .mobile-home-pillars-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.9rem !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    margin-right: calc(-1 * var(--content-pad));
+    padding-right: var(--content-pad);
+  }
+
+  .mobile-home-card {
+    flex: 0 0 82vw;
+    max-width: 390px;
+    padding: 2.15rem 1.65rem !important;
+    scroll-snap-align: start;
+  }
+
+  .mobile-home-card p {
+    font-size: 0.82rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .mobile-home-quote {
+    background-position: center !important;
+  }
+
+  .mobile-home-quote-left {
+    display: none !important;
+  }
+
+  .mobile-home-quote > div:nth-child(2) {
+    padding: 4.75rem var(--content-pad) !important;
+    gap: 0 !important;
+  }
+
+  .mobile-home-quote blockquote {
+    padding-left: 1.25rem !important;
+    border-left-width: 2px !important;
+    font-size: clamp(1.35rem, 6.2vw, 1.7rem) !important;
+    line-height: 1.48 !important;
+  }
+
+  .mobile-home-featured-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.85rem !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-right: calc(-1 * var(--content-pad));
+    padding-right: var(--content-pad);
+  }
+
+  .mobile-home-feature-card {
+    flex: 0 0 86vw;
+    max-width: 410px;
+    min-height: 390px !important;
+    scroll-snap-align: start;
+  }
+
+  /* ==============================================================
+     ABOUT — image-led hero, readable biography, reordered content
+     ============================================================== */
+  .mobile-about-hero {
+    min-height: 88svh !important;
+    background-attachment: scroll !important;
+    background-position: 56% top !important;
+  }
+
+  .mobile-about-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(17, 16, 16, 0.05) 0%,
+      rgba(17, 16, 16, 0.18) 42%,
+      rgba(17, 16, 16, 0.7) 72%,
+      rgba(17, 16, 16, 0.95) 100%
+    ) !important;
+  }
+
+  .mobile-about-hero-content {
+    display: block !important;
+    padding: calc(var(--nav-height) + 3rem) var(--content-pad) 3.3rem !important;
+  }
+
+  .mobile-about-title {
+    max-width: 22rem;
+    font-size: clamp(2.5rem, 11vw, 3.7rem) !important;
+    line-height: 0.98 !important;
+    margin-bottom: 1.25rem;
+  }
+
+  .mobile-about-bio {
+    max-width: 31rem;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 0.88rem !important;
+    line-height: 1.68 !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .mobile-about-body-inner {
+    display: flex !important;
+    flex-direction: column;
+    gap: 3rem !important;
+  }
+
+  .mobile-about-main-copy {
+    order: 1;
+  }
+
+  .mobile-about-sidebar {
+    order: 2;
+  }
+
+  .mobile-about-text {
+    text-align: left !important;
+    font-size: 0.93rem !important;
+    line-height: 1.82 !important;
+    margin-bottom: 1.15rem !important;
+  }
+
+  .mobile-about-photo-secondary {
+    display: none !important;
+  }
+
+  .mobile-about-moments-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .mobile-about-moment-img {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  /* ==============================================================
+     INITIATIVE — restore emotion and photography to the mobile hero
+     The hero is the section immediately preceding #mission.
+     ============================================================== */
+  main > section:has(+ #mission) {
+    min-height: 88svh !important;
+    isolation: isolate;
+    background-color: #2b0808 !important;
+    background-image:
+      linear-gradient(180deg, rgba(27, 5, 5, 0.28) 0%, rgba(27, 5, 5, 0.54) 45%, rgba(17, 16, 16, 0.96) 100%),
+      url('./assets/initiative-impact.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) {
+    min-height: 88svh !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    padding: calc(var(--nav-height) + 2.5rem) var(--content-pad) 3rem !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:first-child {
+    flex: 0 0 auto !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:first-child h1 {
+    font-size: clamp(2.6rem, 11vw, 3.7rem) !important;
+    line-height: 0.96 !important;
+    margin-bottom: 0.75rem !important;
+    text-shadow: 0 4px 22px rgba(0, 0, 0, 0.5);
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:first-child p:first-of-type {
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 1rem !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:first-child p:nth-of-type(2) {
+    display: none !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:nth-child(2) {
+    order: -1 !important;
+    justify-content: flex-start !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  main > section:has(+ #mission) > div:nth-child(2) > div:nth-child(2) img {
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  #mission,
+  #pillars,
+  #impact,
+  #programmes {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  #mission > div {
+    gap: 2rem !important;
+  }
+
+  #mission blockquote {
+    padding: 1.5rem 1.35rem 1.5rem 1.5rem !important;
+    font-size: 1.3rem !important;
+    line-height: 1.45 !important;
+  }
+
+  #pillars > div > div:nth-of-type(2) {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  main > div:has(+ #impact) {
+    padding: 2.6rem 0 !important;
+  }
+
+  main > div:has(+ #impact) > div {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.65rem !important;
+    overflow-x: auto;
+    padding: 0 5% !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  main > div:has(+ #impact) > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  main > div:has(+ #impact) > div > div {
+    flex: 0 0 43vw;
+    min-width: 145px;
+    scroll-snap-align: start;
+  }
+
+  #programmes > div > div:nth-of-type(2) {
+    gap: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-home-copy-inner {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+
+  .mobile-home-stat {
+    flex-basis: 48vw;
+  }
+
+  .mobile-home-card {
+    flex-basis: 88vw;
+  }
+
+  .mobile-home-feature-card {
+    flex-basis: 90vw;
+  }
+
+  main > div:has(+ #impact) > div > div {
+    flex-basis: 47vw;
+  }
+}
