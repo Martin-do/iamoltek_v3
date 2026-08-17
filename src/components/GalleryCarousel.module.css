@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  touch-action: pan-y;
 }
 
 /* ── MAIN IMAGE ── */
@@ -134,15 +135,58 @@
 
 /* ── MOBILE (≤ 768px) ── */
 @media (max-width: 768px) {
-  .mainWrap { height: 320px; }
-  .arrow    { width: 36px; height: 36px; font-size: 0.9rem; }
-  .arrowL   { left: 0.4rem; }
-  .arrowR   { right: 0.4rem; }
-  .thumb    { width: 56px; height: 56px; }
-  .captionText { font-size: 0.58rem; }
+  .carousel {
+    gap: 0;
+  }
+
+  .mainWrap {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+  }
+
+  .mainImg {
+    object-fit: contain;
+    background: #151210;
+  }
+
+  .arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+    background: rgba(17, 16, 16, 0.52);
+    border-color: rgba(196, 151, 63, 0.22);
+  }
+
+  .arrowL { left: 0.5rem; }
+  .arrowR { right: 0.5rem; }
+
+  .caption {
+    padding: 2.5rem 1rem 0.8rem;
+    gap: 0.7rem;
+  }
+
+  .captionCount {
+    font-size: 1rem;
+  }
+
+  .captionText {
+    font-size: 0.56rem;
+    letter-spacing: 0.11em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Mobile interaction is now the main image + swipe/arrows. */
+  .dots,
+  .thumbStrip {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-  .mainWrap { height: 260px; }
-  .thumb    { width: 44px; height: 44px; }
+  .mainWrap {
+    aspect-ratio: 1 / 1;
+  }
 }

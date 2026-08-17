@@ -42,7 +42,7 @@ function StatItem({ num, label }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} className={styles.stat}>
+    <div ref={ref} className={`${styles.stat} mobile-home-stat`}>
       <div className={styles.statNum}>{display}</div>
       <div className={styles.statLbl}>{label}</div>
     </div>
@@ -69,7 +69,7 @@ export default function Home() {
   const isBirthday = isBirthdayPeriod()
 
   return (
-    <main className={styles.main} style={isBirthday ? { paddingTop: 'var(--nav-height)' } : {}}>
+    <main className={`${styles.main} mobile-home`} style={isBirthday ? { paddingTop: 'var(--nav-height)' } : {}}>
       <BirthdayBanner />
 
       {/* ══════════════════════════════════════════════════════
@@ -77,23 +77,23 @@ export default function Home() {
           Desktop: two columns — text left | portrait right
           Mobile: portrait as full-bleed background, text bottom
           ══════════════════════════════════════════════════════ */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} mobile-home-hero`}>
 
         {/* ── Text column — FIRST in DOM (natural left on desktop) ── */}
-        <div className={styles.heroLeft}>
+        <div className={`${styles.heroLeft} mobile-home-copy`}>
           {/* Centred inner so text doesn't hug the very edge */}
-          <div className={styles.heroLeftInner}>
-            <div className={`${styles.eyebrow} fade-up`}>The Official Platform</div>
-            <h1 className={`${styles.heroName} fade-up-d1`}>
+          <div className={`${styles.heroLeftInner} mobile-home-copy-inner`}>
+            <div className={`${styles.eyebrow} fade-up mobile-home-eyebrow`}>The Official Platform</div>
+            <h1 className={`${styles.heroName} fade-up-d1 mobile-home-name`}>
               <em>Oyewale</em>
               <strong>Areoye</strong>
             </h1>
-            <p className={`${styles.heroDesc} fade-up-d1`}>
+            <p className={`${styles.heroDesc} fade-up-d1 mobile-home-intro`}>
               Real estate strategist. Facility management leader. Philanthropist.
               Royal title holder of Okeluse Kingdom. A multidimensional Nigerian voice
               driving excellence, impact, and heritage.
             </p>
-            <div className={`${styles.heroBadges} fade-up-d2`}>
+            <div className={`${styles.heroBadges} fade-up-d2 mobile-home-badges`}>
               {[
                 'Co-Founder — Circle Point Group',
                 'Executive Director — Petik Limited',
@@ -102,7 +102,7 @@ export default function Home() {
                 'Honorary Doctoral Fellow — ILMMD UK',
               ].map(b => <div key={b} className={styles.badge}>{b}</div>)}
             </div>
-            <div className={`${styles.heroCtas} fade-up-d3`}>
+            <div className={`${styles.heroCtas} fade-up-d3 mobile-home-ctas`}>
               <button className="btn-gold" onClick={() => navigate('/about')}>Explore Profile</button>
               <button className="btn-ghost" onClick={() => navigate('/initiative')}>The Initiative →</button>
             </div>
@@ -110,29 +110,29 @@ export default function Home() {
         </div>
 
         {/* ── Portrait column — SECOND in DOM (natural right on desktop) ── */}
-        <div className={styles.heroRight}>
+        <div className={`${styles.heroRight} mobile-home-portrait-column`}>
           {/* Mobile: portrait covers full hero, gradient fades into text */}
-          <div className={styles.portraitWrap}>
+          <div className={`${styles.portraitWrap} mobile-home-portrait-wrap`}>
             <img
               src={heroPortrait}
               alt="Oyewale Areoye"
-              className={styles.portrait}
+              className={`${styles.portrait} mobile-home-portrait`}
             />
-            <div className={styles.portraitOverlay} />
+            <div className={`${styles.portraitOverlay} mobile-home-portrait-overlay`} />
           </div>
         </div>
 
       </section>
 
       {/* ══════════ STATS ══════════ */}
-      <div className={styles.statsBar}>
-        <div className={styles.statsInner}>
+      <div className={`${styles.statsBar} mobile-home-stats`}>
+        <div className={`${styles.statsInner} mobile-home-stats-inner`}>
           {statsData.map(s => <StatItem key={s.label} {...s} />)}
         </div>
       </div>
 
       {/* ══════════ PROJECT TEASER ══════════ */}
-      <div className={styles.outreachTeaser}>
+      <div className={`${styles.outreachTeaser} mobile-home-outreach`}>
         <div className={styles.outreachTeaserInner}>
           <div className={styles.outreachTeaserLeft}>
             <div className={styles.outreachTeaserDot}>Upcoming Initiative Project</div>
@@ -152,18 +152,18 @@ export default function Home() {
       <BirthdaySpotlight />
 
       {/* ══════════ PILLARS ══════════ */}
-      <section className={styles.pillars}>
+      <section className={`${styles.pillars} mobile-home-pillars`}>
         <div className={styles.pillarsInner}>
           <div className={`${styles.pillarsHd} reveal`}>
             <div className="section-label">Who He Is</div>
             <h2 className="section-title">Three Dimensions of <em>Purpose</em></h2>
             <div className="gold-rule center" />
           </div>
-          <div className={styles.pillarsGrid}>
+          <div className={`${styles.pillarsGrid} mobile-home-pillars-grid`}>
             {pillars.map((p, i) => (
               <div
                 key={p.num}
-                className={`${styles.pcard} ${styles[`pcard_${p.variant}`]} reveal reveal-d${i + 1}`}
+                className={`${styles.pcard} ${styles[`pcard_${p.variant}`]} reveal reveal-d${i + 1} mobile-home-card`}
                 onClick={() => navigate(p.link)}
               >
                 <div className={styles.pcardN}>{p.num}</div>
@@ -178,10 +178,10 @@ export default function Home() {
       </section>
 
       {/* ══════════ QUOTE ══════════ */}
-      <section className={styles.quote} style={{ backgroundImage: `url(${quoteBg})` }}>
+      <section className={`${styles.quote} mobile-home-quote`} style={{ backgroundImage: `url(${quoteBg})` }}>
         <div className={styles.quoteOverlay} />
         <div className={styles.quoteInner}>
-          <div className={`${styles.quoteLeft} reveal`}>
+          <div className={`${styles.quoteLeft} reveal mobile-home-quote-left`}>
             <div className="section-label">Philosophy</div>
             <p className={styles.quoteLeftText}>The principle that drives everything</p>
           </div>
@@ -197,15 +197,15 @@ export default function Home() {
       </section>
 
       {/* ══════════ FEATURED ══════════ */}
-      <section className={styles.featured}>
+      <section className={`${styles.featured} mobile-home-featured`}>
         <div className={styles.featuredInner}>
           <div className="reveal">
             <div className="section-label">Two Worlds, One Mission</div>
             <h2 className="section-title">Explore His <em>Dedicated Pages</em></h2>
             <div className="gold-rule" />
           </div>
-          <div className={styles.featuredGrid}>
-            <div className={`${styles.featCard} ${styles.featCardInit} reveal reveal-d1`}
+          <div className={`${styles.featuredGrid} mobile-home-featured-grid`}>
+            <div className={`${styles.featCard} ${styles.featCardInit} reveal reveal-d1 mobile-home-feature-card`}
               onClick={() => navigate('/initiative')}>
               <div className={styles.featCardBg} style={{ background: 'linear-gradient(135deg,#3D0E0E,#7A1F1F)' }}>
                 <img src={initiativeLogo} alt="" className={styles.featCardBgImg} />
@@ -219,7 +219,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className={`${styles.featCard} ${styles.featCardAto} reveal reveal-d2`}
+            <div className={`${styles.featCard} ${styles.featCardAto} reveal reveal-d2 mobile-home-feature-card`}
               onClick={() => navigate('/atobase')}>
               <div className={styles.featCardBg}>
                 <img src={atobaseHero} alt="Atobase" className={styles.featCardBgImg}

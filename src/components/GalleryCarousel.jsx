@@ -2,12 +2,14 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './GalleryCarousel.module.css'
 
 const AUTOPLAY_DELAY = 4500 // ms between auto-advances
+const SWIPE_THRESHOLD = 48
 
 export default function GalleryCarousel({ photos }) {
   const [active,   setActive]   = useState(0)
   const [sliding,  setSliding]  = useState(false)
   const [paused,   setPaused]   = useState(false)
   const timerRef = useRef(null)
+  const touchStartRef = useRef(null)
 
   const goTo = useCallback((idx, fromUser = false) => {
     if (sliding) return
@@ -30,6 +32,22 @@ export default function GalleryCarousel({ photos }) {
   const prev = () => goTo(active - 1, true)
   const next = () => goTo(active + 1, true)
 
+  const handleTouchStart = (event) => {
+    touchStartRef.current = event.touches[0]?.clientX ?? null
+  }
+
+  const handleTouchEnd = (event) => {
+    const startX = touchStartRef.current
+    const endX = event.changedTouches[0]?.clientX
+    touchStartRef.current = null
+    if (startX == null || endX == null) return
+
+    const delta = endX - startX
+    if (Math.abs(delta) < SWIPE_THRESHOLD) return
+    if (delta > 0) prev()
+    else next()
+  }
+
   // Auto-slideshow
   useEffect(() => {
     if (paused) return
@@ -42,6 +60,8 @@ export default function GalleryCarousel({ photos }) {
       className={styles.carousel}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* ── MAIN IMAGE ── */}
       <div className={styles.mainWrap}>
@@ -58,7 +78,7 @@ export default function GalleryCarousel({ photos }) {
         <button className={`${styles.arrow} ${styles.arrowR}`} onClick={next} aria-label="Next">&#8594;</button>
 
         {/* Caption */}
-        <div className={styles.caption}>
+        <div className={styles.caption} aria-live="polite">
           <span className={styles.captionCount}>{active + 1}&thinsp;/&thinsp;{photos.length}</span>
           <span className={styles.captionText}>{photos[active].cap}</span>
         </div>

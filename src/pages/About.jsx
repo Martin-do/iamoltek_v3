@@ -82,20 +82,20 @@ export default function About() {
     <main>
       {/* ── HERO BANNER ── */}
       <section
-        className={styles.heroBanner}
+        className={`${styles.heroBanner} mobile-about-hero`}
         style={{ backgroundImage: `url(${aboutWalking})` }}
       >
-        <div className={styles.heroBannerOverlay} />
-        <div className={styles.heroBannerContent}>
+        <div className={`${styles.heroBannerOverlay} mobile-about-overlay`} />
+        <div className={`${styles.heroBannerContent} mobile-about-hero-content`}>
           <div className="reveal">
             <div className="section-label" style={{ color: 'var(--gold)' }}>
               The Person Behind the Platform
             </div>
-            <h1 className={styles.heroTitle}>
+            <h1 className={`${styles.heroTitle} mobile-about-title`}>
               A Leader. A <em>Builder.</em><br />A Legacy in Motion.
             </h1>
           </div>
-          <p className={`${styles.heroBio} reveal reveal-d1`}>
+          <p className={`${styles.heroBio} reveal reveal-d1 mobile-about-bio`}>
             Oyewale Areoye — known as @iamoltek — is one of Nigeria's foremost voices in
             strategic real estate and facility management, a committed philanthropist, and a
             distinguished royal title holder. With over eleven years of expertise, international
@@ -108,12 +108,12 @@ export default function About() {
 
       {/* ── BODY ── */}
       <section className={styles.body}>
-        <div className={styles.bodyInner}>
+        <div className={`${styles.bodyInner} mobile-about-body-inner`}>
           {/* SIDEBAR */}
-          <div className="reveal">
+          <div className="reveal mobile-about-sidebar">
             <div className={styles.photoStack}>
               <img src={proHeadshot1} alt="Oyewale Areoye" className={styles.photoMain} />
-              <img src={proHeadshot2} alt="Oyewale Areoye" className={styles.photoSecondary} />
+              <img src={proHeadshot2} alt="Oyewale Areoye" className={`${styles.photoSecondary} mobile-about-photo-secondary`} />
             </div>
             <div className={styles.certs}>
               <div className="section-label" style={{ marginTop: '1.8rem' }}>Certifications</div>
@@ -127,33 +127,33 @@ export default function About() {
           </div>
 
           {/* MAIN CONTENT */}
-          <div>
+          <div className="mobile-about-main-copy">
             <div className={`${styles.section} reveal`}>
               <h2 className={styles.sectionTitle}>Professional Overview</h2>
               <div className={styles.tagline}>
                 Facility Management &amp; Real Estate Executive &bull; Strategic Leadership &bull; Investment Growth
               </div>
-              <p className={styles.text}>
+              <p className={`${styles.text} mobile-about-text`}>
                 Oyewale Areoye is a distinguished Facility Management and Real Estate professional with over 11 years of expertise spanning strategic leadership, operations, and financial management. His career reflects a rare combination of operational discipline and growth-oriented vision expertise that has positioned him as a recognized leader within Nigeria's property sector.
               </p>
-              <p className={styles.text}>
+              <p className={`${styles.text} mobile-about-text`}>
                 Across his career, Oyewale has built deep competencies in asset optimization, cost control, contract negotiation, and regulatory compliance. He approaches each engagement with a dual lens: protecting and enhancing the value of physical assets while identifying opportunities to drive commercial growth. This blend of financial rigor and strategic foresight has made him a trusted voice in structuring high-value real estate solutions that perform in a competitive and often complex market.
               </p>
-              <p className={styles.text}>
+              <p className={`${styles.text} mobile-about-text`}>
                 As Co-founder of{' '}
                 <a href="https://circlepoint.com.ng/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
                   Circle Point Group<span className={styles.tLinkArrow}>↗</span>
                 </a>
                 , Oyewale leads property development strategy and investment growth, shaping the organization from the ground up and steering its direction across Nigeria's competitive property landscape. His founding role gives him a distinct vantage point combining entrepreneurial ownership with hands-on strategic execution to deliver high-value real estate solutions.
               </p>
-              <p className={styles.text}>
+              <p className={`${styles.text} mobile-about-text`}>
                 In parallel, Oyewale serves as Executive Director at{' '}
                 <a href="https://petiklimited.com/oyewale-areoye/" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
                   Petik Limited<span className={styles.tLinkArrow}>↗</span>
                 </a>
                 , where he directs operations, strategy, and business growth across property development, construction, and a diverse portfolio of multi-sector services. In this role, he oversees the full lifecycle of projects from strategic planning and contract structuring through to delivery ensuring operational efficiency, regulatory alignment, and long-term value creation.
               </p>
-              <p className={styles.text}>
+              <p className={`${styles.text} mobile-about-text`}>
                 Together, these dual leadership roles reflect Oyewale's broader philosophy: that sustainable growth in real estate and facility management comes from marrying disciplined financial stewardship with bold, forward-looking strategy.
               </p>
               <div className={styles.expGrid}>
@@ -223,10 +223,10 @@ export default function About() {
             <h2 className="section-title on-dark">Professional <em>Moments</em></h2>
             <div className="gold-rule" />
           </div>
-          <div className={styles.momentsGrid}>
+          <div className={`${styles.momentsGrid} mobile-about-moments-grid`}>
             {moments.map((m, i) => (
               <div key={i} className={`${styles.momentCard} reveal reveal-d${i + 1}`}>
-                <img src={m.img} alt={m.cap} className={styles.momentImg} />
+                <img src={m.img} alt={m.cap} className={`${styles.momentImg} mobile-about-moment-img`} />
                 <div className={styles.momentCap}>{m.cap}</div>
               </div>
             ))}
