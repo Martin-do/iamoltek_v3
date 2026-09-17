@@ -8,7 +8,7 @@ import { isBirthdayPeriod } from '../utils/birthdayUtils'
 import heroPortrait   from '../assets/hero-portrait.png'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import atobaseHero    from '../assets/portrait-golden-throne.jpg'
-import proHeadshot    from '../assets/pro-headshot-1.jpg'
+import proActivity    from '../assets/activity-networking.jpg'
 import quoteBg        from '../assets/about-window.jpg'
 import styles from './Home.module.css'
 
@@ -58,9 +58,9 @@ const statsData = [
 ]
 
 const pillars = [
-  { num: '01', img: proHeadshot,    variant: 'pro',        title: 'Professional Excellence',       cat: 'Real Estate · Facility Management', desc: "Over a decade of strategic leadership across real estate and facility management. Driving operational excellence and investment strategy in Nigeria's most complex developments.", link: '/about',      linkText: 'Read Profile' },
+  { num: '01', img: proActivity,    imgPos: 'center 38%', variant: 'pro',        title: 'Professional Excellence',       cat: 'Real Estate · Facility Management', desc: "Over a decade of strategic leadership across real estate and facility management. Driving operational excellence and investment strategy in Nigeria's most complex developments.", link: '/about',      linkText: 'Read Profile' },
   { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: "A CAC-registered NGO creating lasting change through education, community development, and youth empowerment across Nigeria's underserved communities. Empowering People. Transforming Communities.", link: '/initiative', linkText: 'Visit the Initiative' },
-  { num: '03', img: atobaseHero,    variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Honoured with the distinguished chieftaincy title of Atobase of Okeluse Kingdom by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — recognition of exceptional service, character, and contribution.', link: '/atobase',    linkText: 'Discover' },
+  { num: '03', img: atobaseHero,    imgPos: 'center 14%', variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Honoured with the distinguished chieftaincy title of Atobase of Okeluse Kingdom by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — recognition of exceptional service, character, and contribution.', link: '/atobase',    linkText: 'Discover' },
 ]
 
 export default function Home() {
@@ -173,7 +173,7 @@ export default function Home() {
                 className={`${styles.pcard} ${styles[`pcard_${p.variant}`]} reveal reveal-d${i + 1}`}
               >
                 <div className={styles.pcardMedia}>
-                  <img src={p.img} alt="" className={styles.pcardImg} loading="lazy" />
+                  <img src={p.img} alt="" className={styles.pcardImg} loading="lazy" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
                 </div>
                 <div className={styles.pcardBody}>
                   <div className={styles.pcardN}>{p.num}</div>

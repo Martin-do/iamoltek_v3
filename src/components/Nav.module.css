@@ -17,7 +17,7 @@
    Natively transparent PNG allows the backdrop-blur and
    semi-transparent nav background to bleed through perfectly.
 */
-.logoWrap { cursor: pointer; display: flex; align-items: center; }
+.logoWrap { cursor: pointer; display: flex; align-items: center; color: inherit; text-decoration: none; }
 .logoImg  {
   height: 38px;
   object-fit: contain;
