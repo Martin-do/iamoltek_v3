@@ -1,14 +1,14 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
 import AnnouncementStrip from '../components/AnnouncementStrip'
 import EventCountdown from '../components/EventCountdown'
-import InstagramFeed from '../components/InstagramFeed'
 import FeaturedPost from '../components/FeaturedPost'
 import BirthdayBanner from '../components/BirthdayBanner'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import { isBirthdayPeriod } from '../utils/birthdayUtils'
-import { reports } from '../data/reportsData'
+import { campaigns as reports } from '../data/reportsData'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
 import featuredPostImg from '../assets/featured-post-01.jpeg'
@@ -295,6 +295,26 @@ const featuredPostsData = [
   }
 ]
 
+const ACCOUNT_NUMBER = '6550000619'
+
+function CopyAccountButton() {
+  const [copied, setCopied] = useState(false)
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(ACCOUNT_NUMBER)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch {
+      /* clipboard unavailable — number stays selectable */
+    }
+  }
+  return (
+    <button type="button" className={styles.copyBtn} onClick={copy} aria-live="polite">
+      {copied ? 'Copied ✓' : 'Copy'}
+    </button>
+  )
+}
+
 const pillars = [
   { icon: '📚', title: 'Education & Scholarships', desc: 'Funding access to quality education for bright but financially constrained young Nigerians — from primary school to university scholarships.' },
   { icon: '🌾', title: 'Community Development', desc: 'Infrastructure, sanitation, and local economic development projects that uplift communities and restore dignity to everyday life.' },
@@ -320,6 +340,7 @@ export default function Initiative() {
       <AnnouncementStrip
         tag="Upcoming Project"
         text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials."
+        shortText="Back to School Project"
         linkText="See Details"
         linkHref="#event"
       />
@@ -461,7 +482,7 @@ export default function Initiative() {
               opportunities to build a better future and transform communities across Nigeria.
             </p>
             <div className={styles.donateInline}>
-              <a href="#donate" className="btn-burg">Donate Now — Acc: 6550000619</a>
+              <a href="#donate" className="btn-burg">Donate Now — Acc: {ACCOUNT_NUMBER}</a>
               <p className={styles.donateSmall}>
                 Bank: Opay · Acc Name: THE OYEWALE AREOYE INITIATIVE
               </p>
@@ -513,11 +534,6 @@ export default function Initiative() {
       )}
 
       {/* ══════════════════════════════════════
-          INSTAGRAM FEED
-      ══════════════════════════════════════ */}
-      <InstagramFeed handle="@theoyewaleareoyeinitiative" />
-
-      {/* ══════════════════════════════════════
           DONATE BAND
       ══════════════════════════════════════ */}
       <div id="donate" className={`${styles.donateBand} ${styles.anchorOffset}`}>
@@ -536,7 +552,10 @@ export default function Initiative() {
               <span className={styles.bankLabel}>Bank · Opay</span>
               <strong>THE OYEWALE AREOYE INITIATIVE</strong>
               <span className={styles.bankLabel}>Account Number</span>
-              <strong className={styles.bankNum}>6550000619</strong>
+              <div className={styles.bankNumRow}>
+                <strong className={styles.bankNum}>{ACCOUNT_NUMBER}</strong>
+                <CopyAccountButton />
+              </div>
             </div>
             <div className={styles.contactList}>
               <div className={styles.contactItem}>

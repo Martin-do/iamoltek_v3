@@ -11,6 +11,7 @@ import ReportDetail from './pages/ReportDetail'
 import Atobase from './pages/Atobase'
 import Contact from './pages/Contact'
 import { initGA, logPageView } from './analytics'
+import applyPageMeta from './seo/applyPageMeta'
 
 // Initialize Google Analytics (only active if VITE_GA_MEASUREMENT_ID is provided)
 initGA();
@@ -19,7 +20,8 @@ function RouteObserver() {
   const { pathname, hash } = useLocation()
   
   useEffect(() => {
-    // 1. Log page view on route change
+    // 1. Update title/meta, then log page view on route change
+    applyPageMeta(pathname);
     logPageView();
 
     // 2. Handle scroll to top or hash

@@ -8,6 +8,7 @@ import { isBirthdayPeriod } from '../utils/birthdayUtils'
 import heroPortrait   from '../assets/hero-portrait.png'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import atobaseHero    from '../assets/portrait-golden-throne.jpg'
+import proHeadshot    from '../assets/pro-headshot-1.jpg'
 import quoteBg        from '../assets/about-window.jpg'
 import styles from './Home.module.css'
 
@@ -52,14 +53,14 @@ function StatItem({ num, label }) {
 const statsData = [
   { num: '11+', label: 'Years Industry Leadership' },
   { num: '6',   label: 'Professional Certifications' },
-  { num: '1',   label: 'Royal Title Bestowed' },
-  { num: '∞',   label: 'Communities Impacted' },
+  { num: '280', label: 'Food Packs Distributed · 2026' },
+  { num: '3',   label: 'States Reached · 2026' },
 ]
 
 const pillars = [
-  { num: '01', icon: '🏗', variant: 'pro',        title: 'Professional Excellence',       desc: "Over a decade of strategic leadership across real estate and facility management. Driving operational excellence and investment strategy in Nigeria's most complex developments.", link: '/about',      linkText: 'Read Profile' },
-  { num: '02', icon: '🌱', variant: 'initiative', title: 'The Oyewale Areoye Initiative', desc: "A CAC-registered NGO creating lasting change through education, community development, and youth empowerment across Nigeria's underserved communities. Empowering People. Transforming Communities.", link: '/initiative', linkText: 'Visit Initiative' },
-  { num: '03', icon: '👑', variant: 'atobase',    title: 'Atobase of Okeluse',            desc: 'Honoured with the distinguished chieftaincy title of Atobase of Okeluse Kingdom by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — recognition of exceptional service, character, and contribution.', link: '/atobase',    linkText: 'Discover' },
+  { num: '01', img: proHeadshot,    variant: 'pro',        title: 'Professional Excellence',       cat: 'Real Estate · Facility Management', desc: "Over a decade of strategic leadership across real estate and facility management. Driving operational excellence and investment strategy in Nigeria's most complex developments.", link: '/about',      linkText: 'Read Profile' },
+  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: "A CAC-registered NGO creating lasting change through education, community development, and youth empowerment across Nigeria's underserved communities. Empowering People. Transforming Communities.", link: '/initiative', linkText: 'Visit the Initiative' },
+  { num: '03', img: atobaseHero,    variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Honoured with the distinguished chieftaincy title of Atobase of Okeluse Kingdom by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — recognition of exceptional service, character, and contribution.', link: '/atobase',    linkText: 'Discover' },
 ]
 
 export default function Home() {
@@ -88,6 +89,11 @@ export default function Home() {
               <em>Oyewale</em>
               <strong>Areoye</strong>
             </h1>
+            <div className={`${styles.heroRoles} fade-up-d1`} aria-hidden="true">
+              <span>Executive</span>
+              <span>Philanthropist</span>
+              <span>Chieftain</span>
+            </div>
             <p className={`${styles.heroDesc} fade-up-d1`}>
               Real estate strategist. Facility management leader. Philanthropist.
               Royal title holder of Okeluse Kingdom. A multidimensional Nigerian voice
@@ -151,7 +157,7 @@ export default function Home() {
 
       <BirthdaySpotlight />
 
-      {/* ══════════ PILLARS ══════════ */}
+      {/* ══════════ THE THREE PAGES (pillars + featured, merged) ══════════ */}
       <section className={styles.pillars}>
         <div className={styles.pillarsInner}>
           <div className={`${styles.pillarsHd} reveal`}>
@@ -161,17 +167,22 @@ export default function Home() {
           </div>
           <div className={styles.pillarsGrid}>
             {pillars.map((p, i) => (
-              <div
+              <Link
                 key={p.num}
+                to={p.link}
                 className={`${styles.pcard} ${styles[`pcard_${p.variant}`]} reveal reveal-d${i + 1}`}
-                onClick={() => navigate(p.link)}
               >
-                <div className={styles.pcardN}>{p.num}</div>
-                <div className={styles.pcardIcon}>{p.icon}</div>
-                <h3 className={styles.pcardTitle}>{p.title}</h3>
-                <p className={styles.pcardDesc}>{p.desc}</p>
-                <span className={styles.pcardLink}>{p.linkText}</span>
-              </div>
+                <div className={styles.pcardMedia}>
+                  <img src={p.img} alt="" className={styles.pcardImg} loading="lazy" />
+                </div>
+                <div className={styles.pcardBody}>
+                  <div className={styles.pcardN}>{p.num}</div>
+                  <div className={styles.pcardCat}>{p.cat}</div>
+                  <h3 className={styles.pcardTitle}>{p.title}</h3>
+                  <p className={styles.pcardDesc}>{p.desc}</p>
+                  <span className={styles.pcardLink}>{p.linkText}</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -192,47 +203,6 @@ export default function Home() {
               still gets done."
             </blockquote>
             <p className={styles.quoteAttr}>— Oyewale Areoye · @iamoltek</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════ FEATURED ══════════ */}
-      <section className={styles.featured}>
-        <div className={styles.featuredInner}>
-          <div className="reveal">
-            <div className="section-label">Two Worlds, One Mission</div>
-            <h2 className="section-title">Explore His <em>Dedicated Pages</em></h2>
-            <div className="gold-rule" />
-          </div>
-          <div className={styles.featuredGrid}>
-            <div className={`${styles.featCard} ${styles.featCardInit} reveal reveal-d1`}
-              onClick={() => navigate('/initiative')}>
-              <div className={styles.featCardBg} style={{ background: 'linear-gradient(135deg,#3D0E0E,#7A1F1F)' }}>
-                <img src={initiativeLogo} alt="" className={styles.featCardBgImg} />
-              </div>
-              <div className={styles.featCardOverlay} />
-              <div className={styles.featCardBody}>
-                <div className={styles.featCat}>NGO · Charitable Venture · CAC Registered</div>
-                <h3 className={styles.featTitle}>The Oyewale Areoye Initiative</h3>
-                <p className={styles.featDesc}>Empowering People. Transforming Communities. A registered NGO driving education, youth empowerment, and community development across Nigeria.</p>
-                <span className={`${styles.featCta} ${styles.featCtaInit}`}>Visit the Initiative Page</span>
-              </div>
-            </div>
-
-            <div className={`${styles.featCard} ${styles.featCardAto} reveal reveal-d2`}
-              onClick={() => navigate('/atobase')}>
-              <div className={styles.featCardBg}>
-                <img src={atobaseHero} alt="Atobase" className={styles.featCardBgImg}
-                  style={{ objectPosition: 'top center', opacity: 1 }} />
-              </div>
-              <div className={styles.featCardOverlay} />
-              <div className={styles.featCardBody}>
-                <div className={styles.featCat}>Royal Honour · Okeluse Kingdom · Ondo State</div>
-                <h3 className={styles.featTitle}>Atobase of Okeluse Kingdom</h3>
-                <p className={styles.featDesc}>Bestowed by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — a chieftaincy title recognising outstanding service and community contribution.</p>
-                <span className={`${styles.featCta} ${styles.featCtaAto}`}>Discover the Atobase Page</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

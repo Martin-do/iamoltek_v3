@@ -73,7 +73,7 @@
 /* MOBILE MENU */
 .mobileMenu {
   display: none; position: fixed; top: 0; right: 0;
-  width: min(320px, 85vw); height: 100vh;
+  width: min(320px, 85vw); height: 100vh; height: 100dvh;
   background: var(--charcoal-2);
   border-left: 1px solid rgba(196,151,63,0.12);
   z-index: 999; padding: 1.5rem 2rem 3rem;

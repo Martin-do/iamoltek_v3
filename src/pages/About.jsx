@@ -80,28 +80,27 @@ export default function About() {
 
   return (
     <main>
-      {/* ── HERO BANNER ── */}
-      <section
-        className={styles.heroBanner}
-        style={{ backgroundImage: `url(${aboutWalking})` }}
-      >
-        <div className={styles.heroBannerOverlay} />
+      {/* ── HERO BANNER ──
+          Desktop: text left | photo right. Mobile: photo on top, text below.
+          Text never sits on the photo. */}
+      <section className={styles.heroBanner}>
         <div className={styles.heroBannerContent}>
-          <div className="reveal">
-            <div className="section-label" style={{ color: 'var(--gold)' }}>
-              The Person Behind the Platform
-            </div>
+          <div className={`${styles.heroText} fade-up`}>
+            <div className="section-label">The Person Behind the Platform</div>
             <h1 className={styles.heroTitle}>
               A Leader. A <em>Builder.</em><br />A Legacy in Motion.
             </h1>
+            <p className={styles.heroBio}>
+              Oyewale Areoye — known as @iamoltek — is one of Nigeria's foremost voices in
+              strategic real estate and facility management, a committed philanthropist, and a
+              distinguished royal title holder. With over eleven years of expertise, international
+              certifications, and an unwavering commitment to excellence and community, he
+              represents a new generation of African leadership.
+            </p>
           </div>
-          <p className={`${styles.heroBio} reveal reveal-d1`}>
-            Oyewale Areoye — known as @iamoltek — is one of Nigeria's foremost voices in
-            strategic real estate and facility management, a committed philanthropist, and a
-            distinguished royal title holder. With over eleven years of expertise, international
-            certifications, and an unwavering commitment to excellence and community, he
-            represents a new generation of African leadership.
-          </p>
+          <div className={`${styles.heroPhoto} fade-up-d1`}>
+            <img src={aboutWalking} alt="Oyewale Areoye walking through a corridor" />
+          </div>
         </div>
         <div className={styles.heroWatermark}>OLTEK</div>
       </section>

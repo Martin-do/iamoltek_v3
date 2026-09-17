@@ -1,31 +1,18 @@
 /* ================================================================
-   HERO BANNER — walking corridor photo
+   HERO BANNER — text left | walking corridor photo right
    ================================================================ */
 .heroBanner {
   width: 100%;
-  min-height: 75vh;
-  background-size: cover;
-  background-position: center 25%; /* FIXED: keeps person visible on desktop */
-  background-attachment: fixed;
+  background: var(--charcoal);
+  padding: calc(var(--nav-height) + 3.5rem) 0 5rem;
   position: relative; overflow: hidden;
-  display: flex; align-items: flex-end;
-}
-.heroBannerOverlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(17,16,16,0.20)  0%,
-    rgba(17,16,16,0.55)  40%,
-    rgba(17,16,16,0.88)  82%,
-    rgb(253,250,244)    100%
-  );
 }
 .heroBannerContent {
   position: relative; z-index: 1;
   width: 100%; max-width: var(--content-max); margin: 0 auto;
-  padding: 0 var(--content-pad) 6rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: end;
+  padding: 0 var(--content-pad);
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 5rem; align-items: center;
 }
 .heroTitle {
   font-family: 'Cormorant Garamond', serif;
@@ -33,7 +20,18 @@
   color: #fff; line-height: 1.0;
 }
 .heroTitle em { font-style: italic; color: var(--gold-light); }
-.heroBio { font-size: 1.05rem; line-height: 2; color: rgba(255,255,255,0.5); font-weight: 300; }
+.heroBio {
+  font-size: 1.05rem; line-height: 2; color: rgba(255,255,255,0.62); font-weight: 300;
+  margin-top: 1.8rem; max-width: 560px;
+}
+.heroPhoto {
+  aspect-ratio: 4 / 5;
+  max-height: min(78vh, 720px);
+  justify-self: end;
+  width: 100%;
+  overflow: hidden;
+}
+.heroPhoto img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .heroWatermark {
   position: absolute; right: 3%; bottom: -2.5rem;
   font-family: 'Cormorant SC', serif; font-size: 13rem; font-weight: 300;
@@ -195,7 +193,7 @@
    TABLET (≤ 1024px)
    ================================================================ */
 @media (max-width: 1024px) {
-  .heroBannerContent { gap: 3rem; padding-bottom: 5rem; }
+  .heroBannerContent { gap: 3rem; }
   .bodyInner { gap: 3.5rem; }
   .photoSecondary { right: -6%; width: 52%; }
   .momentsGrid { grid-template-columns: repeat(2,1fr); }
@@ -205,28 +203,31 @@
    MOBILE (≤ 768px)
    ================================================================ */
 @media (max-width: 768px) {
-  .heroBanner { min-height: 100svh; background-attachment: scroll; background-position: center 15%; }
-  .heroBannerContent { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 5rem; }
-  .heroTitle { font-size: clamp(2rem, 7vw, 3rem); }
-  .heroBio {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.95);
-    background: rgba(17, 16, 16, 0.45);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 1rem;
+  /* Editorial: headline + bio first, then a framed landscape crop of the photo */
+  .heroBanner { padding: calc(var(--nav-height) + 2.2rem) 0 3.5rem; }
+  .heroBannerContent { grid-template-columns: 1fr; gap: 2.2rem; }
+  .heroPhoto {
+    justify-self: center;
+    width: calc(100% - 14px);
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    outline: 1px solid rgba(196, 151, 63, 0.5);
+    outline-offset: 6px;
   }
+  .heroPhoto img { object-position: center 58%; }
+  .heroTitle { font-size: clamp(2rem, 9vw, 3rem); }
+  .heroBio { font-size: 0.92rem; line-height: 1.85; color: rgba(255, 255, 255, 0.72); margin-top: 1.2rem; }
   .heroWatermark { display: none; }
 
-  .bodyInner { grid-template-columns: 1fr; }
-  .photoStack { padding-bottom: 4rem; }
+  .body { padding: 3.5rem 0 4rem; }
+  .bodyInner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .section { margin-bottom: 2.5rem; }
+  .moments { padding: 3.5rem 0; }
+  .photoStack { padding-bottom: 2.5rem; }
   .photoMain  { aspect-ratio: 3/4; }
   .photoSecondary { right: 0; width: 45%; }
   .midPortraitImg { max-height: 300px; }
-  .expGrid { grid-template-columns: 1fr; }
+  .expGrid { gap: 0.6rem; }
   .memberships { grid-template-columns: 1fr; }
 
   .momentsGrid { grid-template-columns: 1fr 1fr; }
@@ -237,7 +238,6 @@
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroBanner { min-height: 90svh; }
   .photoSecondary { display: none; }
   .momentsGrid { grid-template-columns: 1fr; }
   .momentImg { aspect-ratio: 4/3; }

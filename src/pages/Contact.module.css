@@ -86,16 +86,15 @@
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .hero { padding: 110px 5% 60px; }
+  .hero { padding: calc(var(--nav-height) + 2.5rem) 5% 3rem; }
   .heroWatermark { display: none; }
   .body { grid-template-columns: 1fr; }
-  .info     { padding: 4rem 5%; }
-  .formArea { padding: 4rem 5%; }
+  .info     { padding: 3rem 5%; }
+  .formArea { padding: 3rem 5%; }
   .formRow  { grid-template-columns: 1fr; }
 }
 
 /* SMALL */
 @media (max-width: 480px) {
-  .hero { padding: 100px 5% 50px; }
-  .info, .formArea { padding: 3.5rem 5%; }
+  .info, .formArea { padding: 2.5rem 5%; }
 }

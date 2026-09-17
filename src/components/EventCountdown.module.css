@@ -95,6 +95,27 @@
   justify-content: center;
 }
 
+/* Fixed backgrounds render badly on iOS and are costly on Android */
+@media (max-width: 768px) {
+  .container {
+    background-attachment: scroll;
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .description {
+    margin-bottom: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 480px) {
   .ctas {
     flex-direction: column;
