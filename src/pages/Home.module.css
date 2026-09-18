@@ -465,8 +465,24 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-.pcard:hover .pcardN {
-  color: rgba(255, 255, 255, 0.04);
+.pcard_initiative:hover .pcardLink {
+  color: #ff9999;
+}
+
+.pcard_atobase:hover .pcardLink {
+  color: var(--gold-pale);
+}
+
+.pcardCat {
+  color: var(--gold-pale);
+}
+
+.pcard:hover .pcardTitle {
+  color: #fff;
+}
+
+.pcard:hover .pcardDesc {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .pcard_initiative:hover .pcardLink {

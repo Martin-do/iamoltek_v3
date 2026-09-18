@@ -40,13 +40,13 @@ const timeline = [
     year: '2020 – 2024',
     role: 'Managing Director & Head of Facilities',
     org: 'Banksome Global Facility Management · Lagos',
-    desc: 'Exceptional leadership in asset optimization, contract negotiation, and compliance across multiple high-value portfolios.',
+    desc: 'Led asset optimisation, contract negotiation and regulatory compliance across multiple high-value portfolios.',
   },
   {
     year: '2013 – 2020',
     role: 'Senior Facility & Real Estate Manager',
     org: 'Multiple Institutions · Nigeria',
-    desc: 'Built deep expertise across large-scale commercial and residential developments throughout Nigeria.',
+    desc: 'Worked across large-scale commercial and residential developments throughout Nigeria.',
   },
 ]
 
@@ -88,14 +88,13 @@ export default function About() {
           <div className={`${styles.heroText} fade-up`}>
             <div className="section-label">The Person Behind the Platform</div>
             <h1 className={styles.heroTitle}>
-              A Leader. A <em>Builder.</em><br />A Legacy in Motion.
+              A career in <em>buildings.</em><br />A commitment to <em>people.</em>
             </h1>
             <p className={styles.heroBio}>
-              Oyewale Areoye — known as @iamoltek — is one of Nigeria's foremost voices in
-              strategic real estate and facility management, a committed philanthropist, and a
-              distinguished royal title holder. With over eleven years of expertise, international
-              certifications, and an unwavering commitment to excellence and community, he
-              represents a new generation of African leadership.
+              Oyewale Areoye — @iamoltek — has spent over eleven years in facility management
+              and real estate. He co-founded Circle Point Group, serves as Executive Director at
+              Petik Limited, founded The Oyewale Areoye Initiative, and holds the chieftaincy
+              title of Atobase of Okeluse Kingdom.
             </p>
           </div>
           <div className={`${styles.heroPhoto} fade-up-d1`}>

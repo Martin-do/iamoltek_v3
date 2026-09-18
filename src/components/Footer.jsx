@@ -39,8 +39,8 @@ export default function Footer({ variant = 'main' }) {
             }
             <p className={styles.tagline}>
               {isInitiative
-                ? 'The Oyewale Areoye Initiative — Empowering People. Transforming Communities. CAC Registered, Abuja.'
-                : 'The official digital home of Oyewale Areoye — professional, philanthropist, and Atobase of Okeluse Kingdom.'}
+                ? 'The Oyewale Areoye Initiative — Empowering People. Transforming Communities. Registered with the Corporate Affairs Commission, Abuja.'
+                : 'Oyewale Areoye — facility management and real estate executive, founder of The Oyewale Areoye Initiative, and Atobase of Okeluse Kingdom.'}
             </p>
             <div className={styles.socials}>
               {socials.map(s => (

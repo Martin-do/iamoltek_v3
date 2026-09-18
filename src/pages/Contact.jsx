@@ -135,11 +135,11 @@ export default function Contact() {
         <div className={styles.heroContent}>
           <div className="section-label" style={{ color: 'var(--gold)' }}>Get in Touch</div>
           <h1 className={`${styles.heroTitle} fade-up`}>
-            Let's Start a <em>Meaningful</em> Conversation
+            Let's Start a <em>Conversation</em>
           </h1>
           <p className={styles.heroSub}>
-            Whether it's professional collaboration, the Initiative, speaking engagements,
-            or media enquiries — reach out. Every great partnership begins with a simple conversation.
+            For professional collaboration, partnerships with the Initiative, speaking
+            engagements or media enquiries — send a message and we will come back to you.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ export default function Contact() {
 
         <form onSubmit={handleSubmit} className={`${styles.formArea} reveal reveal-d1`}>
           <div className="section-label">Send a Message</div>
-          <h3 className={styles.formTitle}>We'd love to hear from you</h3>
+          <h3 className={styles.formTitle}>Tell us what you need</h3>
           <div className={styles.formRow}>
             <div className={styles.fg}>
               <label className={styles.flbl}>First Name</label>

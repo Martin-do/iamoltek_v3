@@ -58,9 +58,9 @@ const statsData = [
 ]
 
 const pillars = [
-  { num: '01', img: proActivity,    imgPos: 'center 38%', variant: 'pro',        title: 'Professional Excellence',       cat: 'Real Estate · Facility Management', desc: "Over a decade of strategic leadership across real estate and facility management. Driving operational excellence and investment strategy in Nigeria's most complex developments.", link: '/about',      linkText: 'Read Profile' },
-  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: "A CAC-registered NGO creating lasting change through education, community development, and youth empowerment across Nigeria's underserved communities. Empowering People. Transforming Communities.", link: '/initiative', linkText: 'Visit the Initiative' },
-  { num: '03', img: atobaseHero,    imgPos: 'center 14%', variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Honoured with the distinguished chieftaincy title of Atobase of Okeluse Kingdom by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — recognition of exceptional service, character, and contribution.', link: '/atobase',    linkText: 'Discover' },
+  { num: '01', img: proActivity,    imgPos: 'center 38%', variant: 'pro',        title: 'Real Estate & Facility Management', cat: 'Circle Point Group · Petik Limited', desc: 'Eleven years across facility management and real estate, leading strategy, operations and investment growth as co-founder of Circle Point Group and Executive Director at Petik Limited.', link: '/about',      linkText: 'Read Profile' },
+  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: 'A CAC-registered initiative working in education, youth empowerment and community welfare. In July 2026 it delivered 280 food packs to households across Lagos, Oyo and Osun States.', link: '/initiative', linkText: 'Visit the Initiative' },
+  { num: '03', img: atobaseHero,    imgPos: 'center 14%', variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Conferred the chieftaincy title of Atobase of Okeluse Kingdom, Ose LGA, Ondo State, by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, at the 2024 investiture ceremony.', link: '/atobase',    linkText: 'About the Title' },
 ]
 
 export default function Home() {
@@ -84,20 +84,20 @@ export default function Home() {
         <div className={styles.heroLeft}>
           {/* Centred inner so text doesn't hug the very edge */}
           <div className={styles.heroLeftInner}>
-            <div className={`${styles.eyebrow} fade-up`}>The Official Platform</div>
+            <div className={`${styles.eyebrow} fade-up`}>Lagos · Nigeria</div>
             <h1 className={`${styles.heroName} fade-up-d1`}>
               <em>Oyewale</em>
               <strong>Areoye</strong>
             </h1>
             <div className={`${styles.heroRoles} fade-up-d1`} aria-hidden="true">
-              <span>Executive</span>
-              <span>Philanthropist</span>
-              <span>Chieftain</span>
+              <span>Facility Management</span>
+              <span>Real Estate</span>
+              <span>Strategic Leadership</span>
             </div>
             <p className={`${styles.heroDesc} fade-up-d1`}>
-              Real estate strategist. Facility management leader. Philanthropist.
-              Royal title holder of Okeluse Kingdom. A multidimensional Nigerian voice
-              driving excellence, impact, and heritage.
+              Eleven years in facility management and real estate. Co-founder of Circle Point
+              Group, Executive Director at Petik Limited, founder of The Oyewale Areoye
+              Initiative, and Atobase of Okeluse Kingdom.
             </p>
             <div className={`${styles.heroBadges} fade-up-d2`}>
               {[
@@ -161,8 +161,8 @@ export default function Home() {
       <section className={styles.pillars}>
         <div className={styles.pillarsInner}>
           <div className={`${styles.pillarsHd} reveal`}>
-            <div className="section-label">Who He Is</div>
-            <h2 className="section-title">Three Dimensions of <em>Purpose</em></h2>
+            <div className="section-label">Explore</div>
+            <h2 className="section-title">Profession. Service. <em>Heritage.</em></h2>
             <div className="gold-rule center" />
           </div>
           <div className={styles.pillarsGrid}>
@@ -176,7 +176,6 @@ export default function Home() {
                   <img src={p.img} alt="" className={styles.pcardImg} loading="lazy" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
                 </div>
                 <div className={styles.pcardBody}>
-                  <div className={styles.pcardN}>{p.num}</div>
                   <div className={styles.pcardCat}>{p.cat}</div>
                   <h3 className={styles.pcardTitle}>{p.title}</h3>
                   <p className={styles.pcardDesc}>{p.desc}</p>

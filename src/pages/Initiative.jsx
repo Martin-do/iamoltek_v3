@@ -316,10 +316,10 @@ function CopyAccountButton() {
 }
 
 const pillars = [
-  { icon: '📚', title: 'Education & Scholarships', desc: 'Funding access to quality education for bright but financially constrained young Nigerians — from primary school to university scholarships.' },
-  { icon: '🌾', title: 'Community Development', desc: 'Infrastructure, sanitation, and local economic development projects that uplift communities and restore dignity to everyday life.' },
-  { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills acquisition, entrepreneurship training, and mentorship programmes designed to prepare young Nigerians to lead and thrive.' },
-  { icon: '🏠', title: 'Housing & Welfare', desc: 'Advocating for affordable, safe housing and social welfare support for the most vulnerable in our communities.' },
+  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support — starting with the Back to School project.' },
+  { icon: '🍲', title: 'Food & Relief', desc: 'Food packs and essential materials for households, elderly people and care institutions facing hardship.' },
+  { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills, mentorship and encouragement for young people deciding what to do with their lives.' },
+  { icon: '🌾', title: 'Community Welfare', desc: 'Working with community leaders and local partners on the everyday needs they identify themselves.' },
 ]
 
 const programmes = [
@@ -360,9 +360,8 @@ export default function Initiative() {
             <p className={styles.tagline}>Empowering People. Transforming Communities.</p>
             <div className={styles.cac}>✔ Registered with CAC, Abuja — Part 'F', CAMA 2020</div>
             <p className={styles.desc}>
-              A Nigerian charitable venture committed to creating lasting, measurable change
-              through education, empowerment, and investment in people across Nigeria's most
-              underserved communities.
+              A Nigerian charity registered with the Corporate Affairs Commission, working in
+              education, youth empowerment, food relief and community welfare.
             </p>
             <div className={styles.ctas}>
               <a href="#donate" className="btn-burg">Donate Now</a>
@@ -395,18 +394,17 @@ export default function Initiative() {
           <div className={`${styles.missionBody} reveal reveal-d1`}>
             <div className="section-label">About the Initiative</div>
             <p>
-              The Oyewale Areoye Initiative is the philanthropic expression of a man who has
-              seen the transformative power of opportunity — and is committed to extending that
-              power to others.
+              The Oyewale Areoye Initiative was founded by Oyewale Areoye to widen access to
+              education, opportunity and basic support in the communities he comes from and
+              works in.
             </p>
             <p>
-              Through structured programmes in education, youth development, housing advocacy,
-              and community welfare, we work with local communities, government agencies, and
-              private partners to build dignified, self-sustaining lives.
+              We work with community leaders, government agencies and private partners on
+              education, youth development, welfare and food relief — and we publish a report
+              for every intervention we carry out.
             </p>
             <p>
-              Change is not handed down — it is built up, one community, one family,
-              one individual at a time.
+              Change is built one community, one family and one person at a time.
             </p>
             <div style={{ marginTop: '1.8rem' }}>
               <Link to="/about" className="btn-burg">Learn More About Us</Link>
@@ -448,10 +446,10 @@ export default function Initiative() {
       <div className={styles.impactBand}>
         <div className={styles.impactBandInner}>
           {[
-            ['500+', 'Lives Directly Impacted'],
-            ['12', 'Scholarships Awarded'],
-            ['5', 'Community Projects'],
-            ['3', 'Partner Organisations'],
+            ['280', 'Food Packs Distributed'],
+            ['3', 'States Reached'],
+            ['4', 'Intervention Areas'],
+            ['1', 'Care Centre Supported'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
               <div className={styles.istatNum}>{n}</div>
