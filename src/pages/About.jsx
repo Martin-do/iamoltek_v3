@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
 import heroPortrait  from '../assets/hero-portrait.png'
@@ -68,12 +69,51 @@ const memberships = [
   { code: 'ILMMD UK', name: 'Institute of Leadership, Management & Manpower Development' },
 ]
 
+// Captions describe what is in each photo. The Circle Point images are social
+// posts with a website banner along the bottom, which cropBanner trims off.
 const moments = [
-  { img: arrival,    cap: 'In the Field · Professional Circuit' },
-  { img: networking, cap: 'Networking & Leadership Engagement' },
-  { img: cpEvent1,   cap: 'Circle Point · Property Sector' },
-  { img: cpEvent2,   cap: 'Industry Connections · Lagos' },
+  { img: arrival,    cap: 'Arriving at an industry engagement',      pos: 'center 15%' },
+  { img: networking, cap: 'In conversation with fellow guests',      pos: '45% center' },
+  { img: cpEvent1,   cap: 'With the Circle Point Group team',        pos: '40% top', cropBanner: true },
+  { img: cpEvent2,   cap: 'Welcoming a guest at Circle Point Group', pos: '30% top', cropBanner: true },
 ]
+
+/* Mobile only: certifications and memberships share one compact, tabbed list */
+function Credentials() {
+  const [tab, setTab] = useState('certs')
+  const tabs = [
+    { id: 'certs', label: 'Certifications', items: certifications },
+    { id: 'members', label: 'Memberships', items: memberships },
+  ]
+  const active = tabs.find(t => t.id === tab)
+  return (
+    <div className={`${styles.section} ${styles.credentials}`}>
+      <h2 className={styles.sectionTitle}>Credentials</h2>
+      <div className={styles.credTabs} role="tablist" aria-label="Credentials">
+        {tabs.map(t => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            aria-selected={tab === t.id}
+            className={`${styles.credTab} ${tab === t.id ? styles.credTabActive : ''}`}
+            onClick={() => setTab(t.id)}
+          >
+            {t.label}<span>{t.items.length}</span>
+          </button>
+        ))}
+      </div>
+      <dl className={styles.credList} role="tabpanel">
+        {active.items.map(item => (
+          <div key={item.code} className={styles.credRow}>
+            <dt>{item.code}</dt>
+            <dd>{item.name}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )
+}
 
 export default function About() {
   useScrollReveal()
@@ -107,8 +147,8 @@ export default function About() {
       {/* ── BODY ── */}
       <section className={styles.body}>
         <div className={styles.bodyInner}>
-          {/* SIDEBAR */}
-          <div className="reveal">
+          {/* SIDEBAR (desktop only; on mobile its certifications move into <Credentials />) */}
+          <div className={`${styles.sidebar} reveal`}>
             <div className={styles.photoStack}>
               <img src={proHeadshot1} alt="Oyewale Areoye" className={styles.photoMain} />
               <img src={proHeadshot2} alt="Oyewale Areoye" className={styles.photoSecondary} />
@@ -198,7 +238,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className={`${styles.section} reveal`}>
+            <div className={`${styles.section} ${styles.membershipsSection} reveal`}>
               <h2 className={styles.sectionTitle}>Professional Memberships</h2>
               <div className={styles.memberships}>
                 {memberships.map(m => (
@@ -209,6 +249,8 @@ export default function About() {
                 ))}
               </div>
             </div>
+
+            <Credentials />
           </div>
         </div>
       </section>
@@ -223,10 +265,20 @@ export default function About() {
           </div>
           <div className={styles.momentsGrid}>
             {moments.map((m, i) => (
-              <div key={i} className={`${styles.momentCard} reveal reveal-d${i + 1}`}>
-                <img src={m.img} alt={m.cap} className={styles.momentImg} />
-                <div className={styles.momentCap}>{m.cap}</div>
-              </div>
+              <figure key={m.cap} className={styles.momentCard}>
+                <div className={styles.momentFrame}>
+                  <img
+                    src={m.img}
+                    alt={m.cap}
+                    loading="lazy"
+                    className={`${styles.momentImg} ${m.cropBanner ? styles.momentImgCrop : ''}`}
+                    style={{ objectPosition: m.pos }}
+                  />
+                </div>
+                <figcaption className={styles.momentCap}>
+                  <span>{String(i + 1).padStart(2, '0')}</span>{m.cap}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
