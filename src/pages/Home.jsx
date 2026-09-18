@@ -197,11 +197,11 @@ export default function Home() {
           </div>
           <div className={`${styles.quoteRight} reveal reveal-d1`}>
             <blockquote className={styles.quoteText}>
-              "Excellence is not a destination. It is a continuous pursuit — in boardrooms,
+              “Excellence is not a destination. It is a continuous pursuit: in boardrooms,
               in communities, in the quiet moments when no one is watching but the work
-              still gets done."
+              still gets done.”
             </blockquote>
-            <p className={styles.quoteAttr}>— Oyewale Areoye · @iamoltek</p>
+            <p className={styles.quoteAttr}>Oyewale Areoye · @iamoltek</p>
           </div>
         </div>
       </section>

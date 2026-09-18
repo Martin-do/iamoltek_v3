@@ -645,13 +645,16 @@
     padding: 1.6rem var(--content-pad);
   }
 
+  /* 2x2 grid: left column flush with the page edge, right column inset evenly */
   .stat {
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 0 1.2rem 1.4rem;
     border-right: none;
     border-bottom: 1px solid rgba(196, 151, 63, 0.07);
   }
 
   .stat:nth-child(odd) {
+    padding-left: 0;
+    padding-right: 1rem;
     border-right: 1px solid rgba(196, 151, 63, 0.07);
   }
 
