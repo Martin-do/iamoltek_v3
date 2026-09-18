@@ -69,14 +69,18 @@ const memberships = [
   { code: 'ILMMD UK', name: 'Institute of Leadership, Management & Manpower Development' },
 ]
 
-// Captions describe what is in each photo. The Circle Point images are social
-// posts with a website banner along the bottom, which cropBanner trims off.
+// alt describes what is in each photo for screen readers (no visible caption).
+// The Circle Point images are social posts with a website banner along the
+// bottom, which cropBanner trims out of frame.
 const moments = [
-  { img: arrival,    cap: 'Arriving at an industry engagement',      pos: 'center 15%' },
-  { img: networking, cap: 'In conversation with fellow guests',      pos: '45% center' },
-  { img: cpEvent1,   cap: 'With the Circle Point Group team',        pos: '40% top', cropBanner: true },
-  { img: cpEvent2,   cap: 'Welcoming a guest at Circle Point Group', pos: '30% top', cropBanner: true },
+  { img: arrival,    alt: 'Oyewale Areoye arriving at an industry engagement', pos: 'center 15%' },
+  { img: networking, alt: 'Oyewale Areoye in conversation with fellow guests', pos: '45% center' },
+  { img: cpEvent1,   alt: 'Oyewale Areoye with the Circle Point Group team',   pos: '40% top', cropBanner: true },
+  { img: cpEvent2,   alt: 'Oyewale Areoye welcoming a guest at Circle Point Group', pos: '30% top', cropBanner: true },
 ]
+// Looped twice so the marquee can glide from the first copy straight into an
+// identical second copy, then jump back unnoticed.
+const momentsLoop = [...moments, ...moments]
 
 /* Mobile only: certifications and memberships share one compact, tabbed list */
 function Credentials() {
@@ -263,23 +267,26 @@ export default function About() {
             <h2 className="section-title on-dark">Professional <em>Moments</em></h2>
             <div className="gold-rule" />
           </div>
-          <div className={styles.momentsGrid}>
-            {moments.map((m, i) => (
-              <figure key={m.cap} className={styles.momentCard}>
-                <div className={styles.momentFrame}>
-                  <img
-                    src={m.img}
-                    alt={m.cap}
-                    loading="lazy"
-                    className={`${styles.momentImg} ${m.cropBanner ? styles.momentImgCrop : ''}`}
-                    style={{ objectPosition: m.pos }}
-                  />
+          <div className={styles.momentsTrack}>
+            <div className={styles.momentsTrackInner}>
+              {momentsLoop.map((m, i) => (
+                <div
+                  key={i}
+                  className={styles.momentCard}
+                  aria-hidden={i >= moments.length || undefined}
+                >
+                  <div className={styles.momentFrame}>
+                    <img
+                      src={m.img}
+                      alt={i < moments.length ? m.alt : ''}
+                      loading="lazy"
+                      className={`${styles.momentImg} ${m.cropBanner ? styles.momentImgCrop : ''}`}
+                      style={{ objectPosition: m.pos }}
+                    />
+                  </div>
                 </div>
-                <figcaption className={styles.momentCap}>
-                  <span>{String(i + 1).padStart(2, '0')}</span>{m.cap}
-                </figcaption>
-              </figure>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

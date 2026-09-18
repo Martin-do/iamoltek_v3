@@ -167,32 +167,49 @@
 .mName { font-size: 0.76rem; font-weight: 300; color: var(--muted); line-height: 1.4; }
 
 /* ================================================================
-   PROFESSIONAL MOMENTS STRIP
+   PROFESSIONAL MOMENTS — continuous, slow-gliding marquee
+   No captions or tags: the photos speak for themselves. The track holds
+   two back-to-back copies of the photo set and glides left by exactly one
+   copy's width, so the loop point is invisible.
    ================================================================ */
-.moments { width: 100%; background: var(--charcoal-2); padding: 6rem 0; }
+.moments { width: 100%; background: var(--charcoal-2); padding: 6rem 0; overflow: hidden; }
 .momentsInner { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--content-pad); }
 .momentsHeader { margin-bottom: 3.5rem; }
-.momentsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
-.momentCard { margin: 0; }
+
+/* Sits inside .momentsInner's normal padding; a soft mask fades each edge
+   so cards look like they glide in and out rather than getting clipped. */
+.momentsTrack {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+}
+.momentsTrackInner {
+  display: flex;
+  width: max-content;
+  gap: 1.4rem;
+  animation: momentsGlide 42s linear infinite;
+}
+/* Pause to look, on any pointer that can hover */
+@media (hover: hover) {
+  .moments:hover .momentsTrackInner { animation-play-state: paused; }
+}
+@keyframes momentsGlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 0.7rem)); }
+}
+.momentCard { flex: 0 0 auto; width: clamp(210px, 22vw, 300px); }
 .momentFrame { aspect-ratio: 4 / 5; overflow: hidden; background: #000; }
 .momentImg {
   width: 100%; height: 100%; display: block;
   object-fit: cover; object-position: center top;
-  filter: grayscale(20%); transition: filter 0.5s ease;
+  filter: grayscale(20%);
 }
-.momentCard:hover .momentImg { filter: grayscale(0%); }
 /* Circle Point photos carry a website banner along the bottom edge */
 .momentImgCrop { transform: scale(1.12); transform-origin: center top; }
-/* Captions sit below the photo, never on it */
-.momentCap {
-  display: flex; align-items: baseline; gap: 0.65rem;
-  margin-top: 0.9rem;
-  font-size: 0.8rem; line-height: 1.5; font-weight: 300;
-  color: rgba(255,255,255,0.62);
-}
-.momentCap span {
-  font-family: 'Cormorant Garamond', serif; font-size: 1rem;
-  color: var(--gold); flex-shrink: 0;
+
+@media (prefers-reduced-motion: reduce) {
+  .momentsTrackInner { animation: none; }
+  .momentsTrack { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
 
 /* CREDENTIALS (mobile only) */
@@ -225,7 +242,6 @@
   .heroBannerContent { gap: 3rem; }
   .bodyInner { gap: 3.5rem; }
   .photoSecondary { right: -6%; width: 52%; }
-  .momentsGrid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
 }
 
 /* ================================================================
@@ -262,16 +278,12 @@
   .sidebar, .membershipsSection { display: none; }
   .credentials { display: block; }
 
-  /* Moments: a swipeable strip, next photo peeking in from the right */
+  /* Moments: same gliding marquee, smaller cards and a shorter loop.
+     Gap stays 1.4rem (same as desktop) so the -50% - 0.7rem loop math in
+     @keyframes momentsGlide (0.7rem = half of that fixed gap) stays exact. */
   .momentsHeader { margin-bottom: 1.8rem; }
-  .momentsGrid {
-    display: flex; gap: 0.9rem;
-    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
-    margin-right: calc(-1 * var(--content-pad)); padding-right: var(--content-pad);
-    scrollbar-width: none;
-  }
-  .momentsGrid::-webkit-scrollbar { display: none; }
-  .momentCard { flex: 0 0 72%; scroll-snap-align: start; }
+  .momentCard { width: 68vw; max-width: 320px; }
+  .momentsTrackInner { animation-duration: 26s; }
 }
 
 /* ================================================================
