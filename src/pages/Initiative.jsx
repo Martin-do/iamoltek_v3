@@ -316,7 +316,7 @@ function CopyAccountButton() {
 }
 
 const pillars = [
-  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support — starting with the Back to School project.' },
+  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support, starting with the Back to School project.' },
   { icon: '🍲', title: 'Food & Relief', desc: 'Food packs and essential materials for households, elderly people and care institutions facing hardship.' },
   { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills, mentorship and encouragement for young people deciding what to do with their lives.' },
   { icon: '🌾', title: 'Community Welfare', desc: 'Working with community leaders and local partners on the everyday needs they identify themselves.' },
@@ -339,7 +339,7 @@ export default function Initiative() {
 
       <AnnouncementStrip
         tag="Upcoming Project"
-        text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials."
+        text="The Oyewale Areoye Initiative will be launching the Back to School Project, equipping students with essential materials."
         shortText="Back to School Project"
         linkText="See Details"
         linkHref="#event"
@@ -358,7 +358,7 @@ export default function Initiative() {
               The Oyewale<br />Areoye <em>Initiative</em>
             </h1>
             <p className={styles.tagline}>Empowering People. Transforming Communities.</p>
-            <div className={styles.cac}>✔ Registered with CAC, Abuja — Part 'F', CAMA 2020</div>
+            <div className={styles.cac}>✔ Registered with CAC, Abuja · Part 'F', CAMA 2020</div>
             <p className={styles.desc}>
               A Nigerian charity registered with the Corporate Affairs Commission, working in
               education, youth empowerment, food relief and community welfare.
@@ -400,7 +400,7 @@ export default function Initiative() {
             </p>
             <p>
               We work with community leaders, government agencies and private partners on
-              education, youth development, welfare and food relief — and we publish a report
+              education, youth development, welfare and food relief, and we publish a report
               for every intervention we carry out.
             </p>
             <p>
@@ -480,7 +480,7 @@ export default function Initiative() {
               opportunities to build a better future and transform communities across Nigeria.
             </p>
             <div className={styles.donateInline}>
-              <a href="#donate" className="btn-burg">Donate Now — Acc: {ACCOUNT_NUMBER}</a>
+              <a href="#donate" className="btn-burg">Donate Now · Acc: {ACCOUNT_NUMBER}</a>
               <p className={styles.donateSmall}>
                 Bank: Opay · Acc Name: THE OYEWALE AREOYE INITIATIVE
               </p>
@@ -524,7 +524,7 @@ export default function Initiative() {
             <div className={styles.birthdayPostWrap}>
               <InstagramReelEmbed
                 permalink="https://www.instagram.com/p/DahNoyfCKnr/"
-                title="Birthday post — The Oyewale Areoye Initiative"
+                title="Birthday post: The Oyewale Areoye Initiative"
               />
             </div>
           </div>
@@ -541,7 +541,7 @@ export default function Initiative() {
               Your support can change a life.<br />Join the movement today.
             </h2>
             <p className={styles.donateBandSub}>
-              Whether you donate, volunteer, or partner — there is a meaningful role for
+              Whether you donate, volunteer, or partner, there is a meaningful role for
               everyone who believes in community and human potential.
             </p>
           </div>

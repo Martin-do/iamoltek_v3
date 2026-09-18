@@ -101,11 +101,11 @@ export default function Home() {
             </p>
             <div className={`${styles.heroBadges} fade-up-d2`}>
               {[
-                'Co-Founder — Circle Point Group',
-                'Executive Director — Petik Limited',
+                'Co-Founder, Circle Point Group',
+                'Executive Director, Petik Limited',
                 'Founder, The Oyewale Areoye Initiative',
                 'Atobase of Okeluse Kingdom, Ondo State',
-                'Honorary Doctoral Fellow — ILMMD UK',
+                'Honorary Doctoral Fellow, ILMMD UK',
               ].map(b => <div key={b} className={styles.badge}>{b}</div>)}
             </div>
             <div className={`${styles.heroCtas} fade-up-d3`}>
@@ -143,7 +143,7 @@ export default function Home() {
           <div className={styles.outreachTeaserLeft}>
             <div className={styles.outreachTeaserDot}>Upcoming Initiative Project</div>
             <h2 className={styles.outreachTeaserTitle}>
-              Back to School Project — <em>Equipping the Next Generation</em>
+              Back to School Project: <em>Equipping the Next Generation</em>
             </h2>
             <p className={styles.outreachTeaserSub}>
               The Oyewale Areoye Initiative will be producing and distributing customized notebooks and essential stationery to students across local communities.

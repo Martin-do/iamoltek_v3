@@ -56,7 +56,7 @@ const certifications = [
   { code: 'CBAP',                      name: 'Certified Business Analyst Professional' },
   { code: 'IOPM',                      name: 'Accredited Project Manager' },
   { code: 'GBCN',                      name: 'Member, Green Building Council Nigeria' },
-  { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development — UK' },
+  { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development, UK' },
 ]
 
 const memberships = [
@@ -86,12 +86,12 @@ export default function About() {
       <section className={styles.heroBanner}>
         <div className={styles.heroBannerContent}>
           <div className={`${styles.heroText} fade-up`}>
-            <div className="section-label">The Person Behind the Platform</div>
+            <div className="section-label">Profile</div>
             <h1 className={styles.heroTitle}>
               A career in <em>buildings.</em><br />A commitment to <em>people.</em>
             </h1>
             <p className={styles.heroBio}>
-              Oyewale Areoye — @iamoltek — has spent over eleven years in facility management
+              Oyewale Areoye (@iamoltek) has spent over eleven years in facility management
               and real estate. He co-founded Circle Point Group, serves as Executive Director at
               Petik Limited, founded The Oyewale Areoye Initiative, and holds the chieftaincy
               title of Atobase of Okeluse Kingdom.
@@ -168,7 +168,7 @@ export default function About() {
             <div className={`${styles.midPortrait} reveal`}>
               <img
                 src={heroPortrait}
-                alt="Oyewale Areoye — Executive Portrait"
+                alt="Oyewale Areoye, executive portrait"
                 className={styles.midPortraitImg}
               />
               <div className={styles.midPortraitCaption}>Executive Portrait · @iamoltek</div>

@@ -84,13 +84,13 @@ const contactItems = [
   { icon: <GlobeIcon color="var(--gold-pale)" />, label: 'Website', value: 'iamoltek.com', href: 'https://iamoltek.com' },
   {
     icon: <InstagramIcon color="var(--gold-pale)" />,
-    label: 'Instagram — Personal',
+    label: 'Instagram (Personal)',
     value: '@iamoltek',
     href: 'https://instagram.com/iamoltek',
   },
   {
     icon: <CustomInitiativeInstagramIcon />,
-    label: 'Instagram — The Initiative',
+    label: 'Instagram (The Initiative)',
     value: '@theoyewaleareoyeinitiative',
     href: 'https://instagram.com/theoyewaleareoyeinitiative',
   },
@@ -139,7 +139,7 @@ export default function Contact() {
           </h1>
           <p className={styles.heroSub}>
             For professional collaboration, partnerships with the Initiative, speaking
-            engagements or media enquiries — send a message and we will come back to you.
+            engagements or media enquiries, send a message and we will come back to you.
           </p>
         </div>
       </section>

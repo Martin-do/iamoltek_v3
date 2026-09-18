@@ -59,7 +59,7 @@ const initiativeOrg = {
 const staticPages = [
   {
     path: '/',
-    title: 'Oyewale Areoye — Real Estate & Facility Management Executive',
+    title: 'Oyewale Areoye | Real Estate & Facility Management Executive',
     description: 'Official platform of Oyewale Areoye (@iamoltek): real estate and facility management executive, founder of The Oyewale Areoye Initiative, and Atobase of Okeluse Kingdom.',
     type: 'profile',
     og: { template: 'portrait', src: heroPortrait, alt: 'Oyewale Areoye' },
@@ -67,33 +67,33 @@ const staticPages = [
   },
   {
     path: '/about',
-    title: 'About Oyewale Areoye — Career, Certifications & Leadership',
+    title: 'About Oyewale Areoye | Career, Certifications & Leadership',
     description: 'Over 11 years in facility management and real estate: co-founder of Circle Point Group, Executive Director at Petik Limited, and certified CIWFM, CBAP and IOPM professional.',
     type: 'profile',
     og: { template: 'portrait', src: aboutWalking, alt: 'Oyewale Areoye' },
   },
   {
     path: '/initiative',
-    title: `${INITIATIVE} — Empowering People. Transforming Communities.`,
+    title: `${INITIATIVE} | Empowering People. Transforming Communities.`,
     description: 'A CAC-registered Nigerian charitable initiative investing in education, youth empowerment, food relief and community development. See our work and support a project.',
     og: { template: 'logo', src: initiativeLogo, alt: INITIATIVE },
     jsonLd: { ...initiativeOrg, logo: `${SITE_URL}${ogImagePath('/initiative')}` },
   },
   {
     path: '/initiative/impact',
-    title: `Impact in Action — Field Reports | ${INITIATIVE}`,
+    title: `Impact in Action: Field Reports | ${INITIATIVE}`,
     description: 'Stories and field reports from the relief outreaches and community projects delivered by The Oyewale Areoye Initiative across Lagos, Oyo and Osun States.',
     og: { template: 'photo', src: campaigns.find(c => c.status === 'completed')?.cover || initiativeLogo, alt: 'Beneficiaries of an Initiative outreach' },
   },
   {
     path: '/atobase',
-    title: 'Atobase of Okeluse Kingdom — Oyewale Areoye',
+    title: 'Atobase of Okeluse Kingdom | Oyewale Areoye',
     description: 'The chieftaincy title of Atobase of Okeluse Kingdom, Ose LGA, Ondo State, conferred on Oyewale Areoye by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II.',
     og: { template: 'portrait', src: atobasePortrait, alt: 'Oyewale Areoye, Atobase of Okeluse Kingdom' },
   },
   {
     path: '/contact',
-    title: 'Contact Oyewale Areoye — Partnerships, Speaking & Media',
+    title: 'Contact Oyewale Areoye | Partnerships, Speaking & Media',
     description: 'Get in touch with Oyewale Areoye for professional collaboration, partnerships with The Oyewale Areoye Initiative, speaking engagements and media enquiries.',
     og: { template: 'portrait', src: heroPortrait, alt: 'Oyewale Areoye' },
   },
@@ -117,7 +117,7 @@ function campaignPages() {
       const withPhoto = location.media?.length > 0
       return {
         path,
-        title: `${location.title} — ${location.date} | ${INITIATIVE}`,
+        title: `${location.title}, ${location.date} | ${INITIATIVE}`,
         description: location.summary,
         type: 'article',
         og: withPhoto

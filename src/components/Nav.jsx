@@ -30,7 +30,7 @@ export default function Nav() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         {/* LOGO — mix-blend-mode:screen removes black bg naturally */}
-        <Link to="/" className={styles.logoWrap} aria-label="Oyewale Areoye — Home">
+        <Link to="/" className={styles.logoWrap} aria-label="Oyewale Areoye, Home">
           <img src={logoWhite} alt="Oltek" className={styles.logoImg} />
         </Link>
 
