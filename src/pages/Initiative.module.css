@@ -847,3 +847,30 @@
     padding: 1.5rem 0;
   }
 }
+
+
+/* DAILY REFLECTIONS */
+.reflections { width: 100%; background: var(--cream); padding: 6rem 0; }
+.reflectionsInner { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--content-pad); }
+.reflectionsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.6rem; }
+.reflection { display: block; aspect-ratio: 1 / 1; overflow: hidden; background: var(--cream-dk); }
+.reflection img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.reflection:hover img { transform: scale(1.04); }
+.reflectionsCta { margin-top: 2rem; }
+
+@media (max-width: 768px) {
+  .reflections { padding: 3rem 0 3.2rem; }
+  /* One swipeable row instead of a 2x2 block: about 250px shorter */
+  .reflectionsGrid {
+    display: flex;
+    gap: 0.7rem;
+    margin: 1.6rem calc(-1 * var(--content-pad)) 0;
+    padding: 0 var(--content-pad);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .reflectionsGrid::-webkit-scrollbar { display: none; }
+  .reflection { flex: 0 0 46%; scroll-snap-align: start; }
+  .reflectionsCta { margin-top: 1.4rem; }
+}

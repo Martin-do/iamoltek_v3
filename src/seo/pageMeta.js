@@ -86,6 +86,12 @@ const staticPages = [
     og: { template: 'photo', src: campaigns.find(c => c.status === 'completed')?.cover || initiativeLogo, alt: 'Beneficiaries of an Initiative outreach' },
   },
   {
+    path: '/initiative/posts',
+    title: `Daily Reflections | ${INITIATIVE}`,
+    description: 'Every daily reflection published by The Oyewale Areoye Initiative, on purpose, resilience, service and community.',
+    og: { template: 'logo', src: initiativeLogo, alt: INITIATIVE },
+  },
+  {
     path: '/atobase',
     title: 'Atobase of Okeluse Kingdom | Oyewale Areoye',
     description: 'The chieftaincy title of Atobase of Okeluse Kingdom, Ose LGA, Ondo State, conferred on Oyewale Areoye by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II.',

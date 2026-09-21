@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Initiative from './pages/Initiative'
 import Reports from './pages/Reports'
+import PostsArchive from './pages/PostsArchive'
 import CampaignOverview from './pages/CampaignOverview'
 import ReportDetail from './pages/ReportDetail'
 import Atobase from './pages/Atobase'
@@ -60,6 +61,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/initiative" element={<Initiative />} />
         <Route path="/initiative/impact" element={<Reports />} />
+        <Route path="/initiative/posts" element={<PostsArchive />} />
         <Route path="/initiative/impact/ketu-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/ketu-lagos" replace />} />
         <Route path="/initiative/impact/oyo-food-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/oyo-state" replace />} />
         <Route path="/initiative/impact/back-to-school-project" element={<Navigate to="/initiative#event" replace />} />

@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "validate": "node scripts/validate-content.mjs",
+    "new-post": "node scripts/new-post.mjs",
+    "prebuild": "node scripts/validate-content.mjs",
     "build": "vite build && node scripts/build-seo.mjs",
     "preview": "vite preview"
   },
