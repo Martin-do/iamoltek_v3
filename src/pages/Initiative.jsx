@@ -338,8 +338,8 @@ export default function Initiative() {
       <FeaturedPost posts={featuredPostsData} />
 
       <AnnouncementStrip
-        tag="Upcoming Project"
-        text="The Oyewale Areoye Initiative will be launching the Back to School Project, equipping students with essential materials."
+        tag="In Progress"
+        text="The Back to School Project is under way: customized notebooks and essential stationery for students."
         shortText="Back to School Project"
         linkText="See Details"
         linkHref="#event"
@@ -506,7 +506,7 @@ export default function Initiative() {
                 <div className={styles.progTag}>{p.tag}</div>
                 <h3 className={styles.progTitle}>{p.title}</h3>
                 <p className={styles.progDesc}>{p.summary}</p>
-                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status === 'upcoming' ? 'Project' : 'Impact Story'} →</Link>
+                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status !== 'completed' ? 'Project' : 'Impact Story'} →</Link>
               </div>
             ))}
           </div>

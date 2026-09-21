@@ -67,7 +67,7 @@ export default function Footer({ variant = 'main' }) {
             <ul className={styles.links}>
               <li><Link to="/initiative#mission">Mission & Vision</Link></li>
               <li><Link to="/initiative/impact">Impact Reports</Link></li>
-              <li><Link to="/initiative#event">Upcoming Project</Link></li>
+              <li><Link to="/initiative#event">Current Project</Link></li>
               <li><Link to="/initiative#donate">Donate</Link></li>
               <li><Link to="/contact">Partner With Us</Link></li>
             </ul>

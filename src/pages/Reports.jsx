@@ -5,7 +5,7 @@ import styles from './Reports.module.css'
 
 export default function Reports() {
   const completed = campaigns.filter(campaign => campaign.status === 'completed')
-  const upcoming = campaigns.filter(campaign => campaign.status === 'upcoming')
+  const upcoming = campaigns.filter(campaign => campaign.status !== 'completed')
 
   return (
     <main className={styles.page}>
@@ -57,7 +57,7 @@ export default function Reports() {
             })}
           </div>
 
-          {upcoming.length > 0 && <section className={styles.upcoming}><div><div className={styles.eyebrow}>What comes next</div><h2>Upcoming <em>work</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
+          {upcoming.length > 0 && <section className={styles.upcoming}><div><div className={styles.eyebrow}>Under way</div><h2>Work in <em>progress</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
         </div>
       </section>
       <Footer variant="initiative" />

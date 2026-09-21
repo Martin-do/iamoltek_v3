@@ -40,8 +40,8 @@ const responsibilities = [
 
 const kingdomCards = [
   { icon: '📍', title: 'Location',           desc: 'Ose Local Government Area, Ondo State, Nigeria, a historic Yoruba community with deep cultural roots.' },
-  { icon: '👑', title: 'The Monarch',        desc: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, Ojima Arujale of Okeluse Kingdom. One of the youngest and most celebrated traditional rulers in Yorubaland.' },
-  { icon: '🏛', title: 'Heritage & Culture', desc: 'Centuries of Yoruba history: unique traditions, festivals, and an unbroken royal lineage from father to son.' },
+  { icon: '👑', title: 'The Monarch',        desc: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, Ojima Arujale of Okeluse Kingdom. He became king in 2019 at the age of sixteen, succeeding his father, and is widely reported as one of the youngest ruling monarchs in Yorubaland.' },
+  { icon: '🏛', title: 'Heritage & Culture', desc: 'Okeluse follows the tradition in which the first son of the reigning king succeeds him. The present Oba followed his father, Oba Akinghare I.' },
   { icon: '🌱', title: 'Development Vision', desc: "Under HRM Akinghare II's reign, Okeluse has prioritised infrastructure, youth education, and investment to uplift its people." },
   { icon: '🤝', title: 'Community Spirit',   desc: 'Known for warmth, unity and pride. Okeluse people carry a strong sense of identity and mutual support wherever they go.' },
   { icon: '🌍', title: 'Global Diaspora',    desc: "Okeluse sons and daughters have made their mark across Nigeria and internationally, carrying the kingdom's values of excellence." },
@@ -177,10 +177,10 @@ export default function Atobase() {
             <h2 className="section-title on-dark">About <em>Okeluse Kingdom</em></h2>
             <div className="gold-rule" />
             <p className={styles.kingdomIntro}>
-              Okeluse Kingdom is an ancient and historically rich Yoruba community in Ose LGA,
-              Ondo State. Governed by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, one of
-              the youngest monarchs in Yorubaland, the kingdom holds a proud heritage of
-              bravery, culture, and resilience.
+              Okeluse is a Yoruba community in Ose Local Government Area, Ondo State. It is led
+              by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, who took the throne at sixteen
+              and is widely reported as one of the youngest ruling monarchs in Yorubaland. It was
+              he who conferred the Atobase title on Oyewale Areoye in 2024.
             </p>
           </div>
           <div className={styles.kingdomGrid}>

@@ -51,10 +51,27 @@ function StatItem({ num, label }) {
 }
 
 const statsData = [
-  { num: '11+', label: 'Years Industry Leadership' },
-  { num: '6',   label: 'Professional Certifications' },
-  { num: '280', label: 'Food Packs Distributed · 2026' },
-  { num: '3',   label: 'States Reached · 2026' },
+  { num: '11+', label: 'Years in Industry' },
+  { num: '6',   label: 'Certifications' },
+  { num: '280', label: 'Food Packs · 2026' },
+  { num: '3',   label: 'States Reached' },
+]
+
+/* Line icons for the mobile roles strip (24x24, stroked in gold by CSS) */
+const icons = {
+  building: <><path d="M4 21V6l8-3 8 3v15M4 21h16" /><path d="M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4" /></>,
+  briefcase: <><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18" /></>,
+  initiative: <><path d="M4 4h16v12H10l-4 4v-4H4z" /><rect x="8" y="7.5" width="8" height="5" rx="1" /></>,
+  crown: <path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z" />,
+  award: <><circle cx="12" cy="9" r="5" /><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5" /></>,
+}
+
+const roles = [
+  { icon: 'building',   role: 'Co-Founder',         org: 'Circle Point Group' },
+  { icon: 'briefcase',  role: 'Executive Director', org: 'Petik Limited' },
+  { icon: 'initiative', role: 'Founder',            org: 'The Oyewale Areoye Initiative' },
+  { icon: 'crown',      role: 'Atobase',            org: 'Okeluse Kingdom' },
+  { icon: 'award',      role: 'Honorary Doctoral Fellow', org: 'ILMMD UK' },
 ]
 
 const pillars = [
@@ -89,11 +106,10 @@ export default function Home() {
               <em>Oyewale</em>
               <strong>Areoye</strong>
             </h1>
-            <div className={`${styles.heroRoles} fade-up-d1`} aria-hidden="true">
-              <span>Facility Management</span>
-              <span>Real Estate</span>
-              <span>Strategic Leadership</span>
-            </div>
+            <p className={`${styles.heroLead} fade-up-d1`}>
+              Facility management and real estate executive. Founder of The Oyewale Areoye Initiative.
+            </p>
+            <a href="#roles" className={`${styles.exploreLink} fade-up-d2`}>Explore <span aria-hidden="true">↓</span></a>
             <p className={`${styles.heroDesc} fade-up-d1`}>
               Eleven years in facility management and real estate. Co-founder of Circle Point
               Group, Executive Director at Petik Limited, founder of The Oyewale Areoye
@@ -130,8 +146,23 @@ export default function Home() {
 
       </section>
 
+      {/* ══════════ ROLES (mobile only; desktop lists these in the hero) ══════════ */}
+      <section id="roles" className={styles.rolesStrip} aria-labelledby="roles-title">
+        <h2 id="roles-title" className={styles.rolesTitle}>Roles &amp; titles</h2>
+        <div className={styles.rolesRow}>
+          {roles.map(r => (
+            <div key={r.role} className={styles.roleItem}>
+              <svg className={styles.roleIcon} viewBox="0 0 24 24" aria-hidden="true">{icons[r.icon]}</svg>
+              <div className={styles.roleName}>{r.role}</div>
+              <div className={styles.roleOrg}>{r.org}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ══════════ STATS ══════════ */}
       <div className={styles.statsBar}>
+        <div className={styles.statsTitle}>At a glance</div>
         <div className={styles.statsInner}>
           {statsData.map(s => <StatItem key={s.label} {...s} />)}
         </div>
@@ -141,12 +172,12 @@ export default function Home() {
       <div className={styles.outreachTeaser}>
         <div className={styles.outreachTeaserInner}>
           <div className={styles.outreachTeaserLeft}>
-            <div className={styles.outreachTeaserDot}>Upcoming Initiative Project</div>
+            <div className={styles.outreachTeaserDot}>Initiative Project · In Progress</div>
             <h2 className={styles.outreachTeaserTitle}>
               Back to School Project: <em>Equipping the Next Generation</em>
             </h2>
             <p className={styles.outreachTeaserSub}>
-              The Oyewale Areoye Initiative will be producing and distributing customized notebooks and essential stationery to students across local communities.
+              The Oyewale Areoye Initiative is producing customized notebooks and essential stationery for students in local communities. The project has started and preparations are continuing.
             </p>
           </div>
           <Link to="/initiative#event" className={styles.outreachTeaserCta}>
