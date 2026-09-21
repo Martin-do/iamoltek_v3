@@ -125,3 +125,55 @@
     background: rgba(255,255,255,0.9);
   }
 }
+
+
+/* ── MOTION ── */
+
+/* Thin gold line that fills as the page is read. Driven by the scroll position
+   in CSS alone (no JavaScript), where the browser supports it. */
+.progress {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .progress {
+    display: block;
+    animation: progressGrow linear both;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes progressGrow {
+    to { transform: scaleX(1); }
+  }
+}
+
+/* Menu links glide in one after another when the drawer opens */
+.mobileLinks li {
+  opacity: 0;
+  transform: translateX(22px);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+.mobileMenuOpen .mobileLinks li {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i, 0) * 60ms + 150ms);
+}
+
+/* Phones: the bar slides out of the way while reading down the page */
+@media (max-width: 768px) {
+  .navHidden {
+    transform: translateY(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navHidden { transform: none; }
+  .mobileLinks li { opacity: 1; transform: none; }
+}

@@ -588,91 +588,81 @@
    ================================================================ */
 @media (max-width: 768px) {
 
-  /* Mobile hero — title beside an arch-framed portrait, details below.
-     Nothing is layered over the photo. */
+  /* Mobile hero: a large portrait first, then the title on solid dark.
+     The photo has a light backdrop, so a short dark band above the crown lets
+     the header melt into it, and the bottom fades out below the staff. No text
+     is ever layered over the picture. */
   .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.88fr);
-    grid-template-areas:
-      "eyebrow eyebrow"
-      "title   photo"
-      "date    photo"
-      "tag     tag"
-      "sub     sub"
-      "conf    conf";
-    grid-template-rows: auto auto 1fr auto auto auto;
-    column-gap: 1.1rem;
+    display: flex;
+    flex-direction: column;
     min-height: 0;
-    padding: calc(var(--nav-height) + 2rem) var(--content-pad) 3.2rem;
     max-width: none;
     margin: 0;
-    background:
-      radial-gradient(ellipse 70% 45% at 85% 22%, rgba(196, 151, 63, 0.1), transparent 70%),
-      var(--charcoal);
+    padding: var(--nav-height) 0 0;
+    background: var(--charcoal);
   }
-
-  .heroLeft,
-  .heroLeftInner {
-    display: contents;
-  }
-
-  .eyebrow { grid-area: eyebrow; margin-bottom: 1.4rem; }
-
-  .title {
-    grid-area: title;
-    align-self: end;
-    font-size: clamp(2.1rem, 9.5vw, 3rem);
-    margin-bottom: 0.9rem;
-  }
-
-  .date {
-    grid-area: date;
-    align-self: start;
-    align-items: flex-start;
-    padding-top: 0.9rem;
-    border-top: 1px solid rgba(196, 151, 63, 0.3);
-    font-size: 0.58rem;
-    line-height: 1.7;
-    color: var(--gold-light);
-  }
-
-  .date::before { margin-top: 0.45rem; flex-shrink: 0; }
 
   .heroRight {
-    grid-area: photo;
-    align-self: center;
-    height: auto;
-    overflow: visible;
-    padding: 6px;
+    order: -1;
+    align-self: stretch;
+    height: min(64svh, 540px);
+    padding-top: 2rem;
+    background: var(--charcoal);
   }
 
   .heroImg {
-    aspect-ratio: 3 / 4;
-    height: auto;
     object-position: center top;
-    border-radius: 999px 999px 6px 6px;
-    outline: 1px solid rgba(196, 151, 63, 0.55);
-    outline-offset: 5px;
   }
 
-  .heroRightOverlay { display: none; }
+  .heroRightOverlay {
+    display: block;
+    background:
+      linear-gradient(180deg, var(--charcoal) 2rem, rgba(17, 16, 16, 0.5) 3.3rem, transparent 6.4rem),
+      linear-gradient(180deg,
+        transparent 0%,
+        transparent 46%,
+        rgba(17, 16, 16, 0.2) 58%,
+        rgba(17, 16, 16, 0.5) 70%,
+        rgba(17, 16, 16, 0.8) 82%,
+        rgba(17, 16, 16, 0.96) 89%,
+        var(--charcoal) 95%);
+  }
 
-  .kingdomTag {
-    grid-area: tag;
-    justify-self: start;
-    margin: 2rem 0 1.2rem;
+  .heroLeft {
+    display: block;
+    margin-top: -1.2rem;
+    padding: 0 0 2.2rem;
+    background: var(--charcoal);
+  }
+
+  .heroLeftInner {
+    max-width: none;
+    margin: 0;
+    padding: 0 var(--content-pad);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.7rem;
+  }
+
+  /* These three facts move into the "The honour" strip below the hero */
+  .kingdomTag,
+  .conferred,
+  .date {
+    display: none;
+  }
+
+  .title {
+    font-size: clamp(2.6rem, 12.5vw, 3.8rem);
+    margin-bottom: 0.9rem;
   }
 
   .subtitle {
-    grid-area: sub;
     max-width: none;
-    color: rgba(255, 255, 255, 0.68);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.72);
   }
-
-  .conferred { grid-area: conf; margin-bottom: 0; }
-
-  .conferredText { color: rgba(255, 255, 255, 0.62); }
 
   /* Meaning */
   .meaningSection {
@@ -886,5 +876,46 @@
 
   .tab:last-child {
     border-bottom: none;
+  }
+}
+
+/* ================================================================
+   MOTION
+   ================================================================ */
+
+/* The portrait fades in while settling from a slight zoom */
+.heroRight {
+  animation: settleIn 1.6s var(--ease-out) backwards;
+}
+
+/* The line before the eyebrow draws itself */
+.eyebrow::before {
+  transform-origin: left;
+  animation: lineGrow 1s 0.4s var(--ease-out) backwards;
+}
+
+/* A soft highlight passes across "Atobase" once, as the page opens */
+.title em {
+  background: linear-gradient(100deg, var(--gold-light) 40%, #fff 50%, var(--gold-light) 60%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldSweep 2.6s 0.9s ease-in-out backwards;
+}
+@keyframes goldSweep {
+  from { background-position: 100% 0; }
+  to   { background-position: 0% 0; }
+}
+
+/* The portrait drifts down and grows a little as the page scrolls away */
+@supports (animation-timeline: scroll()) {
+  .heroImg {
+    animation: heroDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 85vh;
+  }
+  @keyframes heroDrift {
+    to { transform: translateY(6%) scale(1.06); }
   }
 }

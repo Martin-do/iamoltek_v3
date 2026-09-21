@@ -19,3 +19,13 @@
   .grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem .7rem; }
   .meta { font-size: .62rem; gap: .4rem; }
 }
+
+/* Placeholder shimmer while a poster loads, then a soft fade in */
+.frame {
+  background: linear-gradient(100deg, var(--cream-dk) 30%, #f3ede1 50%, var(--cream-dk) 70%);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s linear infinite;
+}
+.frame:has(img[class~='img-loaded']) { animation: none; }
+.frame img { opacity: 0; transition: opacity .6s ease, transform .5s ease; }
+.frame img[class~='img-loaded'] { opacity: 1; }

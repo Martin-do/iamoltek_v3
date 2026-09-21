@@ -6,6 +6,7 @@ import styles from './Nav.module.css'
 export default function Nav() {
   const [scrolled,  setScrolled]  = useState(false)
   const [menuOpen,  setMenuOpen]  = useState(false)
+  const [hidden,    setHidden]    = useState(false)
   const { pathname } = useLocation()
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
@@ -14,8 +15,22 @@ export default function Nav() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    let lastY = window.scrollY
+    let ticking = false
+    const update = () => {
+      const y = window.scrollY
+      setScrolled(y > 20)
+      // Phones: slide the bar away while reading down, bring it back on any scroll up
+      if (y < 90) setHidden(false)
+      else if (y - lastY > 8) setHidden(true)
+      else if (lastY - y > 8) setHidden(false)
+      lastY = y
+      ticking = false
+    }
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update) }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -28,7 +43,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+      <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${hidden && !menuOpen ? styles.navHidden : ''}`}>
         {/* LOGO — mix-blend-mode:screen removes black bg naturally */}
         <Link to="/" className={styles.logoWrap} aria-label="Oyewale Areoye, Home">
           <img src={logoWhite} alt="Oltek" className={styles.logoImg} />
@@ -61,6 +76,7 @@ export default function Nav() {
           <span className={styles.bl} />
           <span className={styles.bl} />
         </button>
+        <div className={styles.progress} aria-hidden="true" />
       </nav>
 
       {/* MOBILE OVERLAY */}
@@ -77,15 +93,15 @@ export default function Nav() {
           <img src={logoWhite} alt="Oltek" className={styles.mobileLogoImg} />
         </div>
         <ul className={styles.mobileLinks}>
-          {links.map(l => (
-            <li key={l.to}>
+          {links.map((l, i) => (
+            <li key={l.to} style={{ '--i': i }}>
               <NavLink to={l.to} end={l.end}
                 className={({ isActive }) => isActive ? styles.mlActive : styles.ml}>
                 {l.label}
               </NavLink>
             </li>
           ))}
-          <li><NavLink to="/contact" className={styles.mlCta}>Connect</NavLink></li>
+          <li style={{ '--i': links.length }}><NavLink to="/contact" className={styles.mlCta}>Connect</NavLink></li>
         </ul>
         <p className={styles.mobileHandle}>@iamoltek · Oyewale Areoye</p>
       </div>

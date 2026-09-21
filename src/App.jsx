@@ -13,12 +13,16 @@ import Atobase from './pages/Atobase'
 import Contact from './pages/Contact'
 import { initGA, logPageView } from './analytics'
 import applyPageMeta from './seo/applyPageMeta'
+import useScrollReveal from './hooks/useScrollReveal'
 
 // Initialize Google Analytics (only active if VITE_GA_MEASUREMENT_ID is provided)
 initGA();
 
 function RouteObserver() {
   const { pathname, hash } = useLocation()
+
+  // Scroll-reveal for whichever page is showing (see src/motion.css)
+  useScrollReveal([pathname])
   
   useEffect(() => {
     // 1. Update title/meta, then log page view on route change
@@ -40,6 +44,12 @@ function RouteObserver() {
   return null
 }
 
+/* Cross-fades between pages: the key changes with the path, so each page mounts fresh */
+function PageFade({ children }) {
+  const { pathname } = useLocation()
+  return <div key={pathname} className="page-fade">{children}</div>
+}
+
 function LegacyReportRedirect() {
   const { slug } = useParams()
   const destinations = {
@@ -56,6 +66,7 @@ export default function App() {
       <RouteObserver />
       <BirthdaySplash />
       <Nav />
+      <PageFade>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -72,6 +83,7 @@ export default function App() {
         <Route path="/atobase" element={<Atobase />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      </PageFade>
     </BrowserRouter>
   )
 }

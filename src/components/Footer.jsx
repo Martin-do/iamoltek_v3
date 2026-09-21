@@ -31,7 +31,7 @@ export default function Footer({ variant = 'main' }) {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <div className={styles.top}>
+        <div className={`${styles.top} reveal-stagger`}>
           <div className={styles.brand}>
             {isInitiative
               ? <img src={initiativeLogo} alt="The Oyewale Areoye Initiative" className={styles.initiativeLogo} />

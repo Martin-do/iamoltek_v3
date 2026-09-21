@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
+import CountUp from '../components/CountUp'
+import FadeImage from '../components/FadeImage'
 import useScrollReveal from '../hooks/useScrollReveal'
 import AnnouncementStrip from '../components/AnnouncementStrip'
 import EventCountdown from '../components/EventCountdown'
@@ -28,7 +30,7 @@ function CopyAccountButton() {
     }
   }
   return (
-    <button type="button" className={styles.copyBtn} onClick={copy} aria-live="polite">
+    <button type="button" className={`${styles.copyBtn} ${copied ? styles.copyBtnDone : ''}`} onClick={copy} aria-live="polite">
       {copied ? 'Copied ✓' : 'Copy'}
     </button>
   )
@@ -172,7 +174,7 @@ export default function Initiative() {
             [String(posts.length), 'Reflections Shared'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
-              <div className={styles.istatNum}>{n}</div>
+              <div className={styles.istatNum}><CountUp value={n} /></div>
               <div className={styles.istatLbl}>{l}</div>
             </div>
           ))}
@@ -187,7 +189,7 @@ export default function Initiative() {
           <img
             src={initiativeImpact}
             alt="Initiative Impact"
-            className={`${styles.impactImg} reveal`}
+            className={`${styles.impactImg} reveal reveal-media`}
           />
           <div className="reveal reveal-d1">
             <div className="section-label">Real Impact</div>
@@ -262,10 +264,10 @@ export default function Initiative() {
               <h2 className="section-title">Latest from the <em>Initiative</em></h2>
               <div className="gold-rule" />
             </div>
-            <div className={styles.reflectionsGrid}>
+            <div className={`${styles.reflectionsGrid} reveal-stagger`}>
               {posts.slice(0, 4).map(post => (
                 <Link key={post.id} to={`/initiative/posts#post-${post.number}`} className={styles.reflection}>
-                  <img src={post.image} alt={post.alt} loading="lazy" />
+                  <FadeImage src={post.image} alt={post.alt} loading="lazy" />
                 </Link>
               ))}
             </div>

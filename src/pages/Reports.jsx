@@ -29,7 +29,7 @@ export default function Reports() {
               const locationGroups = getLocationGroups(campaign)
 
               return (
-                <article className={styles.campaignCard} key={campaign.slug}>
+                <article className={`${styles.campaignCard} reveal`} key={campaign.slug}>
                   <div className={styles.imageWrap}>
                     <img src={campaign.cover} alt="" style={{ objectPosition: campaign.coverPosition }} />
                     <span className={styles.tag}>{campaign.programme}</span>
@@ -57,7 +57,7 @@ export default function Reports() {
             })}
           </div>
 
-          {upcoming.length > 0 && <section className={styles.upcoming}><div><div className={styles.eyebrow}>Under way</div><h2>Work in <em>progress</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
+          {upcoming.length > 0 && <section className={`${styles.upcoming} reveal`}><div><div className={styles.eyebrow}>Under way</div><h2>Work in <em>progress</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
         </div>
       </section>
       <Footer variant="initiative" />

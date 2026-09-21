@@ -292,3 +292,58 @@
 @media (max-width: 480px) {
   .photoSecondary { display: none; }
 }
+
+
+/* ================================================================
+   MOTION (restores the depth the old fixed-background hero had, plus more)
+   ================================================================ */
+
+/* The hero photo opens with a soft frame-in and settles from a slight zoom */
+.heroPhoto {
+  animation: photoSettle 1.5s 0.15s var(--ease-out) backwards;
+}
+@keyframes photoSettle {
+  from { opacity: 0; clip-path: inset(10% 6% 10% 6%); transform: scale(1.05); }
+}
+
+/* As the page scrolls away the photo drifts and grows a little (parallax) */
+@supports (animation-timeline: scroll()) {
+  .heroPhoto img {
+    animation: photoDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 90vh;
+  }
+  @keyframes photoDrift {
+    to { transform: translateY(6%) scale(1.07); }
+  }
+}
+
+/* The career timeline draws itself down the page and each dot pops in */
+.timeline::before {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.8s var(--ease-out) 0.3s;
+}
+.section:global(.visible) .timeline::before {
+  transform: scaleY(1);
+}
+.titem::before {
+  transform: translateX(-3.5px) scale(0);
+  transition: transform 0.5s var(--ease-out) 0.25s;
+}
+.titem:global(.visible)::before {
+  transform: translateX(-3.5px) scale(1);
+}
+
+/* Moments photos return to full colour under a finger or cursor */
+.momentImg {
+  transition: filter 0.6s ease;
+}
+.momentCard:hover .momentImg {
+  filter: grayscale(0%);
+}
+
+/* Switching between Certifications and Memberships fades the list */
+.credList {
+  animation: fadeIn 0.45s ease;
+}

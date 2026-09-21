@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Footer from '../components/Footer'
+import FadeImage from '../components/FadeImage'
 import FeaturedPost from '../components/FeaturedPost'
 import { getPublishedPosts } from '../content/posts'
 import styles from './PostsArchive.module.css'
@@ -43,7 +44,7 @@ export default function PostsArchive() {
 
       <section className={styles.archive}>
         <div className={styles.inner}>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} reveal-stagger`}>
             {posts.map((post, index) => (
               <button
                 key={post.id}
@@ -54,7 +55,7 @@ export default function PostsArchive() {
                 aria-label={`Read post ${post.number}: ${post.series}`}
               >
                 <span className={styles.frame}>
-                  <img src={post.image} alt={post.alt} loading="lazy" />
+                  <FadeImage src={post.image} alt={post.alt} loading="lazy" />
                 </span>
                 <span className={styles.meta}>
                   <b>{String(post.number).padStart(2, '0')}</b>{post.series}

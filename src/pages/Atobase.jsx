@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
+import FactStrip from '../components/FactStrip'
 import useScrollReveal from '../hooks/useScrollReveal'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import GalleryCarousel from '../components/GalleryCarousel'
@@ -29,6 +30,15 @@ import c12 from '../assets/atobase10.jpg'
 import c13 from '../assets/atobase11.jpg'
 
 import styles from './Atobase.module.css'
+
+// Phone-only strip under the hero: the details that the desktop hero prints in its tag,
+// card and date line
+const honourFacts = [
+  { icon: 'crown',    label: 'Title',        detail: 'Atobase of Okeluse Kingdom' },
+  { icon: 'pin',      label: 'Kingdom',      detail: 'Ose LGA, Ondo State' },
+  { icon: 'calendar', label: 'Investiture',  detail: '2024' },
+  { icon: 'award',    label: 'Conferred by', detail: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II' },
+]
 
 const responsibilities = [
   'Serving as a cultural ambassador for Okeluse Kingdom and its heritage',
@@ -126,6 +136,8 @@ export default function Atobase() {
           <div className={styles.heroRightOverlay} />
         </div>
       </section>
+
+      <FactStrip id="honour" title="The honour" items={honourFacts} />
 
       {/* ══════════════ MEANING ══════════════ */}
       <section className={styles.meaningSection}>

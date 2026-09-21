@@ -102,3 +102,13 @@
   .locationNav { grid-template-columns: 1fr; }
   .locationNav > a:last-child { text-align: left; }
 }
+
+/* MOTION: the distribution bars grow when the chart scrolls into view */
+.barFill {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.3s var(--ease-out) 0.3s;
+}
+.distribution:global(.visible) .barFill {
+  transform: scaleX(1);
+}

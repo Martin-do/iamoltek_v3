@@ -91,7 +91,7 @@ function Credentials() {
   ]
   const active = tabs.find(t => t.id === tab)
   return (
-    <div className={`${styles.section} ${styles.credentials}`}>
+    <div className={`${styles.section} ${styles.credentials} reveal`}>
       <h2 className={styles.sectionTitle}>Credentials</h2>
       <div className={styles.credTabs} role="tablist" aria-label="Credentials">
         {tabs.map(t => (
@@ -107,7 +107,7 @@ function Credentials() {
           </button>
         ))}
       </div>
-      <dl className={styles.credList} role="tabpanel">
+      <dl key={tab} className={styles.credList} role="tabpanel">
         {active.items.map(item => (
           <div key={item.code} className={styles.credRow}>
             <dt>{item.code}</dt>
@@ -141,7 +141,7 @@ export default function About() {
               title of Atobase of Okeluse Kingdom.
             </p>
           </div>
-          <div className={`${styles.heroPhoto} fade-up-d1`}>
+          <div className={styles.heroPhoto}>
             <img src={aboutWalking} alt="Oyewale Areoye walking through a corridor" />
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function About() {
               <img src={proHeadshot1} alt="Oyewale Areoye" className={styles.photoMain} />
               <img src={proHeadshot2} alt="Oyewale Areoye" className={styles.photoSecondary} />
             </div>
-            <div className={styles.certs}>
+            <div className={`${styles.certs} reveal-stagger`}>
               <div className="section-label" style={{ marginTop: '1.8rem' }}>Certifications</div>
               {certifications.map(c => (
                 <div key={c.code} className={styles.cert}>
@@ -209,7 +209,7 @@ export default function About() {
             </div>
 
             {/* Executive portrait mid-break */}
-            <div className={`${styles.midPortrait} reveal`}>
+            <div className={`${styles.midPortrait} reveal reveal-media`}>
               <img
                 src={heroPortrait}
                 alt="Oyewale Areoye, executive portrait"

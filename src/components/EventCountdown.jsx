@@ -12,7 +12,7 @@ export default function EventCountdown({
     <section id="event" className={styles.container}>
       <div className={styles.overlay}></div>
       <div className={styles.inner}>
-        <div className={styles.eventInfo}>
+        <div className={`${styles.eventInfo} reveal-stagger`}>
           <div className={styles.label}>In Progress</div>
           <div className={styles.outreachTag}>📚 Education & Youth Welfare</div>
           <h2 className={styles.title}>{eventName}</h2>

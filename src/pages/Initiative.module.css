@@ -943,3 +943,35 @@
   .contactLink { display: inline-block; padding: 0.6rem 0; }
   .copyBtn { min-height: 44px; }
 }
+
+
+/* ================================================================
+   MOTION
+   ================================================================ */
+
+/* Copying the account number pops the button so the change is felt */
+.copyBtnDone {
+  animation: copyPop 0.45s var(--ease-out);
+}
+@keyframes copyPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Reflection thumbnails show a shimmering placeholder, then fade in */
+.reflection {
+  background: linear-gradient(100deg, var(--cream-dk) 30%, #f3ede1 50%, var(--cream-dk) 70%);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s linear infinite;
+}
+.reflection:has(img[class~='img-loaded']) {
+  animation: none;
+}
+.reflection img {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.5s ease;
+}
+.reflection img[class~='img-loaded'] {
+  opacity: 1;
+}
