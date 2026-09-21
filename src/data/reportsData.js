@@ -1,10 +1,11 @@
 import outreachOne from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import ketuReliefCover from '../assets/ketu-relief-cover.webp'
 import foodOutreachGroup from '../../posts/food_outreach0.jpeg'
-import foodOutreachCommunity from '../../posts/food_outreach3.jpeg'
-import foodOutreachChurch from '../../posts/food_outreach4 (1).jpeg'
-import foodOutreachTree from '../../posts/food_outreach4.jpeg'
-import foodOutreachMoments from '../../posts/food_outreach5.jpeg'
+import foodOutreachOsun from '../../posts/food_outreach3.jpeg'
+import oyoPhoto1 from '../assets/oyo-photo-1.webp'
+import oyoPhoto2 from '../assets/oyo-photo-2.webp'
+import oyoPhoto4 from '../assets/oyo-photo-4.webp'
+import oyoPhoto5 from '../assets/oyo-photo-5.webp'
 
 export const campaigns = [
   {
@@ -99,14 +100,13 @@ export const campaigns = [
         impact: 'The intervention provided immediate relief to 200 vulnerable households across Oyo State. Families received essential food items to help ease the burden of rising living costs and food insecurity. The outreach also strengthened relationships with local communities and demonstrated the importance of collaborative humanitarian efforts.',
         acknowledgement: 'The Oyewale Areoye Initiative expresses profound gratitude to all volunteers who dedicated their time and resources to the successful execution of this intervention. Special appreciation goes to the parish priests and mission communities whose support and local coordination enabled the Initiative to reach remote and underserved communities within the Ibarapa Axis and Ido Local Government Area. The Initiative also sincerely thanks all donors, partners, and supporters whose generosity made this humanitarian outreach possible.',
         conclusion: 'The Oyo State Food Relief Intervention marks another significant milestone in The Oyewale Areoye Initiative’s mission of responding to the needs of vulnerable communities through practical acts of compassion. With 200 food packs distributed across Ibarapa Axis and Ido Local Government Area, the Initiative has once again demonstrated its commitment to promoting human dignity, alleviating hardship, and fostering stronger communities.',
-        cover: foodOutreachCommunity,
-        coverPosition: 'center',
+        cover: oyoPhoto1,
+        coverPosition: 'center 30%',
         media: [
-          { type: 'image', src: foodOutreachCommunity, alt: 'Families holding food relief packs during the Oyo State outreach', caption: 'Food relief support reached families across Oyo State.' },
-          { type: 'image', src: foodOutreachTree, alt: 'Community beneficiaries holding food packs beneath a tree', caption: 'Community-led coordination helped the team reach vulnerable households.' },
-          { type: 'image', src: foodOutreachGroup, alt: 'A group of food relief beneficiaries holding initiative packs', caption: 'Beneficiaries gathered after receiving food packs.' },
-          { type: 'image', src: foodOutreachChurch, alt: 'Beneficiaries and outreach coordinators holding food packs', caption: 'The outreach was implemented with support from local mission communities.' },
-          { type: 'image', src: foodOutreachMoments, alt: 'A collection of beneficiary moments from the food relief outreach', caption: 'Food support was delivered alongside a message of care and solidarity.' }
+          { type: 'image', src: oyoPhoto1, alt: 'Three beneficiaries in Oyo State holding food packs from the Initiative', caption: 'Food packs reaching beneficiaries in Oyo State.' },
+          { type: 'image', src: oyoPhoto2, alt: 'Community members with their food packs during the Oyo outreach', caption: 'Community members received their packs close to home.' },
+          { type: 'image', src: oyoPhoto4, alt: 'A beneficiary at home with her food pack', caption: 'Packs were also taken to beneficiaries at home.' },
+          { type: 'image', src: oyoPhoto5, alt: 'A beneficiary holding her food pack', caption: 'Every household received a pack.' }
         ],
         instagramPosts: []
       },
@@ -142,10 +142,11 @@ export const campaigns = [
         acknowledgement: 'The Oyewale Areoye Initiative appreciates the cooperation of community leaders, volunteers, donors, and all partners whose support made the outreach successful. Their generosity continues to make a meaningful difference in the lives of vulnerable families.',
         conclusion: 'The Food Relief Intervention in Owode, Agbora, and Olowa communities of Ikire, Irewole Local Government Area, demonstrates The Oyewale Areoye Initiative’s unwavering commitment to reaching vulnerable populations with practical support. The Initiative remains dedicated to empowering people and transforming communities through sustainable humanitarian interventions.',
         photoHighlights: ['Distribution of food relief packs in Owode, Ikire', 'Food relief support in Agbora community', 'Food relief support in Olowa community', 'Community engagement with beneficiaries', 'Documentation of the outreach exercise'],
-        cover: outreachOne,
-        coverPosition: 'center',
-        media: [],
-        mediaNote: 'Osun-specific outreach photos have not been added yet, so this page uses a neutral Initiative image and keeps field photos pending.',
+        cover: foodOutreachOsun,
+        coverPosition: 'center 30%',
+        media: [
+          { type: 'image', src: foodOutreachOsun, alt: 'Families in Ikire, Osun State holding food relief packs', caption: 'Families in Ikire receiving their food packs.' }
+        ],
         instagramPosts: []
       }
     ]
