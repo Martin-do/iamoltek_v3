@@ -166,10 +166,10 @@ export default function Initiative() {
       <div className={styles.impactBand}>
         <div className={styles.impactBandInner}>
           {[
-            ['280', 'Food Packs Distributed'],
             ['3', 'States Reached'],
             ['4', 'Intervention Areas'],
-            ['1', 'Care Centre Supported'],
+            ['1', 'Project Under Way'],
+            [String(posts.length), 'Reflections Shared'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
               <div className={styles.istatNum}>{n}</div>

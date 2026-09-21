@@ -695,8 +695,8 @@
     min-height: 0;
     max-width: none;
     margin: 0;
-    padding: calc(var(--nav-height) + 0.6rem) 0 0;
-    background: #000;
+    padding: var(--nav-height) 0 0;
+    background: var(--charcoal);
   }
 
   .heroRight {
@@ -705,8 +705,10 @@
     height: min(64svh, 540px);
   }
 
+  /* A short black band above the head lets the header colour melt into the
+     photo's black backdrop, instead of meeting it at a hard edge */
   .portraitWrap {
-    padding-top: 0;
+    padding-top: 2.4rem;
     height: 100%;
     background: #000;
   }
@@ -719,11 +721,16 @@
   }
 
   .portraitOverlay {
-    background: linear-gradient(180deg,
+    background:
+      linear-gradient(180deg, var(--charcoal) 0, rgba(17, 16, 16, 0.55) 1.6rem, transparent 3.6rem),
+      linear-gradient(180deg,
         transparent 0%,
-        transparent 58%,
-        rgba(17, 16, 16, 0.65) 80%,
-        var(--charcoal) 96%);
+        transparent 44%,
+        rgba(17, 16, 16, 0.18) 56%,
+        rgba(17, 16, 16, 0.45) 68%,
+        rgba(17, 16, 16, 0.75) 80%,
+        rgba(17, 16, 16, 0.93) 91%,
+        var(--charcoal) 99%);
   }
 
   .heroLeft {
@@ -882,7 +889,7 @@
 
   .statLbl {
     margin-top: 0.35rem;
-    font-size: 0.52rem;
+    font-size: 0.58rem;
     letter-spacing: 0.08em;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.55);

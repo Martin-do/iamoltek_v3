@@ -874,3 +874,72 @@
   .reflection { flex: 0 0 46%; scroll-snap-align: start; }
   .reflectionsCta { margin-top: 1.4rem; }
 }
+
+
+/* ================================================================
+   PHONE POLISH (appended last so it wins over the earlier mobile rules).
+   Everything here is inside a max-width query: desktop is untouched.
+   ================================================================ */
+@media (max-width: 768px) {
+  /* Hero: the logo sits on the same line as the eyebrow instead of a row of its own */
+  .heroInner {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-areas:
+      "logo    eyebrow"
+      "title   title"
+      "tagline tagline"
+      "cac     cac"
+      "desc    desc"
+      "ctas    ctas";
+    align-items: center;
+    column-gap: 0.9rem;
+    row-gap: 0;
+    padding: 1.6rem var(--content-pad) 2.4rem;
+  }
+
+  .heroLeft { display: contents; }
+
+  .heroRight { grid-area: logo; margin: 0; order: 0; }
+  .heroLogo { width: 48px; height: 48px; max-width: 48px; max-height: 48px; }
+
+  .eyebrow { grid-area: eyebrow; margin: 0; }
+  .eyebrow::before { display: none; }
+
+  .title { grid-area: title; margin: 1.3rem 0 0.6rem; }
+  .tagline { grid-area: tagline; margin-bottom: 1rem; }
+  .cac { grid-area: cac; margin-bottom: 1.1rem; font-size: 0.64rem; }
+  .desc { grid-area: desc; margin-bottom: 1.4rem; }
+
+  /* The two buttons share a row */
+  .ctas { grid-area: ctas; flex-direction: row; gap: 0.6rem; }
+  .ctas a {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  /* Mission */
+  .mission { padding: 2.6rem 0; }
+  .missionInner { gap: 1.6rem; }
+
+  /* Impact figures: one row of four, like the homepage */
+  .impactBand { padding: 1.5rem 0; }
+  .impactBandInner { grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .istat {
+    padding: 0.3rem 0.3rem;
+    background: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .istat:last-child { border-right: none; }
+  .istatNum { font-size: 2rem; }
+  .istatLbl { margin-top: 0.35rem; font-size: 0.58rem; letter-spacing: 0.08em; line-height: 1.4; }
+
+  /* Comfortable tap targets */
+  .contactItem { min-height: 44px; }
+  .contactLink { display: inline-block; padding: 0.6rem 0; }
+  .copyBtn { min-height: 44px; }
+}

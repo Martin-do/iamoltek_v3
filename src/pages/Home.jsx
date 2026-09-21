@@ -5,6 +5,7 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import BirthdayBanner from '../components/BirthdayBanner'
 import BirthdaySpotlight from '../components/BirthdaySpotlight'
 import { isBirthdayPeriod } from '../utils/birthdayUtils'
+import { getPublishedPosts } from '../content/posts'
 import heroPortrait   from '../assets/hero-portrait.png'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import atobaseHero    from '../assets/portrait-golden-throne.jpg'
@@ -50,10 +51,10 @@ function StatItem({ num, label }) {
   )
 }
 
-const statsData = [
+// The last figure is counted from the published posts, so it grows on its own
+const baseStats = [
   { num: '11+', label: 'Years in Industry' },
   { num: '6',   label: 'Certifications' },
-  { num: '280', label: 'Food Packs · 2026' },
   { num: '3',   label: 'States Reached' },
 ]
 
@@ -76,7 +77,7 @@ const roles = [
 
 const pillars = [
   { num: '01', img: proActivity,    imgPos: 'center 38%', variant: 'pro',        title: 'Real Estate & Facility Management', cat: 'Circle Point Group · Petik Limited', desc: 'Eleven years across facility management and real estate, leading strategy, operations and investment growth as co-founder of Circle Point Group and Executive Director at Petik Limited.', link: '/about',      linkText: 'Read Profile' },
-  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: 'A CAC-registered initiative working in education, youth empowerment and community welfare. In July 2026 it delivered 280 food packs to households across Lagos, Oyo and Osun States.', link: '/initiative', linkText: 'Visit the Initiative' },
+  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: 'A CAC-registered initiative working in education, youth empowerment and community welfare. In 2026 it has carried out relief outreaches in Lagos, Oyo and Osun States and started its Back to School project.', link: '/initiative', linkText: 'Visit the Initiative' },
   { num: '03', img: atobaseHero,    imgPos: 'center 14%', variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Conferred the chieftaincy title of Atobase of Okeluse Kingdom, Ose LGA, Ondo State, by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, at the 2024 investiture ceremony.', link: '/atobase',    linkText: 'About the Title' },
 ]
 
@@ -85,6 +86,7 @@ export default function Home() {
   useScrollReveal()
 
   const isBirthday = isBirthdayPeriod()
+  const statsData = [...baseStats, { num: String(getPublishedPosts().length), label: 'Reflections Shared' }]
 
   return (
     <main className={styles.main} style={isBirthday ? { paddingTop: 'var(--nav-height)' } : {}}>
