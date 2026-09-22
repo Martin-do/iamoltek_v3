@@ -1,0 +1,49 @@
+.card {
+  border: 1px solid var(--cream-dk);
+  background: var(--cream);
+  padding: 1.6rem 1.6rem 1.4rem;
+  max-width: 560px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1.1rem;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #4bc45d; flex-shrink: 0; }
+
+.thread { display: flex; flex-direction: column; gap: .6rem; }
+
+.row { display: flex; }
+.rowUs { justify-content: flex-end; }
+.rowHer { justify-content: flex-start; }
+
+.bubble {
+  max-width: 82%;
+  padding: .65rem .95rem;
+  border-radius: 14px;
+  position: relative;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.rowUs .bubble { background: var(--burg); color: #fff; border-bottom-right-radius: 3px; }
+.rowHer .bubble { background: #fff; color: var(--charcoal); border: 1px solid var(--cream-dk); border-bottom-left-radius: 3px; }
+
+.bubble p { margin: 0; }
+
+.ticks { display: block; margin-top: .3rem; text-align: right; font-size: .68rem; color: var(--gold); letter-spacing: -1px; }
+
+.note { margin-top: 1.2rem; color: var(--muted); font-size: .74rem; line-height: 1.6; }
+
+@media (max-width: 640px) {
+  .card { padding: 1.2rem 1.1rem 1.1rem; }
+  .bubble { max-width: 90%; font-size: .88rem; }
+}

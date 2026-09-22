@@ -10,6 +10,7 @@ export default function CampaignOverview() {
   if (!campaign) return <main className={styles.notFound}><h1>Campaign not found</h1><Link to="/initiative/impact" className="btn-burg">Back to Impact</Link></main>
 
   const locationGroups = getLocationGroups(campaign)
+  const [taglineTop, taglineBottom] = campaign.overviewTagline || ['One mission.', 'Three states.']
 
   return (
     <main className={styles.page}>
@@ -28,7 +29,7 @@ export default function CampaignOverview() {
       <section className={styles.content}>
         <div className={styles.inner}>
           <div className={`${styles.metrics} reveal-stagger`}>{campaign.metrics.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
-          <div className={styles.intro}><div><div className={styles.eyebrow}>The campaign</div><h2>One mission.<br /><em>Three states.</em></h2></div><p>{campaign.intro}</p></div>
+          <div className={styles.intro}><div><div className={styles.eyebrow}>The campaign</div><h2>{taglineTop}<br /><em>{taglineBottom}</em></h2></div><p>{campaign.intro}</p></div>
 
           <header className={styles.locationHeader}><div><div className={styles.eyebrow}>State reports</div><h2>Explore each <em>outreach</em></h2></div><span>{campaign.locations.length} field reports</span></header>
           <div className={styles.stateGroups}>

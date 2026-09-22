@@ -35,7 +35,9 @@
 .twoColumnLists ul { display: grid; gap: .75rem; margin-top: 1.5rem; padding: 0; list-style: none; }
 .twoColumnLists li { position: relative; padding-left: 1.2rem; color: var(--ink-light); line-height: 1.55; }
 .twoColumnLists li::before { content: ''; position: absolute; top: .66em; left: 0; width: 6px; height: 6px; background: var(--burg); }
-.materials, .distribution, .mediaSection { margin-bottom: clamp(4rem, 9vw, 8rem); scroll-margin-top: calc(var(--nav-height) + 1.5rem); }
+.materials, .distribution, .mediaSection, .testimonial { margin-bottom: clamp(4rem, 9vw, 8rem); scroll-margin-top: calc(var(--nav-height) + 1.5rem); }
+.testimonial h2 { margin: .55rem 0 1.8rem; color: var(--charcoal); font: 400 clamp(2.2rem, 4vw, 3.8rem)/1 'Cormorant Garamond', serif; }
+.testimonial h2 em { color: var(--gold); }
 .materials { padding: clamp(2rem, 4vw, 3.5rem); background: var(--cream); }
 .materials ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 2rem; padding: 0; background: var(--cream-dk); list-style: none; }
 .materials li { padding: 1rem; background: var(--ivory); color: var(--ink-light); font-size: .76rem; line-height: 1.45; }
@@ -92,8 +94,8 @@
   .reportNav > div { width: 100%; justify-content: flex-start; flex-wrap: nowrap; gap: 1.1rem; padding-bottom: .25rem; overflow-x: auto; scrollbar-width: none; }
   .reportNav > div::-webkit-scrollbar { display: none; }
   .reportNav a { white-space: nowrap; }
-  .metrics > div { padding: 1rem .7rem; }
-  .metrics strong { font-size: 1.65rem; }
+  .metrics > div { padding: 1rem .5rem; min-width: 0; }
+  .metrics strong { font-size: clamp(1.05rem, 5vw, 1.65rem); overflow-wrap: break-word; hyphens: auto; }
   .metrics span { font-size: .56rem; letter-spacing: .03em; }
   .twoColumnLists, .outcomeGrid { grid-template-columns: 1fr; }
   .materials { margin-right: calc(var(--content-pad) * -1); margin-left: calc(var(--content-pad) * -1); padding-right: var(--content-pad); padding-left: var(--content-pad); }

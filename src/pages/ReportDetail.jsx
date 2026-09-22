@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import Footer from '../components/Footer'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
+import ChatExchange from '../components/ChatExchange'
 import { getCampaignLocation } from '../data/reportsData'
 import styles from './ReportDetail.module.css'
 
@@ -46,12 +47,13 @@ export default function ReportDetail() {
               <a href="#summary">Summary</a>
               {media.length > 0 && <a href="#field-photos">Field photos</a>}
               <a href="#delivery">Delivery</a>
+              {report.testimonial && <a href="#words">Her words</a>}
               <a href="#outcomes">Outcomes</a>
             </div>
           </nav>
 
           <section className={`${styles.narrative} reveal`} id="summary">
-            <div><div className={styles.eyebrow}>Executive summary</div><h2>{report.contextTitle}</h2>{report.beneficiary && <div className={styles.beneficiary}><span>Beneficiary institution</span><strong>{report.beneficiary}</strong></div>}</div>
+            <div><div className={styles.eyebrow}>Executive summary</div><h2>{report.contextTitle}</h2>{report.beneficiary && <div className={styles.beneficiary}><span>{report.beneficiaryLabel || 'Beneficiary institution'}</span><strong>{report.beneficiary}</strong></div>}</div>
             <div className={styles.prose}>{report.executiveSummary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
           </section>
 
@@ -65,6 +67,14 @@ export default function ReportDetail() {
           {report.reliefItems?.length > 0 && <section className={`${styles.materials} reveal`}><div className={styles.eyebrow}>Relief items donated</div><h2>Practical support for <em>daily needs</em></h2><ul>{report.reliefItems.map(item => <li key={item}>{item}</li>)}</ul></section>}
 
           {report.distribution?.length > 0 && <section className={`${styles.distribution} reveal`}><div className={styles.eyebrow}>Distribution footprint</div><h2>Where support <em>reached</em></h2><div className={styles.areaSummary}>{report.distribution.map(area => <span key={area.area}><strong>{area.total}</strong>{area.area}</span>)}</div><div className={styles.bars} aria-label="Distribution by community">{report.distribution.flatMap(area => area.communities.map(([community, packs]) => <div className={styles.barRow} key={`${area.area}-${community}`}><span>{community}</span><div className={styles.barTrack}><div className={styles.barFill} style={{ width: `${(packs / distributionMax) * 100}%` }} /></div><strong>{packs}</strong></div>))}</div></section>}
+
+          {report.testimonial && (
+            <section className={`${styles.testimonial} reveal`} id="words">
+              <div className={styles.eyebrow}>In her own words</div>
+              <h2>A message <em>back</em></h2>
+              <ChatExchange {...report.testimonial} />
+            </section>
+          )}
 
           <section className={`${styles.outcomeGrid} reveal`} id="outcomes">
             <div><div className={styles.eyebrow}>Impact</div><h2>Support that strengthens <em>care</em></h2><p>{report.impact}</p></div>
