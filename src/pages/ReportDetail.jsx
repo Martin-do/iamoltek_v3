@@ -18,7 +18,8 @@ export default function ReportDetail() {
 
   const distributionMax = Math.max(...(report.distribution?.flatMap(area => area.communities.map(([, packs]) => packs)) || [1]))
   const media = report.media || []
-  const hasHeroImage = media.length > 0
+  const hasHeroImage = media.length > 0 || Boolean(report.heroPortrait || report.heroFramed)
+  const showGallery = media.length > 0 && !report.hideMediaGallery
   const locationIndex = campaign.locations.findIndex(item => item.slug === report.slug)
   const previous = campaign.locations[locationIndex - 1]
   const next = campaign.locations[locationIndex + 1]
@@ -33,19 +34,28 @@ export default function ReportDetail() {
             <h1>{report.headline}</h1>
             <p>{report.date} · {report.location}</p>
           </div>
-          {hasHeroImage && <div className={styles.heroImageWrap}><img src={report.cover} alt="" fetchPriority="high" className={styles.heroImage} style={{ objectPosition: report.coverPosition }} /></div>}
+          {hasHeroImage && (report.heroPortrait ? (
+            <div className={styles.portraitWrap}>
+              <img src={report.cover} alt="" fetchPriority="high" className={styles.portrait} />
+              <div className={styles.portraitOverlay} />
+            </div>
+          ) : report.heroFramed ? (
+            <div className={styles.heroFramedWrap}><img src={report.cover} alt="" fetchPriority="high" className={styles.heroFramedImg} /></div>
+          ) : (
+            <div className={styles.heroImageWrap}><img src={report.cover} alt="" fetchPriority="high" className={styles.heroImage} style={{ objectPosition: report.coverPosition }} /></div>
+          ))}
         </div>
       </section>
 
       <section className={styles.story}>
         <div className={styles.inner}>
-          <div className={`${styles.metrics} reveal-stagger`}>{report.metrics.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
+          <div className={`${styles.metrics} ${report.metrics.length < 3 ? styles.metricsCompact : ''} reveal-stagger`}>{report.metrics.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
 
           <nav className={styles.reportNav} aria-label="On this report">
             <span>On this report</span>
             <div>
               <a href="#summary">Summary</a>
-              {media.length > 0 && <a href="#field-photos">Field photos</a>}
+              {showGallery && <a href="#field-photos">Field photos</a>}
               <a href="#delivery">Delivery</a>
               {report.testimonial && <a href="#words">Her words</a>}
               <a href="#outcomes">Outcomes</a>
@@ -57,7 +67,16 @@ export default function ReportDetail() {
             <div className={styles.prose}>{report.executiveSummary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
           </section>
 
-          {media.length > 0 && <section className={`${styles.mediaSection} reveal`} id="field-photos"><div className={styles.mediaHeading}><div><div className={styles.eyebrow}>From the field</div><h2>The outreach in <em>pictures</em></h2></div><p>Selected moments from the intervention. Beneficiary identities have been protected in the published photographs.</p></div><div className={`${styles.mediaGrid} reveal-stagger`}>{media.map((item, index) => <MediaItem key={`${item.type}-${item.src}`} item={item} featured={index === 0} />)}</div></section>}
+          {report.awardImage && (
+            <section className={`${styles.awardSection} reveal`}>
+              <figure>
+                <img src={report.awardImage.src} alt={report.awardImage.alt} loading="lazy" />
+                <figcaption>{report.awardImage.caption}</figcaption>
+              </figure>
+            </section>
+          )}
+
+          {showGallery && <section className={`${styles.mediaSection} reveal`} id="field-photos"><div className={styles.mediaHeading}><div><div className={styles.eyebrow}>From the field</div><h2>The outreach in <em>pictures</em></h2></div><p>Selected moments from the intervention. Beneficiary identities have been protected in the published photographs.</p></div><div className={`${styles.mediaGrid} reveal-stagger`}>{media.map((item, index) => <MediaItem key={`${item.type}-${item.src}`} item={item} featured={index === 0} />)}</div></section>}
 
           <section className={`${styles.twoColumnLists} reveal`} id="delivery">
             <div><div className={styles.eyebrow}>Objectives</div><h2>What we set out to <em>achieve</em></h2><ul>{report.objectives.map(item => <li key={item}>{item}</li>)}</ul></div>

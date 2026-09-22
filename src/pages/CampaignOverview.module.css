@@ -9,6 +9,15 @@
 .heroCopy > p { max-width: 500px; color: rgba(255,255,255,.68); line-height: 1.7; }
 .heroImageWrap { min-height: 530px; overflow: hidden; }
 .heroImageWrap img { width: 100%; height: 100%; object-fit: cover; }
+.heroFramedWrap { display: flex; align-items: center; justify-content: center; min-height: 530px; padding: clamp(2rem, 5vw, 3.5rem); }
+.heroFramedImg { width: 100%; max-width: 360px; max-height: 540px; object-fit: contain; box-shadow: 0 24px 60px rgba(0,0,0,.5); border: 1px solid rgba(196,151,63,.3); }
+.portraitWrap { width: 100%; height: 100%; min-height: 530px; position: relative; overflow: hidden; background: #0c0a09; }
+.portrait { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; opacity: .95; }
+.portraitOverlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(12, 10, 9, 0.7) 0%, transparent 30%),
+    linear-gradient(180deg, transparent 55%, rgba(12, 10, 9, 0.88) 100%);
+}
 .content { padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(5rem, 9vw, 8rem); }
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-bottom: clamp(4rem, 8vw, 7rem); background: var(--cream-dk); }
 .metrics div { padding: clamp(1.3rem, 3vw, 2.2rem); background: var(--cream); }
@@ -49,6 +58,19 @@
   .hero { padding: 0; }
   .heroInner { width: 100%; min-height: 0; grid-template-columns: 1fr; }
   .heroImageWrap { height: 70vw; min-height: 260px; max-height: 430px; order: 1; }
+  .heroFramedWrap { min-height: 0; padding: 2.2rem var(--content-pad) 1.6rem; order: 1; }
+  .heroFramedImg { max-width: 280px; }
+  .portraitWrap { min-height: 0; height: min(64svh, 540px); order: 1; padding-top: 2.4rem; background: #000; }
+  .portrait { height: 100%; object-position: center top; }
+  .portraitOverlay {
+    background:
+      linear-gradient(180deg, var(--charcoal) 0, rgba(17, 16, 16, 0.55) 1.6rem, transparent 3.6rem),
+      linear-gradient(180deg,
+        transparent 0%, transparent 44%,
+        rgba(17, 16, 16, 0.18) 56%, rgba(17, 16, 16, 0.45) 68%,
+        rgba(17, 16, 16, 0.75) 80%, rgba(17, 16, 16, 0.95) 88%,
+        var(--charcoal) 95%);
+  }
   .heroCopy { padding: 2.2rem var(--content-pad) 3.2rem; order: 2; }
   .back { margin-bottom: 2.5rem; }
   .intro { grid-template-columns: 1fr; gap: 1.5rem; }

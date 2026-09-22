@@ -40,11 +40,11 @@ export default function Reports() {
                     <p>{campaign.summary}</p>
                     <div className={styles.metrics}>{campaign.metrics.map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
                     <div className={styles.reportAccess}>
-                      <span>Open a full state report</span>
+                      <span>{campaign.kind === 'individual' ? 'Read the story' : 'Open a full state report'}</span>
                       <div>
                         {locationGroups.map(group => (
                           <div className={styles.reportGroup} key={group.state}>
-                            <small>{group.state}</small>
+                            {campaign.kind !== 'individual' && <small>{group.state}</small>}
                             {group.locations.map(location => <Link key={location.slug} to={`/initiative/impact/${campaign.slug}/${location.slug}`}>{location.title}<b>→</b></Link>)}
                           </div>
                         ))}

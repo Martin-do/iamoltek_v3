@@ -3,6 +3,7 @@ import ketuReliefCover from '../assets/ketu-relief-cover.webp'
 import foodOutreachGroup from '../../posts/food_outreach0.jpeg'
 import foodOutreachOsun from '../../posts/food_outreach3.jpeg'
 import taiwoFlyer from '../assets/taiwo-graduation-support-flyer.webp'
+import taiwoPortrait from '../assets/taiwo-portrait.webp'
 import oyoPhoto1 from '../assets/oyo-photo-1.webp'
 import oyoPhoto2 from '../assets/oyo-photo-2.webp'
 import oyoPhoto4 from '../assets/oyo-photo-4.webp'
@@ -154,6 +155,7 @@ export const campaigns = [
   },
   {
     slug: 'join-us-project',
+    kind: 'individual',
     title: 'Join Us Project',
     headline: 'One Life at a Time',
     programme: 'Individual Support',
@@ -164,9 +166,10 @@ export const campaigns = [
     summary: 'Direct, personal support for individuals at pivotal moments, funded through partners and supporters who join the Initiative in practical acts of care.',
     intro: 'Not every intervention reaches a whole community at once. The Join Us Project is how The Oyewale Areoye Initiative and its partners support individuals directly, at the moments that matter most to them.',
     overviewTagline: ['One life.', 'A new beginning.'],
-    metrics: [['1', 'Life impacted'], ['₦100,000', 'Support given']],
-    cover: taiwoFlyer,
-    coverPosition: 'center 16%',
+    metrics: [],
+    cover: taiwoPortrait,
+    coverPosition: 'center top',
+    heroPortrait: true,
     locations: [
       {
         slug: 'taiwo-opeyemi-moyinoluwa-2026',
@@ -180,7 +183,7 @@ export const campaigns = [
         location: 'Lagos State University, Lagos State',
         summary: 'A ₦100,000 Graduation Support Award presented to Taiwo Opeyemi Moyinoluwa on her graduation with a degree in Biochemistry from Lagos State University.',
         contextTitle: 'A graduate’s determination, recognised',
-        metrics: [['₦100,000', 'Award given'], ['Biochemistry', 'Course of study'], ['LASU', 'Institution']],
+        metrics: [['₦100,000', 'Award given']],
         executiveSummary: [
           'The Oyewale Areoye Initiative is committed to empowering people and transforming communities through education, human development and improved opportunities for individuals. As part of this commitment, the Initiative recently identified and recognised Taiwo Opeyemi Moyinoluwa, who graduated from Lagos State University with a degree in Biochemistry, for a special Graduation Support intervention.',
           'Her graduation marks a significant personal and academic milestone, and the determination behind it inspired the Initiative to extend a gesture of support at this important point of transition, from university into the next chapter of her life.',
@@ -195,6 +198,10 @@ export const campaigns = [
         ],
         beneficiary: 'Taiwo Opeyemi Moyinoluwa',
         beneficiaryLabel: 'Beneficiary',
+        heroPortrait: true,
+        hideMediaGallery: true,
+        ctaLabel: 'Read Her Story →',
+        awardImage: { src: taiwoFlyer, alt: 'Graduation Support Award flyer for Taiwo Opeyemi Moyinoluwa', caption: 'The Graduation Support Award, presented to mark her achievement.' },
         activities: [
           'Recognition of her graduation and academic achievement.',
           'Presentation of a ₦100,000 Graduation Support Award.',
@@ -205,21 +212,22 @@ export const campaigns = [
         impact: 'The award gave Taiwo practical support and encouragement at the very start of her post-university journey, reinforcing that her achievement, and her future, matter to people beyond her immediate circle.',
         acknowledgement: 'This gesture forms part of the Initiative’s broader Join Us Project, through which individuals and partners take practical steps to invest in people at pivotal moments in their lives. The Initiative is grateful to everyone whose support makes gestures like this possible.',
         conclusion: 'Her graduation is not the conclusion of her journey. It is the beginning of a new chapter filled with opportunities, responsibilities and possibilities. Through this intervention, the Initiative reaffirms its commitment to empowering people, supporting potential and transforming communities one life at a time.',
-        cover: taiwoFlyer,
-        coverPosition: 'center 16%',
+        cover: taiwoPortrait,
+        coverPosition: 'center top',
         media: [
-          { type: 'image', src: taiwoFlyer, alt: 'Graduation Support Award flyer for Taiwo Opeyemi Moyinoluwa', caption: 'The Graduation Support Award, presented to mark her achievement.' }
+          { type: 'image', src: taiwoPortrait, alt: 'Taiwo Opeyemi Moyinoluwa on her graduation day', caption: 'Taiwo on her graduation day.' }
         ],
         testimonial: {
           withName: 'Taiwo',
           messages: [
-            { from: 'us', text: 'Congratulations again on your graduation. We’d love to support you in a special way as you begin this new chapter.' },
-            { from: 'her', text: 'Thank you ma for your warm greetings and for reaching out to me on behalf of the Initiative. May God bless you abundantly.' },
-            { from: 'us', text: 'We’re pleased to send your Graduation Support Award as a token of that support.' },
-            { from: 'her', text: 'Wow! I am deeply touched and grateful for your kind gesture. Thank you so much. May God bless you abundantly.' },
-            { from: 'her', text: 'Thank you very much, I can’t thank you enough. I am very grateful. May God replenish and continue to enlarge your coast. Amen.' }
-          ],
-          note: 'A lightly tidied rendering of her WhatsApp replies after the award was sent, her own words, shared with her permission. Private details such as account numbers have been left out.'
+            { from: 'us', time: '07:23', text: 'Congratulations again on your graduation! The Initiative would like to support you in a special and meaningful way as you begin this new chapter.' },
+            { from: 'her', time: '10:56', text: 'Good morning ma' },
+            { from: 'her', time: '10:57', text: 'Thank you ma for your warm greetings and for reaching out to me on behalf of the initiative. may God bless you abundantly.' },
+            { from: 'us', time: '11:03', text: 'Once again, congratulations on your achievement. We are pleased to be able to support you as you begin this new chapter.' },
+            { from: 'her', time: '11:14', text: 'Wow! I am deeply touched and grateful for your kind gesture. Thank you so much. May God bless you abundantly' },
+            { from: 'us', time: '11:31', type: 'document', filename: 'Payment_Receipt.pdf', meta: '1 page · PDF' },
+            { from: 'her', time: '11:34', text: 'Thank you very much, I can’t thank you enough. I am very grateful 🙏. May God replenish and continue to enlarge your coast. Amen' }
+          ]
         },
         instagramPosts: []
       }
