@@ -40,7 +40,7 @@ export default function Reports() {
                     <p>{campaign.summary}</p>
                     <div className={styles.metrics}>{campaign.metrics.map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
                     <div className={styles.reportAccess}>
-                      <span>{campaign.kind === 'individual' ? 'Read the story' : 'Open a full state report'}</span>
+                      <span>{campaign.kind === 'individual' ? 'Explore personal stories' : 'Open a full state report'}</span>
                       <div>
                         {locationGroups.map(group => (
                           <div className={styles.reportGroup} key={group.state}>

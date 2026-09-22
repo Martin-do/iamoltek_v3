@@ -22,13 +22,13 @@ export default function CampaignOverview() {
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <Link to="/initiative/impact" className={styles.back}>← Impact Journal</Link>
-            <div className={styles.eyebrow}>{campaign.programme} · {campaign.date}</div>
+            <div className={styles.eyebrow}>{isIndividual ? campaign.title : `${campaign.programme} · ${campaign.date}`}</div>
             <h1>{campaign.headline}</h1>
             <p>{campaign.summary}</p>
           </div>
           {campaign.heroPortrait ? (
             <div className={styles.portraitWrap}>
-              <img className={styles.portrait} src={campaign.cover} alt="" />
+              <img className={styles.portrait} src={campaign.cover} alt={campaign.coverAlt || ''} />
               <div className={styles.portraitOverlay} />
             </div>
           ) : campaign.heroFramed ? (

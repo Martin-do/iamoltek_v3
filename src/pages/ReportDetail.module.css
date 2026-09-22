@@ -1,4 +1,5 @@
-.page { padding-top: var(--nav-height); background: var(--ivory); }
+.page { position: relative; padding-top: var(--nav-height); background: var(--ivory); }
+.page::before { content: ''; position: absolute; inset: 0 0 auto; height: var(--nav-height); background: var(--charcoal); }
 .heroInner, .inner { width: min(1180px, calc(100% - 2 * var(--content-pad))); margin: 0 auto; }
 .eyebrow { color: var(--gold); font-size: .65rem; font-weight: 500; letter-spacing: .17em; text-transform: uppercase; }
 .hero { padding: clamp(2rem, 5vw, 4.5rem) 0; background: var(--charcoal); color: var(--cream); }
@@ -14,8 +15,7 @@
 .heroFramedWrap { display: flex; align-items: center; justify-content: center; min-height: 540px; padding: clamp(2rem, 5vw, 3.5rem); }
 .heroFramedImg { width: 100%; max-width: 360px; max-height: 540px; object-fit: contain; box-shadow: 0 24px 60px rgba(0,0,0,.5); border: 1px solid rgba(196,151,63,.3); }
 
-/* Portrait hero: a real photo of the beneficiary, blended into the dark
-   header/background rather than cropped hard at the edges. */
+/* Portrait hero: blend the edited graduation portrait into the dark header. */
 .portraitWrap { width: 100%; height: 100%; min-height: 540px; position: relative; overflow: hidden; background: #0c0a09; }
 .portrait { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; opacity: .95; }
 .portraitOverlay {
@@ -99,16 +99,15 @@
   .heroImageWrap { height: 72vw; min-height: 270px; max-height: 430px; order: 1; }
   .heroFramedWrap { min-height: 0; padding: 2.2rem var(--content-pad) 1.6rem; order: 1; }
   .heroFramedImg { max-width: 280px; }
-  .portraitWrap { min-height: 0; height: min(64svh, 540px); order: 1; padding-top: 2.4rem; background: #000; }
-  .portrait { height: 100%; object-position: center top; }
+  .portraitWrap { min-height: 0; height: min(64svh, 540px); order: 1; background: var(--charcoal); }
+  .portrait { height: 100%; object-position: center top; transform: scale(1.28); transform-origin: center top; }
   .portraitOverlay {
     background:
-      linear-gradient(180deg, var(--charcoal) 0, rgba(17, 16, 16, 0.55) 1.6rem, transparent 3.6rem),
+      linear-gradient(180deg, var(--charcoal) 0%, rgba(17, 16, 16, 0.78) 5%, rgba(17, 16, 16, 0.32) 11%, transparent 18%),
       linear-gradient(180deg,
-        transparent 0%, transparent 44%,
-        rgba(17, 16, 16, 0.18) 56%, rgba(17, 16, 16, 0.45) 68%,
-        rgba(17, 16, 16, 0.75) 80%, rgba(17, 16, 16, 0.95) 88%,
-        var(--charcoal) 95%);
+        transparent 0%, transparent 50%,
+        rgba(17, 16, 16, 0.16) 62%, rgba(17, 16, 16, 0.46) 74%,
+        rgba(17, 16, 16, 0.82) 88%, var(--charcoal) 100%);
   }
   .heroCopy { padding: 2.2rem var(--content-pad) 3rem; order: 2; }
   .back { margin-bottom: 2.5rem; }

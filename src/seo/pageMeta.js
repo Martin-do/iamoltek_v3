@@ -114,7 +114,7 @@ function campaignPages() {
       description: campaign.summary,
       type: 'article',
       og: hasPhotos
-        ? { template: 'photo', src: campaign.cover, position: campaign.coverPosition, alt: campaign.headline }
+        ? { template: 'photo', src: campaign.cover, position: campaign.coverPosition, alt: campaign.coverAlt || campaign.headline }
         : { template: 'logo', src: initiativeLogo, alt: INITIATIVE },
     }
 

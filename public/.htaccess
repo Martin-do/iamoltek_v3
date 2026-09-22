@@ -7,6 +7,10 @@
 
   RewriteBase /
 
+  # Keep earlier programme links working
+  RewriteRule ^initiative/impact/(join-us-project|paths-forward|individual-support)/?$ /initiative/impact/support-programme [R=301,L]
+  RewriteRule ^initiative/impact/(join-us-project|paths-forward|individual-support)/(.+?)/?$ /initiative/impact/support-programme/$2 [R=301,L]
+
   # Pre-rendered pages: serve /about from about.html (page-specific title + link preview tags)
   RewriteCond %{REQUEST_URI} ^/(.+?)/?$
   RewriteCond %{DOCUMENT_ROOT}/%1.html -f

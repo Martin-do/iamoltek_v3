@@ -60,6 +60,11 @@ function LegacyReportRedirect() {
   return <Navigate to={destinations[slug] || '/initiative/impact'} replace />
 }
 
+function LegacySupportProgrammeRedirect() {
+  const { locationSlug } = useParams()
+  return <Navigate to={`/initiative/impact/support-programme/${locationSlug}`} replace />
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -76,6 +81,12 @@ export default function App() {
         <Route path="/initiative/impact/ketu-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/ketu-lagos" replace />} />
         <Route path="/initiative/impact/oyo-food-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/oyo-state" replace />} />
         <Route path="/initiative/impact/back-to-school-project" element={<Navigate to="/initiative#event" replace />} />
+        <Route path="/initiative/impact/join-us-project" element={<Navigate to="/initiative/impact/support-programme" replace />} />
+        <Route path="/initiative/impact/join-us-project/:locationSlug" element={<LegacySupportProgrammeRedirect />} />
+        <Route path="/initiative/impact/paths-forward" element={<Navigate to="/initiative/impact/support-programme" replace />} />
+        <Route path="/initiative/impact/paths-forward/:locationSlug" element={<LegacySupportProgrammeRedirect />} />
+        <Route path="/initiative/impact/individual-support" element={<Navigate to="/initiative/impact/support-programme" replace />} />
+        <Route path="/initiative/impact/individual-support/:locationSlug" element={<LegacySupportProgrammeRedirect />} />
         <Route path="/initiative/impact/:campaignSlug" element={<CampaignOverview />} />
         <Route path="/initiative/impact/:campaignSlug/:locationSlug" element={<ReportDetail />} />
         <Route path="/initiative/reports" element={<Navigate to="/initiative/impact" replace />} />
