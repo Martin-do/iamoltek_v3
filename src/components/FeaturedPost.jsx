@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './FeaturedPost.module.css';
 
-export default function FeaturedPost({ posts }) {
+/**
+ * The story-style post sheet.
+ *  - default: opens itself once per new post and leaves a floating bubble to reopen it
+ *  - controlled (pass controlledIndex, and onClose): opens only when told to, at that
+ *    post, with no bubble. The posts archive page uses this.
+ */
+export default function FeaturedPost({ posts, controlledIndex, onClose }) {
+  const controlled = controlledIndex !== undefined;
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [sheetHeight, setSheetHeight] = useState(55); // vh
@@ -20,6 +27,7 @@ export default function FeaturedPost({ posts }) {
   useEffect(() => {
     // Only run on client after mount
     setHasMounted(true);
+    if (controlled) return;
     const hasSeenPost = localStorage.getItem(`seen_post_${primaryPostId}`);
     if (!hasSeenPost) {
       // Auto-open on first visit for this post, slight delay for effect
@@ -28,9 +36,24 @@ export default function FeaturedPost({ posts }) {
       }, 800);
       return () => clearTimeout(timer);
     }
-  }, [primaryPostId]);
+  }, [primaryPostId, controlled]);
+
+  // Controlled mode: follow the parent's index (null = closed)
+  useEffect(() => {
+    if (!controlled) return;
+    if (controlledIndex === null) { setIsOpen(false); return; }
+    setCurrentPostIndex(controlledIndex);
+    setSheetHeight(55);
+    currentHeight.current = 55;
+    setIsOpen(true);
+  }, [controlled, controlledIndex]);
 
   const handleClose = () => {
+    if (controlled) {
+      setIsOpen(false);
+      onClose?.();
+      return;
+    }
     setIsOpen(false);
     localStorage.setItem(`seen_post_${primaryPostId}`, 'true');
     setTimeout(() => {
@@ -182,7 +205,7 @@ export default function FeaturedPost({ posts }) {
 
             <img 
               src={activePost.image} 
-              alt="Featured Initiative Post" 
+              alt={activePost.alt || 'Initiative post'} 
               className={styles.postImage} 
               fetchpriority="high"
             />
@@ -200,14 +223,16 @@ export default function FeaturedPost({ posts }) {
       </div>
 
       {/* The Floating Bubble (visible when closed) */}
-      <div 
-        className={`${styles.floatingBubble} ${!isOpen ? styles.bubbleVisible : ''} ${styles.bubblePulsate}`} 
-        onClick={handleOpen}
-      >
-        <div className={styles.bubbleImageWrapper}>
-          <img src={posts[0].image} alt="Open Featured Post" />
+      {!controlled && (
+        <div 
+          className={`${styles.floatingBubble} ${!isOpen ? styles.bubbleVisible : ''} ${styles.bubblePulsate}`} 
+          onClick={handleOpen}
+        >
+          <div className={styles.bubbleImageWrapper}>
+            <img src={posts[0].image} alt="Open Featured Post" />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function BirthdayBanner({ variant = 'default' }) {
     <div className={`${styles.banner} ${styles.default}`}>
       <div className={styles.content}>
         <span className={styles.shimmerText}>
-          🎂 Today we celebrate Oyewale Areoye — Happy Birthday! 🎂
+          🎂 Today we celebrate Oyewale Areoye. Happy Birthday! 🎂
         </span>
       </div>
     </div>

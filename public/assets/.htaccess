@@ -1,0 +1,4 @@
+# Vite fingerprints every file in /assets (e.g. index-BRi_Kqwk.js), so they can be cached for a year
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>

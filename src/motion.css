@@ -1,0 +1,150 @@
+/* ================================================================
+   MOTION SYSTEM
+   One place for every scroll and entrance effect on the site.
+
+   Use it by adding a class; nothing needs JavaScript per element:
+     .reveal            fade up                       (existing)
+     .reveal-left/right slide in from a side
+     .reveal-scale      grow in
+     .reveal-media      wipe up + slow settle (for images)
+     .reveal-stagger    children arrive one after another
+   The hook in App.jsx adds .visible when an element scrolls into view.
+
+   Only transform and opacity are animated, so it stays smooth on phones.
+   People who ask their device to reduce motion get none of it.
+   ================================================================ */
+:root {
+  --ease-out: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* ---- Slide / scale variants ---- */
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+}
+.reveal-left  { transform: translateX(-38px); }
+.reveal-right { transform: translateX(38px); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Staggered children ---- */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger > *:nth-child(1)  { --i: 0; }
+.reveal-stagger > *:nth-child(2)  { --i: 1; }
+.reveal-stagger > *:nth-child(3)  { --i: 2; }
+.reveal-stagger > *:nth-child(4)  { --i: 3; }
+.reveal-stagger > *:nth-child(5)  { --i: 4; }
+.reveal-stagger > *:nth-child(6)  { --i: 5; }
+.reveal-stagger > *:nth-child(7)  { --i: 6; }
+.reveal-stagger > *:nth-child(8)  { --i: 7; }
+.reveal-stagger > *:nth-child(n+9) { --i: 8; }
+
+/* ---- Images: wipe up while the picture settles from a slight zoom ---- */
+.reveal.reveal-media {
+  transform: none;
+  clip-path: inset(0 0 14% 0);
+  transition: opacity 0.9s ease, clip-path 1.2s var(--ease-out);
+}
+.reveal.reveal-media.visible {
+  clip-path: inset(0 0 0 0);
+}
+.reveal-media img {
+  transform: scale(1.12);
+  transition: transform 1.7s var(--ease-out);
+}
+.reveal-media.visible img {
+  transform: scale(1);
+}
+
+/* ---- The gold rule under headings draws itself ---- */
+.reveal .gold-rule,
+.reveal-stagger .gold-rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s var(--ease-out) 0.35s;
+}
+.reveal .gold-rule.center,
+.reveal-stagger .gold-rule.center {
+  transform-origin: center;
+}
+.reveal.visible .gold-rule,
+.reveal-stagger.visible .gold-rule {
+  transform: scaleX(1);
+}
+
+/* ---- Touch feedback: buttons dip when pressed ---- */
+.btn-gold:active,
+.btn-ghost:active,
+.btn-burg:active {
+  transform: scale(0.97);
+  transition-duration: 0.1s;
+}
+
+/* ---- Page change: a soft cross-fade (opacity only, so fixed elements inside
+       a page, like the post sheet, keep their position) ---- */
+.page-fade {
+  animation: pageFade 0.45s var(--ease-out) backwards;
+}
+@keyframes pageFade {
+  from { opacity: 0; }
+}
+
+/* ---- Reusable keyframes ---- */
+@keyframes settleIn {
+  from { opacity: 0; transform: scale(1.07); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+}
+@keyframes nudgeDown {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+@keyframes skeleton {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ---- Reduced motion: show everything, move nothing ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-stagger > *,
+  .reveal.reveal-media {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .reveal-media img {
+    transform: none !important;
+  }
+}

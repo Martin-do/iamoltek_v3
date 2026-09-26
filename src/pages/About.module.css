@@ -1,31 +1,18 @@
 /* ================================================================
-   HERO BANNER — walking corridor photo
+   HERO BANNER — text left | walking corridor photo right
    ================================================================ */
 .heroBanner {
   width: 100%;
-  min-height: 75vh;
-  background-size: cover;
-  background-position: center 25%; /* FIXED: keeps person visible on desktop */
-  background-attachment: fixed;
+  background: var(--charcoal);
+  padding: calc(var(--nav-height) + 3.5rem) 0 5rem;
   position: relative; overflow: hidden;
-  display: flex; align-items: flex-end;
-}
-.heroBannerOverlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(17,16,16,0.20)  0%,
-    rgba(17,16,16,0.55)  40%,
-    rgba(17,16,16,0.88)  82%,
-    rgb(253,250,244)    100%
-  );
 }
 .heroBannerContent {
   position: relative; z-index: 1;
   width: 100%; max-width: var(--content-max); margin: 0 auto;
-  padding: 0 var(--content-pad) 6rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: end;
+  padding: 0 var(--content-pad);
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 5rem; align-items: center;
 }
 .heroTitle {
   font-family: 'Cormorant Garamond', serif;
@@ -33,7 +20,18 @@
   color: #fff; line-height: 1.0;
 }
 .heroTitle em { font-style: italic; color: var(--gold-light); }
-.heroBio { font-size: 1.05rem; line-height: 2; color: rgba(255,255,255,0.5); font-weight: 300; }
+.heroBio {
+  font-size: 1.05rem; line-height: 2; color: rgba(255,255,255,0.62); font-weight: 300;
+  margin-top: 1.8rem; max-width: 560px;
+}
+.heroPhoto {
+  aspect-ratio: 4 / 5;
+  max-height: min(78vh, 720px);
+  justify-self: end;
+  width: 100%;
+  overflow: hidden;
+}
+.heroPhoto img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .heroWatermark {
   position: absolute; right: 3%; bottom: -2.5rem;
   font-family: 'Cormorant SC', serif; font-size: 13rem; font-weight: 300;
@@ -96,10 +94,11 @@
   width: 100%; max-height: 440px;
   object-fit: cover; object-position: top center; display: block; filter: grayscale(10%);
 }
+/* Caption sits below the portrait, never on it */
 .midPortraitCaption {
-  position: absolute; bottom: 1rem; right: 1.5rem;
+  margin-top: 0.7rem;
   font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45); background: rgba(17,16,16,0.6); padding: 0.3rem 0.8rem;
+  color: var(--muted);
 }
 
 .timeline { position: relative; padding-left: 1.8rem; }
@@ -168,77 +167,183 @@
 .mName { font-size: 0.76rem; font-weight: 300; color: var(--muted); line-height: 1.4; }
 
 /* ================================================================
-   PROFESSIONAL MOMENTS STRIP
+   PROFESSIONAL MOMENTS — continuous, slow-gliding marquee
+   No captions or tags: the photos speak for themselves. The track holds
+   two back-to-back copies of the photo set and glides left by exactly one
+   copy's width, so the loop point is invisible.
    ================================================================ */
-.moments { width: 100%; background: var(--charcoal-2); padding: 6rem 0; }
+.moments { width: 100%; background: var(--charcoal-2); padding: 6rem 0; overflow: hidden; }
 .momentsInner { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--content-pad); }
 .momentsHeader { margin-bottom: 3.5rem; }
-.momentsGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
-.momentCard { position: relative; overflow: hidden; }
+
+/* Sits inside .momentsInner's normal padding; a soft mask fades each edge
+   so cards look like they glide in and out rather than getting clipped. */
+.momentsTrack {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+}
+.momentsTrackInner {
+  display: flex;
+  width: max-content;
+  gap: 1.4rem;
+  animation: momentsGlide 42s linear infinite;
+}
+/* Pause to look, on any pointer that can hover */
+@media (hover: hover) {
+  .moments:hover .momentsTrackInner { animation-play-state: paused; }
+}
+@keyframes momentsGlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 0.7rem)); }
+}
+.momentCard { flex: 0 0 auto; width: clamp(210px, 22vw, 300px); }
+.momentFrame { aspect-ratio: 4 / 5; overflow: hidden; background: #000; }
 .momentImg {
-  width: 100%; aspect-ratio: 3/4;
-  object-fit: cover; object-position: top center; display: block;
-  filter: grayscale(20%); transition: all 0.5s ease;
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: center top;
+  filter: grayscale(20%);
 }
-.momentCard:hover .momentImg { filter: grayscale(0%); transform: scale(1.04); }
-.momentCap {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 2rem 1.2rem 1rem;
-  background: linear-gradient(transparent, rgba(17,16,16,0.82));
-  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); font-weight: 300;
-  opacity: 0; transition: opacity 0.35s;
+/* Circle Point photos carry a website banner along the bottom edge */
+.momentImgCrop { transform: scale(1.12); transform-origin: center top; }
+
+@media (prefers-reduced-motion: reduce) {
+  .momentsTrackInner { animation: none; }
+  .momentsTrack { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
-.momentCard:hover .momentCap { opacity: 1; }
+
+/* CREDENTIALS (mobile only) */
+.credentials { display: none; }
+.credTabs { display: flex; border-bottom: 1px solid var(--cream-dk); margin-bottom: 0.3rem; }
+.credTab {
+  flex: 1; min-height: 44px; padding: 0.7rem 0.2rem;
+  background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  font-family: 'Jost', sans-serif; font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; transition: color 0.25s, border-color 0.25s;
+}
+.credTab span { margin-left: 0.4rem; color: var(--gold); }
+.credTabActive { color: var(--charcoal); border-bottom-color: var(--gold); }
+.credList { margin: 0; }
+.credRow {
+  display: grid; grid-template-columns: 6.8rem 1fr; gap: 1rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--cream-dk);
+}
+.credRow dt {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; line-height: 1.5;
+  text-transform: uppercase; color: var(--charcoal);
+}
+.credRow dd { margin: 0; font-size: 0.82rem; line-height: 1.5; font-weight: 300; color: var(--muted); }
 
 /* ================================================================
    TABLET (≤ 1024px)
    ================================================================ */
 @media (max-width: 1024px) {
-  .heroBannerContent { gap: 3rem; padding-bottom: 5rem; }
+  .heroBannerContent { gap: 3rem; }
   .bodyInner { gap: 3.5rem; }
   .photoSecondary { right: -6%; width: 52%; }
-  .momentsGrid { grid-template-columns: repeat(2,1fr); }
 }
 
 /* ================================================================
    MOBILE (≤ 768px)
    ================================================================ */
 @media (max-width: 768px) {
-  .heroBanner { min-height: 100svh; background-attachment: scroll; background-position: center 15%; }
-  .heroBannerContent { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 5rem; }
-  .heroTitle { font-size: clamp(2rem, 7vw, 3rem); }
-  .heroBio {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.95);
-    background: rgba(17, 16, 16, 0.45);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 1rem;
+  /* Editorial: headline + bio first, then a framed landscape crop of the photo */
+  .heroBanner { padding: calc(var(--nav-height) + 2.2rem) 0 3.5rem; }
+  .heroBannerContent { grid-template-columns: 1fr; gap: 2.2rem; }
+  .heroPhoto {
+    justify-self: center;
+    width: calc(100% - 14px);
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    outline: 1px solid rgba(196, 151, 63, 0.5);
+    outline-offset: 6px;
   }
+  .heroPhoto img { object-position: center 58%; }
+  .heroTitle { font-size: clamp(2rem, 9vw, 3rem); }
+  .heroBio { font-size: 0.92rem; line-height: 1.85; color: rgba(255, 255, 255, 0.72); margin-top: 1.2rem; }
   .heroWatermark { display: none; }
 
-  .bodyInner { grid-template-columns: 1fr; }
-  .photoStack { padding-bottom: 4rem; }
+  .body { padding: 3.5rem 0 4rem; }
+  .bodyInner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .section { margin-bottom: 2.5rem; }
+  .moments { padding: 3.5rem 0; }
+  .photoStack { padding-bottom: 2.5rem; }
   .photoMain  { aspect-ratio: 3/4; }
   .photoSecondary { right: 0; width: 45%; }
   .midPortraitImg { max-height: 300px; }
-  .expGrid { grid-template-columns: 1fr; }
-  .memberships { grid-template-columns: 1fr; }
+  .expGrid { gap: 0.6rem; }
+  /* Certifications + memberships collapse into the tabbed Credentials list;
+     the sidebar headshots are dropped (the hero and mid-page portrait remain) */
+  .sidebar, .membershipsSection { display: none; }
+  .credentials { display: block; }
 
-  .momentsGrid { grid-template-columns: 1fr 1fr; }
-  .momentCap { opacity: 1; }
+  /* Moments: same gliding marquee, smaller cards and a shorter loop.
+     Gap stays 1.4rem (same as desktop) so the -50% - 0.7rem loop math in
+     @keyframes momentsGlide (0.7rem = half of that fixed gap) stays exact. */
+  .momentsHeader { margin-bottom: 1.8rem; }
+  .momentCard { width: 68vw; max-width: 320px; }
+  .momentsTrackInner { animation-duration: 26s; }
 }
 
 /* ================================================================
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroBanner { min-height: 90svh; }
   .photoSecondary { display: none; }
-  .momentsGrid { grid-template-columns: 1fr; }
-  .momentImg { aspect-ratio: 4/3; }
+}
+
+
+/* ================================================================
+   MOTION (restores the depth the old fixed-background hero had, plus more)
+   ================================================================ */
+
+/* The hero photo opens with a soft frame-in and settles from a slight zoom */
+.heroPhoto {
+  animation: photoSettle 1.5s 0.15s var(--ease-out) backwards;
+}
+@keyframes photoSettle {
+  from { opacity: 0; clip-path: inset(10% 6% 10% 6%); transform: scale(1.05); }
+}
+
+/* As the page scrolls away the photo drifts and grows a little (parallax) */
+@supports (animation-timeline: scroll()) {
+  .heroPhoto img {
+    animation: photoDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 90vh;
+  }
+  @keyframes photoDrift {
+    to { transform: translateY(6%) scale(1.07); }
+  }
+}
+
+/* The career timeline draws itself down the page and each dot pops in */
+.timeline::before {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.8s var(--ease-out) 0.3s;
+}
+.section:global(.visible) .timeline::before {
+  transform: scaleY(1);
+}
+.titem::before {
+  transform: translateX(-3.5px) scale(0);
+  transition: transform 0.5s var(--ease-out) 0.25s;
+}
+.titem:global(.visible)::before {
+  transform: translateX(-3.5px) scale(1);
+}
+
+/* Moments photos return to full colour under a finger or cursor */
+.momentImg {
+  transition: filter 0.6s ease;
+}
+.momentCard:hover .momentImg {
+  filter: grayscale(0%);
+}
+
+/* Switching between Certifications and Memberships fades the list */
+.credList {
+  animation: fadeIn 0.45s ease;
 }

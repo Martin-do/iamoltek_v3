@@ -26,7 +26,7 @@ export default function BirthdaySpotlight() {
           </h2>
           <div className="gold-rule center" />
           <p className={styles.subtitle}>
-            Born to lead, built to give. Today, we honour a man whose life is a testament to what purpose looks like in motion. From the boardroom to the community, from the palace to the people — Happy Birthday, Oyewale Areoye.
+            Born to lead, built to give. Today, we honour a man whose life is a testament to what purpose looks like in motion. From the boardroom to the community, from the palace to the people. Happy Birthday, Oyewale Areoye.
           </p>
         </div>
 

@@ -1,10 +1,15 @@
 import outreachOne from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import ketuReliefCover from '../assets/ketu-relief-cover.webp'
 import foodOutreachGroup from '../../posts/food_outreach0.jpeg'
-import foodOutreachCommunity from '../../posts/food_outreach3.jpeg'
-import foodOutreachChurch from '../../posts/food_outreach4 (1).jpeg'
-import foodOutreachTree from '../../posts/food_outreach4.jpeg'
-import foodOutreachMoments from '../../posts/food_outreach5.jpeg'
+import foodOutreachOsun from '../../posts/food_outreach3.jpeg'
+import taiwoFlyer from '../assets/taiwo-graduation-support-flyer.webp'
+import taiwoPortrait from '../assets/taiwo-portrait.webp'
+import taiwoGraduationHero from '../assets/taiwo-graduation-hero.webp'
+import individualSupportHero from '../assets/individual-support-hero.webp'
+import oyoPhoto1 from '../assets/oyo-photo-1.webp'
+import oyoPhoto2 from '../assets/oyo-photo-2.webp'
+import oyoPhoto4 from '../assets/oyo-photo-4.webp'
+import oyoPhoto5 from '../assets/oyo-photo-5.webp'
 
 export const campaigns = [
   {
@@ -99,14 +104,13 @@ export const campaigns = [
         impact: 'The intervention provided immediate relief to 200 vulnerable households across Oyo State. Families received essential food items to help ease the burden of rising living costs and food insecurity. The outreach also strengthened relationships with local communities and demonstrated the importance of collaborative humanitarian efforts.',
         acknowledgement: 'The Oyewale Areoye Initiative expresses profound gratitude to all volunteers who dedicated their time and resources to the successful execution of this intervention. Special appreciation goes to the parish priests and mission communities whose support and local coordination enabled the Initiative to reach remote and underserved communities within the Ibarapa Axis and Ido Local Government Area. The Initiative also sincerely thanks all donors, partners, and supporters whose generosity made this humanitarian outreach possible.',
         conclusion: 'The Oyo State Food Relief Intervention marks another significant milestone in The Oyewale Areoye Initiative’s mission of responding to the needs of vulnerable communities through practical acts of compassion. With 200 food packs distributed across Ibarapa Axis and Ido Local Government Area, the Initiative has once again demonstrated its commitment to promoting human dignity, alleviating hardship, and fostering stronger communities.',
-        cover: foodOutreachCommunity,
-        coverPosition: 'center',
+        cover: oyoPhoto1,
+        coverPosition: 'center 30%',
         media: [
-          { type: 'image', src: foodOutreachCommunity, alt: 'Families holding food relief packs during the Oyo State outreach', caption: 'Food relief support reached families across Oyo State.' },
-          { type: 'image', src: foodOutreachTree, alt: 'Community beneficiaries holding food packs beneath a tree', caption: 'Community-led coordination helped the team reach vulnerable households.' },
-          { type: 'image', src: foodOutreachGroup, alt: 'A group of food relief beneficiaries holding initiative packs', caption: 'Beneficiaries gathered after receiving food packs.' },
-          { type: 'image', src: foodOutreachChurch, alt: 'Beneficiaries and outreach coordinators holding food packs', caption: 'The outreach was implemented with support from local mission communities.' },
-          { type: 'image', src: foodOutreachMoments, alt: 'A collection of beneficiary moments from the food relief outreach', caption: 'Food support was delivered alongside a message of care and solidarity.' }
+          { type: 'image', src: oyoPhoto1, alt: 'Three beneficiaries in Oyo State holding food packs from the Initiative', caption: 'Food packs reaching beneficiaries in Oyo State.' },
+          { type: 'image', src: oyoPhoto2, alt: 'Community members with their food packs during the Oyo outreach', caption: 'Community members received their packs close to home.' },
+          { type: 'image', src: oyoPhoto4, alt: 'A beneficiary at home with her food pack', caption: 'Packs were also taken to beneficiaries at home.' },
+          { type: 'image', src: oyoPhoto5, alt: 'A beneficiary holding her food pack', caption: 'Every household received a pack.' }
         ],
         instagramPosts: []
       },
@@ -142,10 +146,92 @@ export const campaigns = [
         acknowledgement: 'The Oyewale Areoye Initiative appreciates the cooperation of community leaders, volunteers, donors, and all partners whose support made the outreach successful. Their generosity continues to make a meaningful difference in the lives of vulnerable families.',
         conclusion: 'The Food Relief Intervention in Owode, Agbora, and Olowa communities of Ikire, Irewole Local Government Area, demonstrates The Oyewale Areoye Initiative’s unwavering commitment to reaching vulnerable populations with practical support. The Initiative remains dedicated to empowering people and transforming communities through sustainable humanitarian interventions.',
         photoHighlights: ['Distribution of food relief packs in Owode, Ikire', 'Food relief support in Agbora community', 'Food relief support in Olowa community', 'Community engagement with beneficiaries', 'Documentation of the outreach exercise'],
-        cover: outreachOne,
-        coverPosition: 'center',
-        media: [],
-        mediaNote: 'Osun-specific outreach photos have not been added yet, so this page uses a neutral Initiative image and keeps field photos pending.',
+        cover: foodOutreachOsun,
+        coverPosition: 'center 30%',
+        media: [
+          { type: 'image', src: foodOutreachOsun, alt: 'Families in Ikire, Osun State holding food relief packs', caption: 'Families in Ikire receiving their food packs.' }
+        ],
+        instagramPosts: []
+      }
+    ]
+  },
+  {
+    slug: 'support-programme',
+    kind: 'individual',
+    title: 'Support Programme',
+    headline: 'One Life at a Time',
+    programme: 'Individual Support',
+    status: 'completed',
+    dateISO: '2026-08-19',
+    date: 'Since August 2026',
+    location: 'Individual beneficiaries',
+    summary: 'Direct, personal support for individuals at pivotal moments, funded through partners and supporters who join the Initiative in practical acts of care.',
+    intro: 'Not every intervention reaches a whole community at once. The Support Programme is how The Oyewale Areoye Initiative and its partners support people directly, at the moments that matter most to them.',
+    overviewTagline: ['One life.', 'A new beginning.'],
+    metrics: [],
+    cover: individualSupportHero,
+    coverAlt: 'Illustrative scene of people walking together',
+    coverPosition: 'center top',
+    heroPortrait: true,
+    locations: [
+      {
+        slug: 'taiwo-opeyemi-moyinoluwa-2026',
+        title: 'Graduation Support for Taiwo Opeyemi Moyinoluwa',
+        headline: 'Celebrating a New Chapter',
+        programme: 'Graduation Support',
+        state: 'Lagos State',
+        dateISO: '2026-08-19',
+        date: '19 August 2026',
+        locationShort: 'Lagos State University',
+        location: 'Lagos State University, Lagos State',
+        summary: 'A ₦100,000 Graduation Support Award presented to Taiwo Opeyemi Moyinoluwa on her graduation with a degree in Biochemistry from Lagos State University.',
+        contextTitle: 'A graduate’s determination, recognised',
+        metrics: [['₦100,000', 'Award given']],
+        executiveSummary: [
+          'The Oyewale Areoye Initiative is committed to empowering people and transforming communities through education, human development and improved opportunities for individuals. As part of this commitment, the Initiative recently identified and recognised Taiwo Opeyemi Moyinoluwa, who graduated from Lagos State University with a degree in Biochemistry, for a special Graduation Support intervention.',
+          'Her graduation marks a significant personal and academic milestone, and the determination behind it inspired the Initiative to extend a gesture of support at this important point of transition, from university into the next chapter of her life.',
+          'On 19 August 2026, the Initiative presented her with a ₦100,000 Graduation Support Award, along with a commemorative dummy cheque prepared to mark the occasion. The gesture forms part of the Initiative’s broader Support Programme, through which individuals and partners take practical steps that make a real difference in people’s lives.'
+        ],
+        objectives: [
+          'Celebrate and affirm her academic achievement.',
+          'Provide practical financial support at the start of her post-university journey.',
+          'Encourage her pursuit of further professional and personal development.',
+          'Reinforce the importance of supporting young graduates.',
+          'Inspire others to recognise and invest in human potential.'
+        ],
+        beneficiary: 'Taiwo Opeyemi Moyinoluwa',
+        beneficiaryLabel: 'Beneficiary',
+        heroPortrait: true,
+        hideMediaGallery: true,
+        ctaLabel: 'Read Her Story →',
+        awardImage: { src: taiwoFlyer, alt: 'Graduation Support Award flyer for Taiwo Opeyemi Moyinoluwa', caption: 'The Graduation Support Award, presented to mark her achievement.' },
+        activities: [
+          'Recognition of her graduation and academic achievement.',
+          'Presentation of a ₦100,000 Graduation Support Award.',
+          'Preparation of a commemorative dummy cheque.',
+          'Transfer of the award to her account.',
+          'A personal exchange in which she shared her appreciation.'
+        ],
+        impact: 'The award gave Taiwo practical support and encouragement at the very start of her post-university journey, reinforcing that her achievement, and her future, matter to people beyond her immediate circle.',
+        acknowledgement: 'This gesture forms part of the Initiative’s broader Support Programme, through which individuals and partners take practical steps to invest in people at pivotal moments in their lives. The Initiative is grateful to everyone whose support makes gestures like this possible.',
+        conclusion: 'Her graduation is not the conclusion of her journey. It is the beginning of a new chapter filled with opportunities, responsibilities and possibilities. Through this intervention, the Initiative reaffirms its commitment to empowering people, supporting potential and transforming communities one life at a time.',
+        cover: taiwoGraduationHero,
+        coverPosition: 'center top',
+        media: [
+          { type: 'image', src: taiwoPortrait, alt: 'Taiwo Opeyemi Moyinoluwa on her graduation day', caption: 'Taiwo on her graduation day.' }
+        ],
+        testimonial: {
+          withName: 'Taiwo',
+          messages: [
+            { from: 'us', time: '07:23', text: 'Congratulations again on your graduation! The Initiative would like to support you in a special and meaningful way as you begin this new chapter.' },
+            { from: 'her', time: '10:56', text: 'Good morning ma' },
+            { from: 'her', time: '10:57', text: 'Thank you ma for your warm greetings and for reaching out to me on behalf of the initiative. may God bless you abundantly.' },
+            { from: 'us', time: '11:03', text: 'Once again, congratulations on your achievement. We are pleased to be able to support you as you begin this new chapter.' },
+            { from: 'her', time: '11:14', text: 'Wow! I am deeply touched and grateful for your kind gesture. Thank you so much. May God bless you abundantly' },
+            { from: 'us', time: '11:31', type: 'document', filename: 'Payment_Receipt.pdf', meta: '1 page · PDF' },
+            { from: 'her', time: '11:34', text: 'Thank you very much, I can’t thank you enough. I am very grateful 🙏. May God replenish and continue to enlarge your coast. Amen' }
+          ]
+        },
         instagramPosts: []
       }
     ]
@@ -155,12 +241,12 @@ export const campaigns = [
     title: 'Back to School Project',
     headline: 'Equipping the Next Generation',
     programme: 'Education',
-    status: 'upcoming',
+    status: 'ongoing',
     dateISO: '2026-09-01',
-    date: 'Upcoming',
+    date: 'In progress',
     location: 'Local communities',
-    summary: 'An upcoming education project to equip students with customised notebooks and essential stationery for the school term.',
-    intro: 'Education is the foundation of every thriving community. This project is being prepared to give students practical tools for the school year ahead.',
+    summary: 'An education project that has started: customised notebooks and essential stationery for students, with preparations still continuing.',
+    intro: 'Education is the foundation of every thriving community. The project is under way, and preparations are continuing so that students get practical tools for the school year.',
     metrics: [],
     cover: outreachOne,
     coverPosition: 'center',

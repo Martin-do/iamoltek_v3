@@ -6,7 +6,7 @@
 /* ================================================================
    HERO
    Desktop: CSS Grid — text left | portrait right
-   Mobile:  Portrait is absolute BG, text overlaid at bottom
+   Mobile:  Portrait on top, text below — never over the photo
    ================================================================ */
 .hero {
   width: 100%;
@@ -17,7 +17,7 @@
   margin: 0 auto;
   /* Two equal-ish columns — text left, portrait right */
   display: grid;
-  grid-template-columns: 52% 48%;
+  grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
   grid-template-rows: 1fr;
   background: var(--charcoal);
   padding: 0 var(--content-pad);
@@ -121,6 +121,12 @@
   background: var(--gold);
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.heroLead,
+.exploreLink,
+.statsTitle {
+  display: none;
 }
 
 .heroCtas {
@@ -369,13 +375,69 @@
 }
 
 .pcard {
+  display: flex;
+  color: var(--ink);
+  flex-direction: column;
   background: var(--ivory);
-  padding: 3.5rem 2.5rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.4s;
   border-bottom: 3px solid transparent;
+}
+
+.pcardMedia {
+  height: 200px;
+  overflow: hidden;
+  background: var(--charcoal);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Warm wash keeps mixed photo backdrops in the site's palette */
+.pcardMedia::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 16, 16, 0.08), rgba(17, 16, 16, 0.28));
+  pointer-events: none;
+}
+
+.pcard_initiative .pcardMedia::after {
+  display: none;
+}
+
+.pcardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.82) contrast(1.03);
+  transition: transform 0.6s ease;
+}
+
+.pcard:hover .pcardImg {
+  transform: scale(1.04);
+}
+
+/* The Initiative card shows its logo, not a photo. The logo artwork carries its
+   own off-white background, so the panel matches it instead of framing it. */
+.pcard_initiative .pcardMedia {
+  background: #FBF9F6;
+  border-bottom: 1px solid rgba(122, 31, 31, 0.12);
+}
+
+.pcard_initiative .pcardImg {
+  object-fit: contain;
+  padding: 0.6rem 1.2rem;
+}
+
+.pcardBody {
+  padding: 2.4rem 2.2rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .pcard_pro:hover {
@@ -393,6 +455,10 @@
   border-bottom-color: var(--gold-light);
 }
 
+.pcard:hover .pcardCat {
+  color: var(--gold-pale);
+}
+
 .pcard:hover .pcardTitle {
   color: #fff;
 }
@@ -401,8 +467,24 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-.pcard:hover .pcardN {
-  color: rgba(255, 255, 255, 0.04);
+.pcard_initiative:hover .pcardLink {
+  color: #ff9999;
+}
+
+.pcard_atobase:hover .pcardLink {
+  color: var(--gold-pale);
+}
+
+.pcardCat {
+  color: var(--gold-pale);
+}
+
+.pcard:hover .pcardTitle {
+  color: #fff;
+}
+
+.pcard:hover .pcardDesc {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .pcard_initiative:hover .pcardLink {
@@ -438,6 +520,18 @@
   transition: all 0.4s;
 }
 
+.pcardCat {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
 .pcardTitle {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
@@ -460,7 +554,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.8rem;
+  margin-top: auto;
+  padding-top: 1.8rem;
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.17em;
@@ -536,138 +631,11 @@
 }
 
 /* ================================================================
-   FEATURED
-   ================================================================ */
-.featured {
-  width: 100%;
-  background: var(--ivory);
-  padding: 7rem 0;
-}
-
-.featuredInner {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 var(--content-pad);
-}
-
-.featuredGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px;
-  margin-top: 3.5rem;
-}
-
-.featCard {
-  position: relative;
-  overflow: hidden;
-  min-height: 460px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-bottom: 4px solid transparent;
-  transition: border-color 0.4s;
-}
-
-.featCardInit:hover {
-  border-bottom-color: var(--burg);
-}
-
-.featCardAto:hover {
-  border-bottom-color: var(--gold);
-}
-
-.featCardBg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  transition: transform 0.6s ease;
-}
-
-.featCard:hover .featCardBg {
-  transform: scale(1.04);
-}
-
-.featCardBgImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.18;
-}
-
-.featCardOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(17, 16, 16, 0.15) 0%, rgba(17, 16, 16, 0.93) 100%);
-}
-
-.featCardBody {
-  position: relative;
-  z-index: 2;
-  padding: 2.5rem;
-}
-
-.featCat {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.7rem;
-}
-
-.featTitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1.18;
-  margin-bottom: 0.8rem;
-}
-
-.featDesc {
-  font-size: 0.82rem;
-  line-height: 1.85;
-  color: rgba(255, 255, 255, 0.48);
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-
-.featCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.featCta::after {
-  content: ' →';
-  transition: transform 0.3s;
-}
-
-.featCard:hover .featCta::after {
-  transform: translateX(5px);
-}
-
-.featCtaInit {
-  color: #ff9999;
-}
-
-.featCtaAto {
-  color: var(--gold-pale);
-}
-
-/* ================================================================
    TABLET (≤ 1024px)
    ================================================================ */
 @media (max-width: 1024px) {
   .hero {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   .heroLeftInner {
@@ -676,16 +644,19 @@
 
   .statsInner {
     grid-template-columns: repeat(2, 1fr);
-    padding: 2rem var(--content-pad);
+    padding: 1.6rem var(--content-pad);
   }
 
+  /* 2x2 grid: left column flush with the page edge, right column inset evenly */
   .stat {
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 0 1.2rem 1.4rem;
     border-right: none;
     border-bottom: 1px solid rgba(196, 151, 63, 0.07);
   }
 
   .stat:nth-child(odd) {
+    padding-left: 0;
+    padding-right: 1rem;
     border-right: 1px solid rgba(196, 151, 63, 0.07);
   }
 
@@ -714,105 +685,162 @@
    ================================================================ */
 @media (max-width: 768px) {
 
-  /* Stack: portrait fills full screen behind, text at bottom */
+  /* Mobile hero: large portrait first, then the name on solid dark.
+     The photo fades to the page colour before the text starts, so no
+     text is ever layered over the picture. */
   .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    min-height: 100svh;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
     max-width: none;
     margin: 0;
-    padding: 0;
+    padding: var(--nav-height) 0 0;
+    background: var(--charcoal);
   }
 
-  /* Portrait: absolute background behind text */
   .heroRight {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    height: auto;
+    order: -1;
+    align-self: stretch;
+    height: min(64svh, 540px);
   }
 
+  /* A short black band above the head lets the header colour melt into the
+     photo's black backdrop, instead of meeting it at a hard edge */
   .portraitWrap {
-    padding-top: 0;
+    padding-top: 2.4rem;
     height: 100%;
+    background: #000;
   }
 
   .portrait {
     height: 100%;
-    object-fit: contain;
-    object-position: center var(--nav-height);
-    transform: none;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 1;
   }
 
-  /* Mobile gradient: strong fade to bottom for text legibility */
   .portraitOverlay {
-    background: linear-gradient(180deg,
-        rgba(12, 10, 9, 0.25) 0%,
-        rgba(12, 10, 9, 0.45) 30%,
-        rgba(12, 10, 9, 0.78) 55%,
-        rgba(12, 10, 9, 0.92) 70%,
-        rgba(12, 10, 9, 0.98) 100%);
+    background:
+      linear-gradient(180deg, var(--charcoal) 0, rgba(17, 16, 16, 0.55) 1.6rem, transparent 3.6rem),
+      linear-gradient(180deg,
+        transparent 0%,
+        transparent 44%,
+        rgba(17, 16, 16, 0.18) 56%,
+        rgba(17, 16, 16, 0.45) 68%,
+        rgba(17, 16, 16, 0.75) 80%,
+        rgba(17, 16, 16, 0.95) 88%,
+        var(--charcoal) 95%);
   }
 
-  /* Text: sits at the bottom over the portrait */
   .heroLeft {
-    position: relative;
-    z-index: 2;
-    min-height: 100svh;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
-    padding: 90px 0 8rem;
-    background: none;
+    display: block;
+    margin-top: -1.2rem;
+    padding: 0 0 2.2rem;
+    background: var(--charcoal);
   }
 
   .heroLeftInner {
-    max-width: 100%;
+    max-width: none;
     margin: 0;
-    padding: 0 6% 0;
-    width: 100%;
+    padding: 0 var(--content-pad);
   }
 
   .eyebrow {
-    margin-top: 2rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.7rem;
+    text-shadow: none;
   }
 
   .heroName {
-    font-size: clamp(2.8rem, 11vw, 4rem);
+    font-size: clamp(2.9rem, 13vw, 4.2rem);
+    margin-bottom: 0.9rem;
+    text-shadow: none;
   }
 
-  .heroDesc {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.72);
-  }
-
-  .badge {
-    font-size: 0.68rem;
-    color: rgba(255, 255, 255, 0.78);
-  }
-
-  .heroBadges {
-    margin-bottom: 1.8rem;
-  }
-
+  .heroDesc,
+  .heroBadges,
   .heroCtas {
-    flex-direction: column;
-    gap: 0.75rem;
+    display: none;
+  }
+
+  .heroLead {
+    display: block;
+    max-width: 26rem;
+    margin: 0 0 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .exploreLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 44px;
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  /* At a glance: four figures in one row */
+  .statsTitle {
+    display: block;
+    padding-top: 1.5rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .statsInner {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1.1rem var(--content-pad) 1.6rem;
+  }
+
+  .stat,
+  .stat:first-child,
+  .stat:nth-child(odd) {
+    padding: 0 0.3rem;
+    text-align: center;
+    border-bottom: none;
+    border-right: 1px solid rgba(196, 151, 63, 0.18);
+  }
+
+  .stat:last-child {
+    border-right: none;
+  }
+
+  .statNum {
+    font-size: 2rem;
+  }
+
+  .statLbl {
+    margin-top: 0.35rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.55);
   }
 
   /* Other sections */
   .pillars {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
+  }
+
+  .pcardMedia {
+    height: 190px;
   }
 
   .pillarsGrid {
     grid-template-columns: 1fr;
   }
 
-  .pcard {
-    padding: 2.5rem 1.8rem;
+  .pcardBody {
+    padding: 1.6rem 1.4rem 1.8rem;
   }
 
   .quote {
@@ -820,44 +848,57 @@
   }
 
   .quoteInner {
-    padding: 6rem var(--content-pad);
-    gap: 2rem;
+    padding: 4rem var(--content-pad);
+    gap: 1.5rem;
   }
 
   .quoteText {
     font-size: 1.4rem;
   }
 
-  .featured {
-    padding: 5rem 0;
-  }
-
-  .featuredGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .featCard {
-    min-height: 360px;
-  }
 }
 
 /* ================================================================
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroLeftInner {
-    padding: 0 5% 3rem;
-  }
-
-  .heroName {
-    font-size: clamp(2.5rem, 10vw, 3.2rem);
-  }
 
   .quoteText {
     font-size: 1.2rem;
   }
 
-  .statsInner {
-    grid-template-columns: 1fr 1fr;
+}
+
+/* ================================================================
+   MOTION
+   ================================================================ */
+
+/* The portrait fades in while settling from a slight zoom */
+.portraitWrap {
+  animation: settleIn 1.6s var(--ease-out) backwards;
+}
+
+/* The line before "Lagos, Nigeria" draws itself */
+.eyebrow::before {
+  transform-origin: left;
+  animation: lineGrow 1s 0.4s var(--ease-out) backwards;
+}
+
+/* As the page scrolls away, the portrait drifts down and grows a little,
+   which gives the hero depth. Scroll-driven, so it costs no JavaScript. */
+@supports (animation-timeline: scroll()) {
+  .portrait {
+    animation: portraitDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 85vh;
   }
+  @keyframes portraitDrift {
+    to { transform: translateY(7%) scale(1.06); }
+  }
+}
+
+/* The arrow beside "Explore" nudges down now and then to invite a scroll */
+.exploreLink span {
+  display: inline-block;
+  animation: nudgeDown 1.8s ease-in-out 2s infinite;
 }

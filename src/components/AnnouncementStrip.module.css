@@ -73,6 +73,7 @@
 }
 
 .link {
+  position: relative;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--gold);
@@ -88,10 +89,47 @@
   border-bottom-color: #fff;
 }
 
+.textShort {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .strip {
-    padding: 0.9rem 1rem;
+    padding: 0.65rem 1rem;
     gap: 0.75rem;
+  }
+
+  .content {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+  }
+
+  .textLong {
+    display: none;
+  }
+
+  .textShort {
+    display: inline;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  /* Bigger touch area without making the strip any taller */
+  .link::after {
+    content: '';
+    position: absolute;
+    inset: -14px -8px;
+  }
+
+  .link {
+    font-size: 0.75rem;
   }
 
   .text {

@@ -4,7 +4,7 @@ import styles from './EventCountdown.module.css'
 
 export default function EventCountdown({
   eventName = "Back to School Project",
-  description = "Education is the foundation of every thriving community. For our upcoming project, The Oyewale Areoye Initiative will be producing and distributing customized notebooks and essential stationery to students across local communities. Join us in equipping the next generation with the tools they need to write their own bright futures.",
+  description = "Education is the foundation of every thriving community. The Oyewale Areoye Initiative is producing and distributing customized notebooks and essential stationery to students in local communities. The project has started and preparations are continuing. Join us in equipping the next generation with the tools they need to write their own bright futures.",
   contactLink = "/initiative#donate",
   contactText = "Support the Project"
 }) {
@@ -12,8 +12,8 @@ export default function EventCountdown({
     <section id="event" className={styles.container}>
       <div className={styles.overlay}></div>
       <div className={styles.inner}>
-        <div className={styles.eventInfo}>
-          <div className={styles.label}>Upcoming Project</div>
+        <div className={`${styles.eventInfo} reveal-stagger`}>
+          <div className={styles.label}>In Progress</div>
           <div className={styles.outreachTag}>📚 Education & Youth Welfare</div>
           <h2 className={styles.title}>{eventName}</h2>
 

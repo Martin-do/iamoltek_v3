@@ -1,4 +1,5 @@
-.page { padding-top: var(--nav-height); background: var(--ivory); }
+.page { position: relative; padding-top: var(--nav-height); background: var(--ivory); }
+.page::before { content: ''; position: absolute; inset: 0 0 auto; height: var(--nav-height); background: var(--charcoal); }
 .heroInner, .inner { width: min(1180px, calc(100% - 2 * var(--content-pad))); margin: 0 auto; }
 .eyebrow { color: var(--gold); font-size: .65rem; font-weight: 500; letter-spacing: .17em; text-transform: uppercase; }
 .hero { padding: clamp(2rem, 5vw, 4.5rem) 0; background: var(--charcoal); color: var(--cream); }
@@ -11,8 +12,26 @@
 .heroCopy > p { color: rgba(255,255,255,.68); font-size: .7rem; letter-spacing: .05em; line-height: 1.6; text-transform: uppercase; }
 .heroImageWrap { min-height: 540px; overflow: hidden; }
 .heroImage { width: 100%; height: 100%; object-fit: cover; }
+.heroFramedWrap { display: flex; align-items: center; justify-content: center; min-height: 540px; padding: clamp(2rem, 5vw, 3.5rem); }
+.heroFramedImg { width: 100%; max-width: 360px; max-height: 540px; object-fit: contain; box-shadow: 0 24px 60px rgba(0,0,0,.5); border: 1px solid rgba(196,151,63,.3); }
+
+/* Portrait hero: blend the edited graduation portrait into the dark header. */
+.portraitWrap { width: 100%; height: 100%; min-height: 540px; position: relative; overflow: hidden; background: #0c0a09; }
+.portrait { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; opacity: .95; }
+.portraitOverlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(12, 10, 9, 0.7) 0%, transparent 30%),
+    linear-gradient(180deg, transparent 55%, rgba(12, 10, 9, 0.88) 100%);
+}
+
+
+.awardSection { margin: 0 auto clamp(4rem, 9vw, 8rem); max-width: 420px; }
+.awardSection figure { margin: 0; }
+.awardSection img { width: 100%; display: block; box-shadow: 0 20px 50px rgba(0,0,0,.18); border: 1px solid var(--cream-dk); }
+.awardSection figcaption { margin-top: 1rem; color: var(--muted); font-size: .74rem; letter-spacing: .04em; line-height: 1.6; text-align: center; }
 .story { padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(5rem, 10vw, 8rem); }
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-bottom: clamp(4rem, 8vw, 7rem); background: var(--cream-dk); }
+.metrics.metricsCompact { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 .metrics > div { min-width: 0; padding: clamp(1.2rem, 3vw, 2.1rem); background: var(--cream); }
 .metrics strong { display: block; overflow-wrap: anywhere; color: var(--burg); font: 400 clamp(1.7rem, 3.5vw, 3rem)/1 'Cormorant Garamond', serif; }
 .metrics span { display: block; margin-top: .45rem; color: var(--muted); font-size: .61rem; letter-spacing: .07em; line-height: 1.4; text-transform: uppercase; }
@@ -35,7 +54,9 @@
 .twoColumnLists ul { display: grid; gap: .75rem; margin-top: 1.5rem; padding: 0; list-style: none; }
 .twoColumnLists li { position: relative; padding-left: 1.2rem; color: var(--ink-light); line-height: 1.55; }
 .twoColumnLists li::before { content: ''; position: absolute; top: .66em; left: 0; width: 6px; height: 6px; background: var(--burg); }
-.materials, .distribution, .mediaSection { margin-bottom: clamp(4rem, 9vw, 8rem); scroll-margin-top: calc(var(--nav-height) + 1.5rem); }
+.materials, .distribution, .mediaSection, .testimonial { margin-bottom: clamp(4rem, 9vw, 8rem); scroll-margin-top: calc(var(--nav-height) + 1.5rem); }
+.testimonial h2 { margin: .55rem 0 1.8rem; color: var(--charcoal); font: 400 clamp(2.2rem, 4vw, 3.8rem)/1 'Cormorant Garamond', serif; }
+.testimonial h2 em { color: var(--gold); }
 .materials { padding: clamp(2rem, 4vw, 3.5rem); background: var(--cream); }
 .materials ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 2rem; padding: 0; background: var(--cream-dk); list-style: none; }
 .materials li { padding: 1rem; background: var(--ivory); color: var(--ink-light); font-size: .76rem; line-height: 1.45; }
@@ -76,6 +97,18 @@
   .hero { padding: 0; }
   .heroInner { width: 100%; min-height: 0; grid-template-columns: 1fr; }
   .heroImageWrap { height: 72vw; min-height: 270px; max-height: 430px; order: 1; }
+  .heroFramedWrap { min-height: 0; padding: 2.2rem var(--content-pad) 1.6rem; order: 1; }
+  .heroFramedImg { max-width: 280px; }
+  .portraitWrap { min-height: 0; height: min(64svh, 540px); order: 1; background: var(--charcoal); }
+  .portrait { height: 100%; object-position: center top; transform: scale(1.28); transform-origin: center top; }
+  .portraitOverlay {
+    background:
+      linear-gradient(180deg, var(--charcoal) 0%, rgba(17, 16, 16, 0.78) 5%, rgba(17, 16, 16, 0.32) 11%, transparent 18%),
+      linear-gradient(180deg,
+        transparent 0%, transparent 50%,
+        rgba(17, 16, 16, 0.16) 62%, rgba(17, 16, 16, 0.46) 74%,
+        rgba(17, 16, 16, 0.82) 88%, var(--charcoal) 100%);
+  }
   .heroCopy { padding: 2.2rem var(--content-pad) 3rem; order: 2; }
   .back { margin-bottom: 2.5rem; }
   .narrative { grid-template-columns: 1fr; }
@@ -92,8 +125,8 @@
   .reportNav > div { width: 100%; justify-content: flex-start; flex-wrap: nowrap; gap: 1.1rem; padding-bottom: .25rem; overflow-x: auto; scrollbar-width: none; }
   .reportNav > div::-webkit-scrollbar { display: none; }
   .reportNav a { white-space: nowrap; }
-  .metrics > div { padding: 1rem .7rem; }
-  .metrics strong { font-size: 1.65rem; }
+  .metrics > div { padding: 1rem .5rem; min-width: 0; }
+  .metrics strong { font-size: clamp(1.05rem, 5vw, 1.65rem); overflow-wrap: break-word; hyphens: auto; }
   .metrics span { font-size: .56rem; letter-spacing: .03em; }
   .twoColumnLists, .outcomeGrid { grid-template-columns: 1fr; }
   .materials { margin-right: calc(var(--content-pad) * -1); margin-left: calc(var(--content-pad) * -1); padding-right: var(--content-pad); padding-left: var(--content-pad); }
@@ -101,4 +134,14 @@
   .areaSummary { gap: 1rem; }
   .locationNav { grid-template-columns: 1fr; }
   .locationNav > a:last-child { text-align: left; }
+}
+
+/* MOTION: the distribution bars grow when the chart scrolls into view */
+.barFill {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.3s var(--ease-out) 0.3s;
+}
+.distribution:global(.visible) .barFill {
+  transform: scaleX(1);
 }

@@ -10,7 +10,7 @@
   width: 100%;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 52% 48%;
+  grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
   position: relative;
   overflow: hidden;
   max-width: var(--content-max);
@@ -588,78 +588,85 @@
    ================================================================ */
 @media (max-width: 768px) {
 
-  /* Hero stacks: portrait on top, text below */
+  /* Mobile hero: a large portrait first, then the title on solid dark.
+     The photo has a light backdrop, so a short dark band above the crown lets
+     the header melt into it, and the bottom fades out below the staff. No text
+     is ever layered over the picture. */
   .hero {
-    grid-template-columns: 1fr;
-    min-height: 100svh;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
     max-width: none;
     margin: 0;
+    padding: var(--nav-height) 0 0;
+    background: var(--charcoal);
   }
 
   .heroRight {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    height: auto;
-    min-height: 0;
-  }
-
-  .heroRightOverlay {
-    background: linear-gradient(180deg, rgba(17, 16, 16, 0.72) 0%, rgba(17, 16, 16, 0.85) 30%, rgba(17, 16, 16, 0.94) 65%, rgba(17, 16, 16, 0.98) 100%);
-  }
-
-  .heroLeft {
-    min-height: 100svh;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
-    padding: 90px 0 2.5rem;
-    background: none;
-    z-index: 2;
-  }
-
-  .heroLeftInner {
-    padding: 0 5% 0;
-    max-width: 100%;
-    margin: 0;
-  }
-
-  .eyebrow {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
-  }
-
-  .kingdomTag {
-    background: rgba(17, 16, 16, 0.7);
-    border-color: rgba(196, 151, 63, 0.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .subtitle {
-    color: rgba(255, 255, 255, 0.88);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  }
-
-  .conferred {
-    background: rgba(17, 16, 16, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-color: rgba(196, 151, 63, 0.25);
-  }
-
-  .conferredText {
-    color: rgba(255, 255, 255, 0.75);
+    order: -1;
+    align-self: stretch;
+    height: min(64svh, 540px);
+    padding-top: 2rem;
+    background: var(--charcoal);
   }
 
   .heroImg {
     object-position: center top;
-    transform: none;
+  }
+
+  .heroRightOverlay {
+    display: block;
+    background:
+      linear-gradient(180deg, var(--charcoal) 2rem, rgba(17, 16, 16, 0.5) 3.3rem, transparent 6.4rem),
+      linear-gradient(180deg,
+        transparent 0%,
+        transparent 46%,
+        rgba(17, 16, 16, 0.2) 58%,
+        rgba(17, 16, 16, 0.5) 70%,
+        rgba(17, 16, 16, 0.8) 82%,
+        rgba(17, 16, 16, 0.96) 89%,
+        var(--charcoal) 95%);
+  }
+
+  .heroLeft {
+    display: block;
+    margin-top: -1.2rem;
+    padding: 0 0 2.2rem;
+    background: var(--charcoal);
+  }
+
+  .heroLeftInner {
+    max-width: none;
+    margin: 0;
+    padding: 0 var(--content-pad);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.7rem;
+  }
+
+  /* These three facts move into the "The honour" strip below the hero */
+  .kingdomTag,
+  .conferred,
+  .date {
+    display: none;
+  }
+
+  .title {
+    font-size: clamp(2.6rem, 12.5vw, 3.8rem);
+    margin-bottom: 0.9rem;
+  }
+
+  .subtitle {
+    max-width: none;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.72);
   }
 
   /* Meaning */
   .meaningSection {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
   }
 
   .meaningInner {
@@ -672,7 +679,7 @@
 
   /* Kingdom */
   .kingdomSection {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
   }
 
   .kingdomGrid {
@@ -685,7 +692,7 @@
     also steals taps from nearby links. Use poster + open-in-app buttons only.
   */
   .reelSection {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
   }
 
   .reelInner {
@@ -803,7 +810,7 @@
 
   /* Gallery — carousel off, grid on */
   .gallerySection {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
   }
 
   .galleryHeader {
@@ -836,25 +843,14 @@
    SMALL MOBILE (≤ 480px)
    ================================================================ */
 @media (max-width: 480px) {
-  .heroRight {
-    height: auto;
-  }
 
-  .heroLeftInner {
-    padding: 0 5%;
-    margin: 0;
-  }
-
-  .title {
-    font-size: clamp(2rem, 7vw, 2.8rem);
-  }
 
   .meaningSection {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .kingdomSection {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .kingdomGrid {
@@ -862,11 +858,11 @@
   }
 
   .reelSection {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .gallerySection {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .tabs {
@@ -880,5 +876,46 @@
 
   .tab:last-child {
     border-bottom: none;
+  }
+}
+
+/* ================================================================
+   MOTION
+   ================================================================ */
+
+/* The portrait fades in while settling from a slight zoom */
+.heroRight {
+  animation: settleIn 1.6s var(--ease-out) backwards;
+}
+
+/* The line before the eyebrow draws itself */
+.eyebrow::before {
+  transform-origin: left;
+  animation: lineGrow 1s 0.4s var(--ease-out) backwards;
+}
+
+/* A soft highlight passes across "Atobase" once, as the page opens */
+.title em {
+  background: linear-gradient(100deg, var(--gold-light) 40%, #fff 50%, var(--gold-light) 60%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldSweep 2.6s 0.9s ease-in-out backwards;
+}
+@keyframes goldSweep {
+  from { background-position: 100% 0; }
+  to   { background-position: 0% 0; }
+}
+
+/* The portrait drifts down and grows a little as the page scrolls away */
+@supports (animation-timeline: scroll()) {
+  .heroImg {
+    animation: heroDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 85vh;
+  }
+  @keyframes heroDrift {
+    to { transform: translateY(6%) scale(1.06); }
   }
 }

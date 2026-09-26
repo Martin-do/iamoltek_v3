@@ -18,7 +18,7 @@ export default function BirthdaySplash() {
   const subtitleText = "OYEWALE AREOYE"
   const messageText = isInitiativePage
     ? "In honour of his birthday, Oyewale Areoye renews his commitment to community. The greatest gift you can give him today is a contribution to the cause he has devoted himself to."
-    : "A man of vision, service, and uncommon grace — today we pause to celebrate you. Happy Birthday, Oyewale Areoye."
+    : "A man of vision, service, and uncommon grace. Today we pause to celebrate you. Happy Birthday, Oyewale Areoye."
 
   useEffect(() => {
     // Only show if it's the birthday period, and it hasn't been shown in this session yet

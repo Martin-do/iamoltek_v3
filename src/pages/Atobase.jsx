@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
+import FactStrip from '../components/FactStrip'
 import useScrollReveal from '../hooks/useScrollReveal'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import GalleryCarousel from '../components/GalleryCarousel'
@@ -30,6 +31,15 @@ import c13 from '../assets/atobase11.jpg'
 
 import styles from './Atobase.module.css'
 
+// Phone-only strip under the hero: the details that the desktop hero prints in its tag,
+// card and date line
+const honourFacts = [
+  { icon: 'crown',    label: 'Title',        detail: 'Atobase of Okeluse Kingdom' },
+  { icon: 'pin',      label: 'Kingdom',      detail: 'Ose LGA, Ondo State' },
+  { icon: 'calendar', label: 'Investiture',  detail: '2024' },
+  { icon: 'award',    label: 'Conferred by', detail: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II' },
+]
+
 const responsibilities = [
   'Serving as a cultural ambassador for Okeluse Kingdom and its heritage',
   'Supporting community development within and beyond the kingdom',
@@ -39,11 +49,11 @@ const responsibilities = [
 ]
 
 const kingdomCards = [
-  { icon: '📍', title: 'Location',           desc: 'Ose Local Government Area, Ondo State, Nigeria — a historic Yoruba community with deep cultural roots.' },
-  { icon: '👑', title: 'The Monarch',        desc: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — Ojima Arujale of Okeluse Kingdom. One of the youngest and most celebrated traditional rulers in Yorubaland.' },
-  { icon: '🏛', title: 'Heritage & Culture', desc: 'Centuries of Yoruba history — unique traditions, festivals, and an unbroken royal lineage from father to son.' },
+  { icon: '📍', title: 'Location',           desc: 'Ose Local Government Area, Ondo State, Nigeria, a historic Yoruba community with deep cultural roots.' },
+  { icon: '👑', title: 'The Monarch',        desc: 'HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, Ojima Arujale of Okeluse Kingdom. He became king in 2019 at the age of sixteen, succeeding his father, and is widely reported as one of the youngest ruling monarchs in Yorubaland.' },
+  { icon: '🏛', title: 'Heritage & Culture', desc: 'Okeluse follows the tradition in which the first son of the reigning king succeeds him. The present Oba followed his father, Oba Akinghare I.' },
   { icon: '🌱', title: 'Development Vision', desc: "Under HRM Akinghare II's reign, Okeluse has prioritised infrastructure, youth education, and investment to uplift its people." },
-  { icon: '🤝', title: 'Community Spirit',   desc: 'Known for warmth, unity, and pride — Okeluse people carry a strong sense of identity and mutual support wherever they go.' },
+  { icon: '🤝', title: 'Community Spirit',   desc: 'Known for warmth, unity and pride. Okeluse people carry a strong sense of identity and mutual support wherever they go.' },
   { icon: '🌍', title: 'Global Diaspora',    desc: "Okeluse sons and daughters have made their mark across Nigeria and internationally, carrying the kingdom's values of excellence." },
 ]
 
@@ -101,7 +111,7 @@ export default function Atobase() {
             </h1>
             <p className={`${styles.subtitle} fade-up-d2`}>
               Conferred upon Oyewale Areoye by His Royal Majesty, Oba Oloyede Adeyeoba
-              Adekoya, Akinghare II — the Ojima Arujale of Okeluse Kingdom
+              Adekoya, Akinghare II, the Ojima Arujale of Okeluse Kingdom
             </p>
             <div className={`${styles.conferred} fade-up-d2`}>
               <div className={styles.conferredIcon}>🏛</div>
@@ -120,12 +130,14 @@ export default function Atobase() {
         <div className={styles.heroRight}>
           <img
             src={heroImg}
-            alt="Oyewale Areoye — Atobase of Okeluse Kingdom"
+            alt="Oyewale Areoye, Atobase of Okeluse Kingdom"
             className={styles.heroImg}
           />
           <div className={styles.heroRightOverlay} />
         </div>
       </section>
+
+      <FactStrip id="honour" title="The honour" items={honourFacts} />
 
       {/* ══════════════ MEANING ══════════════ */}
       <section className={styles.meaningSection}>
@@ -133,7 +145,7 @@ export default function Atobase() {
           <div className="reveal">
             <div className="section-label">The Significance</div>
             <blockquote className={styles.meaningQ}>
-              A chieftaincy title is not merely an honour — it is a covenant between a man
+              A chieftaincy title is not merely an honour. It is a covenant between a man
               and his community. A promise to serve, to protect, and to build.
             </blockquote>
             <div style={{ marginTop: '2.3rem' }}>
@@ -141,7 +153,7 @@ export default function Atobase() {
               <p className={styles.contextText}>
                 In Yoruba tradition, chieftaincy titles carry profound weight. The Atobase
                 title is granted only to individuals who have demonstrated exemplary service,
-                character, integrity, and meaningful contribution to the kingdom — whether
+                character, integrity, and meaningful contribution to the kingdom, whether
                 by birth or by deed.
               </p>
             </div>
@@ -177,10 +189,10 @@ export default function Atobase() {
             <h2 className="section-title on-dark">About <em>Okeluse Kingdom</em></h2>
             <div className="gold-rule" />
             <p className={styles.kingdomIntro}>
-              Okeluse Kingdom is an ancient and historically rich Yoruba community in Ose LGA,
-              Ondo State. Governed by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II — one of
-              the youngest monarchs in Yorubaland — the kingdom holds a proud heritage of
-              bravery, culture, and resilience.
+              Okeluse is a Yoruba community in Ose Local Government Area, Ondo State. It is led
+              by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, who took the throne at sixteen
+              and is widely reported as one of the youngest ruling monarchs in Yorubaland. It was
+              he who conferred the Atobase title on Oyewale Areoye in 2024.
             </p>
           </div>
           <div className={styles.kingdomGrid}>
@@ -212,7 +224,7 @@ export default function Atobase() {
             <div className="gold-rule" />
             <p className={styles.reelDesc}>
               The official Instagram page of the Arujale of Okeluse Kingdom shared the
-              investiture moment — drawing thousands of reactions and comments from
+              investiture moment, drawing thousands of reactions and comments from
               well-wishers across Nigeria and beyond. Watch, like, and share from right here.
             </p>
             <div className={styles.reelMeta}>
@@ -240,7 +252,7 @@ export default function Atobase() {
             <div className={styles.reelFrame}>
               <InstagramReelEmbed
                 permalink={REEL_URL}
-                title="Atobase of Okeluse Kingdom — Official Instagram Reel"
+                title="Atobase of Okeluse Kingdom: Official Instagram Reel"
               />
             </div>
             <p className={styles.reelNote}>

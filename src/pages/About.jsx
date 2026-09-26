@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal'
 import heroPortrait  from '../assets/hero-portrait.png'
@@ -40,13 +41,13 @@ const timeline = [
     year: '2020 – 2024',
     role: 'Managing Director & Head of Facilities',
     org: 'Banksome Global Facility Management · Lagos',
-    desc: 'Exceptional leadership in asset optimization, contract negotiation, and compliance across multiple high-value portfolios.',
+    desc: 'Led asset optimisation, contract negotiation and regulatory compliance across multiple high-value portfolios.',
   },
   {
     year: '2013 – 2020',
     role: 'Senior Facility & Real Estate Manager',
     org: 'Multiple Institutions · Nigeria',
-    desc: 'Built deep expertise across large-scale commercial and residential developments throughout Nigeria.',
+    desc: 'Worked across large-scale commercial and residential developments throughout Nigeria.',
   },
 ]
 
@@ -56,7 +57,7 @@ const certifications = [
   { code: 'CBAP',                      name: 'Certified Business Analyst Professional' },
   { code: 'IOPM',                      name: 'Accredited Project Manager' },
   { code: 'GBCN',                      name: 'Member, Green Building Council Nigeria' },
-  { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development — UK' },
+  { code: 'Honorary Doctoral Fellow',  name: 'Institute of Leadership, Management & Manpower Development, UK' },
 ]
 
 const memberships = [
@@ -68,40 +69,81 @@ const memberships = [
   { code: 'ILMMD UK', name: 'Institute of Leadership, Management & Manpower Development' },
 ]
 
+// alt describes what is in each photo for screen readers (no visible caption).
+// The Circle Point images are social posts with a website banner along the
+// bottom, which cropBanner trims out of frame.
 const moments = [
-  { img: arrival,    cap: 'In the Field · Professional Circuit' },
-  { img: networking, cap: 'Networking & Leadership Engagement' },
-  { img: cpEvent1,   cap: 'Circle Point · Property Sector' },
-  { img: cpEvent2,   cap: 'Industry Connections · Lagos' },
+  { img: arrival,    alt: 'Oyewale Areoye arriving at an industry engagement', pos: 'center 15%' },
+  { img: networking, alt: 'Oyewale Areoye in conversation with fellow guests', pos: '45% center' },
+  { img: cpEvent1,   alt: 'Oyewale Areoye with the Circle Point Group team',   pos: '40% top', cropBanner: true },
+  { img: cpEvent2,   alt: 'Oyewale Areoye welcoming a guest at Circle Point Group', pos: '30% top', cropBanner: true },
 ]
+// Looped twice so the marquee can glide from the first copy straight into an
+// identical second copy, then jump back unnoticed.
+const momentsLoop = [...moments, ...moments]
+
+/* Mobile only: certifications and memberships share one compact, tabbed list */
+function Credentials() {
+  const [tab, setTab] = useState('certs')
+  const tabs = [
+    { id: 'certs', label: 'Certifications', items: certifications },
+    { id: 'members', label: 'Memberships', items: memberships },
+  ]
+  const active = tabs.find(t => t.id === tab)
+  return (
+    <div className={`${styles.section} ${styles.credentials} reveal`}>
+      <h2 className={styles.sectionTitle}>Credentials</h2>
+      <div className={styles.credTabs} role="tablist" aria-label="Credentials">
+        {tabs.map(t => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            aria-selected={tab === t.id}
+            className={`${styles.credTab} ${tab === t.id ? styles.credTabActive : ''}`}
+            onClick={() => setTab(t.id)}
+          >
+            {t.label}<span>{t.items.length}</span>
+          </button>
+        ))}
+      </div>
+      <dl key={tab} className={styles.credList} role="tabpanel">
+        {active.items.map(item => (
+          <div key={item.code} className={styles.credRow}>
+            <dt>{item.code}</dt>
+            <dd>{item.name}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )
+}
 
 export default function About() {
   useScrollReveal()
 
   return (
     <main>
-      {/* ── HERO BANNER ── */}
-      <section
-        className={styles.heroBanner}
-        style={{ backgroundImage: `url(${aboutWalking})` }}
-      >
-        <div className={styles.heroBannerOverlay} />
+      {/* ── HERO BANNER ──
+          Desktop: text left | photo right. Mobile: photo on top, text below.
+          Text never sits on the photo. */}
+      <section className={styles.heroBanner}>
         <div className={styles.heroBannerContent}>
-          <div className="reveal">
-            <div className="section-label" style={{ color: 'var(--gold)' }}>
-              The Person Behind the Platform
-            </div>
+          <div className={`${styles.heroText} fade-up`}>
+            <div className="section-label">Profile</div>
             <h1 className={styles.heroTitle}>
-              A Leader. A <em>Builder.</em><br />A Legacy in Motion.
+              A career in <em>buildings.</em><br />A commitment to <em>people.</em>
             </h1>
+            <p className={styles.heroBio}>
+              Oyewale Areoye (@iamoltek) has spent over eleven years in facility management
+              and real estate. He co-founded Circle Point Group, serves as Executive Director at
+              Petik Limited, founded The Oyewale Areoye Initiative, and holds the chieftaincy
+              title of Atobase of Okeluse Kingdom.
+            </p>
           </div>
-          <p className={`${styles.heroBio} reveal reveal-d1`}>
-            Oyewale Areoye — known as @iamoltek — is one of Nigeria's foremost voices in
-            strategic real estate and facility management, a committed philanthropist, and a
-            distinguished royal title holder. With over eleven years of expertise, international
-            certifications, and an unwavering commitment to excellence and community, he
-            represents a new generation of African leadership.
-          </p>
+          <div className={styles.heroPhoto}>
+            <img src={aboutWalking} alt="Oyewale Areoye walking through a corridor" />
+          </div>
         </div>
         <div className={styles.heroWatermark}>OLTEK</div>
       </section>
@@ -109,13 +151,13 @@ export default function About() {
       {/* ── BODY ── */}
       <section className={styles.body}>
         <div className={styles.bodyInner}>
-          {/* SIDEBAR */}
-          <div className="reveal">
+          {/* SIDEBAR (desktop only; on mobile its certifications move into <Credentials />) */}
+          <div className={`${styles.sidebar} reveal`}>
             <div className={styles.photoStack}>
               <img src={proHeadshot1} alt="Oyewale Areoye" className={styles.photoMain} />
               <img src={proHeadshot2} alt="Oyewale Areoye" className={styles.photoSecondary} />
             </div>
-            <div className={styles.certs}>
+            <div className={`${styles.certs} reveal-stagger`}>
               <div className="section-label" style={{ marginTop: '1.8rem' }}>Certifications</div>
               {certifications.map(c => (
                 <div key={c.code} className={styles.cert}>
@@ -167,10 +209,10 @@ export default function About() {
             </div>
 
             {/* Executive portrait mid-break */}
-            <div className={`${styles.midPortrait} reveal`}>
+            <div className={`${styles.midPortrait} reveal reveal-media`}>
               <img
                 src={heroPortrait}
-                alt="Oyewale Areoye — Executive Portrait"
+                alt="Oyewale Areoye, executive portrait"
                 className={styles.midPortraitImg}
               />
               <div className={styles.midPortraitCaption}>Executive Portrait · @iamoltek</div>
@@ -200,7 +242,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className={`${styles.section} reveal`}>
+            <div className={`${styles.section} ${styles.membershipsSection} reveal`}>
               <h2 className={styles.sectionTitle}>Professional Memberships</h2>
               <div className={styles.memberships}>
                 {memberships.map(m => (
@@ -211,6 +253,8 @@ export default function About() {
                 ))}
               </div>
             </div>
+
+            <Credentials />
           </div>
         </div>
       </section>
@@ -223,13 +267,26 @@ export default function About() {
             <h2 className="section-title on-dark">Professional <em>Moments</em></h2>
             <div className="gold-rule" />
           </div>
-          <div className={styles.momentsGrid}>
-            {moments.map((m, i) => (
-              <div key={i} className={`${styles.momentCard} reveal reveal-d${i + 1}`}>
-                <img src={m.img} alt={m.cap} className={styles.momentImg} />
-                <div className={styles.momentCap}>{m.cap}</div>
-              </div>
-            ))}
+          <div className={styles.momentsTrack}>
+            <div className={styles.momentsTrackInner}>
+              {momentsLoop.map((m, i) => (
+                <div
+                  key={i}
+                  className={styles.momentCard}
+                  aria-hidden={i >= moments.length || undefined}
+                >
+                  <div className={styles.momentFrame}>
+                    <img
+                      src={m.img}
+                      alt={i < moments.length ? m.alt : ''}
+                      loading="lazy"
+                      className={`${styles.momentImg} ${m.cropBanner ? styles.momentImgCrop : ''}`}
+                      style={{ objectPosition: m.pos }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

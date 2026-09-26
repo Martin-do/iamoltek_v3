@@ -1,305 +1,46 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
+import CountUp from '../components/CountUp'
+import FadeImage from '../components/FadeImage'
 import useScrollReveal from '../hooks/useScrollReveal'
 import AnnouncementStrip from '../components/AnnouncementStrip'
 import EventCountdown from '../components/EventCountdown'
-import InstagramFeed from '../components/InstagramFeed'
 import FeaturedPost from '../components/FeaturedPost'
 import BirthdayBanner from '../components/BirthdayBanner'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import { isBirthdayPeriod } from '../utils/birthdayUtils'
-import { reports } from '../data/reportsData'
+import { campaigns as reports } from '../data/reportsData'
+import { getPublishedPosts } from '../content/posts'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import initiativeImpact from '../assets/initiative-impact.jpg'
-import featuredPostImg from '../assets/featured-post-01.jpeg'
-import newPostImg from '../assets/theoyewaleareoyeinitiative_01.jpg'
-import post03Img from '../assets/theoyewaleareoyeinitiative_02.jpeg'
-import post04Img from '../assets/theoyewaleareoyeinitiative_03.jpeg'
-import post05Img from '../assets/theoyewaleareoyeinitiative_04.jpeg'
-import post06Img from '../assets/theoyewaleareoyeinitiative_05.jpeg'
-import post07Img from '../assets/theoyewaleareoyeinitiative_06.jpeg'
-import post08Img from '../assets/theoyewaleareoyeinitiative_07.jpeg'
-import post09Img from '../assets/theoyewaleareoyeinitiative_08.jpeg'
-import post10Img from '../assets/theoyewaleareoyeinitiative_09.jpeg'
-import post11Img from '../assets/theoyewaleareoyeinitiative_11.jpeg'
-import post12Img from '../assets/theoyewaleareoyeinitiative_12.jpeg'
-import post13Img from '../assets/theoyewaleareoyeinitiative_13.jpeg'
-import post14Img from '../assets/theoyewaleareoyeinitiative_14.jpeg'
-import post15Img from '../assets/theoyewaleareoyeinitiative_15.jpg'
-import post16Img from '../assets/theoyewaleareoyeinitiative_16.jpg'
-import post17Img from '../assets/theoyewaleareoyeinitiative_17.jpg'
 import styles from './Initiative.module.css'
 
-const featuredPostsData = [
-  {
-    id: 'initiative_post_17',
-    image: post17Img,
-    text: [
-      "FORWARD & UNSTOPPABLE",
-      "Success is rarely achieved in one giant leap. More often, it is found by those who refuse to stop when the journey becomes difficult.",
-      "The moment you feel like giving up could be the very moment you are closest to your breakthrough. Every extra effort, every additional attempt, and every lesson learned from failure brings you closer to your goal.",
-      "Don't quit because it's hard. Keep going because your purpose is worth it.",
-      "“Keep going. The breakthrough you are looking for is often one more step beyond where you almost quit.”",
-      "Who needs this reminder today? Tag someone and encourage them to keep moving.",
-      "#OneMoreStep #ForwardAndUnstoppable #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #KeepMoving #Resilience #NeverGiveUp #PurposeDriven #GrowthMindset"
-    ]
-  },
-  {
-    id: 'initiative_post_16',
-    image: post16Img,
-    text: [
-      "FORWARD & UNSTOPPABLE",
-      "The future is not determined by where you started or by the obstacles you face today. It is shaped by the decisions you make, the courage you demonstrate, and the hope you refuse to surrender.",
-      "Never allow your present circumstances to become the measure of your potential. Every challenge is temporary, but the impact of persistence can last a lifetime.",
-      "Keep learning. Keep growing. Keep believing. Your story is still unfolding, and your greatest chapters may still be ahead of you.",
-      "Today, choose progress over fear and possibility over limitation.",
-      "“The future belongs to those who refused to let the present define their limits.”",
-      "What step are you taking today toward the future you envision? Share it in the comments and inspire someone else to keep moving forward.",
-      "#FutureForward #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #KeepMoving #Resilience #GrowthMindset #PurposeDriven #BelieveInYourFuture #PositiveImpact #CommunityDevelopment"
-    ]
-  },
-  {
-    id: 'initiative_post_15',
-    image: post15Img,
-    text: [
-      "FORWARD & UNSTOPPABLE",
-      "Setbacks can be disappointing, especially when they interrupt plans we have carefully made. However, an unexpected turn does not mean the journey is over.",
-      "Sometimes, the path we intended to follow is not the path that will take us where we truly need to be. A delay may teach patience. A disappointment may reveal a better opportunity. A closed door may redirect us towards a more meaningful destination.",
-      "Do not allow one difficult moment to convince you to abandon your vision. Learn from the experience, adjust your direction, and keep moving forward.",
-      "Pause if necessary.",
-      "Rethink the route.",
-      "But never stop believing in what lies ahead.",
-      "“Setbacks are not stop signs. They are detours that often lead to better destinations.”",
-      "#ForwardAndUnstoppable #RiseAboveSetbacks #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Resilience #KeepMovingForward #GrowthMindset #PurposeDriven #PersonalDevelopment #PositiveChange"
-    ]
-  },
-  {
-    id: 'initiative_post_14',
-    image: post14Img,
-    text: [
-      "COMMUNITY & IMPACT",
-      "Every great movement begins with a single step. Every transformed community begins with a single empowered individual.",
-      "When we invest in one person’s education, leadership, confidence, or opportunity, we are doing more than changing one life. We are creating a chain reaction that can influence families, inspire communities, and shape future generations.",
-      "The most enduring impact is not always seen immediately. Like a seed planted in fertile soil, it grows quietly before it flourishes visibly. What starts with one person can eventually become a force that touches countless lives.",
-      "Never underestimate the value of empowering even one individual. The future of a community may depend on it.",
-      "Plant hope.",
-      "Nurture potential.",
-      "Watch transformation grow.",
-      "“Empowering one person is not a small thing. It is a seed that grows into a forest.”",
-      "#CommunityAndImpact #PlantSeeds #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #SocialImpact #CommunityDevelopment #LeadershipDevelopment #YouthEmpowerment #CreatingOpportunities #PositiveChange #SustainableImpact #BuildingTheFuture #TogetherWeGrow #LegacyOfImpact"
-    ]
-  },
-  {
-    id: 'initiative_post_13',
-    image: post13Img,
-    text: [
-      "COMMUNITY & IMPACT",
-      "No meaningful change is ever achieved alone.",
-      "Behind every thriving community, successful movement, and lasting impact is a group of people united by a shared vision and a common purpose. When individuals come together around values that matter, their collective strength becomes greater than the sum of their individual efforts.",
-      "Purpose grows when it is shared. Ideas become action. Dreams become initiatives. Individuals become a force for transformation.",
-      "Surround yourself with people who challenge you to grow, inspire you to serve, and encourage you to make a difference. Together, we can build stronger communities and create a legacy that outlives us.",
-      "Find your people.",
-      "Share your purpose.",
-      "Build something that matters.",
-      "“Purpose is most powerful when it is shared. Find your tribe. Build something greater together.”",
-      "#CommunityAndImpact #FindYourTribe #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #CommunityDevelopment #LeadershipInAction #SocialImpact #PurposeDriven #StrongerTogether #BuildingTheFuture #CollectiveImpact #PositiveChange #CommunityFirst #TogetherWeBuild"
-    ]
-  },
-  {
-    id: 'initiative_post_12',
-    image: post12Img,
-    text: [
-      "COMMUNITY & IMPACT",
-      "The strongest communities are not built on competition alone. They are built on collaboration, shared purpose, and a commitment to helping one another succeed.",
-      "Each person brings unique strengths, experiences, and perspectives. When we choose cooperation over rivalry, we create opportunities that no individual could achieve alone. Progress becomes faster, impact becomes greater, and success becomes more meaningful.",
-      "A thriving community is one where people support, encourage, and elevate one another. Because when one person rises, the entire community benefits.",
-      "Let us build bridges, not barriers.",
-      "Let us create opportunities, not obstacles.",
-      "Let us grow together.",
-      "“We do not rise by competing with each other. We rise by completing each other.”",
-      "#CommunityAndImpact #TogetherWeRise #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #CommunityDevelopment #Collaboration #Leadership #SocialImpact #StrongerTogether #BuildingBridges #PositiveChange #CollectiveGrowth #CreatingImpact #CommunityFirst"
-    ]
-  },
-  {
-    id: 'initiative_post_11',
-    image: post11Img,
-    text: [
-      "COMMUNITY & IMPACT",
-      "Every great transformation begins with an opportunity.",
-      "When people are given the right tools, equipped with knowledge, encouraged to believe in themselves, and provided a chance to succeed, remarkable things happen. Potential becomes purpose. Dreams become reality. Communities become stronger.",
-      "True empowerment is not about doing everything for people. It is about creating the conditions that allow them to discover their strengths, develop their talents, and build a better future for themselves and others.",
-      "The impact of one empowered individual can extend far beyond a single life, influencing families, communities, and generations to come.",
-      "Invest in people.",
-      "Create opportunities.",
-      "Build lasting impact.",
-      "Give someone the tools, the belief, and the chance, and watch what they build with it.",
-      "#CommunityAndImpact #BuildTogether #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #OpportunityForAll #CommunityDevelopment #LeadershipDevelopment #YouthEmpowerment #CreatingImpact #PositiveChange #BuildingTheFuture #SocialImpact #TogetherWeGrow"
+const ACCOUNT_NUMBER = '6550000619'
 
-    ]
-  },
-  {
-    id: 'initiative_post_10',
-    image: post10Img,
-    text: [
-      "Success is not measured solely by personal achievements, titles, or milestones. Its true value is revealed in the lives we influence, the opportunities we create, and the people we help along the way.",
-      "A meaningful legacy is built when we use our knowledge, resources, and experiences to lift others. Every hand extended in support becomes a bridge to new possibilities for someone else.",
-      "As we grow, let us remember that our greatest accomplishments are not just what we achieve for ourselves, but what we make possible for others.",
-      "Lead with purpose.",
-      "Serve with compassion.",
-      "Impact lives intentionally.",
-      "True success is measured not by how high you climb, but by how many hands you reach back for.",
-      "#CommunityAndImpact #ReachBack #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #LeadershipWithPurpose #SocialImpact #CommunityDevelopment #ServiceToHumanity #PositiveChange #LegacyOfImpact #InspiringLeadership #TogetherWeRise #CreatingOpportunities",
-    ]
-  },
-  {
-    id: 'initiative_post_09',
-    image: post09Img,
-    text: [
-      "COMMUNITY & IMPACT",
-      "Real change rarely begins with grand gestures. More often, it starts with a simple act of kindness, a helping hand, a word of encouragement, or an opportunity given to someone in need.",
-      "When we invest in one person, we create possibilities that extend far beyond what we can see. A life transformed today can become the source of hope, inspiration, and transformation for countless others tomorrow.",
-      "Never underestimate the power of your contribution, no matter how small it may seem. Every act of compassion creates a ripple that can touch families, communities, and future generations.",
-      "Be intentional.",
-      "Be compassionate.",
-      "Be the reason someone believes in a better tomorrow.",
-      "One life lifted can lift a hundred more. Never underestimate the ripple of a single act of kindness.",
-      "#CommunityAndImpact #RippleEffect #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #SocialImpact #CommunityDevelopment #ActsOfKindness #PositiveChange #LeadershipInAction #InspireHope #CreatingImpact #TogetherForChange",
-    ]
-  },
-  {
-    id: 'initiative_post_08',
-    image: post08Img,
-    text: [
-      "RISE & BELIEVE",
-      "Many people spend their lives waiting for approval, validation, or permission before pursuing their dreams.",
-      "But growth begins the moment you stop waiting and start believing in your own worth.",
-      "Choose yourself by investing in your development.",
-      "Choose yourself by pursuing your goals.",
-      "Choose yourself by refusing to settle for less than your potential.",
-      "The opportunities you seek often begin when you decide that you are worthy of them.",
-      "Stand confidently in who you are becoming.",
-      "Own your journey.",
-      "Embrace your purpose.",
-      "Do not wait to be chosen. Choose yourself, loudly, boldly, and without apology.",
-      "#RiseAndBelieve #ChooseYourself #TheOyewaleAreoyeInitiative #EmpowermentForAll #SelfBelief #LeadershipDevelopment #PersonalGrowth #PurposeDriven #Confidence #FutureLeaders #TransformingCommunities #InspirationDaily"
-    ]
-  },
-  {
-    id: 'initiative_post_07',
-    image: post07Img,
-    text: [
-      "RISE & BELIEVE",
-      "Potential is one of the most powerful resources in the world, yet it remains invisible until it is developed.",
-      "Your dreams, talents, and abilities are not determined by your background, status, or circumstances. They are shaped by your willingness to learn, grow, and persevere.",
-      "Greatness is not the privilege of a select few. It is the reward of those who consistently invest in becoming better than they were yesterday.",
-      "Do not underestimate what is possible when determination meets opportunity.",
-      "Unlock your potential.",
-      "Embrace your growth.",
-      "Pursue your purpose.",
-      "Potential is not reserved for the privileged. It lives in every person willing to pursue it.",
-      "#RiseAndBelieve #PotentialUnlocked #TheOyewaleAreoyeInitiative #EmpowermentForAll #UnlockYourPotential #LeadershipDevelopment #PersonalGrowth #PurposeDriven #InspirationDaily #TransformingCommunities #BelieveInYourself #FutureLeaders"
-
-    ]
-  },
-  {
-    id: 'initiative_post_06',
-    image: post06Img,
-    text: [
-      "RISE & BELIEVE",
-      "Every breakthrough begins long before the results appear.",
-      "Before the achievement, there is belief.",
-      "Before the success, there is vision.",
-      "Before the victory, there is a decision to trust that what seems impossible today can become reality tomorrow.",
-      "The future belongs to those who dare to believe beyond their current circumstances and act with confidence toward their goals.",
-      "Do not allow doubt to silence your dreams.",
-      "Believe first.",
-      "Work consistently.",
-      "Watch possibilities become achievements.",
-      "“Every great thing that will happen in your life begins with a decision to believe it is possible.”",
-      "#RiseAndBelieve #BelieveFirst #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #FaithInYourPotential #GrowthMindset #DreamBig #PurposeDriven #TransformingCommunities #InspirationDaily"
-    ]
-  },
-  {
-    id: 'initiative_post_05',
-    image: post05Img,
-    text: [
-      "RISE & BELIEVE",
-      "Too many dreams remain unrealized, not because people lack talent, but because they are waiting for the perfect moment, perfect conditions, or perfect confidence.",
-      "Growth does not come from perfection.",
-      "It comes from participation.",
-      "Every expert was once a beginner.",
-      "Every leader was once learning.",
-      "Every success story started with someone willing to show up despite uncertainty.",
-      "Do not let the pursuit of perfection keep you from making progress.",
-      "Start where you are.",
-      "Use what you have.",
-      "Become who you are meant to be.",
-      "“The world does not need a perfect you. It needs a present you, showing up, ready to grow.”",
-      "#RiseAndBelieve #ShowUp #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #SelfBelief #ProgressOverPerfection #GrowthMindset #TransformingCommunities #InspirationDaily"
-    ]
-  },
-  {
-    id: 'initiative_post_04',
-    image: post04Img,
-    text: [
-      "RISE & BELIEVE",
-      "Your story is not defined by where you started. It is shaped by the decisions you make, the resilience you build, and the vision you pursue.",
-      "Many people allow their circumstances to become excuses. Others use those same circumstances as motivation to rise higher. The difference is not in their background, but in their mindset.",
-      "Your past may explain your journey, but it does not determine your destination.",
-      "Keep learning.",
-      "Keep growing.",
-      "Keep moving forward.",
-      "“Your background is not your ceiling. It is the foundation from which you launch.”",
-      "#RiseAndBelieve #NoLimits #TheOyewaleAreoyeInitiative #EmpowermentForAll #PersonalGrowth #LeadershipDevelopment #SelfBelief #InspirationDaily #PurposeDriven #TransformingCommunities #FutureFocused"
-    ]
-  },
-  {
-    id: 'initiative_post_03',
-    image: post03Img,
-    text: [
-      "RISE & BELIEVE",
-      "True empowerment does not begin when someone recognizes your worth. It begins when you recognize it yourself.",
-      "The greatest transformations occur when individuals discover the courage, confidence, and determination already within them. No circumstance, setback, or limitation can extinguish the fire of a person who believes in their potential.",
-      "Do not wait for permission to grow.",
-      "Do not wait for others to validate your dreams.",
-      "The power to rise has always been within you.",
-      "“Empowerment is not a gift someone hands you. It is a fire you discover within yourself.”",
-      "#RiseAndBelieve #EmpowermentForAll #TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #PersonalGrowth #LeadershipDevelopment #SelfBelief #InspirationDaily #PurposeDrivenLife"
-    ]
-  },
-  {
-    id: 'initiative_post_02',
-    image: newPostImg,
-    text: [
-      "RISE & BELIEVE",
-      "You are capable of far more than your current circumstances may suggest.",
-      "Every great achievement begins with the decision to believe that growth is possible. The journey to becoming your best self starts when you refuse to be defined by fear, doubt, setbacks, or limitations.",
-      "Do not shrink your dreams to fit your present reality. Expand your mindset to match your potential.",
-      "Today, choose growth.\nChoose courage.\nChoose to rise.",
-      "“You were not built to stay small. Rise into every version of yourself the world has been waiting for.”",
-      "#RiseAndBelieve #EmpowermentForAll #TheOyewaleAreoyeInitiative #PersonalGrowth #LeadershipDevelopment #BelieveInYourself #PurposeDriven #CommunityImpact #InspirationDaily #TransformingCommunities"
-    ]
-  },
-  {
-    id: 'initiative_post_01',
-    image: featuredPostImg,
-    text: [
-      "EMPOWERING PEOPLE. TRANSFORMING COMMUNITIES.",
-      "Meaningful change begins when people are equipped with the knowledge, opportunities, and support they need to thrive.",
-      "At The Oyewale Areoye Initiative, we are committed to fostering leadership, promoting education, encouraging service, and creating opportunities that inspire individuals to reach their full potential and contribute positively to society.",
-      "Through ideas, advocacy, community engagement, and impactful initiatives, we seek to build stronger individuals and more resilient communities.",
-      "Together, we can create lasting change.",
-      "Ideas. Leadership. Service. Impact.",
-      "#TheOyewaleAreoyeInitiative #EmpoweringPeople #TransformingCommunities #Leadership #Education #CommunityDevelopment #SocialImpact #YouthEmpowerment #PositiveChange #BuildingTheFuture #ImpactDriven #TogetherWeCan #InspiringLeadership #CreatingImpact"
-    ]
+function CopyAccountButton() {
+  const [copied, setCopied] = useState(false)
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(ACCOUNT_NUMBER)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch {
+      /* clipboard unavailable — number stays selectable */
+    }
   }
-]
+  return (
+    <button type="button" className={`${styles.copyBtn} ${copied ? styles.copyBtnDone : ''}`} onClick={copy} aria-live="polite">
+      {copied ? 'Copied ✓' : 'Copy'}
+    </button>
+  )
+}
 
 const pillars = [
-  { icon: '📚', title: 'Education & Scholarships', desc: 'Funding access to quality education for bright but financially constrained young Nigerians — from primary school to university scholarships.' },
-  { icon: '🌾', title: 'Community Development', desc: 'Infrastructure, sanitation, and local economic development projects that uplift communities and restore dignity to everyday life.' },
-  { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills acquisition, entrepreneurship training, and mentorship programmes designed to prepare young Nigerians to lead and thrive.' },
-  { icon: '🏠', title: 'Housing & Welfare', desc: 'Advocating for affordable, safe housing and social welfare support for the most vulnerable in our communities.' },
+  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support, starting with the Back to School project.' },
+  { icon: '🍲', title: 'Food & Relief', desc: 'Food packs and essential materials for households, elderly people and care institutions facing hardship.' },
+  { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills, mentorship and encouragement for young people deciding what to do with their lives.' },
+  { icon: '🌾', title: 'Community Welfare', desc: 'Working with community leaders and local partners on the everyday needs they identify themselves.' },
 ]
 
 const programmes = [
@@ -311,15 +52,17 @@ const programmes = [
 
 export default function Initiative() {
   useScrollReveal()
+  const posts = useMemo(() => getPublishedPosts(), [])
 
   return (
     <main style={{ paddingTop: 'var(--nav-height)' }}>
       <BirthdayBanner variant="initiative" />
-      <FeaturedPost posts={featuredPostsData} />
+      <FeaturedPost posts={posts} />
 
       <AnnouncementStrip
-        tag="Upcoming Project"
-        text="The Oyewale Areoye Initiative will be launching the Back to School Project — equipping students with essential materials."
+        tag="In Progress"
+        text="The Back to School Project is under way: customized notebooks and essential stationery for students."
+        shortText="Back to School Project"
         linkText="See Details"
         linkHref="#event"
       />
@@ -337,11 +80,10 @@ export default function Initiative() {
               The Oyewale<br />Areoye <em>Initiative</em>
             </h1>
             <p className={styles.tagline}>Empowering People. Transforming Communities.</p>
-            <div className={styles.cac}>✔ Registered with CAC, Abuja — Part 'F', CAMA 2020</div>
+            <div className={styles.cac}>✔ Registered with CAC, Abuja · Part 'F', CAMA 2020</div>
             <p className={styles.desc}>
-              A Nigerian charitable venture committed to creating lasting, measurable change
-              through education, empowerment, and investment in people across Nigeria's most
-              underserved communities.
+              A Nigerian charity registered with the Corporate Affairs Commission, working in
+              education, youth empowerment, food relief and community welfare.
             </p>
             <div className={styles.ctas}>
               <a href="#donate" className="btn-burg">Donate Now</a>
@@ -374,18 +116,17 @@ export default function Initiative() {
           <div className={`${styles.missionBody} reveal reveal-d1`}>
             <div className="section-label">About the Initiative</div>
             <p>
-              The Oyewale Areoye Initiative is the philanthropic expression of a man who has
-              seen the transformative power of opportunity — and is committed to extending that
-              power to others.
+              The Oyewale Areoye Initiative was founded by Oyewale Areoye to widen access to
+              education, opportunity and basic support in the communities he comes from and
+              works in.
             </p>
             <p>
-              Through structured programmes in education, youth development, housing advocacy,
-              and community welfare, we work with local communities, government agencies, and
-              private partners to build dignified, self-sustaining lives.
+              We work with community leaders, government agencies and private partners on
+              education, youth development, welfare and food relief, and we publish a report
+              for every intervention we carry out.
             </p>
             <p>
-              Change is not handed down — it is built up, one community, one family,
-              one individual at a time.
+              Change is built one community, one family and one person at a time.
             </p>
             <div style={{ marginTop: '1.8rem' }}>
               <Link to="/about" className="btn-burg">Learn More About Us</Link>
@@ -427,13 +168,13 @@ export default function Initiative() {
       <div className={styles.impactBand}>
         <div className={styles.impactBandInner}>
           {[
-            ['500+', 'Lives Directly Impacted'],
-            ['12', 'Scholarships Awarded'],
-            ['5', 'Community Projects'],
-            ['3', 'Partner Organisations'],
+            ['3', 'States Reached'],
+            ['4', 'Intervention Areas'],
+            ['1', 'Project Under Way'],
+            [String(posts.length), 'Reflections Shared'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
-              <div className={styles.istatNum}>{n}</div>
+              <div className={styles.istatNum}><CountUp value={n} /></div>
               <div className={styles.istatLbl}>{l}</div>
             </div>
           ))}
@@ -448,7 +189,7 @@ export default function Initiative() {
           <img
             src={initiativeImpact}
             alt="Initiative Impact"
-            className={`${styles.impactImg} reveal`}
+            className={`${styles.impactImg} reveal reveal-media`}
           />
           <div className="reveal reveal-d1">
             <div className="section-label">Real Impact</div>
@@ -461,7 +202,7 @@ export default function Initiative() {
               opportunities to build a better future and transform communities across Nigeria.
             </p>
             <div className={styles.donateInline}>
-              <a href="#donate" className="btn-burg">Donate Now — Acc: 6550000619</a>
+              <a href="#donate" className="btn-burg">Donate Now · Acc: {ACCOUNT_NUMBER}</a>
               <p className={styles.donateSmall}>
                 Bank: Opay · Acc Name: THE OYEWALE AREOYE INITIATIVE
               </p>
@@ -487,7 +228,7 @@ export default function Initiative() {
                 <div className={styles.progTag}>{p.tag}</div>
                 <h3 className={styles.progTitle}>{p.title}</h3>
                 <p className={styles.progDesc}>{p.summary}</p>
-                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status === 'upcoming' ? 'Project' : 'Impact Story'} →</Link>
+                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status !== 'completed' ? 'Project' : 'Impact Story'} →</Link>
               </div>
             ))}
           </div>
@@ -505,7 +246,7 @@ export default function Initiative() {
             <div className={styles.birthdayPostWrap}>
               <InstagramReelEmbed
                 permalink="https://www.instagram.com/p/DahNoyfCKnr/"
-                title="Birthday post — The Oyewale Areoye Initiative"
+                title="Birthday post: The Oyewale Areoye Initiative"
               />
             </div>
           </div>
@@ -513,9 +254,29 @@ export default function Initiative() {
       )}
 
       {/* ══════════════════════════════════════
-          INSTAGRAM FEED
+          DAILY REFLECTIONS (latest posts, from content/posts)
       ══════════════════════════════════════ */}
-      <InstagramFeed handle="@theoyewaleareoyeinitiative" />
+      {posts.length > 0 && (
+        <section className={styles.reflections}>
+          <div className={styles.reflectionsInner}>
+            <div className="reveal">
+              <div className="section-label">Daily Reflections</div>
+              <h2 className="section-title">Latest from the <em>Initiative</em></h2>
+              <div className="gold-rule" />
+            </div>
+            <div className={`${styles.reflectionsGrid} reveal-stagger`}>
+              {posts.slice(0, 4).map(post => (
+                <Link key={post.id} to={`/initiative/posts#post-${post.number}`} className={styles.reflection}>
+                  <FadeImage src={post.image} alt={post.alt} loading="lazy" />
+                </Link>
+              ))}
+            </div>
+            <div className={styles.reflectionsCta}>
+              <Link to="/initiative/posts" className="btn-burg">All {posts.length} reflections</Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ══════════════════════════════════════
           DONATE BAND
@@ -527,7 +288,7 @@ export default function Initiative() {
               Your support can change a life.<br />Join the movement today.
             </h2>
             <p className={styles.donateBandSub}>
-              Whether you donate, volunteer, or partner — there is a meaningful role for
+              Whether you donate, volunteer, or partner, there is a meaningful role for
               everyone who believes in community and human potential.
             </p>
           </div>
@@ -536,7 +297,10 @@ export default function Initiative() {
               <span className={styles.bankLabel}>Bank · Opay</span>
               <strong>THE OYEWALE AREOYE INITIATIVE</strong>
               <span className={styles.bankLabel}>Account Number</span>
-              <strong className={styles.bankNum}>6550000619</strong>
+              <div className={styles.bankNumRow}>
+                <strong className={styles.bankNum}>{ACCOUNT_NUMBER}</strong>
+                <CopyAccountButton />
+              </div>
             </div>
             <div className={styles.contactList}>
               <div className={styles.contactItem}>

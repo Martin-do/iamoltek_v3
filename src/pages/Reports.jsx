@@ -5,7 +5,7 @@ import styles from './Reports.module.css'
 
 export default function Reports() {
   const completed = campaigns.filter(campaign => campaign.status === 'completed')
-  const upcoming = campaigns.filter(campaign => campaign.status === 'upcoming')
+  const upcoming = campaigns.filter(campaign => campaign.status !== 'completed')
 
   return (
     <main className={styles.page}>
@@ -29,7 +29,7 @@ export default function Reports() {
               const locationGroups = getLocationGroups(campaign)
 
               return (
-                <article className={styles.campaignCard} key={campaign.slug}>
+                <article className={`${styles.campaignCard} reveal`} key={campaign.slug}>
                   <div className={styles.imageWrap}>
                     <img src={campaign.cover} alt="" style={{ objectPosition: campaign.coverPosition }} />
                     <span className={styles.tag}>{campaign.programme}</span>
@@ -40,11 +40,11 @@ export default function Reports() {
                     <p>{campaign.summary}</p>
                     <div className={styles.metrics}>{campaign.metrics.map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
                     <div className={styles.reportAccess}>
-                      <span>Open a full state report</span>
+                      <span>{campaign.kind === 'individual' ? 'Explore personal stories' : 'Open a full state report'}</span>
                       <div>
                         {locationGroups.map(group => (
                           <div className={styles.reportGroup} key={group.state}>
-                            <small>{group.state}</small>
+                            {campaign.kind !== 'individual' && <small>{group.state}</small>}
                             {group.locations.map(location => <Link key={location.slug} to={`/initiative/impact/${campaign.slug}/${location.slug}`}>{location.title}<b>→</b></Link>)}
                           </div>
                         ))}
@@ -57,7 +57,7 @@ export default function Reports() {
             })}
           </div>
 
-          {upcoming.length > 0 && <section className={styles.upcoming}><div><div className={styles.eyebrow}>What comes next</div><h2>Upcoming <em>work</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
+          {upcoming.length > 0 && <section className={`${styles.upcoming} reveal`}><div><div className={styles.eyebrow}>Under way</div><h2>Work in <em>progress</em></h2></div><div>{upcoming.map(campaign => <article key={campaign.slug}><span>{campaign.programme}</span><h3>{campaign.title}</h3><p>{campaign.summary}</p></article>)}</div></section>}
         </div>
       </section>
       <Footer variant="initiative" />
