@@ -6,7 +6,6 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import BirthdayBanner from '../components/BirthdayBanner'
 import BirthdaySpotlight from '../components/BirthdaySpotlight'
 import { isBirthdayPeriod } from '../utils/birthdayUtils'
-import { getPublishedPosts } from '../content/posts'
 import heroPortrait   from '../assets/hero-portrait.png'
 import initiativeLogo from '../assets/initiative-logo.jpg'
 import atobaseHero    from '../assets/portrait-golden-throne.jpg'
@@ -23,11 +22,10 @@ function StatItem({ num, label }) {
   )
 }
 
-// The last figure is counted from the published posts, so it grows on its own
-const baseStats = [
+const statsData = [
   { num: '11+', label: 'Years in Industry' },
   { num: '6',   label: 'Certifications' },
-  { num: '3',   label: 'States Reached' },
+  { num: '3',   label: 'States with Relief Outreach' },
 ]
 
 const roles = [
@@ -49,7 +47,6 @@ export default function Home() {
   useScrollReveal()
 
   const isBirthday = isBirthdayPeriod()
-  const statsData = [...baseStats, { num: String(getPublishedPosts().length), label: 'Reflections Shared' }]
 
   return (
     <main className={styles.main} style={isBirthday ? { paddingTop: 'var(--nav-height)' } : {}}>
