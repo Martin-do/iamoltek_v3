@@ -187,7 +187,7 @@
   margin: 0 auto;
   padding: 2.8rem var(--content-pad);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .stat {
@@ -643,26 +643,23 @@
   }
 
   .statsInner {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 1.6rem var(--content-pad);
   }
 
-  /* 2x2 grid: left column flush with the page edge, right column inset evenly */
+  /* Three across: first flush with the page edge, the rest inset evenly */
   .stat {
     padding: 1.2rem 0 1.2rem 1.4rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(196, 151, 63, 0.07);
-  }
-
-  .stat:nth-child(odd) {
-    padding-left: 0;
-    padding-right: 1rem;
     border-right: 1px solid rgba(196, 151, 63, 0.07);
+    border-bottom: none;
   }
 
-  .stat:nth-child(3),
-  .stat:nth-child(4) {
-    border-bottom: none;
+  .stat:first-child {
+    padding-left: 0;
+  }
+
+  .stat:last-child {
+    border-right: none;
   }
 
   .pillarsGrid {
@@ -797,7 +794,7 @@
   }
 
   .statsInner {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 1.1rem var(--content-pad) 1.6rem;
   }
 

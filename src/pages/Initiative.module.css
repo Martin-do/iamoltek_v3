@@ -221,7 +221,7 @@
   margin: 0 auto;
   padding: 0 var(--content-pad);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
 }
 
@@ -551,7 +551,7 @@
   }
 
   .impactBandInner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .donateBandInner {
@@ -720,7 +720,7 @@
   }
 
   .impactBandInner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .impactSection {
@@ -928,7 +928,7 @@
 
   /* Impact figures: one row of four, like the homepage */
   .impactBand { padding: 1.5rem 0; }
-  .impactBandInner { grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .impactBandInner { grid-template-columns: repeat(3, 1fr); gap: 0; }
   .istat {
     padding: 0.3rem 0.3rem;
     background: transparent;
