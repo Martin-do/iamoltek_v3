@@ -1,4 +1,3 @@
-import outreachOne from '../assets/theoyewaleareoyeinitiative_01.jpg'
 import ketuReliefCover from '../assets/ketu-relief-cover.webp'
 import foodOutreachGroup from '../../posts/food_outreach0.jpeg'
 import foodOutreachOsun from '../../posts/food_outreach3.jpeg'
@@ -10,6 +9,13 @@ import oyoPhoto1 from '../assets/oyo-photo-1.webp'
 import oyoPhoto2 from '../assets/oyo-photo-2.webp'
 import oyoPhoto4 from '../assets/oyo-photo-4.webp'
 import oyoPhoto5 from '../assets/oyo-photo-5.webp'
+import backToSchool1 from '../assets/back-to-school-1.webp'
+import backToSchool2 from '../assets/back-to-school-2.webp'
+import backToSchool3 from '../assets/back-to-school-3.webp'
+import backToSchool4 from '../assets/back-to-school-4.webp'
+import backToSchool5 from '../assets/back-to-school-5.webp'
+import backToSchool6 from '../assets/back-to-school-6.webp'
+import backToSchool7 from '../assets/back-to-school-7.webp'
 
 export const campaigns = [
   {
@@ -238,19 +244,91 @@ export const campaigns = [
   },
   {
     slug: 'back-to-school-2026',
+    kind: 'project',
     title: 'Back to School Project',
     headline: 'Equipping the Next Generation',
     programme: 'Education',
-    status: 'ongoing',
-    dateISO: '2026-09-01',
-    date: 'In progress',
-    location: 'Local communities',
-    summary: 'An education project that has started: customised notebooks and essential stationery for students, with preparations still continuing.',
-    intro: 'Education is the foundation of every thriving community. The project is under way, and preparations are continuing so that students get practical tools for the school year.',
-    metrics: [],
-    cover: outreachOne,
-    coverPosition: 'center',
-    locations: []
+    status: 'completed',
+    dateISO: '2026-10-07',
+    date: '2026/2027 academic session',
+    location: 'Five schools and the Gegelose community',
+    summary: 'Notebooks, pens and basic stationery for pupils, and teaching materials for teachers, reached 550 pupils and 50 teachers across five schools and the Gegelose community.',
+    intro: 'The 2026 Back-to-School Educational Support Project provided essential learning materials to pupils and basic teaching materials to teachers at the start of the 2026/2027 academic session.',
+    metrics: [['550', 'Pupils reached'], ['50', 'Teachers reached'], ['5', 'Schools reached']],
+    cover: backToSchool1,
+    coverPosition: '70% center',
+    locations: [
+      {
+        slug: 'project-report',
+        title: 'Back to School Educational Support Project',
+        headline: 'Equipping the Next Generation',
+        programme: 'Education',
+        dateISO: '2026-10-07',
+        date: '2026/2027 academic session',
+        locationShort: 'Five schools and the Gegelose community',
+        location: 'Five beneficiary schools and the Gegelose community',
+        summary: 'Notebooks, pens and basic stationery for pupils, and teaching materials for teachers, reached 550 pupils and 50 teachers across five schools and the Gegelose community.',
+        contextTitle: 'Learning materials for a new school session',
+        metrics: [['550', 'Pupils reached'], ['50', 'Teachers reached'], ['5', 'Schools reached']],
+        executiveSummary: [
+          'The Oyewale Areoye Initiative implemented the 2026 Back-to-School Educational Support Project to provide essential learning materials to pupils and basic teaching materials to teachers at the beginning of the 2026/2027 academic session.',
+          'The project covered five beneficiary schools: St John Primary School, Fenwa; St Felix Nursery & Primary School, Lanlate; Blessed Tansi Nursery & Primary School, Ilaju; St William Nursery & Primary School, Oke Ado; and Abiola Jacobs Basic School, Oke Foko. Together they account for 500 pupils and 50 teachers. Approximately 50 further pupils were reached in the Gegelose environs, bringing the total to 550 pupils.',
+          'Pupils received exercise notebooks, writing materials, pens, basic stationery and other learning materials. Teachers received notebooks, pens, chalk and other basic teaching materials.'
+        ],
+        objectives: [
+          'Provide essential learning materials to pupils.',
+          'Support teachers with basic classroom and teaching materials.',
+          'Reduce material barriers to effective classroom participation.',
+          'Promote school readiness for the 2026/2027 academic session.',
+          'Extend educational support into surrounding communities.',
+          'Document the intervention and its reach for accountability.'
+        ],
+        beneficiary: 'Five schools and the Gegelose community',
+        beneficiaryLabel: 'Beneficiaries',
+        activities: [
+          'Direct engagement with the beneficiary schools and community beneficiaries.',
+          'Preparation of educational-material packs for pupils.',
+          'Distribution of the packs to pupils, and of basic materials to teachers.',
+          'Outreach to approximately 50 additional pupils in the Gegelose environs.',
+          'Photographic documentation of the project for accountability.'
+        ],
+        materialGroups: [
+          { title: 'For pupils', items: ['Exercise notebooks', 'Writing materials', 'Pens', 'Basic stationery', 'Other learning materials'] },
+          { title: 'For teachers', items: ['Teachers’ notebooks', 'Pens', 'Chalk', 'Other basic teaching materials'] }
+        ],
+        schools: {
+          rows: [
+            { name: 'St John Primary School', place: 'Fenwa', pupils: 110, teachers: 7 },
+            { name: 'St Felix Nursery & Primary School', place: 'Lanlate', pupils: 50, teachers: 6 },
+            { name: 'Blessed Tansi Nursery & Primary School', place: 'Ilaju', pupils: 40, teachers: 5 },
+            { name: 'St William Nursery & Primary School', place: 'Oke Ado', pupils: 120, teachers: 20 },
+            { name: 'Abiola Jacobs Basic School', place: 'Oke Foko', pupils: 180, teachers: 12 }
+          ],
+          subtotal: { label: 'School-based total', pupils: '500', teachers: '50' },
+          extra: { label: 'Gegelose environs', place: 'Community outreach, approximate', pupils: '50', teachers: '' },
+          total: { label: 'Total reach', pupils: '550', teachers: '50' },
+          note: 'The school figures reconcile exactly: 110 + 50 + 40 + 120 + 180 = 500 pupils, and 7 + 6 + 5 + 20 + 12 = 50 teachers. The Gegelose figure is approximate and recorded separately from the five schools. The teacher figure counts only the five named schools and is not enlarged to include additional teachers without supporting details.'
+        },
+        impact: 'Some pupils needed notebooks and writing materials to take part fully in school activities, and teachers needed simple consumables for everyday classroom work. The materials reduced the immediate burden of finding them at the start of the session, and the Gegelose outreach extended the support beyond the five schools.',
+        acknowledgement: 'Representatives and heads of the beneficiary schools expressed sincere appreciation for the support, recognising it as a practical contribution to pupils and teachers that met immediate educational needs. The Initiative thanks the schools, teachers, pupils, community members and supporters who helped carry the project through.',
+        conclusion: 'The 2026 Back-to-School Educational Support Project is completed. The Initiative reached five named schools, supported 500 school-based pupils, extended support to approximately 50 additional pupils in the Gegelose environs, and reached 50 teachers across the five named schools.',
+        cover: backToSchool1,
+        coverPosition: '70% center',
+        mediaHeading: 'The project in',
+        mediaIntro: 'Selected photographs from the project. They are documentation of the distribution and are not assigned to particular schools.',
+        media: [
+          { type: 'image', src: backToSchool1, alt: 'Pupils holding up the notebooks and stationery packs they received', caption: 'Pupils lifting the notebooks and stationery they received.', position: '70% center' },
+          { type: 'image', src: backToSchool2, alt: 'Pupils in school uniform with their notebook packs, alongside adults', caption: 'Pupils with their notebook and stationery packs.', position: 'center 35%' },
+          { type: 'image', src: backToSchool3, alt: 'Young pupils holding up notebook packs outside a classroom', caption: 'Pupils showing the packs they received.' },
+          { type: 'image', src: backToSchool4, alt: 'A crowd of pupils holding notebook packs', caption: 'A group of pupils with their packs.' },
+          { type: 'image', src: backToSchool5, alt: 'A classroom with pupils at their desks', caption: 'Pupils at their desks in a classroom.' },
+          { type: 'image', src: backToSchool6, alt: 'Notebook and stationery packs stacked before distribution', caption: 'Packs prepared before distribution.', position: 'center 55%' },
+          { type: 'image', src: backToSchool7, alt: 'Stacked learning materials ready to be handed out', caption: 'Learning materials ready to be handed out.', position: 'center 40%' }
+        ],
+        pdf: { href: '/downloads/Back-to-School-Project-Report-2026.pdf', label: 'Download the full report', meta: 'PDF, 7 pages, 3.4 MB' },
+        instagramPosts: []
+      }
+    ]
   }
 ]
 

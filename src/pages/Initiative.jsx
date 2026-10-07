@@ -37,7 +37,7 @@ function CopyAccountButton() {
 }
 
 const pillars = [
-  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support, starting with the Back to School project.' },
+  { icon: '📚', title: 'Education', desc: 'Helping students stay in school with materials, fees and practical support, including the 2026 Back to School project, which reached 550 pupils and 50 teachers.' },
   { icon: '🍲', title: 'Food & Relief', desc: 'Food packs and essential materials for households, elderly people and care institutions facing hardship.' },
   { icon: '🤝', title: 'Youth Empowerment', desc: 'Skills, mentorship and encouragement for young people deciding what to do with their lives.' },
   { icon: '🌾', title: 'Community Welfare', desc: 'Working with community leaders and local partners on the everyday needs they identify themselves.' },
@@ -60,11 +60,11 @@ export default function Initiative() {
       <FeaturedPost posts={posts} />
 
       <AnnouncementStrip
-        tag="In Progress"
-        text="The Back to School Project is under way: customized notebooks and essential stationery for students."
-        shortText="Back to School Project"
-        linkText="See Details"
-        linkHref="#event"
+        tag="Completed"
+        text="The Back to School Project is complete: 550 pupils and 50 teachers reached across five schools and the Gegelose community."
+        shortText="Back to School: completed"
+        linkText="Read the Report"
+        linkHref="/initiative/impact/back-to-school-2026/project-report"
       />
 
       {/* ══════════════════════════════════════
@@ -170,7 +170,7 @@ export default function Initiative() {
           {[
             ['3', 'States with Relief Outreach'],
             ['4', 'Intervention Areas'],
-            ['1', 'Project Under Way'],
+            ['550', 'Pupils Reached'],
           ].map(([n, l]) => (
             <div key={l} className={styles.istat}>
               <div className={styles.istatNum}><CountUp value={n} /></div>
@@ -227,7 +227,7 @@ export default function Initiative() {
                 <div className={styles.progTag}>{p.tag}</div>
                 <h3 className={styles.progTitle}>{p.title}</h3>
                 <p className={styles.progDesc}>{p.summary}</p>
-                <Link to={`/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status !== 'completed' ? 'Project' : 'Impact Story'} →</Link>
+                <Link to={p.kind === 'project' ? `/initiative/impact/${p.slug}/${p.locations[0].slug}` : `/initiative/impact/${p.slug}`} className={styles.reportLink}>Read {p.status !== 'completed' ? 'Project' : 'Impact Story'} →</Link>
               </div>
             ))}
           </div>

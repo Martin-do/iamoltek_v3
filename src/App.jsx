@@ -55,7 +55,7 @@ function LegacyReportRedirect() {
   const destinations = {
     'ketu-relief-2026': '/initiative/impact/food-relief-2026/ketu-lagos',
     'oyo-food-relief-2026': '/initiative/impact/food-relief-2026/oyo-state',
-    'back-to-school-project': '/initiative/impact/back-to-school-2026',
+    'back-to-school-project': '/initiative/impact/back-to-school-2026/project-report',
   }
   return <Navigate to={destinations[slug] || '/initiative/impact'} replace />
 }
@@ -80,7 +80,8 @@ export default function App() {
         <Route path="/initiative/posts" element={<PostsArchive />} />
         <Route path="/initiative/impact/ketu-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/ketu-lagos" replace />} />
         <Route path="/initiative/impact/oyo-food-relief-2026" element={<Navigate to="/initiative/impact/food-relief-2026/oyo-state" replace />} />
-        <Route path="/initiative/impact/back-to-school-project" element={<Navigate to="/initiative#event" replace />} />
+        <Route path="/initiative/impact/back-to-school-project" element={<Navigate to="/initiative/impact/back-to-school-2026/project-report" replace />} />
+        <Route path="/initiative/impact/back-to-school-2026" element={<Navigate to="/initiative/impact/back-to-school-2026/project-report" replace />} />
         <Route path="/initiative/impact/join-us-project" element={<Navigate to="/initiative/impact/support-programme" replace />} />
         <Route path="/initiative/impact/join-us-project/:locationSlug" element={<LegacySupportProgrammeRedirect />} />
         <Route path="/initiative/impact/paths-forward" element={<Navigate to="/initiative/impact/support-programme" replace />} />

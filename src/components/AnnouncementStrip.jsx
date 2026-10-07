@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './AnnouncementStrip.module.css'
 
 export default function AnnouncementStrip({ 
@@ -16,9 +17,11 @@ export default function AnnouncementStrip({
         <span className={`${styles.text} ${shortText ? styles.textLong : ''}`}>{text}</span>
         {shortText && <span className={`${styles.text} ${styles.textShort}`}>{shortText}</span>}
         {linkText && linkHref && (
-          <a href={linkHref} className={styles.link}>
-            {linkText} →
-          </a>
+          linkHref.startsWith('/') && !linkHref.includes('#') ? (
+            <Link to={linkHref} className={styles.link}>{linkText} →</Link>
+          ) : (
+            <a href={linkHref} className={styles.link}>{linkText} →</a>
+          )
         )}
       </div>
     </div>

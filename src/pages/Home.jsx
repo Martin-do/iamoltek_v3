@@ -38,7 +38,7 @@ const roles = [
 
 const pillars = [
   { num: '01', img: proActivity,    imgPos: 'center 38%', variant: 'pro',        title: 'Real Estate & Facility Management', cat: 'Circle Point Group · Petik Limited', desc: 'Eleven years across facility management and real estate, leading strategy, operations and investment growth as co-founder of Circle Point Group and Executive Director at Petik Limited.', link: '/about',      linkText: 'Read Profile' },
-  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: 'A CAC-registered initiative working in education, youth empowerment and community welfare. In 2026 it has carried out relief outreaches in Lagos, Oyo and Osun States and started its Back to School project.', link: '/initiative', linkText: 'Visit the Initiative' },
+  { num: '02', img: initiativeLogo, variant: 'initiative', title: 'The Oyewale Areoye Initiative', cat: 'NGO · CAC Registered',              desc: 'A CAC-registered initiative working in education, youth empowerment and community welfare. In 2026 it has carried out relief outreaches in Lagos, Oyo and Osun States and completed its Back to School project, which reached 550 pupils and 50 teachers.', link: '/initiative', linkText: 'Visit the Initiative' },
   { num: '03', img: atobaseHero,    imgPos: 'center 14%', variant: 'atobase',    title: 'Atobase of Okeluse',            cat: 'Royal Honour · Ondo State',         desc: 'Conferred the chieftaincy title of Atobase of Okeluse Kingdom, Ose LGA, Ondo State, by HRM Oba Oloyede Adeyeoba Adekoya, Akinghare II, at the 2024 investiture ceremony.', link: '/atobase',    linkText: 'About the Title' },
 ]
 
@@ -123,16 +123,16 @@ export default function Home() {
       <div className={styles.outreachTeaser}>
         <div className={`${styles.outreachTeaserInner} reveal`}>
           <div className={styles.outreachTeaserLeft}>
-            <div className={styles.outreachTeaserDot}>Initiative Project · In Progress</div>
+            <div className={styles.outreachTeaserDot}>Initiative Project · Completed</div>
             <h2 className={styles.outreachTeaserTitle}>
               Back to School Project: <em>Equipping the Next Generation</em>
             </h2>
             <p className={styles.outreachTeaserSub}>
-              The Oyewale Areoye Initiative is producing customized notebooks and essential stationery for students in local communities. The project has started and preparations are continuing.
+              Notebooks, pens and stationery for pupils, and basic teaching materials for teachers, reached 550 pupils and 50 teachers across five schools and the Gegelose community.
             </p>
           </div>
-          <Link to="/initiative#event" className={styles.outreachTeaserCta}>
-            See Details →
+          <Link to="/initiative/impact/back-to-school-2026/project-report" className={styles.outreachTeaserCta}>
+            Read the Report →
           </Link>
         </div>
       </div>
