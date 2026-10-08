@@ -315,6 +315,7 @@ export const campaigns = [
         cover: backToSchool1,
         coverPosition: '70% center',
         mediaHeading: 'The project in',
+        gallery: 'carousel',
         mediaIntro: 'Selected photographs from the project. They are documentation of the distribution and are not assigned to particular schools.',
         media: [
           { type: 'image', src: backToSchool1, alt: 'Pupils holding up the notebooks and stationery packs they received', caption: 'Pupils lifting the notebooks and stationery they received.', position: '70% center' },
@@ -325,7 +326,7 @@ export const campaigns = [
           { type: 'image', src: backToSchool6, alt: 'Notebook and stationery packs stacked before distribution', caption: 'Packs prepared before distribution.', position: 'center 55%' },
           { type: 'image', src: backToSchool7, alt: 'Stacked learning materials ready to be handed out', caption: 'Learning materials ready to be handed out.', position: 'center 40%' }
         ],
-        pdf: { href: '/downloads/Back-to-School-Project-Report-2026.pdf', label: 'Download the full report', meta: 'PDF, 7 pages, 3.4 MB' },
+        pdf: { href: '/downloads/Back-to-School-Project-Report-2026.pdf', label: 'Download the full report' },
         instagramPosts: []
       }
     ]

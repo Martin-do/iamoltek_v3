@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import Footer from '../components/Footer'
 import InstagramReelEmbed from '../components/InstagramReelEmbed'
 import ChatExchange from '../components/ChatExchange'
+import PhotoCarousel from '../components/PhotoCarousel'
 import { getCampaignLocation } from '../data/reportsData'
 import styles from './ReportDetail.module.css'
 
@@ -106,7 +107,7 @@ export default function ReportDetail() {
             </section>
           )}
 
-          {showGallery && <section className={`${styles.mediaSection} reveal`} id="field-photos"><div className={styles.mediaHeading}><div><div className={styles.eyebrow}>{isProject ? 'Documentation' : 'From the field'}</div><h2>{report.mediaHeading || 'The outreach in'} <em>pictures</em></h2></div><p>{report.mediaIntro || 'Selected moments from the intervention. Beneficiary identities have been protected in the published photographs.'}</p></div><div className={`${styles.mediaGrid} reveal-stagger`}>{media.map((item, index) => <MediaItem key={`${item.type}-${item.src}`} item={item} featured={index === 0} />)}</div></section>}
+          {showGallery && <section className={`${styles.mediaSection} reveal`} id="field-photos"><div className={styles.mediaHeading}><div><div className={styles.eyebrow}>{isProject ? 'Documentation' : 'From the field'}</div><h2>{report.mediaHeading || 'The outreach in'} <em>pictures</em></h2></div><p>{report.mediaIntro || 'Selected moments from the intervention. Beneficiary identities have been protected in the published photographs.'}</p></div>{report.gallery === 'carousel' ? <PhotoCarousel items={media} label={report.mediaHeading ? `${report.mediaHeading} pictures` : 'Photographs'} /> : <div className={`${styles.mediaGrid} reveal-stagger`}>{media.map((item, index) => <MediaItem key={`${item.type}-${item.src}`} item={item} featured={index === 0} />)}</div>}</section>}
 
           <section className={`${styles.twoColumnLists} reveal`} id="delivery">
             <div><div className={styles.eyebrow}>Objectives</div><h2>What we set out to <em>achieve</em></h2><ul>{report.objectives.map(item => <li key={item}>{item}</li>)}</ul></div>
@@ -146,7 +147,7 @@ export default function ReportDetail() {
 
           {report.pdf && (
             <section className={`${styles.download} reveal`}>
-              <div><span>The full report</span><p>{report.pdf.meta}</p></div>
+              <div><span>The full report</span></div>
               <a href={report.pdf.href} className="btn-burg" download>{report.pdf.label}</a>
             </section>
           )}
