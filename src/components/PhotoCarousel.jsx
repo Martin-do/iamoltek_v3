@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import styles from './PhotoCarousel.module.css'
 
-const DWELL = 4500 // each photo rests this long before the gallery glides on
+const DWELL = 3200 // each photo rests this long before the gallery glides on
 
 const pad = n => String(n).padStart(2, '0')
 const reducedMotion = () => typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -19,9 +19,9 @@ const Arrow = ({ dir }) => (
  * the next photo peeks in, and tapping a photo opens it full screen.
  *
  * It glides on to the next photo by itself, slowly, and stops whenever someone
- * touches it, hovers it, focuses it with the keyboard, opens a photo, scrolls
- * the page away from it, or presses the pause button. It never moves for people
- * who have asked their device to reduce motion.
+ * touches it, hovers it, focuses it with the keyboard, opens a photo, or scrolls
+ * the page away from it. It never moves for people who have asked their device
+ * to reduce motion.
  */
 export default function PhotoCarousel({ items, label = 'Photographs' }) {
   const rootRef = useRef(null)
@@ -40,7 +40,6 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
   const viewerOpenRef = useRef(false)
   const [active, setActive] = useState(0)
   const [viewer, setViewer] = useState(null) // index of the photo open full screen, or null
-  const [userPaused, setUserPaused] = useState(false)
   const total = items.length
   const viewerOpen = viewer !== null
   const canGlide = total > 1 && !reducedMotion()
@@ -88,7 +87,7 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
     const from = track.scrollLeft
     const to = slide.offsetLeft
     const slidesAway = Math.abs(to - from) / (slide.offsetWidth || 1)
-    const duration = Math.min(2800, 1400 + 380 * Math.max(0, slidesAway - 1))
+    const duration = Math.min(2400, 1000 + 320 * Math.max(0, slidesAway - 1))
     const start = performance.now()
     gliding.current = true
     track.style.scrollSnapType = 'none'
@@ -109,7 +108,7 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
 
   // The auto-glide clock
   useEffect(() => {
-    if (!canGlide || userPaused) return undefined
+    if (!canGlide) return undefined
     lastMove.current = performance.now()
     const id = setInterval(() => {
       if (document.hidden || !inView.current || gliding.current || viewerOpenRef.current) return
@@ -118,7 +117,7 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
       glideTo((activeRef.current + 1) % total)
     }, 400)
     return () => clearInterval(id)
-  }, [canGlide, userPaused, total, glideTo])
+  }, [canGlide, total, glideTo])
 
   // Only glide while the gallery is actually on screen
   useEffect(() => {
@@ -139,12 +138,6 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
 
   const touchStart = () => { pressing.current = true; stopGlide(); lastMove.current = performance.now() }
   const touchEnd = () => { pressing.current = false; lastMove.current = performance.now() }
-
-  const togglePlay = () => {
-    if (!userPaused) stopGlide()
-    lastMove.current = performance.now()
-    setUserPaused(!userPaused)
-  }
 
   // ── Full screen viewer, tied to the browser's Back button ──
   const focusLastViewed = useCallback(() => {
@@ -216,17 +209,8 @@ export default function PhotoCarousel({ items, label = 'Photographs' }) {
       </div>
 
       <div className={styles.bar}>
-        <span className={styles.count} aria-live={canGlide && !userPaused ? 'off' : 'polite'}>{pad(active + 1)} <i>/</i> {pad(total)}</span>
+        <span className={styles.count} aria-live={canGlide ? 'off' : 'polite'}>{pad(active + 1)} <i>/</i> {pad(total)}</span>
         <div className={styles.buttons}>
-          {canGlide && (
-            <button type="button" onClick={togglePlay} aria-label={userPaused ? 'Resume automatic sliding' : 'Pause automatic sliding'} className={styles.playToggle}>
-              {userPaused ? (
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 5.5v13l11-6.5z" /></svg>
-              ) : (
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
-              )}
-            </button>
-          )}
           <button type="button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Previous photo"><Arrow dir="prev" /></button>
           <button type="button" onClick={() => goTo(active + 1)} disabled={active === total - 1} aria-label="Next photo"><Arrow dir="next" /></button>
         </div>

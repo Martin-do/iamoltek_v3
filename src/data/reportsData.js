@@ -324,7 +324,7 @@ export const campaigns = [
           { type: 'image', src: backToSchool4, alt: 'A crowd of pupils holding notebook packs', caption: 'A group of pupils with their packs.' },
           { type: 'image', src: backToSchool5, alt: 'A classroom with pupils at their desks', caption: 'Pupils at their desks in a classroom.' },
           { type: 'image', src: backToSchool6, alt: 'Notebook and stationery packs stacked before distribution', caption: 'Packs prepared before distribution.', position: 'center 55%' },
-          { type: 'image', src: backToSchool7, alt: 'Stacked learning materials ready to be handed out', caption: 'Learning materials ready to be handed out.', position: 'center 40%' }
+          { type: 'image', src: backToSchool7, alt: 'Stacked learning materials ready to be handed out', caption: 'Learning materials ready to be handed out.' }
         ],
         pdf: { href: '/downloads/Back-to-School-Project-Report-2026.pdf', label: 'Download the full report' },
         instagramPosts: []
