@@ -65,6 +65,7 @@
   cursor: pointer;
   transition: background .2s ease, color .2s ease, border-color .2s ease, opacity .2s ease;
 }
+.buttons .playToggle { margin-right: .4rem; color: var(--burg); }
 .buttons button:hover:not(:disabled) { background: var(--burg); border-color: var(--burg); color: #fff; }
 .buttons button:disabled, .viewerBar button:disabled { opacity: .3; cursor: default; }
 .buttons button:focus-visible, .viewerBar button:focus-visible, .close:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
