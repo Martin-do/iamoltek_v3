@@ -141,7 +141,8 @@ function campaignPages() {
       }
     })
 
-    return [campaignPage, ...locationPages]
+    // A single-report project has no overview page of its own (it redirects to the report)
+    return campaign.kind === 'project' ? locationPages : [campaignPage, ...locationPages]
   })
 }
 

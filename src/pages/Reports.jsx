@@ -39,18 +39,24 @@ export default function Reports() {
                     <h2>{campaign.headline}</h2>
                     <p>{campaign.summary}</p>
                     <div className={styles.metrics}>{campaign.metrics.map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
-                    <div className={styles.reportAccess}>
-                      <span>{campaign.kind === 'individual' ? 'Explore personal stories' : 'Open a full state report'}</span>
-                      <div>
-                        {locationGroups.map(group => (
-                          <div className={styles.reportGroup} key={group.state}>
-                            {campaign.kind !== 'individual' && <small>{group.state}</small>}
-                            {group.locations.map(location => <Link key={location.slug} to={`/initiative/impact/${campaign.slug}/${location.slug}`}>{location.title}<b>→</b></Link>)}
+                    {campaign.kind === 'project' ? (
+                      <Link to={`/initiative/impact/${campaign.slug}/${campaign.locations[0].slug}`} className={styles.storyLink}>Read the full report</Link>
+                    ) : (
+                      <>
+                        <div className={styles.reportAccess}>
+                          <span>{campaign.kind === 'individual' ? 'Explore personal stories' : 'Open a full state report'}</span>
+                          <div>
+                            {locationGroups.map(group => (
+                              <div className={styles.reportGroup} key={group.state}>
+                                {campaign.kind !== 'individual' && <small>{group.state}</small>}
+                                {group.locations.map(location => <Link key={location.slug} to={`/initiative/impact/${campaign.slug}/${location.slug}`}>{location.title}<b>→</b></Link>)}
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                    <Link to={`/initiative/impact/${campaign.slug}`} className={styles.storyLink}>View Campaign Overview</Link>
+                        </div>
+                        <Link to={`/initiative/impact/${campaign.slug}`} className={styles.storyLink}>View Campaign Overview</Link>
+                      </>
+                    )}
                   </div>
                 </article>
               )

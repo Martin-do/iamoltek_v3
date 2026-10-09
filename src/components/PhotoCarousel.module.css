@@ -1,0 +1,121 @@
+.carousel { margin-top: 2rem; }
+
+/* ── Track: slides snap into place, the next one peeks in from the right ── */
+.track {
+  position: relative;
+  display: flex;
+  gap: .85rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.track::-webkit-scrollbar { display: none; }
+
+.slide { flex: 0 0 86%; margin: 0; scroll-snap-align: start; }
+
+.shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--cream-dk);
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out, ease); }
+.shot:hover img, .shot:focus-visible img { transform: scale(1.03); }
+.shot:focus-visible { outline: 2px solid var(--burg); outline-offset: 3px; }
+
+/* A small mark that says "tap to enlarge", kept in the corner so it never hides the photo */
+.expand {
+  position: absolute;
+  right: .7rem;
+  bottom: .7rem;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(17, 16, 16, .62);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.caption { margin: .85rem 0 0; color: var(--ink-light); font-size: .88rem; line-height: 1.55; }
+
+/* ── Counter and arrows ── */
+.bar { display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem; }
+.count { color: var(--burg); font: 400 1.5rem/1 'Cormorant Garamond', serif; letter-spacing: .04em; }
+.count i, .viewerBar i { margin: 0 .15em; color: var(--muted); font-style: normal; }
+/* Arrows are for mouse users on larger screens; on a phone the gallery is swiped */
+.buttons { display: none; gap: .5rem; }
+.buttons button, .viewerBar button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--cream-dk);
+  background: transparent;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, opacity .2s ease;
+}
+.buttons button:hover:not(:disabled) { background: var(--burg); border-color: var(--burg); color: #fff; }
+.buttons button:disabled, .viewerBar button:disabled { opacity: .3; cursor: default; }
+.buttons button:focus-visible, .viewerBar button:focus-visible, .close:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ── Full screen viewer ── */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  background: #0a0909;
+  animation: viewerIn .25s ease both;
+}
+@keyframes viewerIn { from { opacity: 0; } to { opacity: 1; } }
+
+.close {
+  position: absolute;
+  top: max(.8rem, env(safe-area-inset-top));
+  right: .8rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 4rem .6rem .4rem; }
+.stage img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.viewerCaption { margin: 0; padding: .6rem 1.4rem 0; color: rgba(255, 255, 255, .85); font-size: .9rem; line-height: 1.5; text-align: center; }
+
+.viewerBar { display: flex; justify-content: center; align-items: center; gap: 1.4rem; padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom)); color: #fff; font: 400 1.3rem/1 'Cormorant Garamond', serif; letter-spacing: .04em; }
+.viewerBar button { border-color: rgba(255, 255, 255, .25); color: #fff; }
+.viewerBar button:hover:not(:disabled) { background: rgba(255, 255, 255, .12); }
+
+@media (min-width: 821px) {
+  .buttons { display: flex; }
+  .slide { flex-basis: 58%; }
+  .caption { font-size: .92rem; }
+  .stage { padding: 4.5rem 4rem .4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { scroll-behavior: auto; }
+  .shot img, .viewer { transition: none; animation: none; }
+}
